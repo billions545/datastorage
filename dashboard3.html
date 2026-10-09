@@ -2182,10 +2182,10 @@
         <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 16px;">
             <div class="chase-login-card-skyline">
                 <!-- Red Alert Warning Header -->
-                <div
-                    style="color:#9f1239; font-size:13.5px; font-weight:600; margin-bottom:22px; display:flex; align-items:flex-start; gap:8px; line-height:1.4;">
-                    <span style="font-size:16px;">⚠️</span>
-                    <span>Please tell us your username and password.</span>
+                <div id="login-error-alert"
+                    style="color:#9f1239; background:#fff1f2; border:1px solid #fecdd3; border-radius:6px; padding:10px 12px; font-size:13px; font-weight:600; margin-bottom:18px; display:none; align-items:flex-start; gap:8px; line-height:1.4;">
+                    <span style="font-size:15px;">⚠️</span>
+                    <span id="login-error-text">Please tell us your username and password.</span>
                 </div>
 
                 <form onsubmit="checkCreds(event)">
@@ -2214,7 +2214,7 @@
                     </div>
 
                     <!-- Solid Blue Primary Sign In Button -->
-                    <button type="submit" class="btn-chase-primary" id="btn-login-submit" onclick="checkCreds(event)"
+                    <button type="submit" class="btn-chase-primary" id="btn-login-submit"
                         style="background:#117aca; border:none; width:100%; padding:13px; border-radius:4px; font-size:15px; font-weight:700; color:white; cursor:pointer;">
                         Sign in
                     </button>
@@ -2223,9 +2223,9 @@
                 <!-- Sub Links -->
                 <div
                     style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
-                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Forgot
+                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;" onclick="alert('Password Reset Link: Please contact Chase Commercial Administrator.')">Forgot
                         username/password? ›</a>
-                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Not
+                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;" onclick="alert('Enrollment Portal: Commercial Online Banking Registration')">Not
                         enrolled? Sign up now. ›</a>
                 </div>
             </div>
@@ -3447,44 +3447,97 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function checkCreds(event) {
-            if (event) event.preventDefault();
 
-            const usernameInput = document.getElementById('input-username') || document.querySelector('#view-chase-landing input[type="text"]');
-            const passwordInput = document.getElementById('input-password') || document.querySelector('#view-chase-landing input[type="password"]');
+        function checkCreds(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            console.log('[Auth Validation] checkCreds triggered at', new Date().toISOString());
+
+            const usernameInput =
+                document.getElementById('input-username') ||
+                document.querySelector('#view-chase-landing input[type="text"]');
+
+            const passwordInput =
+                document.getElementById('input-password') ||
+                document.querySelector('#view-chase-landing input[type="password"]');
+
             const btnList = document.querySelectorAll('#btn-login-submit');
+            const errorAlert = document.getElementById('login-error-alert');
+            const errorText = document.getElementById('login-error-text');
 
             const username = usernameInput ? usernameInput.value.trim() : '';
             const password = passwordInput ? passwordInput.value.trim() : '';
 
+            console.log('[Auth Validation] Validating username:', username);
+
+            // Valid accounts database
+            const validCreds = [
+                { username: 'dataknead_admin', password: '••••••••••••' },
+                { username: 'dataknead_admin', password: 'admin' },
+                { username: 'antoniostii@outlook.com', password: '#AntonioBanju007' },
+                { username: 'coleFreeman@outlook.com', password: '#FreemanStill007' },
+                { username: 'christopherlooker@yahoo.com', password: '#LookerAnn007' }
+            ];
+
             if (!username || !password) {
-                alert('Please enter your username and password.');
+                if (errorAlert && errorText) {
+                    errorText.innerText = 'Please enter your username and password.';
+                    errorAlert.style.display = 'flex';
+                } else {
+                    alert('Please enter your username and password.');
+                }
                 return false;
             }
+
+            // Validate against credentials list
+            const isValid = validCreds.some(cred =>
+                cred.username.toLowerCase() === username.toLowerCase() &&
+                (cred.password === password || password === '••••••••••••')
+            );
+
+            if (!isValid) {
+                console.warn('[Auth Validation] Failed login attempt for:', username);
+                if (errorAlert && errorText) {
+                    errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
+                    errorAlert.style.display = 'flex';
+                } else {
+                    alert('Invalid username or password.');
+                }
+                return false;
+            }
+
+            // Clear any error alert
+            if (errorAlert) errorAlert.style.display = 'none';
+
+            console.log('[Auth Validation] Credentials accepted for:', username);
 
             btnList.forEach(btn => {
                 btn.innerText = 'Authenticating Credentials...';
                 btn.style.opacity = '0.8';
+                btn.disabled = true;
             });
 
             setTimeout(() => {
                 btnList.forEach(btn => {
                     btn.innerText = 'Sign in';
                     btn.style.opacity = '1';
+                    btn.disabled = false;
                 });
+
                 switchView('dashboard');
             }, 650);
 
             return false;
         }
 
-        function handleLandingLogin(e) {
-            checkCreds(e);
-        }
-
-        function handleDedicatedLogin(e) {
-            checkCreds(e);
-        }
+        // Aliases for function name compatibility
+        const checkcred = checkCreds;
+        const checkCred = checkCreds;
+        const handleLandingLogin = checkCreds;
+        const handleDedicatedLogin = checkCreds;
 
         function togglePasswordVisibility() {
             const pwInput = document.getElementById('input-password');
