@@ -1739,6 +1739,58 @@
             font-size: 12px;
             color: #64748b;
         }
+
+        /* Authentic Chase Login Underlined Form Styles */
+        .chase-login-card-skyline {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 32px 36px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .chase-input-group {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .chase-input-group label {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .chase-input-group input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #cbd5e1;
+            padding: 8px 0;
+            font-size: 15px;
+            outline: none;
+            background: transparent;
+            color: #0f172a;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+        }
+
+        .chase-input-group input:focus {
+            border-bottom-color: #117aca;
+            border-bottom-width: 2px;
+        }
+
+        .pw-toggle-btn {
+            position: absolute;
+            right: 0;
+            bottom: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #117aca;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -2079,11 +2131,11 @@
     <!-- ---------------------------------------------------- -->
     <!-- DEDICATED CHASE SIGN IN / LOGIN PAGE VIEW            -->
     <!-- ---------------------------------------------------- -->
-    <div id="view-chase-login" class="chase-landing-view view-section hidden" style="background: linear-gradient(135deg, #0b2341 0%, #117aca 100%); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
-        <!-- Login Header -->
-        <header style="padding: 24px 48px; display: flex; align-items: center; justify-content: space-between;">
-            <a href="#" style="display:flex; align-items:center; gap:12px; text-decoration:none;" onclick="switchView('landing')">
-                <svg class="chase-logo-svg" viewBox="0 0 100 100">
+    <div id="view-chase-login" class="chase-landing-view view-section hidden" style="background: linear-gradient(to bottom, rgba(11, 35, 65, 0.3) 0%, rgba(11, 35, 65, 0.5) 100%), url('https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
+        <!-- Transparent Gradient Header -->
+        <header style="padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);">
+            <a href="#" style="display:flex; align-items:center; gap:10px; text-decoration:none; margin: 0 auto;" onclick="switchView('landing')">
+                <svg class="chase-logo-svg" viewBox="0 0 100 100" style="width:34px; height:34px;">
                     <g fill="#FFFFFF">
                         <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
                         <path d="M 92 28 L 92 72 L 72 92 L 52 92 L 52 72 L 72 52 L 72 28 Z" />
@@ -2091,79 +2143,93 @@
                         <path d="M 8 72 L 8 28 L 28 8 L 48 8 L 48 28 L 28 48 L 28 72 Z" />
                     </g>
                 </svg>
-                <span style="font-size:24px; font-weight:800; color:white; letter-spacing:-0.03em;">CHASE</span>
+                <span style="font-size:26px; font-weight:800; color:white; letter-spacing:-0.03em;">CHASE ⬢</span>
             </a>
-            <button class="switch-pill-btn" onclick="switchView('landing')">
-                ← Back to Chase.com Landing
+            <button class="switch-pill-btn" style="position:absolute; right:48px;" onclick="switchView('landing')">
+                ← Back to Chase.com
             </button>
         </header>
 
-        <!-- Centered Login Box Container -->
-        <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:32px 16px;">
-            <div class="chase-login-card" style="width:100%; max-width:440px; border-radius:18px; padding:36px; box-shadow:0 25px 50px rgba(0,0,0,0.35);">
-                <div style="text-align:center; margin-bottom:24px;">
-                    <svg class="chase-logo-svg" viewBox="0 0 100 100" style="width:48px; height:48px; margin-bottom:12px;">
-                        <g fill="#117ACA">
-                            <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
-                            <path d="M 92 28 L 92 72 L 72 92 L 52 92 L 52 72 L 72 52 L 72 28 Z" />
-                            <path d="M 72 92 L 28 92 L 8 72 L 8 52 L 28 52 L 48 72 L 72 72 Z" />
-                            <path d="M 8 72 L 8 28 L 28 8 L 48 8 L 48 28 L 28 48 L 28 72 Z" />
-                        </g>
-                    </svg>
-                    <h2 style="font-size:24px; font-weight:800; color:var(--chase-navy);">Sign in to Chase</h2>
-                    <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Commercial & Enterprise Online Banking</p>
+        <!-- Centered Floating Login Card -->
+        <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 16px;">
+            <div class="chase-login-card-skyline">
+                <!-- Red Alert Warning Header -->
+                <div style="color:#9f1239; font-size:13.5px; font-weight:600; margin-bottom:22px; display:flex; align-items:flex-start; gap:8px; line-height:1.4;">
+                    <span style="font-size:16px;">⚠️</span>
+                    <span>Please tell us your username and password.</span>
                 </div>
 
                 <form onsubmit="handleDedicatedLogin(event)">
-                    <div class="login-field">
-                        <label>Account Type</label>
-                        <select id="ded-login-type">
-                            <option value="commercial" selected>Commercial Online Banking (DataKnead Ltd)</option>
-                            <option value="personal">Personal Online Banking</option>
-                            <option value="business">Business Complete Banking</option>
-                        </select>
+                    <!-- Underlined Username Field -->
+                    <div class="chase-input-group">
+                        <label for="input-username">Username</label>
+                        <input type="text" id="input-username" value="dataknead_admin" required autocomplete="off">
                     </div>
 
-                    <div class="login-field">
-                        <label>Username / Token ID</label>
-                        <input type="text" value="dataknead_admin" required>
+                    <!-- Underlined Password Field with Show Toggle -->
+                    <div class="chase-input-group">
+                        <label for="input-password">Password</label>
+                        <input type="password" id="input-password" value="••••••••••••" required>
+                        <a href="javascript:void(0)" class="pw-toggle-btn" onclick="togglePasswordVisibility()">Show</a>
                     </div>
 
-                    <div class="login-field">
-                        <label>Password</label>
-                        <input type="password" value="••••••••••••" required>
-                    </div>
-
-                    <div class="login-check-row">
+                    <!-- Checkboxes Row -->
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; font-size:12.5px; color:#475569;">
                         <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                            <input type="checkbox" checked> Remember Username
+                            <input type="checkbox" checked> Remember username
                         </label>
-                        <a href="#" style="color:var(--chase-blue); font-weight:600;">Use RSA Security Token</a>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                            <input type="checkbox"> Use token
+                        </label>
                     </div>
 
-                    <button type="submit" class="btn-chase-primary" id="btn-ded-login-submit" style="padding:16px; font-size:16px;">
-                        Sign In to Commercial Portal
+                    <!-- Solid Blue Primary Sign In Button -->
+                    <button type="submit" class="btn-chase-primary" id="btn-ded-login-submit" style="background:#117aca; border:none; width:100%; padding:13px; border-radius:4px; font-size:15px; font-weight:700; color:white; cursor:pointer;">
+                        Sign in
                     </button>
                 </form>
 
-                <div class="login-footer-links" style="margin-top:20px;">
-                    <a href="#">Forgot username/password?</a>
-                    <a href="#" style="font-weight:700;">Enroll in Commercial Banking</a>
-                </div>
-
-                <div style="margin-top:24px; background:var(--bg-card-alt); border:1px solid var(--border-color); border-radius:var(--radius-xs); padding:12px; display:flex; align-items:center; gap:10px; font-size:11.5px; color:var(--text-muted);">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                    <span><strong>256-Bit SSL Encrypted</strong> — Secured by JPMorgan Chase Cyber Security</span>
+                <!-- Sub Links -->
+                <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
+                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Forgot username/password? ›</a>
+                    <a href="#" style="color:#117aca; text-decoration:none;" onclick="switchView('dashboard')">Not enrolled? Sign up now. ›</a>
                 </div>
             </div>
         </div>
 
-        <!-- Login Footer -->
-        <footer style="padding:24px 48px; text-align:center; color:rgba(255,255,255,0.7); font-size:12px; border-top:1px solid rgba(255,255,255,0.1);">
-            © 2026 JPMorgan Chase & Co. Member FDIC. Equal Housing Lender 🏠
+        <!-- Official Chase Footer -->
+        <footer style="background:#ffffff; color:#64748b; padding:28px 48px; text-align:center; font-size:12px; border-top:1px solid #e2e8f0; display:flex; flex-direction:column; gap:14px; align-items:center;">
+            <!-- Social Icons -->
+            <div style="display:flex; gap:18px; color:#475569; font-size:16px;">
+                <span style="cursor:pointer;">📘</span>
+                <span style="cursor:pointer;">📷</span>
+                <span style="cursor:pointer;">𝕏</span>
+                <span style="cursor:pointer;">▶️</span>
+                <span style="cursor:pointer;">💼</span>
+            </div>
+
+            <!-- Footer Links -->
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px; color:#475569; font-size:11.5px;">
+                <a href="#" style="color:#475569; text-decoration:underline;">Contact us</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Privacy & security</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Terms of use</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Accessibility</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">SAFE Act: Chase Mortgage Loan Originators</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Fair Lending</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">About Chase</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">J.P. Morgan</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">JPMorgan Chase & Co.</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Careers</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Español</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Chase Canada</a>
+                <a href="#" style="color:#475569; text-decoration:underline;">Site map</a>
+                <span>Member FDIC</span>
+                <span>🏠 Equal Housing Opportunity</span>
+            </div>
+
+            <div style="color:#94a3b8; font-size:11px;">
+                © 2026 JPMorgan Chase & Co.
+            </div>
         </footer>
     </div>
 
@@ -3320,10 +3386,23 @@
                 btn.innerText = 'Authenticating DataKnead Ltd...';
                 btn.style.opacity = '0.8';
                 setTimeout(() => {
-                    btn.innerText = 'Sign In to Commercial Portal';
+                    btn.innerText = 'Sign in';
                     btn.style.opacity = '1';
                     switchView('dashboard');
                 }, 650);
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const pwInput = document.getElementById('input-password');
+            const toggleBtn = document.querySelector('.pw-toggle-btn');
+            if (!pwInput || !toggleBtn) return;
+            if (pwInput.type === 'password') {
+                pwInput.type = 'text';
+                toggleBtn.innerText = 'Hide';
+            } else {
+                pwInput.type = 'password';
+                toggleBtn.innerText = 'Show';
             }
         }
 
