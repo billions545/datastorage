@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chase Commercial Online Banking - DataKnead Ltd</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Chase Brand Colors */
+            --chase-blue: #117aca;
+            --chase-blue-dark: #0a4f8a;
+            --chase-blue-light: #e8f2fc;
+            --chase-navy: #0b2341;
+
+            --bg-body: #f4f7fb;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-alt: #f8fafc;
+
+            --border-color: #e2e8f0;
+            --border-subtle: #f1f5f9;
+
+            --text-main: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-dim: #94a3b8;
+            --text-white: #ffffff;
+
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbe6;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --info-blue: #0ea5e9;
+
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --radius-xs: 6px;
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 6px 18px rgba(17, 122, 202, 0.06);
+            --shadow-lg: 0 14px 35px rgba(0, 0, 0, 0.08);
+
+            --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* ---------------------------------------------------- */
+        /* SIDEBAR STYLES                                       */
+        /* ---------------------------------------------------- */
+        .sidebar {
+            width: 250px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 16px;
+            flex-shrink: 0;
+            z-index: 50;
+        }
+
+        .brand-container {
+            padding: 4px 8px 24px 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chase-logo-svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--chase-navy);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-item-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .nav-item a:hover {
+            color: var(--chase-blue);
+            background: var(--chase-blue-light);
+        }
+
+        .nav-item.active a {
+            color: var(--chase-blue);
+            background: var(--chase-blue-light);
+            font-weight: 700;
+        }
+
+        .nav-badge {
+            background: var(--danger);
+            color: var(--text-white);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: var(--radius-full);
+            line-height: 1;
+        }
+
+        /* Promo Card in Sidebar */
+        .sidebar-promo-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--chase-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px auto;
+            box-shadow: 0 4px 12px rgba(17, 122, 202, 0.3);
+        }
+
+        .promo-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--chase-navy);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .promo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .promo-btn {
+            background: var(--chase-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-xs);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .promo-btn:hover {
+            background: var(--chase-blue-dark);
+        }
+
+        /* Sidebar Profile Bottom */
+        .sidebar-footer {
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .user-profile-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 6px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            background: var(--chase-navy);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .user-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN CONTENT LAYOUT                                  */
+        /* ---------------------------------------------------- */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow-y: auto;
+            padding: 28px 36px;
+            gap: 24px;
+        }
+
+        /* Header Bar */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--chase-navy);
+            letter-spacing: -0.02em;
+        }
+
+        .header-title p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            font-size: 13px;
+            font-family: var(--font-sans);
+            width: 180px;
+        }
+
+        /* HIGH-VISIBILITY COMPLIANCE NOTICE BANNER */
+        .compliance-alert-banner {
+            background: linear-gradient(135deg, #fffbe6 0%, #fef3c7 100%);
+            border: 1.5px solid #f59e0b;
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12);
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12);
+            }
+
+            100% {
+                box-shadow: 0 6px 20px rgba(245, 158, 11, 0.28);
+            }
+        }
+
+        .alert-left-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .alert-shield-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--radius-full);
+            background: #f59e0b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .alert-shield-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            fill: none;
+        }
+
+        .alert-text-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .alert-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #78350f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-title .badge-tag {
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .alert-desc {
+            font-size: 12.5px;
+            color: #92400e;
+            font-weight: 500;
+        }
+
+        .btn-compliance-action {
+            background: #d97706;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-xs);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+        }
+
+        .btn-compliance-action:hover {
+            background: #b45309;
+            transform: translateY(-1px);
+        }
+
+        /* ---------------------------------------------------- */
+        /* CARDS STACK ("MY CARDS")                             */
+        /* ---------------------------------------------------- */
+        .section-cards-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--chase-navy);
+        }
+
+        .cards-carousel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .bank-card {
+            border-radius: var(--radius-md);
+            padding: 22px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 150px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .bank-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-blue {
+            background: linear-gradient(135deg, #117aca 0%, #00529b 100%);
+        }
+
+        .card-teal {
+            background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+        }
+
+        .card-navy {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .card-top-type {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .card-balance-wrap {
+            margin-top: auto;
+        }
+
+        .card-label {
+            font-size: 11px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .card-val {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .card-bottom-num {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            opacity: 0.85;
+        }
+
+        /* ---------------------------------------------------- */
+        /* TWO COLUMN MAIN BODY LAYOUT                          */
+        /* ---------------------------------------------------- */
+        .body-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 24px;
+        }
+
+        .col-main,
+        .col-side {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .widget-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .widget-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--chase-navy);
+        }
+
+        /* Cash Flow Chart Mockup */
+        .chart-bars-wrap {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 140px;
+            padding-top: 20px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .chart-bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .bars-pair {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .bar-income {
+            width: 10px;
+            background: var(--chase-blue);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .bar-expense {
+            width: 10px;
+            background: #0f172a;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .chart-month-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .chart-legend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        /* Expenses Bubble Breakdown */
+        .category-bubbles-grid {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .bubble-main {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--chase-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 8px 20px rgba(17, 122, 202, 0.3);
+        }
+
+        .bubble-sub-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .bubble-sm {
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 16px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 14px;
+        }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .cat-name {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .cat-val {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Transactions List (Right Column) */
+        .trans-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .trans-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .trans-item:hover {
+            background: #ffffff;
+            box-shadow: var(--shadow-sm);
+            border-color: var(--border-color);
+        }
+
+        .trans-item.pending-highlight {
+            background: #fffbe6;
+            border: 1.5px solid #f59e0b;
+        }
+
+        .trans-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trans-icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .trans-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .trans-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .trans-val {
+            font-size: 14px;
+            font-weight: 800;
+            font-family: var(--font-sans);
+            text-align: right;
+        }
+
+        .trans-val.positive {
+            color: var(--success);
+        }
+
+        .trans-val.negative {
+            color: var(--text-main);
+        }
+
+        .trans-val.pending {
+            color: #d97706;
+        }
+
+        /* Transfer Widget Box */
+        .transfer-box {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .recipient-avatars-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recip-badge {
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .recip-badge.active {
+            background: var(--chase-blue);
+            color: white;
+            border-color: var(--chase-blue);
+        }
+
+        .transfer-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .transfer-input-group label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .transfer-input-group select,
+        .transfer-input-group input {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 13px;
+            outline: none;
+        }
+
+        .btn-transfer-submit {
+            background: var(--chase-blue);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius-xs);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-transfer-submit:hover {
+            background: var(--chase-blue-dark);
+        }
+
+        /* ---------------------------------------------------- */
+        /* MODAL OVERLAY & CARD                                 */
+        /* ---------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(11, 35, 65, 0.55);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            width: 580px;
+            max-width: 95%;
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlide 0.25s ease-out forwards;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 14px;
+        }
+
+        .modal-title-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .modal-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--chase-navy);
+        }
+
+        .modal-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        /* Overview Summary Box inside Modal */
+        .overview-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .overview-amount-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid #bfdbfe;
+            padding: 14px 18px;
+            border-radius: var(--radius-xs);
+        }
+
+        .overview-amount {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .countdown-pill {
+            background: #fef2f2;
+            color: var(--danger);
+            border: 1px solid #fecaca;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .meta-val {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* 3 COMPLIANCE STEPS TIMELINE */
+        .compliance-steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .step-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            display: flex;
+            gap: 14px;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+
+        .step-card.passed {
+            border-color: #a7f3d0;
+            background: #f0fdf4;
+        }
+
+        .step-card.pending {
+            border-color: #fde68a;
+            background: #fffbe6;
+        }
+
+        .step-icon-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .step-icon-badge.passed {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-icon-badge.pending {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--chase-navy);
+        }
+
+        .step-status-tag {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .step-status-tag.passed {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .step-status-tag.pending {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .step-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* LEGAL REPATRIATION DISCLOSURE NOTICE BOX */
+        .repatriation-notice-box {
+            background: #fff1f2;
+            border-left: 4px solid #f43f5e;
+            border-radius: var(--radius-xs);
+            padding: 14px 16px;
+            font-size: 11.5px;
+            color: #881337;
+            line-height: 1.5;
+        }
+
+        .repatriation-notice-box strong {
+            font-weight: 800;
+            color: #9f1239;
+        }
+
+        /* Fee Payment Action Section */
+        .fee-action-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-select-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-select-group label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .form-select-group select {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 13px;
+            font-family: var(--font-sans);
+            outline: none;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-row input {
+            margin-top: 2px;
+        }
+
+        .btn-authorize-clearance {
+            background: var(--chase-blue);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-xs);
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(17, 122, 202, 0.3);
+            text-align: center;
+        }
+
+        .btn-authorize-clearance:hover {
+            background: var(--chase-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cards-carousel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .body-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- ---------------------------------------------------- -->
+        <!-- CHASE SIDEBAR NAVIGATION                             -->
+        <!-- ---------------------------------------------------- -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand-container">
+                    <!-- Chase Octagon Logo SVG -->
+                    <svg class="chase-logo-svg" viewBox="0 0 100 100">
+                        <g fill="#117ACA">
+                            <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
+                            <path d="M 92 28 L 92 72 L 72 92 L 52 92 L 52 72 L 72 52 L 72 28 Z" />
+                            <path d="M 72 92 L 28 92 L 8 72 L 8 52 L 28 52 L 48 72 L 72 72 Z" />
+                            <path d="M 8 72 L 8 28 L 28 8 L 48 8 L 48 28 L 28 48 L 28 72 Z" />
+                        </g>
+                    </svg>
+                    <span class="brand-name">CHASE <span
+                            style="font-size:10px; color:var(--chase-blue); font-weight:800;">COMMERCIAL</span></span>
+                </div>
+
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="#">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                                </svg>
+                                <span>Dashboard</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Viewing All Commercial Transactions')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <polyline points="17 1 21 5 17 9" />
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                                    <polyline points="7 23 3 19 7 15" />
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                                </svg>
+                                <span>Transactions</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Credit Cards & Commercial Lines')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                                    <line x1="2" y1="10" x2="22" y2="10" />
+                                </svg>
+                                <span>Credit Cards</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Monthly Commercial Statements')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                </svg>
+                                <span>Statements</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Chase Ultimate Rewards')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polygon points="12 8 15 11 11 16 14 16" />
+                                </svg>
+                                <span>Rewards & Deals</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="openModal('modal-compliance')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                </svg>
+                                <span>Notifications</span>
+                            </div>
+                            <span class="nav-badge" id="sidebar-badge-count">1</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Promo Card at Bottom -->
+            <div class="sidebar-promo-card">
+                <div class="promo-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                </div>
+                <div class="promo-title">Expand your banking possibilities</div>
+                <div class="promo-sub">12 Months 0% APR Commercial Credit</div>
+                <button class="promo-btn" onclick="alert('Requesting Chase Commercial Credit Expansion...')">Add
+                    Account</button>
+            </div>
+
+            <!-- User Profile Footer -->
+            <div class="sidebar-footer">
+                <div class="user-profile-bar" onclick="alert('DataKnead Ltd Corporate Profile Settings')">
+                    <div class="user-info">
+                        <div class="user-avatar">DK</div>
+                        <div>
+                            <div class="user-name">DataKnead Ltd</div>
+                            <div class="user-sub">New York, NY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- MAIN DASHBOARD CONTENT                               -->
+        <!-- ---------------------------------------------------- -->
+        <main class="main-wrapper">
+            <!-- Top Greeting & Search Header -->
+            <header class="top-header">
+                <div class="header-title">
+                    <h1>Commercial Dashboard</h1>
+                    <p>Welcome back, DataKnead Ltd (Account #CH-984029)</p>
+                </div>
+                <div class="header-controls">
+                    <div class="search-box">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" placeholder="Search transactions...">
+                    </div>
+                </div>
+            </header>
+
+            <!-- HIGH VISIBILITY COMPLIANCE ALERT BANNER -->
+            <div class="compliance-alert-banner" id="banner-alert">
+                <div class="alert-left-group">
+                    <div class="alert-shield-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <div class="alert-text-wrap">
+                        <div class="alert-title">
+                            ⚠️ 2 Inbound Wires Held in Regulatory Compliance Verification
+                            <span class="badge-tag">Action Required</span>
+                        </div>
+                        <div class="alert-desc">
+                            Inbound Transfers of <strong>$4,970,000.00 USD</strong> (THYSSENKRUPP PLASTICS GmbH) and
+                            <strong>$992,000.00 USD</strong> (GoBid Ltd) require Step 3 Compliance Fee settlement.
+                            Repatriation deadline: 4 Days.
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn-compliance-action" onclick="openModal('modal-compliance-tkp')">Review
+                        Thyssenkrupp ($4.97M)</button>
+                    <button class="btn-compliance-action" style="background:#d97706;"
+                        onclick="openModal('modal-compliance-gobid')">Review GoBid ($992k)</button>
+                </div>
+            </div>
+
+            <!-- "MY CARDS / ACCOUNTS" SECTION -->
+            <section>
+                <div class="section-cards-header">
+                    <h2 class="section-title">My Cards & Accounts</h2>
+                    <span style="font-size:12px; color:var(--text-muted); font-weight:600; cursor:pointer;"
+                        onclick="alert('Viewing all accounts')">4 Active Accounts ›</span>
+                </div>
+                <div class="cards-carousel-grid">
+                    <!-- Primary Checking Card -->
+                    <div class="bank-card card-blue" onclick="alert('Viewing Commercial Checking x4562 details')">
+                        <div class="card-top-type">
+                            <span>Commercial Checking</span>
+                            <span>VISA</span>
+                        </div>
+                        <div class="card-balance-wrap">
+                            <div class="card-label">Available Balance</div>
+                            <div class="card-val" id="val-checking-display">$1,286,502.79</div>
+                        </div>
+                        <div class="card-bottom-num">
+                            <span>•••• •••• •••• 4562</span>
+                            <span>03/28</span>
+                        </div>
+                    </div>
+
+                    <!-- TKP Escrow Card -->
+                    <div class="bank-card card-teal" onclick="openModal('modal-compliance-tkp')">
+                        <div class="card-top-type">
+                            <span>Escrow Hold (Wire 1)</span>
+                            <span
+                                style="background:rgba(255,255,255,0.25); padding:2px 6px; border-radius:4px; font-size:10px;">HELD</span>
+                        </div>
+                        <div class="card-balance-wrap">
+                            <div class="card-label">THYSSENKRUPP Credit</div>
+                            <div class="card-val" id="val-escrow-display">$4,970,000.00</div>
+                        </div>
+                        <div class="card-bottom-num">
+                            <span>Ref: CTT-30040204-DE</span>
+                            <span>Commerzbank AG</span>
+                        </div>
+                    </div>
+
+                    <!-- GoBid Escrow Card -->
+                    <div class="bank-card card-teal"
+                        style="background:linear-gradient(135deg, #0d9488 0%, #0f766e 100%);"
+                        onclick="openModal('modal-compliance-gobid')">
+                        <div class="card-top-type">
+                            <span>Escrow Hold (Wire 2)</span>
+                            <span
+                                style="background:rgba(255,255,255,0.25); padding:2px 6px; border-radius:4px; font-size:10px;">HELD</span>
+                        </div>
+                        <div class="card-balance-wrap">
+                            <div class="card-label">GoBid Ltd Credit</div>
+                            <div class="card-val" id="val-escrow-gobid-display">$992,000.00</div>
+                        </div>
+                        <div class="card-bottom-num">
+                            <span>Ref: CTT-9840291-ZA</span>
+                            <span>First National Bank</span>
+                        </div>
+                    </div>
+
+                    <!-- Corporate Treasury Reserve -->
+                    <div class="bank-card card-navy" onclick="alert('Viewing Treasury Reserve x1544 details')">
+                        <div class="card-top-type">
+                            <span>Treasury Reserve</span>
+                            <span>Mastercard</span>
+                        </div>
+                        <div class="card-balance-wrap">
+                            <div class="card-label">Reserved Capital</div>
+                            <div class="card-val">$250,000.00</div>
+                        </div>
+                        <div class="card-bottom-num">
+                            <span>•••• •••• •••• 1544</span>
+                            <span>11/29</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN TWO COLUMN BODY -->
+            <div class="body-grid">
+                <!-- Left Column (Charts & Categories) -->
+                <div class="col-main">
+                    <!-- Cash Flow Chart Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Cash Flow</h3>
+                            <select
+                                style="padding:4px 8px; border-radius:6px; border:1px solid var(--border-color); font-size:12px; font-weight:600;">
+                                <option>This Year (2026)</option>
+                                <option>Last Year (2025)</option>
+                            </select>
+                        </div>
+                        <div class="chart-bars-wrap">
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:50px;"></div>
+                                    <div class="bar-expense" style="height:35px;"></div>
+                                </div>
+                                <span class="chart-month-label">Jan</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:75px;"></div>
+                                    <div class="bar-expense" style="height:45px;"></div>
+                                </div>
+                                <span class="chart-month-label">Feb</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:60px;"></div>
+                                    <div class="bar-expense" style="height:65px;"></div>
+                                </div>
+                                <span class="chart-month-label">Mar</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:80px;"></div>
+                                    <div class="bar-expense" style="height:40px;"></div>
+                                </div>
+                                <span class="chart-month-label">Apr</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:110px;"></div>
+                                    <div class="bar-expense" style="height:55px;"></div>
+                                </div>
+                                <span class="chart-month-label">May</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:95px;"></div>
+                                    <div class="bar-expense" style="height:30px;"></div>
+                                </div>
+                                <span class="chart-month-label">Jun</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:70px;"></div>
+                                    <div class="bar-expense" style="height:50px;"></div>
+                                </div>
+                                <span class="chart-month-label">Jul</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:100px;"></div>
+                                    <div class="bar-expense" style="height:40px;"></div>
+                                </div>
+                                <span class="chart-month-label">Aug</span>
+                            </div>
+                            <div class="chart-bar-group">
+                                <div class="bars-pair">
+                                    <div class="bar-income" style="height:85px;"></div>
+                                    <div class="bar-expense" style="height:90px;"></div>
+                                </div>
+                                <span class="chart-month-label">Sep</span>
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <span><span class="legend-dot" style="background:var(--chase-blue);"></span> Inbound Capital
+                                / Revenue</span>
+                            <span><span class="legend-dot" style="background:#0f172a;"></span> Operating Expenses</span>
+                        </div>
+                    </div>
+
+                    <!-- Expenses By Category Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Expenses By Category</h3>
+                            <span style="font-size:12px; color:var(--text-muted); font-weight:600;">This Month</span>
+                        </div>
+                        <div class="category-bubbles-grid">
+                            <div class="bubble-main">
+                                <span>$1,500</span>
+                                <span style="font-size:10px; font-weight:500;">Groceries</span>
+                            </div>
+                            <div class="bubble-sub-group">
+                                <div class="bubble-sm" style="width:70px; height:70px; background:#4f46e5;">
+                                    <span>$900</span>
+                                    <span style="font-size:9px;">Health</span>
+                                </div>
+                                <div class="bubble-sm" style="width:80px; height:80px; background:#10b981;">
+                                    <span>$1,377</span>
+                                    <span style="font-size:9px;">Shopping</span>
+                                </div>
+                                <div class="bubble-sm" style="width:60px; height:60px; background:#f59e0b;">
+                                    <span>$470</span>
+                                    <span style="font-size:9px;">Tech</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-list">
+                            <div class="cat-item">
+                                <span class="cat-name">Restaurants & Catering</span>
+                                <span class="cat-val">$451.00</span>
+                            </div>
+                            <div class="cat-item">
+                                <span class="cat-name">Corporate Flights</span>
+                                <span class="cat-val">$397.00</span>
+                            </div>
+                            <div class="cat-item">
+                                <span class="cat-name">Client Entertainment</span>
+                                <span class="cat-val">$286.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Transactions & Transfers) -->
+                <div class="col-side">
+                    <!-- Transactions List Card -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Recent Transactions</h3>
+                            <span style="font-size:12px; color:var(--chase-blue); font-weight:700; cursor:pointer;"
+                                onclick="alert('Opening statement history...')">See all</span>
+                        </div>
+
+                        <div class="trans-list">
+                            <!-- PENDING INBOUND WIRE FROM THYSSENKRUPP PLASTICS GMBH (HIGHLIGHTED) -->
+                            <div class="trans-item pending-highlight" id="tx-item-tkp"
+                                onclick="openModal('modal-compliance-tkp')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#fef3c7; color:#d97706;">🏛️</div>
+                                    <div>
+                                        <div class="trans-title" style="color:#78350f;">THYSSENKRUPP PLASTICS GmbH</div>
+                                        <div class="trans-sub" style="color:#92400e; font-weight:600;">Sep 23 • Inbound
+                                            Wire (Compliance Hold)</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val pending" id="tx-tkp-val">
+                                    +$4,970,000.00
+                                    <div
+                                        style="font-size:10px; font-weight:800; color:#d97706; text-transform:uppercase;">
+                                        Pending Step 3</div>
+                                </div>
+                            </div>
+
+                            <!-- SUCCESSFUL DEBIT TO KRYTINE EXCHANGE -->
+                            <div class="trans-item" onclick="openModal('modal-evm-transfer')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#fee2e2; color:#dc2626;">💱</div>
+                                    <div>
+                                        <div class="trans-title" style="font-weight:700; color:#991b1b;">Krytine
+                                            Exchange</div>
+                                        <div class="trans-sub" style="color:#b91c1c; font-weight:600;">Sep 23 • Outbound
+                                            Transfer (EVM On-Chain Swap)</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val negative" style="font-size:14px; font-weight:800; color:#dc2626;">
+                                    -$1,300,000.00</div>
+                            </div>
+
+                            <!-- COMPLETED INBOUND WIRE FROM GOBID LTD (SUCCESSFUL / ALL 3 STEPS CLEARED) -->
+                            <div class="trans-item" onclick="openModal('modal-compliance-gobid-completed')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#ecfdf5; color:#047857;">🏛️</div>
+                                    <div>
+                                        <div class="trans-title" style="font-weight:700; color:#065f46;">GoBid Ltd (First National Bank)</div>
+                                        <div class="trans-sub" style="color:#047857; font-weight:600;">Nov 18 • Inbound Wire Transfer (Completed)</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val positive" style="font-size:14px; font-weight:800; color:#047857;">
+                                    +$1,000,000.00
+                                    <div style="font-size:10px; font-weight:800; color:#10b981; text-transform:uppercase;">Completed & Settled</div>
+                                </div>
+                            </div>
+
+                            <!-- PENDING INBOUND WIRE FROM GOBID LTD (HIGHLIGHTED) -->
+                            <div class="trans-item pending-highlight" id="tx-item-gobid"
+                                onclick="openModal('modal-compliance-gobid')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#fef3c7; color:#d97706;">🏛️</div>
+                                    <div>
+                                        <div class="trans-title" style="color:#78350f;">GoBid Ltd (First National Bank)
+                                        </div>
+                                        <div class="trans-sub" style="color:#92400e; font-weight:600;">Nov 26 • Inbound
+                                            Wire (Compliance Hold)</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val pending" id="tx-gobid-val">
+                                    +$992,000.00
+                                    <div
+                                        style="font-size:10px; font-weight:800; color:#d97706; text-transform:uppercase;">
+                                        Pending Step 3</div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Regular Transactions -->
+                            <div class="trans-item" onclick="alert('Viewing AWS transaction details')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#e0f2fe; color:#0369a1;">☁️</div>
+                                    <div>
+                                        <div class="trans-title">AWS Cloud Services</div>
+                                        <div class="trans-sub">Nov 25 • Infrastructure</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val negative">-$1,249.00</div>
+                            </div>
+
+                            <div class="trans-item" onclick="alert('Viewing Stripe Payout details')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#ecfdf5; color:#047857;">💳</div>
+                                    <div>
+                                        <div class="trans-title">Stripe Merchant Payout</div>
+                                        <div class="trans-sub">Nov 24 • Revenue Settlement</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val positive">+$42,500.00</div>
+                            </div>
+
+                            <div class="trans-item" onclick="alert('Viewing Office Lease details')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#f1f5f9; color:#475569;">🏢</div>
+                                    <div>
+                                        <div class="trans-title">Tech Hub Lease Center</div>
+                                        <div class="trans-sub">Nov 23 • Commercial Rent</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val negative">-$14,500.00</div>
+                            </div>
+
+                            <div class="trans-item" onclick="alert('Viewing Salesforce details')">
+                                <div class="trans-left">
+                                    <div class="trans-icon-box" style="background:#e0e7ff; color:#3730a3;">📊</div>
+                                    <div>
+                                        <div class="trans-title">Salesforce Enterprise</div>
+                                        <div class="trans-sub">Nov 22 • Software License</div>
+                                    </div>
+                                </div>
+                                <div class="trans-val negative">-$3,800.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Transfer Card -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Quick Transfer</h3>
+                            <span style="font-size:16px; color:var(--text-muted); cursor:pointer;">•••</span>
+                        </div>
+
+                        <div class="transfer-box">
+                            <div style="font-size:12px; font-weight:700; color:var(--text-muted);">Choose Recipient:
+                            </div>
+                            <div class="recipient-avatars-row">
+                                <div class="recip-badge active">Zelle</div>
+                                <div class="recip-badge">Apple Pay</div>
+                                <div class="recip-badge">Venmo</div>
+                                <div class="recip-badge">PayPal</div>
+                            </div>
+
+                            <div class="transfer-input-group">
+                                <label>From Account</label>
+                                <select>
+                                    <option>Commercial Checking (x4562) - $1,286,502.79</option>
+                                    <option>Treasury Reserve (x1544) - $250,000.00</option>
+                                </select>
+                            </div>
+
+                            <div class="transfer-input-group">
+                                <label>Amount (USD)</label>
+                                <input type="number" placeholder="$0.00" value="2500">
+                            </div>
+
+                            <button class="btn-transfer-submit"
+                                onclick="alert('Initiating Quick Transfer of $2,500.00 USD...')">Transfer Funds</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 3-STEP COMPLIANCE MODAL FOR THYSSENKRUPP             -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-compliance-tkp">
+        <div class="modal-card">
+            <!-- Modal Header -->
+            <div class="modal-header-row">
+                <div class="modal-title-wrap">
+                    <div class="modal-title">Chase Commercial Clearance Center</div>
+                    <div class="modal-sub">Inbound Telegraphic Transfer Regulatory Compliance (Ref: CTT-30040204-DE)
+                    </div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-compliance-tkp')">&times;</button>
+            </div>
+
+            <!-- Overview Summary Box -->
+            <div class="overview-box">
+                <div class="overview-amount-row">
+                    <div>
+                        <div
+                            style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+                            Inbound Remittance</div>
+                        <div class="overview-amount">+$4,970,000.00 USD</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:600;">Remitter Currency:
+                            €4,578,820.00 EUR (SEPA Telegraphic Transfer)</div>
+                    </div>
+                    <div class="countdown-pill" id="countdown-pill">
+                        ⏱️ 3 Days, 23 Hours Left
+                    </div>
+                </div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Remitter</span>
+                        <span class="meta-val">THYSSENKRUPP PLASTICS GmbH</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Financial Institution</span>
+                        <span class="meta-val">Commerzbank AG (Düsseldorf, Germany)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Beneficiary Account</span>
+                        <span class="meta-val">DataKnead Ltd (Checking x4562)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SWIFT / FedWire Ref</span>
+                        <span class="meta-val"
+                            style="font-family:var(--font-mono); color:var(--chase-blue);">FW-COBADEFFXXX-TKP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 COMPLIANCE STEPS AUDIT TRAIL -->
+            <div class="compliance-steps-container">
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">Regulatory Compliance
+                    Verification Steps:</div>
+
+                <!-- Step 1: OFAC & AML Screening (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 1: OFAC & AML Sanctions Clearance</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Automated screening against US Treasury OFAC, PEP, and Financial Crimes Enforcement Network
+                            (FinCEN) international watchlists cleared successfully for THYSSENKRUPP PLASTICS GmbH.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: KYC & Originating Bank Audit (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 2: KYC & Remitter Source Validation</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Corporate identity verification and source of funds documentation validated with originating
+                            remitter bank (Commerzbank AG / THYSSENKRUPP PLASTICS GmbH).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Cross-Border Compliance Filing Fee (ACTION REQUIRED / PENDING) -->
+                <div class="step-card pending" id="step3-card">
+                    <div class="step-icon-badge pending" id="step3-badge">⚠️</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 3: Cross-Border Telegraphic Clearance Filing Fee ($2,600.00
+                                USD)</span>
+                            <span class="step-status-tag pending" id="step3-tag">ACTION REQUIRED</span>
+                        </div>
+                        <div class="step-desc" id="step3-desc">
+                            Pursuant to International Inbound Wire Clearance Regulations, a statutory regulatory filing
+                            fee of <strong>$2,600.00 USD</strong> is required to complete final SWIFT telegraphic
+                            release and credit funds into DataKnead Ltd's checking account.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROFESSIONAL BANKING LEGAL REPATRIATION DISCLOSURE NOTICE -->
+            <div class="repatriation-notice-box">
+                <strong>⚠️ MANDATORY REGULATORY DISCLOSURE & REPATRIATION POLICY:</strong><br>
+                Under International Financial Settlement Standards and Cross-Border Wire Clearance Guidelines (Section
+                314(b) Regulatory Code), inbound telegraphic wire transfers exceeding $500,000.00 USD subject to
+                secondary compliance verification must fulfill all statutory filing requirements within <strong>four (4)
+                    business days (96 hours)</strong> of initial notification.
+                <br><br>
+                Should the required <strong>$2,600.00 USD</strong> Telegraphic Compliance & Filing Fee remain
+                unfulfilled upon expiration of the statutory 96-hour window, the transaction will be subject to
+                <strong>Mandatory Rejection & Remittance Repatriation</strong>, resulting in the immediate return of all
+                held funds ($4,970,000.00 USD) to the originating remitter account (THYSSENKRUPP PLASTICS GmbH at
+                Commerzbank AG). Chase Commercial Banking assumes no liability for automatic repatriation triggered
+                by unfulfilled compliance windows.
+            </div>
+
+            <!-- COMPLIANCE FEE PAYMENT & AUTHORIZATION FORM -->
+            <div class="fee-action-card" id="fee-form-card">
+                <div class="form-select-group">
+                    <label>Select Payment Source for $2,600.00 USD Filing Fee:</label>
+                    <select id="fee-source-select">
+                        <option value="checking">Commercial Checking (x4562) — Available: $1,286,502.79 USD</option>
+                        <option value="treasury">Treasury Reserve (x1544) — Available: $250,000.00 USD</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="chk-authorize" checked>
+                    <label for="chk-authorize">I authorize Chase Commercial Banking to deduct the <strong>$2,600.00
+                            USD</strong> compliance filing fee and execute final telegraphic clearance and credit of
+                        <strong>$4,970,000.00 USD</strong> to DataKnead Ltd.</label>
+                </div>
+
+                <button class="btn-authorize-clearance" id="btn-submit-fee" onclick="processComplianceSettlement()">
+                    Authorize & Submit Compliance Fee ($2,600.00 USD)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 3-STEP COMPLIANCE MODAL FOR GOBID LTD                -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-compliance-gobid">
+        <div class="modal-card">
+            <!-- Modal Header -->
+            <div class="modal-header-row">
+                <div class="modal-title-wrap">
+                    <div class="modal-title">Chase Commercial Clearance Center</div>
+                    <div class="modal-sub">Inbound Telegraphic Transfer Regulatory Compliance (Ref: CTT-9840291-ZA)
+                    </div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-compliance-gobid')">&times;</button>
+            </div>
+
+            <!-- Overview Summary Box -->
+            <div class="overview-box">
+                <div class="overview-amount-row">
+                    <div>
+                        <div
+                            style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+                            Inbound Remittance</div>
+                        <div class="overview-amount">+$992,000.00 USD</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:600;">Remitter Currency:
+                            R16,110,080.00 ZAR (Telegraphic Transfer)</div>
+                    </div>
+                    <div class="countdown-pill" id="countdown-pill-gobid">
+                        ⏱️ 1 Day, 11 Hours Left
+                    </div>
+                </div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Remitter</span>
+                        <span class="meta-val">GoBid Ltd</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Financial Institution</span>
+                        <span class="meta-val">First National Bank (FNB - South Africa)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Beneficiary Account</span>
+                        <span class="meta-val">DataKnead Ltd (Checking x4562)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SWIFT / FedWire Ref</span>
+                        <span class="meta-val"
+                            style="font-family:var(--font-mono); color:var(--chase-blue);">FW-FIRNZAJJXXX-GOBID</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 COMPLIANCE STEPS AUDIT TRAIL -->
+            <div class="compliance-steps-container">
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">Regulatory Compliance
+                    Verification Steps:</div>
+
+                <!-- Step 1: OFAC & SARB Screening (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 1: OFAC & SARB Sanctions Clearance</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Automated screening against US Treasury OFAC, South African Reserve Bank (SARB), and FinCEN
+                            watchlists cleared successfully for GoBid Ltd.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: KYC & Originating Bank Audit (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 2: Cross-Border Remitter Source Validation</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Corporate identity verification and source of funds documentation validated with originating
+                            remitter bank (First National Bank / GoBid Ltd).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Cross-Border Compliance Filing Fee (ACTION REQUIRED / PENDING) -->
+                <div class="step-card pending" id="step3-card-gobid">
+                    <div class="step-icon-badge pending" id="step3-badge-gobid">⚠️</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 3: Cross-Border Telegraphic Clearance Filing Fee ($1,700.00
+                                USD)</span>
+                            <span class="step-status-tag pending" id="step3-tag-gobid">ACTION REQUIRED</span>
+                        </div>
+                        <div class="step-desc" id="step3-desc-gobid">
+                            Pursuant to International Inbound Wire Clearance Regulations, a statutory regulatory filing
+                            fee of <strong>$1,700.00 USD</strong> is required to complete final SWIFT telegraphic
+                            release and credit funds into DataKnead Ltd's checking account.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROFESSIONAL BANKING LEGAL REPATRIATION DISCLOSURE NOTICE -->
+            <div class="repatriation-notice-box">
+                <strong>⚠️ MANDATORY REGULATORY DISCLOSURE & REPATRIATION POLICY:</strong><br>
+                Under International Financial Settlement Standards and Cross-Border Wire Clearance Guidelines (Section
+                314(b) Regulatory Code), inbound telegraphic wire transfers subject to secondary compliance verification
+                must fulfill all statutory filing requirements within <strong>four (4) business days (96 hours)</strong>
+                of initial notification.
+                <br><br>
+                Should the required <strong>$1,700.00 USD</strong> Telegraphic Compliance & Filing Fee remain
+                unfulfilled upon expiration of the statutory 96-hour window, the transaction will be subject to
+                <strong>Mandatory Rejection & Remittance Repatriation</strong>, resulting in the immediate return of all
+                held funds ($992,000.00 USD) to the originating remitter account (GoBid Ltd at First National Bank).
+                Chase Commercial Banking assumes no liability for automatic repatriation triggered by unfulfilled
+                compliance windows.
+            </div>
+
+            <!-- COMPLIANCE FEE PAYMENT & AUTHORIZATION FORM -->
+            <div class="fee-action-card" id="fee-form-card-gobid">
+                <div class="form-select-group">
+                    <label>Select Payment Source for $1,700.00 USD Filing Fee:</label>
+                    <select id="fee-source-select-gobid">
+                        <option value="checking">Commercial Checking (x4562) — Available: $1,286,502.79 USD</option>
+                        <option value="treasury">Treasury Reserve (x1544) — Available: $250,000.00 USD</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="chk-authorize-gobid" checked>
+                    <label for="chk-authorize-gobid">I authorize Chase Commercial Banking to deduct the
+                        <strong>$1,700.00 USD</strong> compliance filing fee and execute final telegraphic clearance and
+                        credit of <strong>$992,000.00 USD</strong> to DataKnead Ltd.</label>
+                </div>
+
+                <button class="btn-authorize-clearance" id="btn-submit-fee-gobid" onclick="processGoBidSettlement()">
+                    Authorize & Submit Compliance Fee ($1,700.00 USD)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 3-STEP COMPLIANCE MODAL FOR COMPLETED GOBID WIRE     -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-compliance-gobid-completed">
+        <div class="modal-card">
+            <!-- Modal Header -->
+            <div class="modal-header-row">
+                <div class="modal-title-wrap">
+                    <div class="modal-title">Chase Commercial Clearance Center</div>
+                    <div class="modal-sub">Inbound Telegraphic Transfer Regulatory Compliance (Ref: CTT-9840211-ZA • SETTLED)</div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-compliance-gobid-completed')">&times;</button>
+            </div>
+
+            <!-- Overview Summary Box -->
+            <div class="overview-box">
+                <div class="overview-amount-row">
+                    <div>
+                        <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Inbound Remittance (Cleared)</div>
+                        <div class="overview-amount" style="color:#047857;">+$1,000,000.00 USD</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:600;">Remitter Currency: R16,240,000.00 ZAR (International Telegraphic Transfer)</div>
+                    </div>
+                    <div class="countdown-pill" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0;">
+                        ✓ Regulatory Clearance Complete
+                    </div>
+                </div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Remitter</span>
+                        <span class="meta-val">GoBid Ltd</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Originating Financial Institution</span>
+                        <span class="meta-val">First National Bank (FNB - South Africa)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Beneficiary Account</span>
+                        <span class="meta-val">DataKnead Ltd (Checking x4562)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SWIFT / FedWire Ref</span>
+                        <span class="meta-val" style="font-family:var(--font-mono); color:var(--chase-blue);">FW-FIRNZAJJXXX-GOBID-01</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 COMPLIANCE STEPS AUDIT TRAIL (ALL 3 PASSED & SETTLED) -->
+            <div class="compliance-steps-container">
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">Regulatory Compliance Audit Trail:</div>
+
+                <!-- Step 1: OFAC & SARB Screening (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 1: OFAC & SARB Sanctions Clearance</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Automated screening against US Treasury OFAC, South African Reserve Bank (SARB), and FinCEN watchlists cleared successfully for GoBid Ltd.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: KYC & Remitter Source Validation (PASSED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 2: Cross-Border Remitter Source Validation</span>
+                            <span class="step-status-tag passed">PASSED</span>
+                        </div>
+                        <div class="step-desc">
+                            Corporate identity verification and source of funds documentation validated with originating remitter bank (First National Bank / GoBid Ltd).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Cross-Border Compliance Filing Fee & Settlement (PASSED & SETTLED) -->
+                <div class="step-card passed">
+                    <div class="step-icon-badge passed">✓</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Step 3: Cross-Border Telegraphic Clearance Filing Fee ($1,700.00 USD)</span>
+                            <span class="step-status-tag passed">PASSED & SETTLED</span>
+                        </div>
+                        <div class="step-desc">
+                            Telegraphic filing fee of <strong>$1,700.00 USD</strong> was authorized and debited from Commercial Checking (x4562). Final SWIFT clearance executed and <strong>+$1,000,000.00 USD</strong> net funds released.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTLEMENT & CLEARANCE RECEIPT CARD -->
+            <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:var(--radius-sm); padding:18px; color:#065f46; display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:800;">
+                    <span>🏛️</span> Clearance Certificate & Transaction Settlement Receipt
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12px; border-top:1px dashed #a7f3d0; padding-top:10px;">
+                    <div>
+                        <span style="color:#047857; font-weight:600;">Status:</span>
+                        <strong style="color:#065f46;">RELEASED & CREDITED</strong>
+                    </div>
+                    <div>
+                        <span style="color:#047857; font-weight:600;">Filing Fee Debited:</span>
+                        <strong style="color:#b91c1c;">-$1,700.00 USD</strong>
+                    </div>
+                    <div>
+                        <span style="color:#047857; font-weight:600;">Net Inbound Wire Credited:</span>
+                        <strong style="color:#047857;">+$1,000,000.00 USD</strong>
+                    </div>
+                    <div>
+                        <span style="color:#047857; font-weight:600;">Settlement Date:</span>
+                        <strong>Nov 18, 2026 • 14:32:05 EST</strong>
+                    </div>
+                </div>
+                <button class="btn-authorize-clearance" style="background:#047857; margin-top:6px;" onclick="closeModal('modal-compliance-gobid-completed')">
+                    Close Clearance Audit Receipt
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- TECHNICAL EVM ON-CHAIN TRANSFER & SWAP INSPECTOR MODAL-->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-evm-transfer">
+        <div class="modal-card" style="width:720px; max-width:95%;">
+            <!-- Modal Header -->
+            <div class="modal-header-row">
+                <div class="modal-title-wrap">
+                    <div class="modal-title" style="display:flex; align-items:center; gap:8px;">
+                        <span>⚙️</span> EVM On-Chain Swap Inspector
+                    </div>
+                    <div class="modal-sub">Ethereum Mainnet (Chain ID: 1) • Tx: <span style="font-family:var(--font-mono); color:var(--chase-blue);">0x8f2a9c417b019a823e4c85d71a92e104f32b72e901a</span></div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-evm-transfer')">&times;</button>
+            </div>
+
+            <!-- Architecture Flow Pipeline Box -->
+            <div class="overview-box" style="background:#0f172a; color:#f8fafc; border-color:#334155;">
+                <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:#94a3b8; letter-spacing:0.05em;">Smart Contract Call & Transfer Route Architecture</div>
+                
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; background:#1e293b; padding:14px; border-radius:8px; margin-top:4px; font-size:11px;">
+                    <div style="text-align:center;">
+                        <div style="color:#94a3b8; font-size:10px;">User Wallet</div>
+                        <strong style="color:#60a5fa; font-family:var(--font-mono);">0x71C...49A2</strong>
+                        <div style="color:#ef4444; font-weight:700; font-size:10px;">-1,300,000 USDT</div>
+                    </div>
+                    <div style="color:#64748b;">➔</div>
+                    <div style="text-align:center;">
+                        <div style="color:#94a3b8; font-size:10px;">USDT ERC-20</div>
+                        <strong style="color:#f59e0b; font-family:var(--font-mono);">0xdAC...1ec7</strong>
+                        <div style="color:#10b981; font-weight:700; font-size:10px;">approve()</div>
+                    </div>
+                    <div style="color:#64748b;">➔</div>
+                    <div style="text-align:center;">
+                        <div style="color:#94a3b8; font-size:10px;">DEX Router</div>
+                        <strong style="color:#a855f7; font-family:var(--font-mono);">0x7a2...488D</strong>
+                        <div style="color:#a855f7; font-weight:700; font-size:10px;">swapExact...()</div>
+                    </div>
+                    <div style="color:#64748b;">➔</div>
+                    <div style="text-align:center;">
+                        <div style="color:#94a3b8; font-size:10px;">Krytine Token</div>
+                        <strong style="color:#34d399; font-family:var(--font-mono);">0x384...bad3</strong>
+                        <div style="color:#34d399; font-weight:700; font-size:10px;">+4,872,150 KTK</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Execution Steps & State Mutations -->
+            <div class="compliance-steps-container">
+                <div style="font-size:13px; font-weight:800; color:var(--chase-navy);">EVM State Execution Pipeline:</div>
+
+                <!-- Step 1: ERC-20 Approval -->
+                <div class="step-card passed" style="border-color:#bfdbfe; background:#eff6ff;">
+                    <div class="step-icon-badge passed" style="background:#2563eb;">1</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Phase 1: USDT Contract Allowance Approval</span>
+                            <span class="step-status-tag passed" style="background:#dbeafe; color:#1e40af;">CONFIRMED (Block #19,842,108)</span>
+                        </div>
+                        <div class="step-desc" style="font-family:var(--font-mono); font-size:11.5px; color:#1e293b;">
+                            <strong>Call:</strong> USDT.approve(spender: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, amount: 1300000000000)<br>
+                            <strong>State Change:</strong> allowance[0x71C...49A2][DEX_Router] = 1,300,000.000000 USDT<br>
+                            <strong>Event Emitted:</strong> Approval(owner: 0x71C..., spender: 0x7a25..., value: 1300000000000)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Atomic Swap & TransferFrom -->
+                <div class="step-card passed" style="border-color:#a7f3d0; background:#f0fdf4;">
+                    <div class="step-icon-badge passed" style="background:#059669;">2</div>
+                    <div class="step-content">
+                        <div class="step-header">
+                            <span class="step-title">Phase 2: AMM Router Swap & Liquidity Transfer</span>
+                            <span class="step-status-tag passed" style="background:#d1fae5; color:#065f46;">CONFIRMED (Block #19,842,109)</span>
+                        </div>
+                        <div class="step-desc" style="font-family:var(--font-mono); font-size:11.5px; color:#1e293b;">
+                            <strong>Call:</strong> Router.swapExactTokensForTokens(amountIn: 1300000000000, amountOutMin: 4850000000000000000000000, path: [USDT, KTK], to: 0x71C...49A2, deadline: 1787593200)<br>
+                            <strong>Internal Operations:</strong><br>
+                            1. USDT.transferFrom(0x71C...49A2, Pool_USDT_KTK, 1,300,000.00 USDT)<br>
+                            2. AMM Constant Product Math Calculation ($x \cdot y = k$)<br>
+                            3. KrytineToken.transfer(Pool_USDT_KTK, 0x71C...49A2, 4,872,150.00 KTK)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Low-Level Technical Parameters & Raw Calldata -->
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; font-size:12px; display:flex; flex-direction:column; gap:10px;">
+                <div style="font-weight:800; color:var(--chase-navy);">Technical EVM Execution Parameters:</div>
+                <div class="meta-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="meta-item">
+                        <span class="meta-label">Contract Selector</span>
+                        <span class="meta-val" style="font-family:var(--font-mono);">0x38ed1739</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Effective Gas Price</span>
+                        <span class="meta-val">18.45 Gwei</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Gas Used</span>
+                        <span class="meta-val">142,850 (68.02%)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tx Fee</span>
+                        <span class="meta-val">0.002635 ETH ($8.43)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Nonce</span>
+                        <span class="meta-val">142</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Confirmations</span>
+                        <span class="meta-val" style="color:#059669; font-weight:800;">412 Blocks</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:4px; margin-top:6px;">
+                    <span class="meta-label">Raw Encoded Calldata Hex Payload:</span>
+                    <div style="background:#0f172a; color:#38bdf8; font-family:var(--font-mono); font-size:10px; padding:10px; border-radius:6px; word-break:break-all; max-height:70px; overflow-y:auto;">
+                        0x38ed17390000000000000000000000000000000000000000000000000000012eea20000000000000000000000000000000000000000000000044458319eb38d0000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000071c89f2d12e98418a0029b92138128f4139e49a20000000000000000000000000000000000000000000000000000000069dc2c40
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Action Button -->
+            <button class="btn-authorize-clearance" style="background:var(--chase-navy);" onclick="closeModal('modal-evm-transfer')">
+                Close EVM Inspector
+            </button>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- JAVASCRIPT LOGIC & INTERACTIVITY                      -->
+    <!-- ---------------------------------------------------- -->
+    <script>
+        let currentCheckingBalance = 1286502.79;
+        let tkpSettled = false;
+        let gobidSettled = false;
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('active');
+        }
+
+        function updateCheckingDisplay() {
+            document.getElementById('val-checking-display').innerText = '$' + currentCheckingBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function updateAlertBanner() {
+            const banner = document.getElementById('banner-alert');
+            if (!banner) return;
+            if (tkpSettled && gobidSettled) {
+                banner.style.background = 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)';
+                banner.style.borderColor = '#10b981';
+                banner.innerHTML = `
+                    <div class="alert-left-group">
+                        <div class="alert-shield-icon" style="background:#10b981;">✓</div>
+                        <div class="alert-text-wrap">
+                            <div class="alert-title" style="color:#047857;">
+                                All Inbound Wires Settled & Credited
+                                <span class="badge-tag" style="background:#10b981;">Complete</span>
+                            </div>
+                            <div class="alert-desc" style="color:#065f46;">
+                                Transfers from THYSSENKRUPP PLASTICS GmbH ($4.97M) and GoBid Ltd ($992k) have cleared compliance and are fully available in Checking x4562.
+                            </div>
+                        </div>
+                    </div>
+                `;
+                const badgeCount = document.getElementById('sidebar-badge-count');
+                if (badgeCount) badgeCount.style.display = 'none';
+            } else if (tkpSettled) {
+                banner.innerHTML = `
+                    <div class="alert-left-group">
+                        <div class="alert-shield-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <div class="alert-text-wrap">
+                            <div class="alert-title">
+                                ⚠️ 1 Inbound Wire Held in Regulatory Compliance Verification
+                                <span class="badge-tag">Action Required</span>
+                            </div>
+                            <div class="alert-desc">
+                                Inbound Transfer of <strong>$992,000.00 USD</strong> (GoBid Ltd) requires Step 3 Compliance Fee settlement. Repatriation deadline: 4 Days.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-compliance-action" style="background:#d97706;" onclick="openModal('modal-compliance-gobid')">Review GoBid ($992k)</button>
+                    </div>
+                `;
+            } else if (gobidSettled) {
+                banner.innerHTML = `
+                    <div class="alert-left-group">
+                        <div class="alert-shield-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <div class="alert-text-wrap">
+                            <div class="alert-title">
+                                ⚠️ 1 Inbound Wire Held in Regulatory Compliance Verification
+                                <span class="badge-tag">Action Required</span>
+                            </div>
+                            <div class="alert-desc">
+                                Inbound Transfer of <strong>$4,970,000.00 USD</strong> (THYSSENKRUPP PLASTICS GmbH) requires Step 3 Compliance Fee settlement. Repatriation deadline: 4 Days.
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-compliance-action" onclick="openModal('modal-compliance-tkp')">Review Thyssenkrupp ($4.97M)</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Process Step 3 Compliance Fee Payment for THYSSENKRUPP
+        function processComplianceSettlement() {
+            const chk = document.getElementById('chk-authorize');
+            if (!chk.checked) {
+                alert('Please check the authorization box to proceed with compliance settlement.');
+                return;
+            }
+
+            if (confirm('Confirm deduction of $2,600.00 USD compliance fee to release $4,970,000.00 USD inbound wire to DataKnead Ltd?')) {
+                tkpSettled = true;
+                const step3Card = document.getElementById('step3-card');
+                step3Card.className = 'step-card passed';
+
+                const step3Badge = document.getElementById('step3-badge');
+                step3Badge.className = 'step-icon-badge passed';
+                step3Badge.innerHTML = '✓';
+
+                const step3Tag = document.getElementById('step3-tag');
+                step3Tag.className = 'step-status-tag passed';
+                step3Tag.innerText = 'PASSED & SETTLED';
+
+                const step3Desc = document.getElementById('step3-desc');
+                step3Desc.innerHTML = 'Compliance fee of $2,600.00 USD successfully submitted. Regulatory filing complete and telegraphic wire released.';
+
+                const feeForm = document.getElementById('fee-form-card');
+                feeForm.innerHTML = `
+                    <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:16px; border-radius:var(--radius-sm); text-align:center; color:#047857;">
+                        <div style="font-size:16px; font-weight:800;">🎉 Compliance Clearance Complete!</div>
+                        <div style="font-size:12.5px; margin-top:4px;">$4,970,000.00 USD has been credited to your Commercial Checking account (x4562).</div>
+                        <button class="promo-btn" style="margin-top:12px; width:auto; padding:8px 24px;" onclick="closeModal('modal-compliance-tkp')">Done</button>
+                    </div>
+                `;
+
+                currentCheckingBalance += (4970000.00 - 2600.00);
+                updateCheckingDisplay();
+                document.getElementById('val-escrow-display').innerText = '$0.00';
+
+                const txItem = document.getElementById('tx-item-tkp');
+                if (txItem) {
+                    txItem.className = 'trans-item';
+                    const txVal = document.getElementById('tx-tkp-val');
+                    txVal.className = 'trans-val positive';
+                    txVal.innerHTML = '+$4,970,000.00<div style="font-size:10px; font-weight:800; color:#10b981; text-transform:uppercase;">Settled</div>';
+                }
+
+                updateAlertBanner();
+                alert('Compliance Clearance Successful! $4,970,000.00 USD has been credited to DataKnead Ltd.');
+            }
+        }
+
+        // Process Step 3 Compliance Fee Payment for GoBid Ltd
+        function processGoBidSettlement() {
+            const chk = document.getElementById('chk-authorize-gobid');
+            if (!chk.checked) {
+                alert('Please check the authorization box to proceed with compliance settlement.');
+                return;
+            }
+
+            if (confirm('Confirm deduction of $1,700.00 USD compliance fee to release $992,000.00 USD inbound wire from GoBid Ltd?')) {
+                gobidSettled = true;
+                const step3Card = document.getElementById('step3-card-gobid');
+                step3Card.className = 'step-card passed';
+
+                const step3Badge = document.getElementById('step3-badge-gobid');
+                step3Badge.className = 'step-icon-badge passed';
+                step3Badge.innerHTML = '✓';
+
+                const step3Tag = document.getElementById('step3-tag-gobid');
+                step3Tag.className = 'step-status-tag passed';
+                step3Tag.innerText = 'PASSED & SETTLED';
+
+                const step3Desc = document.getElementById('step3-desc-gobid');
+                step3Desc.innerHTML = 'Compliance fee of $1,700.00 USD successfully submitted. Regulatory filing complete and telegraphic wire released.';
+
+                const feeForm = document.getElementById('fee-form-card-gobid');
+                feeForm.innerHTML = `
+                    <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:16px; border-radius:var(--radius-sm); text-align:center; color:#047857;">
+                        <div style="font-size:16px; font-weight:800;">🎉 Compliance Clearance Complete!</div>
+                        <div style="font-size:12.5px; margin-top:4px;">$992,000.00 USD has been credited to your Commercial Checking account (x4562).</div>
+                        <button class="promo-btn" style="margin-top:12px; width:auto; padding:8px 24px;" onclick="closeModal('modal-compliance-gobid')">Done</button>
+                    </div>
+                `;
+
+                currentCheckingBalance += (992000.00 - 1700.00);
+                updateCheckingDisplay();
+                document.getElementById('val-escrow-gobid-display').innerText = '$0.00';
+
+                const txItem = document.getElementById('tx-item-gobid');
+                if (txItem) {
+                    txItem.className = 'trans-item';
+                    const txVal = document.getElementById('tx-gobid-val');
+                    txVal.className = 'trans-val positive';
+                    txVal.innerHTML = '+$992,000.00<div style="font-size:10px; font-weight:800; color:#10b981; text-transform:uppercase;">Settled</div>';
+                }
+
+                updateAlertBanner();
+                alert('Compliance Clearance Successful! $992,000.00 USD has been credited to DataKnead Ltd.');
+            }
+        }
+    </script>
+</body>
+
+</html>

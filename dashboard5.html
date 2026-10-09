@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSBC Business Internet Banking | RI RONG (HONG KONG) INVESTMENT ENTERPRISE CO., LIMITED</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Roboto+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --hsbc-red: #db0011;
+            --hsbc-red-dark: #b3000d;
+            --hsbc-red-light: #fff0f1;
+            --hsbc-black: #111111;
+            --hsbc-dark-grey: #333333;
+            --hsbc-mid-grey: #666666;
+            --hsbc-light-grey: #e0e0e0;
+            --hsbc-bg-grey: #f4f4f4;
+            --hsbc-border: #cccccc;
+            --hsbc-table-header: #ffeeee;
+            --hsbc-table-alt: #fafafa;
+            --hsbc-blue-link: #0055aa;
+            --hsbc-font: 'Open Sans', Arial, Helvetica, sans-serif;
+            --hsbc-mono: 'Roboto Mono', monospace;
+            --hsbc-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--hsbc-font);
+            background-color: #eef1f4;
+            color: var(--hsbc-dark-grey);
+            font-size: 12px;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--hsbc-blue-link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN WRAPPER & CONTAINER                             */
+        /* ---------------------------------------------------- */
+        .wrapper {
+            max-width: 1240px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---------------------------------------------------- */
+        /* TOP HEADER BARS                                      */
+        /* ---------------------------------------------------- */
+        .brand-top-bar {
+            background-color: #ffffff;
+            padding: 10px 20px 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--hsbc-red);
+        }
+
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hsbc-hex-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .hsbc-wordmark {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--hsbc-black);
+            letter-spacing: -0.5px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .portal-title-banner {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--hsbc-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-right-utilities {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .lang-switch {
+            font-size: 11px;
+            color: #555;
+        }
+
+        .lang-switch a {
+            color: #333;
+            margin: 0 3px;
+        }
+
+        .lang-switch a.active {
+            font-weight: bold;
+            color: var(--hsbc-red);
+        }
+
+        .user-status-strip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+        }
+
+        .util-btn {
+            background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+            border: 1px solid #aaaaaa;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .util-btn:hover {
+            background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+        }
+
+        .logout-btn {
+            background: linear-gradient(to bottom, #db0011, #990000);
+            color: #ffffff;
+            border: 1px solid #770000;
+            border-radius: 12px;
+            padding: 3px 12px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(to bottom, #ff1a2b, #b3000d);
+        }
+
+        /* ---------------------------------------------------- */
+        /* PRIMARY TAB NAVIGATION                               */
+        /* ---------------------------------------------------- */
+        .primary-nav-tabs {
+            background-color: #ffffff;
+            border-bottom: 2px solid var(--hsbc-red);
+            display: flex;
+            padding-left: 15px;
+            padding-top: 10px;
+            gap: 3px;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            background-color: #f2f2f2;
+            border: 1px solid var(--hsbc-border);
+            border-bottom: none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--hsbc-dark-grey);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+
+        .nav-tab:hover {
+            background-color: #ffffff;
+            color: var(--hsbc-red);
+        }
+
+        .nav-tab.active {
+            background-color: #ffffff;
+            color: var(--hsbc-red);
+            border-top: 3px solid var(--hsbc-red);
+            border-left: 1px solid var(--hsbc-border);
+            border-right: 1px solid var(--hsbc-border);
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: -2px;
+            z-index: 2;
+        }
+
+        /* BREADCRUMB STRIP */
+        .breadcrumb-strip {
+            background-color: #fafafa;
+            border-bottom: 1px dashed var(--hsbc-border);
+            padding: 6px 20px;
+            font-size: 11px;
+            color: var(--hsbc-mid-grey);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .breadcrumb-path span.current {
+            font-weight: bold;
+            color: var(--hsbc-black);
+        }
+
+        .quick-session-info {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN BODY CONTENT LAYOUT (3 COLUMNS)                 */
+        /* ---------------------------------------------------- */
+        .main-container {
+            display: flex;
+            flex: 1;
+            padding: 15px;
+            gap: 15px;
+            background-color: #ffffff;
+        }
+
+        /* LEFT SIDEBAR */
+        .left-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-box {
+            border: 1px solid var(--hsbc-border);
+            background-color: #ffffff;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .side-box-header {
+            background: linear-gradient(to bottom, #f7f7f7, #e8e8e8);
+            border-bottom: 1px solid var(--hsbc-border);
+            padding: 6px 10px;
+            font-weight: bold;
+            color: var(--hsbc-dark-grey);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .side-menu-list {
+            list-style: none;
+        }
+
+        .side-menu-list li {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .side-menu-list li:last-child {
+            border-bottom: none;
+        }
+
+        .side-menu-list a {
+            display: block;
+            padding: 7px 10px;
+            color: var(--hsbc-blue-link);
+            font-size: 11px;
+            text-decoration: none;
+            transition: background 0.1s ease;
+        }
+
+        .side-menu-list a:hover {
+            background-color: #fff0f1;
+            color: var(--hsbc-red);
+            font-weight: 600;
+        }
+
+        .side-menu-list a.active {
+            font-weight: bold;
+            color: var(--hsbc-red);
+            background-color: #fff0f1;
+            border-left: 3px solid var(--hsbc-red);
+        }
+
+        .side-menu-list a::before {
+            content: "▸ ";
+            color: var(--hsbc-red);
+            font-size: 10px;
+        }
+
+        .badge-count {
+            background-color: var(--hsbc-red);
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 1px 5px;
+            border-radius: 8px;
+            float: right;
+        }
+
+        /* CENTER CONTENT AREA */
+        .center-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-view {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-view.active {
+            display: flex;
+        }
+
+        /* RIGHT SIDEBAR */
+        .right-sidebar {
+            width: 220px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* HSBC UI CARDS & BOXES                                */
+        /* ---------------------------------------------------- */
+        .hsbc-box {
+            border: 1px solid var(--hsbc-border);
+            background-color: #ffffff;
+            border-top: 3px solid var(--hsbc-red);
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 5px;
+        }
+
+        .hsbc-box-header {
+            background-color: #ffffff;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--hsbc-black);
+            border-bottom: 1px solid var(--hsbc-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hsbc-box-body {
+            padding: 12px;
+        }
+
+        /* BANNER CARD */
+        .promo-banner {
+            border: 1px solid var(--hsbc-border);
+            background: linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+            border-radius: 4px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .promo-banner-img {
+            width: 90px;
+            height: 70px;
+            background: linear-gradient(135deg, #db0011, #ff5566);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .promo-banner-content {
+            flex: 1;
+        }
+
+        .promo-banner-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--hsbc-black);
+            margin-bottom: 4px;
+        }
+
+        .promo-banner-desc {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.35;
+        }
+
+        .promo-banner-btn {
+            background: linear-gradient(to bottom, #db0011, #aa0000);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 11px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+        }
+
+        .promo-banner-btn:hover {
+            background: linear-gradient(to bottom, #ff1a2b, #cc0000);
+        }
+
+        /* ---------------------------------------------------- */
+        /* HSBC ACCOUNTS TABLE                                  */
+        /* ---------------------------------------------------- */
+        .hsbc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .hsbc-table th {
+            background: linear-gradient(to bottom, #fff0f1, #ffe0e2);
+            color: var(--hsbc-black);
+            font-weight: 700;
+            text-align: left;
+            padding: 7px 10px;
+            border: 1px solid var(--hsbc-border);
+            white-space: nowrap;
+        }
+
+        .hsbc-table td {
+            padding: 7px 10px;
+            border: 1px solid var(--hsbc-border);
+            color: var(--hsbc-dark-grey);
+        }
+
+        .hsbc-table tr:nth-child(even) {
+            background-color: var(--hsbc-table-alt);
+        }
+
+        .hsbc-table tr:hover {
+            background-color: #fff9f9;
+        }
+
+        .amount-num {
+            font-family: var(--hsbc-mono);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .amount-positive {
+            color: #007700;
+        }
+
+        .amount-negative {
+            color: #cc0000;
+        }
+
+        /* QUICK LINK GRID */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-card {
+            border: 1px solid var(--hsbc-border);
+            background-color: #fafafa;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .quick-card h4 {
+            font-size: 12px;
+            color: var(--hsbc-black);
+            border-bottom: 2px solid var(--hsbc-red);
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+
+        .quick-card ul {
+            list-style: none;
+        }
+
+        .quick-card li {
+            margin-bottom: 5px;
+        }
+
+        .quick-card a::before {
+            content: "▸ ";
+            color: var(--hsbc-red);
+        }
+
+        /* ---------------------------------------------------- */
+        /* SIDEBAR WIDGETS                                      */
+        /* ---------------------------------------------------- */
+        .widget-btn {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            border: 1px solid #999;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .widget-btn:hover {
+            background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+        }
+
+        .quote-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .quote-input-group {
+            display: flex;
+            gap: 4px;
+        }
+
+        .quote-input-group input {
+            flex: 1;
+            padding: 4px;
+            border: 1px solid var(--hsbc-border);
+            font-size: 11px;
+            border-radius: 2px;
+        }
+
+        .hotline-box {
+            background-color: #fff9f9;
+            border: 1px solid #ffcccc;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .hotline-number {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--hsbc-red);
+            margin: 4px 0;
+            font-family: var(--hsbc-mono);
+        }
+
+        /* ---------------------------------------------------- */
+        /* INTERACTIVE MODAL DIALOGS                            */
+        /* ---------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border: 2px solid var(--hsbc-red);
+            width: 540px;
+            max-width: 90%;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, #db0011, #990000);
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 15px;
+        }
+
+        .modal-footer {
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            border-top: 1px solid var(--hsbc-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4px;
+            font-size: 11px;
+            color: var(--hsbc-black);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid var(--hsbc-border);
+            border-radius: 2px;
+            font-size: 12px;
+        }
+
+        .btn-hsbc-red {
+            background: linear-gradient(to bottom, #db0011, #a80000);
+            color: #ffffff;
+            border: 1px solid #770000;
+            padding: 6px 16px;
+            font-weight: bold;
+            font-size: 11px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn-hsbc-red:hover {
+            background: linear-gradient(to bottom, #ff1a2b, #cc0000);
+        }
+
+        .btn-hsbc-secondary {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            color: #333;
+            border: 1px solid #888;
+            padding: 6px 16px;
+            font-weight: bold;
+            font-size: 11px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* SUMMARY CARDS IN BANKING */
+        .net-worth-card {
+            background: linear-gradient(135deg, #0b2341, #1a365d);
+            color: #ffffff;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .net-worth-info h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #90cdf4;
+        }
+
+        .net-worth-amount {
+            font-size: 24px;
+            font-weight: 800;
+            font-family: var(--hsbc-mono);
+            margin-top: 4px;
+        }
+
+        .net-worth-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* FOOTER                                               */
+        /* ---------------------------------------------------- */
+        footer {
+            background-color: #f4f4f4;
+            border-top: 1px solid var(--hsbc-border);
+            padding: 12px 20px;
+            font-size: 10px;
+            color: var(--hsbc-mid-grey);
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--hsbc-mid-grey);
+            margin-right: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--hsbc-red);
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2e7d32;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 10000;
+        }
+
+        .toast-notification.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 980px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .left-sidebar,
+            .right-sidebar {
+                width: 100%;
+            }
+
+            .brand-top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .top-right-utilities {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- ---------------------------------------------------- -->
+        <!-- TOP BRAND & UTILITY HEADER                          -->
+        <!-- ---------------------------------------------------- -->
+        <header class="brand-top-bar">
+            <div class="brand-logo-container">
+                <!-- SVG HSBC Hexagon Logo (Official 6-Triangle Geometry) -->
+                <svg width="44" height="22" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg"
+                    style="display: block;">
+                    <!-- Top Red Triangle -->
+                    <polygon points="20,0 60,0 40,20" fill="#DB0011" />
+                    <!-- Bottom Red Triangle -->
+                    <polygon points="20,40 60,40 40,20" fill="#DB0011" />
+                    <!-- Left Outer Red Triangle -->
+                    <polygon points="0,20 20,0 20,40" fill="#DB0011" />
+                    <!-- Right Outer Red Triangle -->
+                    <polygon points="80,20 60,0 60,40" fill="#DB0011" />
+                    <!-- Left White Inner Triangle -->
+                    <polygon points="20,0 40,20 20,40" fill="#FFFFFF" />
+                    <!-- Right White Inner Triangle -->
+                    <polygon points="60,0 40,20 60,40" fill="#FFFFFF" />
+                </svg>
+                <span class="hsbc-wordmark">HSBC</span>
+                <span style="border-left: 1px solid #ccc; height: 18px; margin: 0 6px;"></span>
+                <span style="font-size: 13px; font-weight: bold; color: #444;">Business Internet Banking</span>
+            </div>
+
+            <div class="top-right-utilities">
+                <div class="lang-switch">
+                    <a href="javascript:void(0)" onclick="setLanguage('en')" class="active" id="lang-en">English</a> |
+                    <a href="javascript:void(0)" onclick="setLanguage('zh-HK')" id="lang-hk">繁體</a> |
+                    <a href="javascript:void(0)" onclick="setLanguage('zh-CN')" id="lang-cn">简体</a>
+                </div>
+                <div class="user-status-strip">
+                    <button class="util-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> PRINT</button>
+                    <button class="util-btn" onclick="openHelpModal()"><i class="fa-solid fa-circle-question"></i>
+                        HELP</button>
+                    <span style="color: #666; font-weight: bold; margin-left: 5px;">User: <strong
+                            style="color: #000;">LO PING TAT</strong> | Org: <strong style="color: var(--hsbc-red-dark);">RI RONG (HONG KONG) INVESTMENT ENTERPRISE CO., LTD.</strong></span>
+                    <button class="logout-btn" onclick="triggerLogout()"><i class="fa-solid fa-lock"></i> LOG
+                        OFF</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- NAVIGATION TABS                                     -->
+        <!-- ---------------------------------------------------- -->
+        <nav class="primary-nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('my-hsbc', this)">My HSBC</button>
+            <button class="nav-tab" onclick="switchTab('banking', this)">Banking</button>
+            <button class="nav-tab" onclick="switchTab('investments', this)">Investments</button>
+            <button class="nav-tab" onclick="switchTab('cards', this)">Cards</button>
+            <button class="nav-tab" onclick="switchTab('mortgages', this)">Mortgages</button>
+            <button class="nav-tab" onclick="switchTab('loans', this)">Loans</button>
+            <button class="nav-tab" onclick="switchTab('insurance', this)">Insurance</button>
+            <button class="nav-tab" onclick="switchTab('mpf', this)">MPF / ORSO</button>
+            <button class="nav-tab" onclick="switchTab('planning', this)">Financial Planning</button>
+        </nav>
+
+        <!-- BREADCRUMB BAR -->
+        <div class="breadcrumb-strip">
+            <div class="breadcrumb-path">
+                You are here: <span class="current" id="breadcrumb-text">My HSBC</span>
+            </div>
+            <div class="quick-session-info">
+                <span>Organization: <strong style="color: var(--hsbc-black);">RI RONG (HONG KONG) INVESTMENT ENTERPRISE CO., LIMITED (日榮(香港)投資企業有限公司)</strong></span> | <span>Last Logon: 26 Sep 2026, 17:42 HKT</span>
+            </div>
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- MAIN THREE COLUMN CONTENT AREA                       -->
+        <!-- ---------------------------------------------------- -->
+        <div class="main-container">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="left-sidebar">
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>Organization Menu</span>
+                        <i class="fa-solid fa-bars" style="font-size: 10px; color: #888;"></i>
+                    </div>
+                    <ul class="side-menu-list">
+                        <li><a href="javascript:void(0)" onclick="switchTab('my-hsbc')" class="active">Maintain my
+                                Details</a></li>
+                        <li><a href="javascript:void(0)" onclick="openAlertsModal()">Manage eAlerts</a></li>
+                        <li><a href="javascript:void(0)" onclick="openMessagesModal()">Email messages <span
+                                    class="badge-count">3</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Opening Financial Calendar...')">Financial
+                                Calendar</a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Loading Special Offers...')">My Special
+                                Offers</a></li>
+                        <li><a href="javascript:void(0)" onclick="openHelpModal()">FAQ & Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>PRODUCTS & SERVICES</span>
+                    </div>
+                    <ul class="side-menu-list">
+                        <li><a href="javascript:void(0)"
+                                onclick="showToast('Preferential Pricing Portal loaded')">Preferential Pricing
+                                online</a></li>
+                        <li><a href="javascript:void(0)" onclick="openHelpModal()">Customer Service</a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Form Center PDF Download')">Download
+                                Forms</a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Interactive Demo Video')">View Demos</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- MINI FX WIDGET -->
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>FX Quick Calculator</span>
+                    </div>
+                    <div style="padding: 8px; font-size: 11px;">
+                        <div style="margin-bottom: 6px;">1 USD = <strong style="color: var(--hsbc-red);">7.8214
+                                HKD</strong></div>
+                        <div style="margin-bottom: 6px;">1 AUD = <strong style="color: var(--hsbc-red);">5.2140
+                                HKD</strong></div>
+                        <div style="margin-bottom: 8px;">1 GBP = <strong style="color: var(--hsbc-red);">10.3520
+                                HKD</strong></div>
+                        <button class="btn-hsbc-red" style="width: 100%; font-size: 10px; padding: 4px;"
+                            onclick="openTransferModal('fx')">Convert Currency</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER MAIN CONTENT -->
+            <main class="center-content">
+
+                <!-- ------------------------------------------------ -->
+                <!-- TAB 1: MY HSBC (HOME OVERVIEW)                   -->
+                <!-- ------------------------------------------------ -->
+                <div id="tab-my-hsbc" class="tab-view active">
+
+                    <!-- ALERT MESSAGES STRIP -->
+                    <div
+                        style="background-color: #fff0f1; border: 1px solid #ffb3b8; padding: 8px 12px; border-radius: 3px; display: flex; align-items: center; justify-content: space-between;">
+                        <div
+                            style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--hsbc-red-dark);">
+                            <i class="fa-solid fa-envelope-open-text" style="font-size: 14px;"></i>
+                            <span>You have 3 unread security eAlerts and eStatements ready.</span>
+                        </div>
+                        <a href="javascript:void(0)" onclick="openMessagesModal()"
+                            style="font-weight: bold; text-decoration: underline; color: var(--hsbc-red);">View / create
+                            email messages</a>
+                    </div>
+
+                    <!-- PROMO BANNER 1 -->
+                    <div class="promo-banner">
+                        <div class="promo-banner-img">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </div>
+                        <div class="promo-banner-content">
+                            <div class="promo-banner-title">Apply for Helper Insurance for as low as HKD 585 per year
+                            </div>
+                            <div class="promo-banner-desc">Comprehensive coverage for domestic helper's medical
+                                expenses, employee compensation, personal accident protection, and more!</div>
+                        </div>
+                        <button class="promo-banner-btn"
+                            onclick="showToast('Redirecting to Helper Insurance application...')">Apply now</button>
+                    </div>
+
+                    <!-- MAIN OVERVIEW GRID BOXES -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+
+                        <!-- BOX 1: MY DETAILS -->
+                        <div class="hsbc-box">
+                            <div class="hsbc-box-header">
+                                <span>My Details</span>
+                                <i class="fa-solid fa-user-gear" style="color: var(--hsbc-red);"></i>
+                            </div>
+                            <div class="hsbc-box-body">
+                                <ul style="list-style: none; margin-bottom: 10px;">
+                                    <li style="margin-bottom: 5px;"><a href="javascript:void(0)"
+                                            onclick="showToast('Redirecting to Personal Info Update')">▸ Change personal
+                                            information</a></li>
+                                    <li style="margin-bottom: 5px;"><a href="javascript:void(0)"
+                                            onclick="showToast('Password Change Page')">▸ Change Logon Password</a></li>
+                                </ul>
+                                <div
+                                    style="background-color: #f9f9f9; padding: 8px; border: 1px solid #e0e0e0; border-radius: 2px;">
+                                    <label style="display: block; font-weight: bold; margin-bottom: 4px;">Quick Account
+                                        Actions:</label>
+                                    <div style="display: flex; gap: 4px;">
+                                        <select class="form-control" id="quick-option-select">
+                                            <option>Please select an option</option>
+                                            <option value="statement">Download eStatement</option>
+                                            <option value="limits">Update Transfer Limits</option>
+                                            <option value="card">Report Lost Card</option>
+                                            <option value="cheque">Request Cheque Book</option>
+                                        </select>
+                                        <button class="widget-btn" onclick="executeQuickOption()">GO</button>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 8px;"><a href="javascript:void(0)"
+                                        onclick="showToast('Amend details loaded')">▸ Amend details</a></div>
+                            </div>
+                        </div>
+
+                        <!-- BOX 2: MANAGE eALERTS -->
+                        <div class="hsbc-box">
+                            <div class="hsbc-box-header">
+                                <span>Manage eAlerts</span>
+                                <i class="fa-solid fa-bell" style="color: var(--hsbc-red);"></i>
+                            </div>
+                            <div class="hsbc-box-body">
+                                <ul style="list-style: none; margin-bottom: 12px;">
+                                    <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                            onclick="openAlertsModal()">▸ eAlerts Account Status: <strong
+                                                style="color:#008800;">ACTIVE</strong></a></li>
+                                    <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                            onclick="openAlertsModal()">▸ View/Modify eAlerts Settings</a></li>
+                                    <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                            onclick="openAlertsModal()">▸ Set up new eAlerts (SMS / Email)</a></li>
+                                </ul>
+                                <div
+                                    style="font-size: 10px; color: #666; border-top: 1px solid #eee; padding-top: 6px;">
+                                    Receive real-time notifications for transfers exceeding HKD 500.00.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- MY QUICK LINKS -->
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>My Quick Links</span>
+                            <i class="fa-solid fa-bolt" style="color: var(--hsbc-red);"></i>
+                        </div>
+                        <div class="hsbc-box-body">
+                            <div class="quick-grid">
+                                <div class="quick-card">
+                                    <h4>Transfers & Payments</h4>
+                                    <ul>
+                                        <li><a href="javascript:void(0)" onclick="openTransferModal('hkd')">Make a bill
+                                                payment</a></li>
+                                        <li><a href="javascript:void(0)" onclick="openTransferModal('fps')">FPS Instant
+                                                Transfer</a></li>
+                                        <li><a href="javascript:void(0)" onclick="openTransferModal('fx')">Buy / Sell
+                                                currencies</a></li>
+                                    </ul>
+                                </div>
+                                <div class="quick-card">
+                                    <h4>Wealth & Account Services</h4>
+                                    <ul>
+                                        <li><a href="javascript:void(0)" onclick="switchTab('banking')">View Account
+                                                Balances</a></li>
+                                        <li><a href="javascript:void(0)" onclick="openQuoteModal('0005.HK')">Check HSBC
+                                                Stock Quote</a></li>
+                                        <li><a href="javascript:void(0)"
+                                                onclick="showToast('Time Deposit Placement')">Open New Time Deposit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUICK ACCOUNTS PREVIEW SUMMARY -->
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>Account Portfolio Overview</span>
+                            <div>
+                                <button class="widget-btn" onclick="toggleBalanceMask()"><i
+                                        class="fa-solid fa-eye-slash"></i> <span id="mask-btn-text">Hide
+                                        Balances</span></button>
+                                <button class="widget-btn" onclick="switchTab('banking')">Full View ▸</button>
+                            </div>
+                        </div>
+                        <div class="hsbc-box-body" style="padding: 0;">
+                            <table class="hsbc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Banking Accounts</th>
+                                        <th>Account Number</th>
+                                        <th style="text-align: right;">Available Balance</th>
+                                        <th style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>RI RONG (HK) INVESTMENT - Commercial Master Account</strong></td>
+                                        <td>845250752833</td>
+                                        <td class="amount-num maskable">HKD 3,257,973.28</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HKD Savings</td>
+                                        <td>123-456789-888</td>
+                                        <td class="amount-num maskable">HKD 128,911.11</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HKD Current</td>
+                                        <td>123-456789-001</td>
+                                        <td class="amount-num maskable">HKD 191,148.30</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>USD Savings</td>
+                                        <td>123-456789-666</td>
+                                        <td class="amount-num maskable">USD 81,100.00</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx')">Exchange</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ------------------------------------------------ -->
+                <!-- TAB 2: BANKING & ACCOUNTS                        -->
+                <!-- ------------------------------------------------ -->
+                <div id="tab-banking" class="tab-view">
+
+                    <!-- PROMO BANNER 2 -->
+                    <div class="promo-banner">
+                        <div class="promo-banner-img" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <div class="promo-banner-content">
+                            <div class="promo-banner-title">RMB Switching Service</div>
+                            <div class="promo-banner-desc">RMB Switching Service offers you convenience and flexibility
+                                in managing your multi-currency finances at preferential rates.</div>
+                        </div>
+                        <button class="promo-banner-btn" onclick="openTransferModal('fx')">Set up now</button>
+                    </div>
+
+                    <!-- TOTAL NET WORTH BANNER CARD -->
+                    <div class="net-worth-card">
+                        <div class="net-worth-info">
+                            <h3>Total Estimated Portfolio Balance (HKD Equivalent)</h3>
+                            <div class="net-worth-amount maskable" id="total-net-worth">HKD 203,929,706.11</div>
+                        </div>
+                        <div class="net-worth-actions">
+                            <button class="btn-hsbc-red" onclick="openTransferModal('hkd')"><i
+                                    class="fa-solid fa-paper-plane"></i> Quick Transfer</button>
+                            <button class="btn-hsbc-secondary" onclick="toggleBalanceMask()"><i
+                                    class="fa-solid fa-eye"></i> Toggle Privacy</button>
+                        </div>
+                    </div>
+
+                    <!-- FULL BANK ACCOUNTS TABLE -->
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>My Bank Accounts Detail</span>
+                            <span style="font-size: 11px; color: #007700;"><i class="fa-solid fa-circle-check"></i>
+                                Real-time Updated</span>
+                        </div>
+                        <div class="hsbc-box-body" style="padding: 0;">
+                            <table class="hsbc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Banking Accounts</th>
+                                        <th>Account Number</th>
+                                        <th style="text-align: right;">Balance</th>
+                                        <th style="text-align: right;">HKD Equivalent</th>
+                                        <th style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: #fff5f5;">
+                                        <td><strong style="color: var(--hsbc-red-dark);"><i
+                                                    class="fa-solid fa-building-columns"></i> RI RONG (HK) INVESTMENT - Commercial Master Account</strong>
+                                        </td>
+                                        <td>845250752833</td>
+                                        <td class="amount-num maskable">HKD 3,257,973.28</td>
+                                        <td class="amount-num maskable">HKD 3,257,973.28</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HKD Savings</td>
+                                        <td>123-456789-888</td>
+                                        <td class="amount-num maskable">HKD 128,911.11</td>
+                                        <td class="amount-num maskable">HKD 128,911.11</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HKD Current</td>
+                                        <td>123-456789-001</td>
+                                        <td class="amount-num maskable">HKD 191,148.30</td>
+                                        <td class="amount-num maskable">HKD 191,148.30</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hkd')">Transfer</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAD Savings</td>
+                                        <td>123-456789-555</td>
+                                        <td class="amount-num maskable">CAD 25,779.61</td>
+                                        <td class="amount-num maskable">HKD 147,717.16</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx')">Exchange</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>USD Savings</td>
+                                        <td>123-456789-666</td>
+                                        <td class="amount-num maskable">USD 81,100.00</td>
+                                        <td class="amount-num maskable">HKD 634,315.74</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx')">Exchange</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gold Account</td>
+                                        <td>123-456789-777</td>
+                                        <td class="amount-num maskable">TAEL 3.00</td>
+                                        <td class="amount-num maskable">HKD 63,450.00</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="showToast('Gold trading portal')">Trade</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time Deposit (3-Month Fixed Rate 4.15%)</td>
+                                        <td>123-456789-999</td>
+                                        <td class="amount-num maskable">HKD 500,000.00</td>
+                                        <td class="amount-num maskable">HKD 500,000.00</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="showToast('Time Deposit Details')">Details</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Investment Services (Stocks & Funds)</td>
+                                        <td>123-456789-111</td>
+                                        <td class="amount-num maskable">HKD 2,062,376.73</td>
+                                        <td class="amount-num maskable">HKD 2,062,376.73</td>
+                                        <td style="text-align: center;"><a href="javascript:void(0)"
+                                                onclick="switchTab('investments')">View Portfolio</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- RECENT TRANSACTIONS TABLE -->
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>Recent Transaction History</span>
+                            <div style="display: flex; gap: 6px;">
+                                <input type="text" id="tx-search" placeholder="Search transactions..."
+                                    style="padding: 2px 6px; font-size: 11px; border: 1px solid #ccc; border-radius: 2px;"
+                                    onkeyup="filterTransactions()">
+                                <button class="widget-btn" onclick="showToast('Exporting CSV...')"><i
+                                        class="fa-solid fa-file-csv"></i> Export</button>
+                            </div>
+                        </div>
+                        <div class="hsbc-box-body" style="padding: 0;">
+                            <table class="hsbc-table" id="tx-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description / Transaction Reference</th>
+                                        <th>Channel</th>
+                                        <th style="text-align: right;">Amount (HKD)</th>
+                                        <th style="text-align: right;">Running Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>26 Sep 2026</td>
+                                        <td>FPS INWARD - TANG CHUN HEI (Ref: FPS9923810)</td>
+                                        <td>FPS / Faster Payment</td>
+                                        <td class="amount-num amount-positive">+12,500.00</td>
+                                        <td class="amount-num maskable">3,257,973.28</td>
+                                    </tr>
+                                    <tr>
+                                        <td>25 Sep 2026</td>
+                                        <td>BILL PAYMENT - CLP POWER HONG KONG LTD</td>
+                                        <td>Internet Banking</td>
+                                        <td class="amount-num amount-negative">-1,420.50</td>
+                                        <td class="amount-num maskable">3,245,473.28</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24 Sep 2026</td>
+                                        <td>DIVIDEND - HSBC HOLDINGS PLC (0005.HK)</td>
+                                        <td>Direct Deposit</td>
+                                        <td class="amount-num amount-positive">+28,400.00</td>
+                                        <td class="amount-num maskable">3,246,893.78</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22 Sep 2026</td>
+                                        <td>POS PURCHASE - SOGO CAUSEWAY BAY HK</td>
+                                        <td>Debit Card</td>
+                                        <td class="amount-num amount-negative">-3,890.00</td>
+                                        <td class="amount-num maskable">3,218,493.78</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20 Sep 2026</td>
+                                        <td>INTEREST CREDIT - PREMIER SAVINGS ACCOUNT</td>
+                                        <td>System Auto</td>
+                                        <td class="amount-num amount-positive">+1,850.45</td>
+                                        <td class="amount-num maskable">3,222,383.78</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ------------------------------------------------ -->
+                <!-- TAB 3: TRANSFERS & PAYMENTS                      -->
+                <!-- ------------------------------------------------ -->
+                <div id="tab-transfers" class="tab-view">
+
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>Transfers & Payment Services</span>
+                        </div>
+                        <div class="hsbc-box-body">
+                            <p style="font-size: 12px; margin-bottom: 12px; color: #444;">
+                                Transferring money is quick, efficient and extremely simple. Please select the type of
+                                transfer you would like to make below:
+                            </p>
+
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+
+                                <div
+                                    style="border: 1px solid var(--hsbc-border); padding: 12px; background: #fafafa; border-top: 3px solid var(--hsbc-red);">
+                                    <h4
+                                        style="font-size: 13px; font-weight: bold; color: var(--hsbc-black); margin-bottom: 8px;">
+                                        HKD Transfer to HKD Account</h4>
+                                    <ul style="list-style: none;">
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('hsbc')">▸ To an HSBC Account</a></li>
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fps')">▸ To a non-HSBC Account - e-Transfer
+                                                / FPS</a></li>
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('express')">▸ Express Transfer (CHATS)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    style="border: 1px solid var(--hsbc-border); padding: 12px; background: #fafafa; border-top: 3px solid var(--hsbc-red);">
+                                    <h4
+                                        style="font-size: 13px; font-weight: bold; color: var(--hsbc-black); margin-bottom: 8px;">
+                                        Transfer to/from Foreign Currency Account</h4>
+                                    <ul style="list-style: none;">
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx')">▸ To an HSBC Account - 24-hour FX
+                                                Service</a></li>
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx-external')">▸ To a non-HSBC Foreign
+                                                Currency Account</a></li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    style="border: 1px solid var(--hsbc-border); padding: 12px; background: #fafafa; border-top: 3px solid var(--hsbc-red);">
+                                    <h4
+                                        style="font-size: 13px; font-weight: bold; color: var(--hsbc-black); margin-bottom: 8px;">
+                                        International Transfers & Standing Instructions</h4>
+                                    <ul style="list-style: none;">
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('international')">▸ International Transfer /
+                                                Telegraphic Transfer</a></li>
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="showToast('Standing Instructions Management')">▸ Set up
+                                                Standing Instruction</a></li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    style="border: 1px solid var(--hsbc-border); padding: 12px; background: #fafafa; border-top: 3px solid var(--hsbc-red);">
+                                    <h4
+                                        style="font-size: 13px; font-weight: bold; color: var(--hsbc-black); margin-bottom: 8px;">
+                                        ForEx / Renminbi Switching Service</h4>
+                                    <ul style="list-style: none;">
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="openTransferModal('fx')">▸ Setup a ForEx / Renminbi Switching
+                                                Service</a></li>
+                                        <li style="margin-bottom: 6px;"><a href="javascript:void(0)"
+                                                onclick="showToast('Modify instructions loaded')">▸ Modify Existing
+                                                Instruction</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAST TRANSFER FORM INLINE CARD -->
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header">
+                            <span>Instant FPS Quick Transfer Form</span>
+                        </div>
+                        <div class="hsbc-box-body">
+                            <form onsubmit="handleInlineTransfer(event)">
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                                    <div class="form-group">
+                                        <label>From Account:</label>
+                                        <select class="form-control" id="inline-from-acc">
+                                            <option value="commercial">RI RONG (HK) INVESTMENT - Account 845250752833 (HKD 3,257,973.28)</option>
+                                            <option value="savings">HKD Savings (HKD 128,911.11)</option>
+                                            <option value="current">HKD Current (HKD 191,148.30)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Recipient Mobile / FPS ID / Account:</label>
+                                        <input type="text" class="form-control" placeholder="e.g. 98765432 or 1234567"
+                                            required id="inline-recipient">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Amount (HKD):</label>
+                                        <input type="number" class="form-control" placeholder="0.00" min="1" step="0.01"
+                                            required id="inline-amount">
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+                                    <button type="reset" class="btn-hsbc-secondary">Clear</button>
+                                    <button type="submit" class="btn-hsbc-red"><i class="fa-solid fa-lock"></i> Submit
+                                        FPS Payment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- OTHER TABS (PLACEHOLDERS WITH RICH INTERACTIVE CARDS) -->
+                <div id="tab-investments" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>Investment Portfolio & Wealth Management</span></div>
+                        <div class="hsbc-box-body">
+                            <div
+                                style="background: #f8fafc; padding: 15px; border-left: 4px solid var(--hsbc-red); margin-bottom: 12px;">
+                                <h3 style="font-size: 14px; margin-bottom: 4px;">HSBC Premier Wealth Management
+                                    Dashboard</h3>
+                                <p style="font-size: 11px; color: #555;">Live Stock Quotes, Mutual Funds, Bonds,
+                                    Warrants, Structured Products.</p>
+                            </div>
+                            <table class="hsbc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Asset Class</th>
+                                        <th>Holdings</th>
+                                        <th>Market Value (HKD)</th>
+                                        <th>Unrealized Gain / Loss</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>HK Stocks (0005.HK HSBC Holdings)</strong></td>
+                                        <td>40,000 Shares</td>
+                                        <td class="amount-num">HKD 2,720,000.00</td>
+                                        <td class="amount-num amount-positive">+HKD 340,000.00 (+14.28%)</td>
+                                        <td><button class="widget-btn"
+                                                onclick="openQuoteModal('0005.HK')">Trade</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>HK Stocks (0700.HK Tencent)</strong></td>
+                                        <td>2,000 Shares</td>
+                                        <td class="amount-num">HKD 760,000.00</td>
+                                        <td class="amount-num amount-positive">+HKD 82,000.00 (+12.09%)</td>
+                                        <td><button class="widget-btn"
+                                                onclick="openQuoteModal('0700.HK')">Trade</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-cards" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>HSBC Credit Cards Summary</span></div>
+                        <div class="hsbc-box-body">
+                            <div
+                                style="display: flex; gap: 15px; align-items: center; background: #fff0f1; padding: 12px; border-radius: 4px;">
+                                <i class="fa-solid fa-credit-card" style="font-size: 36px; color: var(--hsbc-red);"></i>
+                                <div>
+                                    <h4 style="font-size: 13px; font-weight: bold;">HSBC Premier Mastercard®</h4>
+                                    <p>Card No: <strong>4541 •••• •••• 9921</strong> | RewardCash Balance:
+                                        <strong>$12,450 RC</strong></p>
+                                </div>
+                                <button class="btn-hsbc-red" style="margin-left: auto;"
+                                    onclick="showToast('RewardCash Portal Loaded')">Redeem RewardCash</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-mortgages" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>Mortgages</span></div>
+                        <div class="hsbc-box-body">
+                            <p>Mortgage Account #881-992-12: Outstanding Principal HKD 2,450,000.00 @ 3.375% p.a.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-loans" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>Personal Loans</span></div>
+                        <div class="hsbc-box-body">
+                            <p>Pre-approved Instant Personal Loan up to HKD 1,500,000 with APR as low as 1.85%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-insurance" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>Insurance Policies</span></div>
+                        <div class="hsbc-box-body">
+                            <p>Active Policies: HSBC Term Life Shield, Helper Insurance Plan, TravelCare Protection.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-mpf" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>MPF / ORSO Retirement Scheme</span></div>
+                        <div class="hsbc-box-body">
+                            <p>HSBC Mandatory Provident Fund - Total Fund Value: HKD 842,100.00.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-planning" class="tab-view">
+                    <div class="hsbc-box">
+                        <div class="hsbc-box-header"><span>Financial Planning & Goal Tracker</span></div>
+                        <div class="hsbc-box-body">
+                            <p>Wealth Portfolio Advisory Status: Optimal Asset Allocation (Balanced Growth).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="right-sidebar">
+
+                <!-- MY ACCOUNTS WIDGET -->
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>MY ACCOUNTS</span>
+                        <button class="widget-btn" onclick="switchTab('banking')">SHOW</button>
+                    </div>
+                    <div style="padding: 8px; font-size: 11px;">
+                        <select class="form-control" style="font-size: 10px; margin-bottom: 6px;"
+                            onchange="switchTab('banking')">
+                            <option>RI RONG (HK) INVESTMENT (845250752833)</option>
+                            <option>HKD Savings (888)</option>
+                            <option>HKD Current (001)</option>
+                            <option>USD Savings (666)</option>
+                        </select>
+                        <div style="font-size: 10px; color: #666;">Select account to inspect transaction ledger.</div>
+                    </div>
+                </div>
+
+                <!-- QUICK QUOTE WIDGET -->
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>QUICK QUOTE</span>
+                    </div>
+                    <div class="side-box-body quote-box" style="padding: 8px;">
+                        <span style="font-weight: bold; color: var(--hsbc-red);">Enter a stock code</span>
+                        <div class="quote-input-group">
+                            <input type="text" id="stock-code-input" placeholder="e.g. 0005" value="0005">
+                            <button class="widget-btn" onclick="triggerStockQuote()">GO</button>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 4px;">
+                            <a href="javascript:void(0)" onclick="openQuoteModal('0005.HK')">Search for a stock
+                                code</a><br>
+                            <a href="javascript:void(0)" onclick="triggerStockQuote()">Refresh</a> |
+                            <a href="javascript:void(0)" onclick="showToast('Warrant Info Portal')">Warrant info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPLICATION CENTRE -->
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>APPLICATION CENTRE</span>
+                    </div>
+                    <ul class="side-menu-list">
+                        <li><a href="javascript:void(0)" onclick="switchTab('cards')">Credit Card options</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('insurance')">Term Life Insurance</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('loans')">Instant Loans</a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Opening 4.2% Time Deposit')">New Time
+                                Deposit</a></li>
+                    </ul>
+                </div>
+
+                <!-- BANKING eALERTS -->
+                <div class="side-box">
+                    <div class="side-box-header">
+                        <span>BANKING eALERTS</span>
+                    </div>
+                    <div style="padding: 8px; font-size: 11px;">
+                        <strong style="color: #333;">Your Banking eAlerts:</strong>
+                        <ul style="list-style: none; margin-top: 4px;">
+                            <li style="margin-bottom: 4px;"><a href="javascript:void(0)" onclick="openAlertsModal()">▸
+                                    Account Overdrawn Notification</a></li>
+                            <li style="margin-bottom: 4px;"><a href="javascript:void(0)" onclick="openAlertsModal()">▸
+                                    Outward Payments Notification</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HOTLINE BOX -->
+                <div class="hotline-box">
+                    <div style="font-size: 11px; font-weight: bold; color: #333;">HOTLINE</div>
+                    <div style="font-size: 11px; color: #555;">HSBC Premier PhoneBanking Services:</div>
+                    <div class="hotline-number">2233 3322</div>
+                    <div style="font-size: 10px; color: #777;"><i class="fa-solid fa-clock"></i> 24 Hours Concierge
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- FOOTER                                               -->
+        <!-- ---------------------------------------------------- -->
+        <footer>
+            <div class="footer-links">
+                <a href="javascript:void(0)" onclick="showToast('Privacy Policy')">Privacy and Security</a> |
+                <a href="javascript:void(0)" onclick="showToast('Terms of Use')">Terms of Use</a> |
+                <a href="javascript:void(0)" onclick="showToast('Hyperlink Policy')">Hyperlink Policy</a>
+            </div>
+            <div>
+                © Copyright. The Hongkong and Shanghai Banking Corporation Limited 2002-2026. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- INTERACTIVE MODAL DIALOGS                            -->
+    <!-- ---------------------------------------------------- -->
+
+    <!-- TRANSFER MODAL -->
+    <div class="modal-overlay" id="modal-transfer">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span id="transfer-modal-title"><i class="fa-solid fa-paper-plane"></i> Make a Transfer</span>
+                <button class="modal-close-btn" onclick="closeModal('modal-transfer')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="transfer-form" onsubmit="executeTransfer(event)">
+                    <div class="form-group">
+                        <label>Transfer Type:</label>
+                        <select class="form-control" id="modal-transfer-type" onchange="adjustTransferForm()">
+                            <option value="hkd">HKD Transfer to HSBC Account</option>
+                            <option value="fps">FPS Instant Payment to Other Bank</option>
+                            <option value="fx">Currency Exchange (24-Hour FX)</option>
+                            <option value="international">International Wire / Telegraphic Transfer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>From Account:</label>
+                        <select class="form-control" id="modal-from-account">
+                            <option value="commercial">RI RONG (HK) INVESTMENT - Commercial Master (845250752833 - HKD 3,257,973.28)</option>
+                            <option value="savings">HKD Savings (HKD 128,911.11)</option>
+                            <option value="usd">USD Savings (USD 81,100.00)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="to-acc-label">To Account Number / Beneficiary:</label>
+                        <input type="text" class="form-control" id="modal-to-account"
+                            placeholder="e.g. 123-456789-001 or FPS Mobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount:</label>
+                        <div style="display: flex; gap: 8px;">
+                            <select class="form-control" style="width: 90px;" id="modal-currency">
+                                <option value="HKD">HKD</option>
+                                <option value="USD">USD</option>
+                                <option value="CAD">CAD</option>
+                                <option value="RMB">RMB</option>
+                            </select>
+                            <input type="number" class="form-control" id="modal-amount" placeholder="0.00" min="1"
+                                step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Transfer Date:</label>
+                        <input type="date" class="form-control" id="modal-date" value="2026-09-26">
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Reference / Message to Beneficiary:</label>
+                        <input type="text" class="form-control" placeholder="Optional notes (max 35 chars)">
+                    </div>
+                    <div class="modal-footer" style="padding-left: 0; padding-right: 0;">
+                        <button type="button" class="btn-hsbc-secondary"
+                            onclick="closeModal('modal-transfer')">Cancel</button>
+                        <button type="submit" class="btn-hsbc-red"><i class="fa-solid fa-shield-halved"></i> Confirm &
+                            Authorize</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- STOCK QUOTE MODAL -->
+    <div class="modal-overlay" id="modal-quote">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span><i class="fa-solid fa-chart-line"></i> Real-time Stock Quote</span>
+                <button class="modal-close-btn" onclick="closeModal('modal-quote')">&times;</button>
+            </div>
+            <div class="modal-body" id="quote-modal-body">
+                <!-- Dynamic stock data populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-hsbc-secondary" onclick="closeModal('modal-quote')">Close</button>
+                <button class="btn-hsbc-red" onclick="showToast('Order Placement Screen Loaded')"><i
+                        class="fa-solid fa-cart-shopping"></i> Place Buy Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MESSAGES / eALERTS MODAL -->
+    <div class="modal-overlay" id="modal-messages">
+        <div class="modal-box" style="width: 600px;">
+            <div class="modal-header">
+                <span><i class="fa-solid fa-envelope"></i> HSBC Secure Mailbox & eAlerts</span>
+                <button class="modal-close-btn" onclick="closeModal('modal-messages')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="border: 1px solid #ccc; padding: 10px; background: #fff5f5;">
+                        <div
+                            style="display: flex; justify-content: space-between; font-weight: bold; color: var(--hsbc-red);">
+                            <span>[Security Notice] Dividend Credit Notification</span>
+                            <span style="font-size: 10px; color: #666;">24 Sep 2026</span>
+                        </div>
+                        <p style="font-size: 11px; margin-top: 4px;">Your dividend for HSBC Holdings PLC (0005.HK) of
+                            HKD 28,400.00 has been credited to your Premier account.</p>
+                    </div>
+                    <div style="border: 1px solid #ccc; padding: 10px; background: #f9f9f9;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                            <span>Monthly eStatement Ready (August 2026)</span>
+                            <span style="font-size: 10px; color: #666;">01 Sep 2026</span>
+                        </div>
+                        <p style="font-size: 11px; margin-top: 4px;">Your eStatement for RI RONG (HONG KONG) INVESTMENT ENTERPRISE CO., LIMITED (Account 845250752833) is now available for download.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-hsbc-secondary" onclick="closeModal('modal-messages')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HELP / SUPPORT MODAL -->
+    <div class="modal-overlay" id="modal-help">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span><i class="fa-solid fa-circle-info"></i> Customer Service & FAQ</span>
+                <button class="modal-close-btn" onclick="closeModal('modal-help')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4 style="font-size: 13px; color: var(--hsbc-red); margin-bottom: 8px;">Frequently Asked Questions</h4>
+                <ul style="padding-left: 18px; font-size: 11px; line-height: 1.6;">
+                    <li><strong>How do I register for FPS (Faster Payment System)?</strong><br>Go to Banking > Transfers
+                        > FPS Settings to link your mobile number or HKID.</li>
+                    <li><strong>What are the daily transfer limits for Premier customers?</strong><br>Default
+                        non-registered recipient limit is HKD 400,000 per day.</li>
+                    <li><strong>How can I order a new Security Device?</strong><br>Use the HSBC HK Mobile Banking App
+                        for 2FA soft token authentication.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-hsbc-secondary" onclick="closeModal('modal-help')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-notification" id="toast">
+        <i class="fa-solid fa-circle-check" style="font-size: 16px;"></i>
+        <span id="toast-text">Action completed successfully.</span>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- JAVASCRIPT LOGIC                                     -->
+    <!-- ---------------------------------------------------- -->
+    <script>
+        // State Variables
+        let isMasked = false;
+        let currentLang = 'en';
+
+        // Tab Switching Logic
+        function switchTab(tabId, element) {
+            // Hide all tab views
+            const views = document.querySelectorAll('.tab-view');
+            views.forEach(view => view.classList.remove('active'));
+
+            // Show target view
+            const targetView = document.getElementById('tab-' + tabId);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            // Update top nav tab buttons
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+
+            if (element) {
+                element.classList.add('active');
+            } else {
+                // Find tab matching tabId
+                navTabs.forEach(tab => {
+                    if (tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(tabId)) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
+
+            // Update breadcrumb text
+            const breadcrumb = document.getElementById('breadcrumb-text');
+            const tabNames = {
+                'my-hsbc': 'My HSBC',
+                'banking': 'Banking > Accounts & Overview',
+                'transfers': 'Banking > Transfers & Payments',
+                'investments': 'Investments > Wealth Management',
+                'cards': 'Cards > Credit Cards',
+                'mortgages': 'Mortgages',
+                'loans': 'Loans',
+                'insurance': 'Insurance',
+                'mpf': 'MPF / ORSO',
+                'planning': 'Financial Planning'
+            };
+            if (breadcrumb && tabNames[tabId]) {
+                breadcrumb.textContent = tabNames[tabId];
+            }
+        }
+
+        // Toggle Balance Masking (Privacy Mode)
+        function toggleBalanceMask() {
+            isMasked = !isMasked;
+            const maskElements = document.querySelectorAll('.maskable');
+            const maskBtnText = document.getElementById('mask-btn-text');
+
+            maskElements.forEach(el => {
+                if (isMasked) {
+                    if (!el.dataset.original) {
+                        el.dataset.original = el.textContent;
+                    }
+                    el.textContent = 'HKD ••••••••';
+                } else {
+                    if (el.dataset.original) {
+                        el.textContent = el.dataset.original;
+                    }
+                }
+            });
+
+            if (maskBtnText) {
+                maskBtnText.textContent = isMasked ? 'Show Balances' : 'Hide Balances';
+            }
+            showToast(isMasked ? 'Balances hidden for privacy' : 'Balances visible');
+        }
+
+        // Search Filter for Transactions
+        function filterTransactions() {
+            const query = document.getElementById('tx-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#tx-table tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        // Quick Option Select Execution
+        function executeQuickOption() {
+            const select = document.getElementById('quick-option-select');
+            const value = select.value;
+            if (value === 'statement') {
+                showToast('Downloading latest eStatement PDF...');
+            } else if (value === 'limits') {
+                showToast('Opening Transfer Limit Adjustment...');
+            } else if (value === 'card') {
+                showToast('Report Lost Card portal opened');
+            } else if (value === 'cheque') {
+                showToast('Cheque Book requested for HKD Current account.');
+            } else {
+                showToast('Please select a valid option.');
+            }
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.remove('active');
+        }
+
+        function openTransferModal(type) {
+            const typeSelect = document.getElementById('modal-transfer-type');
+            if (typeSelect && type) {
+                if (type === 'fps') typeSelect.value = 'fps';
+                else if (type === 'fx') typeSelect.value = 'fx';
+                else if (type === 'international') typeSelect.value = 'international';
+                else typeSelect.value = 'hkd';
+            }
+            adjustTransferForm();
+            openModal('modal-transfer');
+        }
+
+        function adjustTransferForm() {
+            const type = document.getElementById('modal-transfer-type').value;
+            const label = document.getElementById('to-acc-label');
+            const input = document.getElementById('modal-to-account');
+
+            if (type === 'fps') {
+                label.textContent = 'Recipient Mobile / FPS ID / Email:';
+                input.placeholder = 'e.g. +852 91234567 or FPS ID';
+            } else if (type === 'fx') {
+                label.textContent = 'To Foreign Currency Account:';
+                input.placeholder = 'Select destination account';
+            } else if (type === 'international') {
+                label.textContent = 'SWIFT Code / IBAN & Beneficiary Name:';
+                input.placeholder = 'e.g. HSBCUK2LXXX - John Smith';
+            } else {
+                label.textContent = 'To HSBC Account Number:';
+                input.placeholder = 'e.g. 123-456789-001';
+            }
+        }
+
+        // Handle Modal Transfer Submission
+        function executeTransfer(e) {
+            e.preventDefault();
+            const recipient = document.getElementById('modal-to-account').value;
+            const amount = document.getElementById('modal-amount').value;
+            const curr = document.getElementById('modal-currency').value;
+
+            closeModal('modal-transfer');
+            showToast(`Success! Transferred ${curr} ${amount} to ${recipient}. Ref: TX${Math.floor(Math.random() * 899999 + 100000)}`);
+        }
+
+        // Handle Inline Transfer Submission
+        function handleInlineTransfer(e) {
+            e.preventDefault();
+            const recipient = document.getElementById('inline-recipient').value;
+            const amount = document.getElementById('inline-amount').value;
+
+            showToast(`FPS Payment of HKD ${amount} sent to ${recipient} instantly!`);
+            document.getElementById('inline-recipient').value = '';
+            document.getElementById('inline-amount').value = '';
+        }
+
+        // Stock Quote Simulation
+        function triggerStockQuote() {
+            const code = document.getElementById('stock-code-input').value || '0005';
+            openQuoteModal(code.includes('.HK') ? code : code + '.HK');
+        }
+
+        function openQuoteModal(symbol) {
+            const body = document.getElementById('quote-modal-body');
+            const stocks = {
+                '0005.HK': { name: 'HSBC HOLDINGS PLC', price: '68.00', change: '+0.85 (+1.27%)', high: '68.50', low: '67.20', vol: '18.42M' },
+                '0700.HK': { name: 'TENCENT HOLDINGS LTD', price: '380.00', change: '+5.20 (+1.39%)', high: '382.40', low: '376.00', vol: '12.10M' },
+                '9988.HK': { name: 'ALIBABA GROUP HOLDING', price: '86.50', change: '-0.40 (-0.46%)', high: '87.80', low: '85.90', vol: '24.50M' }
+            };
+
+            const data = stocks[symbol] || { name: 'STOCK CODE ' + symbol, price: '124.50', change: '+1.20 (+0.97%)', high: '126.00', low: '123.00', vol: '5.4M' };
+
+            body.innerHTML = `
+                <div style="background: #fafafa; border: 1px solid #ddd; padding: 12px; border-radius: 4px; margin-bottom: 12px;">
+                    <div style="font-size: 16px; font-weight: bold; color: var(--hsbc-black);">${data.name} (${symbol})</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--hsbc-red); margin: 4px 0; font-family: var(--hsbc-mono);">HKD ${data.price}</div>
+                    <div style="font-size: 12px; font-weight: bold; color: ${data.change.includes('+') ? '#008800' : '#cc0000'};">${data.change}</div>
+                </div>
+                <table class="hsbc-table">
+                    <tr><th>Day High</th><td class="amount-num">HKD ${data.high}</td><th>Day Low</th><td class="amount-num">HKD ${data.low}</td></tr>
+                    <tr><th>Volume</th><td class="amount-num">${data.vol}</td><th>Market Status</th><td style="color:#008800; font-weight:bold;">OPEN</td></tr>
+                </table>
+            `;
+            openModal('modal-quote');
+        }
+
+        // Modals Shortcut Functions
+        function openAlertsModal() { showToast('Alerts settings modal ready'); }
+        function openMessagesModal() { openModal('modal-messages'); }
+        function openHelpModal() { openModal('modal-help'); }
+
+        // Logout Simulation
+        function triggerLogout() {
+            if (confirm('Are you sure you want to log off from HSBC Business Internet Banking?')) {
+                showToast('Logging off securely...');
+                setTimeout(() => {
+                    alert('You have successfully logged off. Thank you for using HSBC Internet Banking.');
+                }, 800);
+            }
+        }
+
+        // Language Switcher Simulation
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+            document.getElementById('lang-' + (lang === 'en' ? 'en' : (lang === 'zh-HK' ? 'hk' : 'cn'))).classList.add('active');
+            showToast(`Language switched to ${lang.toUpperCase()}`);
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = message;
+            toast.classList.add('active');
+
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

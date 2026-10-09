@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commerzbank Online-Banking | THYSSENKRUPP PLASTICS GmbH</title>
+    <!-- Google Font & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --cbk-yellow: #fecb00;
+            --cbk-yellow-dark: #e5b700;
+            --cbk-yellow-light: #fffbe6;
+            --cbk-yellow-accent: #ffdb00;
+            --cbk-black: #1a1a1a;
+            --cbk-dark-grey: #333333;
+            --cbk-mid-grey: #666666;
+            --cbk-light-grey: #e6e6e6;
+            --cbk-bg-grey: #f2f2f2;
+            --cbk-border: #cccccc;
+            --cbk-red: #a80000;
+            --cbk-red-hover: #880000;
+            --cbk-green: #008800;
+            --cbk-blue: #0055a5;
+            --cbk-font: 'Open Sans', Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--cbk-font);
+            background-color: var(--cbk-bg-grey);
+            color: var(--cbk-dark-grey);
+            font-size: 13px;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--cbk-dark-grey);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------------------------------------------- */
+        /* TOP PORTAL HEADER                                   */
+        /* ---------------------------------------------------- */
+        .portal-top-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--cbk-border);
+            padding: 0 20px;
+        }
+
+        .portal-top-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            font-size: 13px;
+        }
+
+        .customer-segments {
+            display: flex;
+            gap: 20px;
+            font-weight: 700;
+        }
+
+        .customer-segments a {
+            color: var(--cbk-mid-grey);
+            padding: 10px 0;
+            border-bottom: 3px solid transparent;
+            font-size: 14px;
+        }
+
+        .customer-segments a.active {
+            color: var(--cbk-black);
+            border-bottom-color: var(--cbk-yellow);
+        }
+
+        .top-utility-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box-top {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--cbk-border);
+            background: #fff;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .search-box-top input {
+            border: none;
+            padding: 4px 8px;
+            font-size: 12px;
+            outline: none;
+            width: 130px;
+        }
+
+        .search-box-top button {
+            background: #e6e6e6;
+            border: none;
+            padding: 4px 8px;
+            cursor: pointer;
+            color: var(--cbk-dark-grey);
+        }
+
+        .btn-abmelden {
+            background-color: var(--cbk-red);
+            color: #ffffff !important;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 2px;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .btn-abmelden:hover {
+            background-color: var(--cbk-red-hover);
+            text-decoration: none;
+        }
+
+        /* ---------------------------------------------------- */
+        /* LOGO & MAIN NAV BAND                                */
+        /* ---------------------------------------------------- */
+        .brand-header {
+            background: #ffffff;
+            padding: 15px 20px 10px 20px;
+        }
+
+        .brand-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .commerzbank-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--cbk-black);
+            text-transform: uppercase;
+        }
+
+        .cbk-ribbon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ffe000 0%, #fecb00 50%, #e5b700 100%);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            display: inline-block;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Yellow Main Nav */
+        .main-nav-band {
+            background-color: var(--cbk-yellow);
+            border-bottom: 2px solid var(--cbk-yellow-dark);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding-left: 50px;
+        }
+
+        .nav-item {
+            padding: 12px 18px;
+            font-weight: 700;
+            color: var(--cbk-black);
+            font-size: 13px;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .nav-item:hover {
+            background-color: var(--cbk-yellow-dark);
+        }
+
+        .nav-item.active {
+            background-color: #ffffff;
+            color: var(--cbk-black);
+            border-top: 3px solid var(--cbk-dark-grey);
+            margin-top: -3px;
+            padding-top: 12px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN BODY LAYOUT & SIDEBAR                           */
+        /* ---------------------------------------------------- */
+        .portal-body-wrapper {
+            max-width: 1200px;
+            margin: 15px auto;
+            display: flex;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        /* Left Icon Sidebar */
+        .icon-sidebar {
+            width: 45px;
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            gap: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+        }
+
+        .sidebar-icon-btn {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cbk-mid-grey);
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sidebar-icon-btn:hover,
+        .sidebar-icon-btn.active {
+            color: var(--cbk-black);
+            background: var(--cbk-bg-grey);
+        }
+
+        .badge-count {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--cbk-yellow);
+            color: var(--cbk-black);
+            font-size: 9px;
+            font-weight: 800;
+            padding: 1px 4px;
+            border-radius: 8px;
+            border: 1px solid #d4a700;
+        }
+
+        /* Main Workspace Container */
+        .portal-content-area {
+            flex: 1;
+            background: transparent;
+            min-height: 650px;
+        }
+
+        /* Breadcrumb Trail */
+        .breadcrumb-bar {
+            font-size: 11px;
+            color: var(--cbk-mid-grey);
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb-bar a {
+            color: var(--cbk-mid-grey);
+        }
+
+        .breadcrumb-bar span {
+            margin: 0 4px;
+        }
+
+        /* Greeting Bar */
+        .welcome-banner {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 2px;
+        }
+
+        .welcome-title-box h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--cbk-dark-grey);
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .welcome-subtitle {
+            font-size: 12px;
+            color: var(--cbk-mid-grey);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .elemente-hinzufuegen-btn {
+            background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+            border: 1px solid var(--cbk-border);
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .elemente-hinzufuegen-btn:hover {
+            background: #e6e6e6;
+        }
+
+        .btn-plus-accent {
+            color: #d4a700;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        /* Corporate Info Card Top Header */
+        .corp-info-card {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            border-left: 4px solid var(--cbk-yellow-dark);
+            padding: 12px 16px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+
+        .corp-info-item label {
+            color: var(--cbk-mid-grey);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .corp-info-item span {
+            font-weight: 700;
+            color: var(--cbk-dark-grey);
+        }
+
+        /* ---------------------------------------------------- */
+        /* WIDGET CARDS GRID                                   */
+        /* ---------------------------------------------------- */
+        .widgets-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .widget-card {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            border-top: 4px solid var(--cbk-yellow);
+            border-radius: 2px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .widget-header {
+            padding: 10px 15px;
+            background: #f7f7f7;
+            border-bottom: 1px solid var(--cbk-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .widget-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--cbk-dark-grey);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .widget-body {
+            padding: 15px;
+        }
+
+        .widget-footer {
+            padding: 10px 15px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            text-align: left;
+        }
+
+        .btn-widget-link {
+            background: #e6e6e6;
+            border: 1px solid #ccc;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .btn-widget-link:hover {
+            background: #d9d9d9;
+            text-decoration: none;
+        }
+
+        /* ---------------------------------------------------- */
+        /* FINANZÜBERSICHT TABLE & TREE                         */
+        /* ---------------------------------------------------- */
+        .finanz-view-select {
+            padding: 6px 10px;
+            border: 1px solid var(--cbk-border);
+            border-radius: 2px;
+            font-size: 12px;
+            background: #fff;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .saldo-total-banner {
+            background: #e9e9e9;
+            padding: 12px 15px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--cbk-border);
+            margin-bottom: 10px;
+        }
+
+        .saldo-amount-pos {
+            color: var(--cbk-green);
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        .account-group-tree {
+            border: 1px solid var(--cbk-border);
+            background: #fff;
+            margin-bottom: 15px;
+        }
+
+        .group-header-row {
+            background: #e6e6e6;
+            padding: 8px 12px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--cbk-border);
+            cursor: pointer;
+        }
+
+        .account-item-row {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.15s;
+        }
+
+        .account-item-row:hover {
+            background-color: var(--cbk-yellow-light);
+        }
+
+        .account-details-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .account-name-label {
+            font-weight: 700;
+            color: var(--cbk-dark-grey);
+        }
+
+        .account-iban-sub {
+            font-size: 11px;
+            color: var(--cbk-mid-grey);
+            font-family: monospace;
+        }
+
+        .account-val-col {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .account-amount {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .btn-aktionen {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            padding: 3px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-aktionen:hover {
+            background: #f2f2f2;
+            border-color: #999;
+        }
+
+        /* Context Menu Popup */
+        .aktionen-menu-popup {
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 2px;
+            z-index: 1000;
+            width: 170px;
+            display: none;
+        }
+
+        .aktionen-menu-popup a {
+            display: block;
+            padding: 7px 12px;
+            font-size: 12px;
+            color: var(--cbk-dark-grey);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .aktionen-menu-popup a:hover {
+            background-color: var(--cbk-yellow-light);
+            text-decoration: none;
+            color: var(--cbk-black);
+        }
+
+        /* ---------------------------------------------------- */
+        /* UMSATZÜBERSICHT (TRANSACTIONS) WIDGET & PAGE        */
+        /* ---------------------------------------------------- */
+        .trans-slider-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border: 1px solid var(--cbk-border);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .trans-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .trans-table th {
+            background: #e6e6e6;
+            text-align: left;
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--cbk-border);
+            font-weight: 700;
+        }
+
+        .trans-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .trans-table tr:hover {
+            background: var(--cbk-yellow-light);
+        }
+
+        .amount-minus {
+            color: var(--cbk-red);
+            font-weight: 700;
+        }
+
+        .amount-plus {
+            color: var(--cbk-green);
+            font-weight: 700;
+        }
+
+        /* ---------------------------------------------------- */
+        /* WUNSCHKREDIT RECHNER (LOAN CALCULATOR)               */
+        /* ---------------------------------------------------- */
+        .kreditrechner-card {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            padding: 20px;
+            border-radius: 2px;
+        }
+
+        .kredit-steps-bar {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--cbk-yellow);
+        }
+
+        .kredit-step-item {
+            flex: 1;
+            padding: 10px 15px;
+            background: #f2f2f2;
+            color: var(--cbk-mid-grey);
+            font-weight: 700;
+            font-size: 12px;
+            border-right: 1px solid #fff;
+            position: relative;
+        }
+
+        .kredit-step-item.active {
+            background: var(--cbk-yellow);
+            color: var(--cbk-black);
+        }
+
+        .kredit-step-item.active::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 0;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            border-left: 10px solid var(--cbk-yellow);
+            z-index: 2;
+        }
+
+        .kredit-calc-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row-calc {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row-calc label {
+            width: 160px;
+            font-weight: 600;
+        }
+
+        .form-row-calc input[type="text"],
+        .form-row-calc select {
+            padding: 6px 10px;
+            border: 1px solid var(--cbk-border);
+            border-radius: 2px;
+            width: 180px;
+            font-size: 13px;
+        }
+
+        .btn-recalcul {
+            background: linear-gradient(to bottom, #ffdb00, #e6b800);
+            border: 1px solid #cca300;
+            padding: 8px 24px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        .btn-recalcul:hover {
+            background: #e6b800;
+        }
+
+        .calc-summary-sidebar {
+            background: #f9f9f9;
+            border: 1px solid var(--cbk-border);
+            border-top: 3px solid var(--cbk-yellow);
+            padding: 15px;
+        }
+
+        .summary-rate-box {
+            background: var(--cbk-dark-grey);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin: 12px 0;
+            border-radius: 2px;
+        }
+
+        .summary-rate-val {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--cbk-yellow);
+        }
+
+        /* Laufzeit Table */
+        .laufzeit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        .laufzeit-table th {
+            background: #f2f2f2;
+            padding: 8px;
+            border: 1px solid var(--cbk-border);
+            text-align: center;
+        }
+
+        .laufzeit-table td {
+            padding: 8px;
+            border: 1px solid var(--cbk-border);
+            text-align: center;
+        }
+
+        .laufzeit-table tr.selected-row {
+            background: var(--cbk-black);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MODALS (photoTAN, PDF, ETC.)                         */
+        /* ---------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border: 1px solid var(--cbk-border);
+            border-top: 5px solid var(--cbk-yellow);
+            width: 550px;
+            max-width: 90%;
+            border-radius: 2px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            padding: 20px;
+        }
+
+        .modal-header-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-header-line h3 {
+            font-size: 17px;
+            color: var(--cbk-dark-grey);
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--cbk-mid-grey);
+        }
+
+        /* photoTAN Graphic */
+        .phototan-matrix-container {
+            text-align: center;
+            background: #f4f4f4;
+            padding: 15px;
+            border: 1px dashed #bbb;
+            margin: 15px 0;
+        }
+
+        .tan-matrix-canvas {
+            border: 4px solid var(--cbk-yellow);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .disclaimer-text-footer {
+            font-size: 10.5px;
+            color: var(--cbk-mid-grey);
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--cbk-border);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 1. TOP PORTAL HEADER BAR                            -->
+    <!-- ---------------------------------------------------- -->
+    <header class="portal-top-bar">
+        <div class="portal-top-container">
+            <nav class="customer-segments">
+                <a href="#" onclick="switchMainSegment('Privatkunden')">Privatkunden</a>
+                <a href="#" onclick="switchMainSegment('Geschäftskunden')">Geschäftskunden</a>
+                <a href="#" class="active" onclick="switchMainSegment('Firmenkunden')">Firmenkunden</a>
+            </nav>
+            <div class="top-utility-nav">
+                <div class="search-box-top">
+                    <input type="text" placeholder="Ihr Suchtext">
+                    <button onclick="alert('Suche gestartet...')"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <a href="#" style="font-weight:600; font-size:12px; color:var(--cbk-dark-grey);"
+                    onclick="alert('Umschaltung auf Konzern-Portal')">Konzern</a>
+                <a href="#" class="btn-abmelden" onclick="confirmLogout()">Abmelden</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 2. BRAND LOGO & YELLOW NAV BAND                      -->
+    <!-- ---------------------------------------------------- -->
+    <div class="brand-header">
+        <div class="brand-container">
+            <div class="commerzbank-logo">
+                COMMERZBANK <span class="cbk-ribbon"></span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-nav-band">
+        <div class="main-nav-container">
+            <div class="nav-item active" id="tab-startseite" onclick="showTab('startseite')">Online Banking</div>
+            <div class="nav-item" id="tab-produkte" onclick="showTab('produkte')">Produkte</div>
+            <div class="nav-item" id="tab-beratung" onclick="showTab('beratung')">Beratung</div>
+            <div class="nav-item" id="tab-wertpapiere" onclick="showTab('wertpapiere')">Wertpapiere & Märkte</div>
+            <div class="nav-item" id="tab-service" onclick="showTab('service')">Service & Hilfe</div>
+            <div class="nav-item" id="tab-kontakt" onclick="showTab('kontakt')">Kontakt</div>
+        </div>
+    </nav>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- 3. MAIN WORKSPACE WITH SIDEBAR                       -->
+    <!-- ---------------------------------------------------- -->
+    <div class="portal-body-wrapper">
+
+        <!-- Left Icon Sidebar -->
+        <aside class="icon-sidebar">
+            <div class="sidebar-icon-btn active" title="Startseite & Übersicht" onclick="showTab('startseite')">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="sidebar-icon-btn" title="Finanzübersicht" onclick="showTab('finanzuebersicht')">
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="sidebar-icon-btn" title="Elektronisches Postfach (11 ungelesene Dokumente)"
+                onclick="showTab('postfach')">
+                <i class="fa-solid fa-envelope"></i>
+                <span class="badge-count">11</span>
+            </div>
+            <div class="sidebar-icon-btn" title="Einstellungen & TAN-Verwaltung" onclick="showTab('verwaltung')">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="portal-content-area">
+
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb-bar" id="breadcrumb-text">
+                <a href="#">Start Firmenkunden</a> <span>&rsaquo;</span> <a href="#">Online Banking</a>
+                <span>&rsaquo;</span> <strong id="breadcrumb-current">Meine Startseite</strong>
+            </div>
+
+            <!-- Welcome Greeting Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-title-box">
+                    <h1>Willkommen, THYSSENKRUPP PLASTICS GmbH</h1>
+                    <div class="welcome-subtitle">
+                        Firmenkunden-Portal &bull; Letzte erfolgreiche Anmeldung: Heute, 13:45 Uhr.
+                    </div>
+                </div>
+                <button class="elemente-hinzufuegen-btn" onclick="openModal('modal-widgets-config')">
+                    <span class="btn-plus-accent">+</span> Elemente hinzufügen
+                </button>
+            </div>
+
+            <!-- Corporate Account Specification Box -->
+            <div class="corp-info-card">
+                <div class="corp-info-item">
+                    <label>Kontoinhaber / Firma</label>
+                    <span>THYSSENKRUPP PLASTICS GmbH</span>
+                    <div style="font-size:11px; color:var(--cbk-mid-grey); margin-top:2px;">Thyssenkrupp Allee 1, 45143
+                        Essen, Germany</div>
+                </div>
+                <div class="corp-info-item">
+                    <label>Kontoverbindung (IBAN / BIC)</label>
+                    <span style="font-family:monospace;">DE16 3004 0000 0204 0277 00</span>
+                    <div style="font-size:11px; color:var(--cbk-mid-grey); margin-top:2px;">SWIFT / BIC:
+                        <strong>COBADEFFXXX</strong></div>
+                </div>
+                <div class="corp-info-item">
+                    <label>Kontoführende Filiale</label>
+                    <span>Commerzbank AG - Filiale Düsseldorf</span>
+                    <div style="font-size:11px; color:var(--cbk-mid-grey); margin-top:2px;">Breite Straße 25, 40213
+                        Düsseldorf, Germany</div>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 1: MEINE STARTSEITE (CUSTOMIZABLE DASHBOARD)     -->
+            <!-- ==================================================== -->
+            <div id="view-startseite" class="tab-view-page">
+
+                <!-- 2-Column Responsive Widgets Grid -->
+                <div class="widgets-grid-container">
+
+                    <!-- Left Column Widgets -->
+                    <div class="widget-col-left">
+
+                        <!-- WIDGET 1: Finanzübersicht -->
+                        <div class="widget-card">
+                            <div class="widget-header">
+                                <span class="widget-title"><i class="fa-solid fa-chart-pie" style="color:#cca300;"></i>
+                                    Finanzübersicht</span>
+                            </div>
+                            <div class="widget-body">
+                                <select class="finanz-view-select" onchange="switchFinanzView(this.value)">
+                                    <option value="einfach">Einfache Ansicht</option>
+                                    <option value="kundennummer">Ansicht nach Kundennummern</option>
+                                </select>
+
+                                <div class="saldo-total-banner">
+                                    <span>Gesamtsaldo / Verfügbarer Betrag</span>
+                                    <span class="saldo-amount-pos" id="val-gesamtsaldo">+ 14.000.000,00 EUR</span>
+                                </div>
+
+                                <!-- Tree View Items -->
+                                <div class="account-group-tree">
+                                    <div class="group-header-row" onclick="toggleTreeGroup('grp-konten')">
+                                        <span>▼ Firmenkonten</span>
+                                        <span style="font-size:12px;">+ 14.000.000,00 EUR</span>
+                                    </div>
+                                    <div id="grp-konten">
+                                        <div class="account-item-row">
+                                            <div class="account-details-col">
+                                                <i class="fa-solid fa-building-columns"
+                                                    style="font-size:14px; color:var(--cbk-dark-grey);"></i>
+                                                <div>
+                                                    <div class="account-name-label">Firmen-Hauptkonto | THYSSENKRUPP
+                                                        PLASTICS GmbH</div>
+                                                    <div class="account-iban-sub">DE16 3004 0000 0204 0277 00 &bull;
+                                                        BIC: COBADEFFXXX</div>
+                                                </div>
+                                            </div>
+                                            <div class="account-val-col">
+                                                <span class="account-amount">+ 14.000.000,00 EUR</span>
+                                                <button class="btn-aktionen"
+                                                    onclick="openAktionenMenu(event, 'Firmen-Hauptkonto')">➔
+                                                    Aktionen</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="group-header-row" onclick="toggleTreeGroup('grp-depot')">
+                                        <span>► Firmen-Wertpapierdepots</span>
+                                        <span style="font-size:12px;">Depot eingerichtet</span>
+                                    </div>
+                                    <div id="grp-depot" style="display:none;">
+                                        <div class="account-item-row">
+                                            <div class="account-details-col">
+                                                <div>
+                                                    <div class="account-name-label">Unternehmens-Depot | THYSSENKRUPP
+                                                        PLASTICS GmbH</div>
+                                                    <div class="account-iban-sub">Depot-Nr. 3004 928401928</div>
+                                                </div>
+                                            </div>
+                                            <div class="account-val-col">
+                                                <span class="account-amount">+ 0,00 EUR</span>
+                                                <button class="btn-aktionen"
+                                                    onclick="openAktionenMenu(event, 'Depot')">➔ Aktionen</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-footer">
+                                <button class="btn-widget-link" onclick="showTab('finanzuebersicht')">Zur
+                                    Finanzübersicht</button>
+                            </div>
+                        </div>
+
+                        <!-- WIDGET 2: Marktüberblick Ticker -->
+                        <div class="widget-card">
+                            <div class="widget-header">
+                                <span class="widget-title"><i class="fa-solid fa-arrow-trend-up"
+                                        style="color:#cca300;"></i> Marktüberblick (Rohstoffe & Börse)</span>
+                            </div>
+                            <div class="widget-body">
+                                <table class="trans-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Index / Wertpapier</th>
+                                            <th>Aktuell</th>
+                                            <th>Diff. (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>thyssenkrupp AG (TKAG)</strong></td>
+                                            <td>4,12 €</td>
+                                            <td class="amount-plus">+ 2,45 %</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>DAX 40</strong></td>
+                                            <td>18.420,50</td>
+                                            <td class="amount-plus">+ 0,65 %</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Polymer Plastic Index (EUR)</strong></td>
+                                            <td>1.240,80</td>
+                                            <td class="amount-plus">+ 1,15 %</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>EUR / USD</strong></td>
+                                            <td>1,0854</td>
+                                            <td class="amount-minus">- 0,15 %</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column Widgets -->
+                    <div class="widget-col-right">
+
+                        <!-- WIDGET 3: Corporate Treasury Banner -->
+                        <div class="widget-card" style="border-top-color:#cca300;">
+                            <div class="widget-body" style="display:flex; gap:15px; align-items:center;">
+                                <div
+                                    style="background:#1a1a1a; color:var(--cbk-yellow); padding:15px; border-radius:3px; text-align:center; font-weight:800; font-size:14px;">
+                                    CORPORATE<br>TREASURY
+                                </div>
+                                <div>
+                                    <h4 style="font-size:14px; margin-bottom:4px;">Commerzbank Corporate Cash Management
+                                    </h4>
+                                    <p style="font-size:11px; color:var(--cbk-mid-grey); margin-bottom:8px;">Betreuung
+                                        durch Filiale Düsseldorf (Breite Straße 25). Ansprechpartner: Corporate Banking
+                                        Desk.</p>
+                                    <button class="btn-widget-link"
+                                        style="background:var(--cbk-yellow); border:none; font-weight:700;"
+                                        onclick="showTab('kreditrechner')">Wunschkredit & Rechner</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WIDGET 4: Umsatzübersicht -->
+                        <div class="widget-card">
+                            <div class="widget-header">
+                                <span class="widget-title"><i class="fa-solid fa-list-check" style="color:#cca300;"></i>
+                                    Umsatzübersicht (Letzte Buchungen)</span>
+                            </div>
+                            <div class="widget-body">
+                                <div class="trans-slider-bar">
+                                    <i class="fa-solid fa-chevron-left" style="cursor:pointer;"
+                                        onclick="alert('Vorheriges Konto')"></i>
+                                    <span>DE16 3004 0000 0204 0277 00</span>
+                                    <i class="fa-solid fa-chevron-right" style="cursor:pointer;"
+                                        onclick="alert('Nächstes Konto')"></i>
+                                </div>
+                                <div style="font-size:11px; color:var(--cbk-mid-grey); margin-bottom:10px;">THYSSENKRUPP
+                                    PLASTICS GmbH &bull; Kontostand: <strong>+ 10.000.000,00 EUR</strong></div>
+
+                                <table class="trans-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Datum</th>
+                                            <th>Buchungstext</th>
+                                            <th style="text-align:right;">Betrag (EUR)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="startseite-trans-rows">
+                                        <tr>
+                                            <td>22.09.2026</td>
+                                            <td>Gutschrift BASF SE Polyethylene Supply</td>
+                                            <td style="text-align:right;" class="amount-plus">+ 2.450.000,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20.09.2026</td>
+                                            <td>Überweisung Siemens Industrial Equipment</td>
+                                            <td style="text-align:right;" class="amount-minus">- 450.000,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15.09.2026</td>
+                                            <td>Gutschrift Evonik Industries Raw Materials</td>
+                                            <td style="text-align:right;" class="amount-plus">+ 8.000.000,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="widget-footer">
+                                <button class="btn-widget-link" onclick="showTab('umsatze')">Zur
+                                    Umsatzübersicht</button>
+                            </div>
+                        </div>
+
+                        <!-- WIDGET 5: Einnahmen & Ausgaben Visualizer -->
+                        <div class="widget-card">
+                            <div class="widget-header">
+                                <span class="widget-title"><i class="fa-solid fa-chart-column"
+                                        style="color:#cca300;"></i> Einnahmen & Ausgaben (Corporate Overview)</span>
+                            </div>
+                            <div class="widget-body" style="text-align:center;">
+                                <div style="font-size:11px; color:var(--cbk-mid-grey); margin-bottom:8px;">Firmenkonto |
+                                    THYSSENKRUPP PLASTICS GmbH</div>
+                                <div style="font-weight:700; color:var(--cbk-green); margin-bottom:10px;">
+                                    Guthaben-Stand: + 10.000.000,00 EUR</div>
+                                <canvas id="chartEinnahmen" width="380" height="130" style="max-width:100%;"></canvas>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 2: FINANZÜBERSICHT (FULL DETAILED PAGE)         -->
+            <!-- ==================================================== -->
+            <div id="view-finanzuebersicht" class="tab-view-page" style="display:none;">
+                <div style="background:#fff; border:1px solid var(--cbk-border); padding:20px; border-radius:2px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h2 style="font-size:20px; font-family:Georgia, serif; font-weight:400;">Finanzübersicht —
+                            THYSSENKRUPP PLASTICS GmbH</h2>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn-widget-link" onclick="window.print()"><i class="fa-solid fa-print"></i>
+                                Drucken</button>
+                            <button class="btn-widget-link" style="border-color:red; color:red;"
+                                onclick="downloadPDFStatement()"><i class="fa-solid fa-file-pdf"></i> PDF
+                                Speichern</button>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:15px; margin-bottom:20px;">
+                        <select class="finanz-view-select" style="max-width:320px;"
+                            onchange="switchFinanzView(this.value)">
+                            <option value="einfach">Einfache Ansicht</option>
+                            <option value="kundennummer" selected>Ansicht nach Kundennummern</option>
+                        </select>
+                    </div>
+
+                    <div class="saldo-total-banner" style="font-size:16px;">
+                        <span>Verfügbarer Gesamtbetrag</span>
+                        <span class="saldo-amount-pos" style="font-size:20px;">+ 10.000.000,00 EUR</span>
+                    </div>
+
+                    <!-- Detailed Customer Number View -->
+                    <div class="account-group-tree">
+                        <div class="group-header-row" style="background:#dcdcdc; font-size:14px;">
+                            <span>▼ Kundennummer 30040204 | THYSSENKRUPP PLASTICS GmbH</span>
+                            <span>+ 10.000.000,00 EUR</span>
+                        </div>
+                        <div>
+                            <div class="account-item-row">
+                                <div class="account-details-col">
+                                    <i class="fa-solid fa-building-columns"
+                                        style="color:var(--cbk-dark-grey); font-size:18px;"></i>
+                                    <div>
+                                        <div class="account-name-label">Firmen-Hauptkonto | THYSSENKRUPP PLASTICS GmbH
+                                        </div>
+                                        <div class="account-iban-sub">IBAN: DE16 3004 0000 0204 0277 00 &bull;
+                                            SWIFT/BIC: COBADEFFXXX &bull; Filiale Düsseldorf (Breite Straße 25)</div>
+                                    </div>
+                                </div>
+                                <div class="account-val-col">
+                                    <input type="checkbox" checked onchange="recalculateGesamtsaldo()">
+                                    <span class="account-amount" style="color:var(--cbk-green);">+ 10.000.000,00
+                                        EUR</span>
+                                    <button class="btn-aktionen"
+                                        onclick="openAktionenMenu(event, 'Firmen-Hauptkonto')">➔ Aktionen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-text-footer">
+                        Die angegebenen Kontostände berücksichtigen nicht die Wertstellung der Buchungen. Dies bedeutet,
+                        dass die genannten Beträge nicht dem tatsächlich zur Verfügung stehenden Guthaben entsprechen
+                        müssen. Somit können bei Verfügungen möglicherweise Zinsen für die Inanspruchnahme einer
+                        eingeräumten oder geduldeten Kontoüberziehung anfallen. In Fremdwährung geführte Produkte werden
+                        unter Verwendung eines Devisenkurses umgerechnet. Die ermittelten Werte dienen zur Berechnung
+                        des Gesamtsaldos und entsprechen nicht unbedingt den tatsächlich zur Verfügung stehenden
+                        Guthaben.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 3: UMSÄTZE (TRANSACTIONS FULL PAGE)             -->
+            <!-- ==================================================== -->
+            <div id="view-umsatze" class="tab-view-page" style="display:none;">
+                <div style="background:#fff; border:1px solid var(--cbk-border); padding:20px; border-radius:2px;">
+                    <h2 style="font-size:20px; font-family:Georgia, serif; font-weight:400; margin-bottom:15px;">
+                        Umsatzübersicht & Buchungsjournal</h2>
+
+                    <div
+                        style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:15px; background:#f7f7f7; padding:12px; border:1px solid var(--cbk-border);">
+                        <div>
+                            <label style="font-weight:600; display:block; margin-bottom:4px;">Konto wählen:</label>
+                            <select class="finanz-view-select" style="margin:0;" id="select-umsatz-konto">
+                                <option>Firmen-Hauptkonto (DE16 3004 0000 0204 0277 00)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight:600; display:block; margin-bottom:4px;">Zeitraum:</label>
+                            <select class="finanz-view-select" style="margin:0;">
+                                <option>Letzte 30 Tage</option>
+                                <option>Aktueller Monat</option>
+                                <option>Letztes Quartal</option>
+                                <option>Gesamtes Jahr 2026</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight:600; display:block; margin-bottom:4px;">Suchbegriff:</label>
+                            <input type="text" placeholder="z.B. BASF, Siemens, Evonik" class="finanz-view-select"
+                                style="margin:0;" id="input-trans-filter" onkeyup="filterTransactionTable()">
+                        </div>
+                    </div>
+
+                    <table class="trans-table" id="table-full-umsatze">
+                        <thead>
+                            <tr>
+                                <th>Buchungstag</th>
+                                <th>Wertstellung</th>
+                                <th>Empfänger / Zahlungspflichtiger</th>
+                                <th>Verwendungszweck</th>
+                                <th style="text-align:right;">Betrag (EUR)</th>
+                                <th>Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22.09.2026</td>
+                                <td>22.09.2026</td>
+                                <td>BASF SE Polyethylene Supply</td>
+                                <td>Rechnung #BASF-90218491 Plastics Granulate</td>
+                                <td style="text-align:right;" class="amount-plus">+ 2.450.000,00</td>
+                                <td><button class="btn-widget-link" style="padding:2px 6px; font-size:10px;"
+                                        onclick="downloadSinglePDF('BASF SE', '+ 2.450.000,00 €')">PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>20.09.2026</td>
+                                <td>20.09.2026</td>
+                                <td>Siemens Industrial Equipment</td>
+                                <td>Extrusion Machinery Maintenance Q3</td>
+                                <td style="text-align:right;" class="amount-minus">- 450.000,00</td>
+                                <td><button class="btn-widget-link" style="padding:2px 6px; font-size:10px;"
+                                        onclick="downloadSinglePDF('Siemens AG', '- 450.000,00 €')">PDF</button></td>
+                            </tr>
+                            <tr>
+                                <td>15.09.2026</td>
+                                <td>15.09.2026</td>
+                                <td>Evonik Industries Raw Materials</td>
+                                <td>Gutschrift Polymer Delivery Essen Branch</td>
+                                <td style="text-align:right;" class="amount-plus">+ 8.000.000,00</td>
+                                <td><button class="btn-widget-link" style="padding:2px 6px; font-size:10px;"
+                                        onclick="downloadSinglePDF('Evonik Industries', '+ 8.000.000,00 €')">PDF</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 4: ÜBERWEISUNG & photoTAN SEPA FORM             -->
+            <!-- ==================================================== -->
+            <div id="view-ueberweisung" class="tab-view-page" style="display:none;">
+                <div
+                    style="background:#fff; border:1px solid var(--cbk-border); padding:20px; border-radius:2px; max-width:750px;">
+                    <h2 style="font-size:20px; font-family:Georgia, serif; font-weight:400; margin-bottom:15px;">
+                        Inlands- / SEPA-Überweisung (Firmenkunde)</h2>
+
+                    <form onsubmit="handleTransferSubmit(event)">
+                        <div class="form-row-calc">
+                            <label>Absenderkonto:</label>
+                            <select class="finanz-view-select" style="width:380px;" id="sepa-from">
+                                <option>Firmen-Hauptkonto (DE16 3004 0000 0204 0277 00) - Guthaben: 10.000.000,00 €
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-row-calc">
+                            <label>Empfänger Name:</label>
+                            <input type="text" id="sepa-name" required placeholder="z.B. BASF SE" style="width:380px;">
+                        </div>
+
+                        <div class="form-row-calc">
+                            <label>IBAN / Kontonummer:</label>
+                            <input type="text" id="sepa-iban" required placeholder="DE89 3704 0044 0532 0130 00"
+                                style="width:380px;">
+                        </div>
+
+                        <div class="form-row-calc">
+                            <label>BIC / SWIFT:</label>
+                            <input type="text" value="COBADEFFXXX" style="width:380px;">
+                        </div>
+
+                        <div class="form-row-calc">
+                            <label>Betrag (EUR):</label>
+                            <input type="number" step="0.01" id="sepa-amount" required placeholder="0,00"
+                                style="width:180px;">
+                        </div>
+
+                        <div class="form-row-calc">
+                            <label>Verwendungszweck:</label>
+                            <input type="text" id="sepa-purpose" placeholder="Rechnungsnummer / Kundennummer"
+                                style="width:380px;">
+                        </div>
+
+                        <div style="margin-left:160px; margin-bottom:15px;">
+                            <label><input type="checkbox"> Als Firmen-Überweisungsvorlage speichern</label><br>
+                            <label><input type="checkbox"> Ausführungstermin in der Zukunft planen</label>
+                        </div>
+
+                        <div style="margin-left:160px;">
+                            <button type="submit" class="btn-recalcul">Weiter zur photoTAN-Freigabe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 5: ELEKTRONISCHES POSTFACH (DIGITAL MAILBOX)    -->
+            <!-- ==================================================== -->
+            <div id="view-postfach" class="tab-view-page" style="display:none;">
+                <div style="background:#fff; border:1px solid var(--cbk-border); padding:20px; border-radius:2px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h2 style="font-size:20px; font-family:Georgia, serif; font-weight:400;">Elektronisches Postfach
+                            — THYSSENKRUPP PLASTICS GmbH</h2>
+                        <span class="badge-count" style="position:static; font-size:12px; padding:4px 8px;">11
+                            Ungelesene Dokumente</span>
+                    </div>
+
+                    <table class="trans-table">
+                        <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Kategorie</th>
+                                <th>Betreff / Dokumententitel</th>
+                                <th>Status</th>
+                                <th style="text-align:right;">Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22.09.2026</td>
+                                <td>Kontoauszug</td>
+                                <td>Kontoauszug Nr. 09 / 2026 - DE16 3004 0000 0204 0277 00</td>
+                                <td><strong style="color:var(--cbk-red);">Ungelesen</strong></td>
+                                <td style="text-align:right;"><button class="btn-widget-link"
+                                        onclick="openPDFModal('Kontoauszug_THYSSENKRUPP_09_2026.pdf')"><i
+                                            class="fa-solid fa-file-pdf"></i> Öffnen</button></td>
+                            </tr>
+                            <tr>
+                                <td>15.09.2026</td>
+                                <td>Bankbestätigung</td>
+                                <td>Guthabenbestätigung 10.000.000,00 EUR (Filiale Düsseldorf)</td>
+                                <td><strong style="color:var(--cbk-red);">Ungelesen</strong></td>
+                                <td style="text-align:right;"><button class="btn-widget-link"
+                                        onclick="openPDFModal('Guthabenbestaetigung_Commerzbank.pdf')"><i
+                                            class="fa-solid fa-file-pdf"></i> Öffnen</button></td>
+                            </tr>
+                            <tr>
+                                <td>01.09.2026</td>
+                                <td>Steuerbescheinigung</td>
+                                <td>Jahressteuerbescheinigung Corporate Banking 2025</td>
+                                <td><strong style="color:var(--cbk-red);">Ungelesen</strong></td>
+                                <td style="text-align:right;"><button class="btn-widget-link"
+                                        onclick="openPDFModal('Steuerbescheinigung_Thyssenkrupp.pdf')"><i
+                                            class="fa-solid fa-file-pdf"></i> Öffnen</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 6: WUNSCHKREDIT RECHNER (CALCULATOR PAGE)       -->
+            <!-- ==================================================== -->
+            <div id="view-kreditrechner" class="tab-view-page" style="display:none;">
+                <div class="kreditrechner-card">
+                    <h2 style="font-size:22px; font-family:Georgia, serif; font-weight:400; margin-bottom:15px;">
+                        Corporate Banking Credit & Liquidity Calculator</h2>
+
+                    <!-- 3 Steps Bar -->
+                    <div class="kredit-steps-bar">
+                        <div class="kredit-step-item active">1. Kreditdetails</div>
+                        <div class="kredit-step-item">2. Unternehmensdaten</div>
+                        <div class="kredit-step-item">3. Angaben bestätigen</div>
+                    </div>
+
+                    <div class="kredit-calc-grid">
+
+                        <!-- Left Calc Form -->
+                        <div>
+                            <h3 style="font-size:16px; font-weight:700; margin-bottom:10px;">Kreditrechner für
+                                Unternehmenskredite</h3>
+                            <p style="font-size:12px; color:var(--cbk-mid-grey); margin-bottom:15px;">Berechnen Sie
+                                Konditionen für Firmenkredite und Investitionsdarlehen.</p>
+
+                            <div class="form-row-calc">
+                                <label>Wählen Sie ...</label>
+                                <div>
+                                    <label><input type="radio" name="calc_mode" checked> ...
+                                        Wunschbetrag.</label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="calc_mode"> ... Wunschrate.</label>
+                                </div>
+                            </div>
+
+                            <div class="form-row-calc">
+                                <label>Wunschbetrag:</label>
+                                <input type="text" id="calc-betrag" value="50000,00" onchange="updateLoanTable()">
+                                &nbsp; €
+                            </div>
+
+                            <div class="form-row-calc">
+                                <label>Gewünschte Laufzeit:</label>
+                                <select id="calc-laufzeit" onchange="updateLoanTable()">
+                                    <option value="6">6 Monate</option>
+                                    <option value="12" selected>12 Monate</option>
+                                    <option value="36">36 Monate</option>
+                                    <option value="48">48 Monate</option>
+                                    <option value="60">60 Monate</option>
+                                    <option value="84">84 Monate</option>
+                                    <option value="96">96 Monate</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row-calc">
+                                <label>Verwendungszweck:</label>
+                                <div>
+                                    <label><input type="radio" name="purpose" checked>
+                                        Betriebsmittel</label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="purpose"> Investitionskredit</label>
+                                </div>
+                            </div>
+
+                            <button class="btn-recalcul" onclick="updateLoanTable()">Neu berechnen</button>
+                        </div>
+
+                        <!-- Right Summary Box -->
+                        <div class="calc-summary-sidebar">
+                            <div style="font-size:12px; font-weight:600;">Kreditbetrag</div>
+                            <div style="font-size:14px; font-weight:700;" id="sum-betrag">50.000,00 EUR</div>
+
+                            <div style="font-size:12px; font-weight:600; margin-top:8px;">Laufzeit</div>
+                            <div style="font-size:14px; font-weight:700;" id="sum-laufzeit">12 Monate</div>
+
+                            <div class="summary-rate-box">
+                                <div style="font-size:11px;">Monatliche Rate:</div>
+                                <div class="summary-rate-val" id="sum-rate">4.232,65 EUR</div>
+                            </div>
+
+                            <div style="font-size:11px; color:var(--cbk-mid-grey); line-height:1.5;">
+                                Sollzins (jährl. gebunden): <strong id="sum-soll">2,91 %</strong><br>
+                                Effektiver Jahreszins: <strong id="sum-effekt">2,95 %</strong><br>
+                                Gesamtbetrag: <strong id="sum-gesamt">50.791,80 EUR</strong>
+                            </div>
+
+                            <hr style="margin:12px 0; border:none; border-top:1px solid #ddd;">
+                            <div style="font-size:11px;">Corporate Banking Desk Filiale Düsseldorf: <strong>0211 / 82 82
+                                    00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Table -->
+                    <table class="laufzeit-table">
+                        <thead>
+                            <tr>
+                                <th>Laufzeit</th>
+                                <th>Monatliche Rate</th>
+                                <th>Effekt. Jahreszins</th>
+                                <th>Sollzins (jährl. gebunden)</th>
+                                <th>Gesamtbetrag</th>
+                            </tr>
+                        </thead>
+                        <tbody id="laufzeit-table-body">
+                            <!-- Dynamic Rows JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- TAB 7: VERWALTUNG & TAN (SETTINGS)                  -->
+            <!-- ==================================================== -->
+            <div id="view-verwaltung" class="tab-view-page" style="display:none;">
+                <div
+                    style="background:#fff; border:1px solid var(--cbk-border); padding:20px; border-radius:2px; max-width:750px;">
+                    <h2 style="font-size:20px; font-family:Georgia, serif; font-weight:400; margin-bottom:15px;">
+                        Unternehmensverwaltung & Sicherheits-Center</h2>
+
+                    <div
+                        style="margin-bottom:20px; padding:15px; background:#f9f9f9; border:1px solid var(--cbk-border);">
+                        <h3 style="font-size:14px; margin-bottom:8px;">Stammdaten & Bankverbindung</h3>
+                        <div style="font-size:12px; line-height:1.6;">
+                            Firma: <strong>THYSSENKRUPP PLASTICS GmbH</strong><br>
+                            Adresse: <strong>Thyssenkrupp Allee 1, 45143 Essen, Germany</strong><br>
+                            Bank: <strong>Commerzbank AG - Filiale Düsseldorf (Breite Straße 25, 40213
+                                Düsseldorf)</strong><br>
+                            IBAN: <strong>DE16 3004 0000 0204 0277 00</strong> | SWIFT/BIC: <strong>COBADEFFXXX</strong>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-bottom:20px; padding:15px; background:#f9f9f9; border:1px solid var(--cbk-border);">
+                        <h3 style="font-size:14px; margin-bottom:8px;">Aktives Corporate TAN-Verfahren:</h3>
+                        <div style="display:flex; gap:15px; align-items:center;">
+                            <label><input type="radio" name="tan_method" checked> photoTAN Corporate (Empfohlen)</label>
+                            <label><input type="radio" name="tan_method"> EBICS 3.0 Digitale Signatur</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- CONTEXT MENU POPUP (AKTIONEN)                        -->
+    <!-- ---------------------------------------------------- -->
+    <div class="aktionen-menu-popup" id="aktionen-popup">
+        <a href="#" onclick="triggerAktion('umsatz')"><i class="fa-solid fa-arrow-right"></i> Umsatzübersicht</a>
+        <a href="#" onclick="triggerAktion('ueberweisung')"><i class="fa-solid fa-arrow-right"></i> Überweisung</a>
+        <a href="#" onclick="triggerAktion('dauerauftrag')"><i class="fa-solid fa-arrow-right"></i> Dauerauftrag</a>
+        <a href="#" onclick="triggerAktion('lastschrift')"><i class="fa-solid fa-arrow-right"></i> Lastschrift</a>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- MODAL 1: photoTAN VERIFICATION MODAL                -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-phototan">
+        <div class="modal-box">
+            <div class="modal-header-line">
+                <h3><i class="fa-solid fa-shield-halved" style="color:var(--cbk-yellow-dark);"></i> photoTAN Corporate
+                    Freigabe</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-phototan')">&times;</button>
+            </div>
+            <p style="font-size:12px; color:var(--cbk-mid-grey);">
+                Bitte scannen Sie die nachfolgende photoTAN-Grafik mit Ihrer photoTAN Corporate App zur Autorisierung
+                des Auftrags für <strong>THYSSENKRUPP PLASTICS GmbH</strong>.
+            </p>
+
+            <div class="phototan-matrix-container">
+                <canvas class="tan-matrix-canvas" id="canvas-phototan" width="220" height="220"></canvas>
+                <div style="font-size:11px; margin-top:6px; font-weight:700;">Auftrag: SEPA-Überweisung (DE16 3004 0000
+                    0204 0277 00)</div>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:center; justify-content:center; margin-bottom:15px;">
+                <label style="font-weight:700;">6-stellige TAN:</label>
+                <input type="text" id="input-phototan-val" maxlength="6"
+                    style="padding:6px; width:120px; font-size:16px; font-weight:800; letter-spacing:3px; text-align:center; border:1px solid var(--cbk-border);">
+            </div>
+
+            <div style="text-align:center;">
+                <button class="btn-recalcul" style="width:100%;" onclick="confirmPhotoTANProcess()">Auftrag jetzt
+                    verbindlich freigeben</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- MODAL 2: PDF PREVIEW MODAL                           -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-pdf">
+        <div class="modal-box" style="width:680px;">
+            <div class="modal-header-line">
+                <h3 id="pdf-modal-title"><i class="fa-solid fa-file-pdf" style="color:red;"></i> PDF Dokumentenanzeige
+                </h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-pdf')">&times;</button>
+            </div>
+            <div style="background:#f4f4f4; border:1px solid var(--cbk-border); padding:25px; min-height:300px; font-family:Courier, monospace; font-size:12px; line-height:1.5;"
+                id="pdf-document-body">
+                COMMERZBANK AG &bull; FILIALE DÜSSELDORF<br>
+                Breite Straße 25, 40213 Düsseldorf, Germany<br>
+                ====================================================<br>
+                OFFIZIELLE GUTHABENBESTÄTIGUNG / KONTOAUSZUG<br><br>
+                KONTOINHABER:<br>
+                THYSSENKRUPP PLASTICS GmbH<br>
+                Thyssenkrupp Allee 1<br>
+                45143 Essen, Germany<br><br>
+                BANKVERBINDUNG:<br>
+                IBAN: DE16 3004 0000 0204 0277 00<br>
+                SWIFT / BIC: COBADEFFXXX<br>
+                Bank: Commerzbank AG (Filiale Düsseldorf)<br><br>
+                VERFÜGBARER BETRAG:<br>
+                EUR 10.000.000,00 (Zehn Millionen Euro)<br><br>
+                ====================================================<br>
+                Dokument rechtssicher archiviert gemäß GoBD (10 Jahre).
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:15px;">
+                <button class="btn-widget-link" onclick="window.print()">Drucken</button>
+                <button class="btn-recalcul" onclick="alert('PDF Guthabenbestätigung wurde heruntergeladen.')">PDF
+                    Herunterladen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- MODAL 3: WIDGETS CONFIGURATOR MODAL                  -->
+    <!-- ---------------------------------------------------- -->
+    <div class="modal-overlay" id="modal-widgets-config">
+        <div class="modal-box">
+            <div class="modal-header-line">
+                <h3>Elemente auf der Startseite anpassen</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-widgets-config')">&times;</button>
+            </div>
+            <p style="font-size:12px; color:var(--cbk-mid-grey); margin-bottom:12px;">Wählen Sie aus, welche Widgets auf
+                Ihrer Firmenkunden-Startseite angezeigt werden sollen:</p>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+                <label><input type="checkbox" checked> Finanzübersicht Widget (10.000.000,00 €)</label>
+                <label><input type="checkbox" checked> Corporate Cash Management & Treasury</label>
+                <label><input type="checkbox" checked> Marktüberblick (thyssenkrupp AG & Rohstoffe)</label>
+                <label><input type="checkbox" checked> Einnahmen & Ausgaben Graphik</label>
+            </div>
+            <button class="btn-recalcul" style="width:100%;"
+                onclick="closeModal('modal-widgets-config'); alert('Startseiten-Layout erfolgreich gespeichert!');">Layout
+                Speichern</button>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- JAVASCRIPT CORE APPLICATION LOGIC                    -->
+    <!-- ---------------------------------------------------- -->
+    <script>
+        let currentActiveAccount = 'Firmen-Hauptkonto';
+
+        // 1. Tab Switching Navigation
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-view-page').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            const targetView = document.getElementById('view-' + tabId);
+            if (targetView) targetView.style.display = 'block';
+
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) targetTab.classList.add('active');
+
+            const bCrumbMap = {
+                'startseite': 'Meine Startseite',
+                'finanzuebersicht': 'Finanzübersicht',
+                'umsatze': 'Umsatzübersicht',
+                'ueberweisung': 'Überweisung & photoTAN',
+                'postfach': 'Elektronisches Postfach',
+                'kreditrechner': 'Corporate Credit Rechner',
+                'verwaltung': 'Einstellungen & TAN'
+            };
+            document.getElementById('breadcrumb-current').innerText = bCrumbMap[tabId] || 'Portal';
+
+            if (tabId === 'startseite') renderEinnahmenChart();
+            if (tabId === 'kreditrechner') updateLoanTable();
+        }
+
+        // 2. Actions Popover Dropdown
+        function openAktionenMenu(e, accountName) {
+            e.stopPropagation();
+            currentActiveAccount = accountName;
+            const menu = document.getElementById('aktionen-popup');
+            menu.style.display = 'block';
+            menu.style.left = e.pageX + 'px';
+            menu.style.top = e.pageY + 'px';
+        }
+
+        document.addEventListener('click', function () {
+            document.getElementById('aktionen-popup').style.display = 'none';
+        });
+
+        function triggerAktion(type) {
+            document.getElementById('aktionen-popup').style.display = 'none';
+            if (type === 'umsatz') showTab('umsatze');
+            else if (type === 'ueberweisung') showTab('ueberweisung');
+            else alert(`Aktion "${type}" für ${currentActiveAccount} gestartet.`);
+        }
+
+        // 3. Tree Group Toggle
+        function toggleTreeGroup(groupId) {
+            const el = document.getElementById(groupId);
+            if (el) {
+                el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+            }
+        }
+
+        // 4. Recalculate Gesamtsaldo dynamically
+        function recalculateGesamtsaldo() {
+            let total = 0;
+            const checkboxes = document.querySelectorAll('#view-finanzuebersicht input[type="checkbox"]');
+            const values = [10000000.00];
+
+            checkboxes.forEach((cb, idx) => {
+                if (cb.checked) total += values[idx];
+            });
+
+            const formatted = '+ ' + total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' EUR';
+            document.getElementById('val-gesamtsaldo').innerText = formatted;
+        }
+
+        // 5. Income/Expense Bar Chart (Canvas)
+        function renderEinnahmenChart() {
+            const canvas = document.getElementById('chartEinnahmen');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw baseline
+            ctx.beginPath();
+            ctx.moveTo(30, 100);
+            ctx.lineTo(350, 100);
+            ctx.strokeStyle = '#cccccc';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Einnahmen Bar (Green)
+            ctx.fillStyle = '#008800';
+            ctx.fillRect(80, 15, 65, 85);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.font = '11px Open Sans';
+            ctx.fillText('Einnahmen Q3', 75, 115);
+            ctx.fillText('+ 10.450.000 €', 70, 12);
+
+            // Ausgaben Bar (Red)
+            ctx.fillStyle = '#a80000';
+            ctx.fillRect(210, 80, 65, 20);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText('Ausgaben Q3', 210, 115);
+            ctx.fillText('- 450.000 €', 215, 75);
+        }
+
+        // 6. SEPA Transfer & photoTAN
+        function handleTransferSubmit(e) {
+            e.preventDefault();
+            drawPhotoTANMatrix();
+            openModal('modal-phototan');
+        }
+
+        function drawPhotoTANMatrix() {
+            const canvas = document.getElementById('canvas-phototan');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, 220, 220);
+
+            const colors = ['#fecb00', '#000000', '#a80000', '#0055a5', '#008800'];
+            for (let x = 0; x < 220; x += 20) {
+                for (let y = 0; y < 220; y += 20) {
+                    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                    ctx.fillRect(x, y, 18, 18);
+                }
+            }
+        }
+
+        function confirmPhotoTANProcess() {
+            const tanVal = document.getElementById('input-phototan-val').value;
+            if (!tanVal || tanVal.length < 6) {
+                alert('Bitte geben Sie eine gültige 6-stellige TAN ein.');
+                return;
+            }
+
+            const amount = document.getElementById('sepa-amount').value || '0,00';
+            const name = document.getElementById('sepa-name').value || 'Empfänger';
+
+            closeModal('modal-phototan');
+            alert(`Firmen-Überweisung in Höhe von ${amount} € an ${name} wurde mit photoTAN Corporate erfolgreich autorisiert!`);
+
+            const tbody = document.getElementById('startseite-trans-rows');
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>Heute</td><td>${name}</td><td style="text-align:right;" class="amount-minus">- ${amount}</td>`;
+            tbody.insertBefore(row, tbody.firstChild);
+
+            showTab('startseite');
+        }
+
+        // 7. Wunschkredit Loan Table Dynamic Calculation
+        function updateLoanTable() {
+            const betragInput = document.getElementById('calc-betrag').value.replace('.', '').replace(',', '.');
+            let amount = parseFloat(betragInput) || 50000;
+            const selectedMonths = parseInt(document.getElementById('calc-laufzeit').value);
+
+            const runtimes = [
+                { m: 6, zins: 2.95, soll: 2.91 },
+                { m: 12, zins: 2.95, soll: 2.91 },
+                { m: 36, zins: 3.95, soll: 3.88 },
+                { m: 48, zins: 6.95, soll: 6.74 },
+                { m: 60, zins: 6.95, soll: 6.74 },
+                { m: 84, zins: 7.95, soll: 7.67 },
+                { m: 96, zins: 8.95, soll: 8.60 }
+            ];
+
+            const tbody = document.getElementById('laufzeit-table-body');
+            tbody.innerHTML = '';
+
+            runtimes.forEach(item => {
+                const totalInterest = amount * (item.zins / 100) * (item.m / 12);
+                const gesamt = amount + totalInterest;
+                const monthlyRate = gesamt / item.m;
+
+                const isSelected = (item.m === selectedMonths);
+                const tr = document.createElement('tr');
+                if (isSelected) tr.className = 'selected-row';
+
+                tr.innerHTML = `
+                    <td>${item.m} Monate</td>
+                    <td><strong>${monthlyRate.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</strong></td>
+                    <td>${item.zins.toFixed(2).replace('.', ',')} %</td>
+                    <td>${item.soll.toFixed(2).replace('.', ',')} %</td>
+                    <td>${gesamt.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</td>
+                `;
+                tbody.appendChild(tr);
+
+                if (isSelected) {
+                    document.getElementById('sum-betrag').innerText = amount.toLocaleString('de-DE', { minimumFractionDigits: 2 }) + ' EUR';
+                    document.getElementById('sum-laufzeit').innerText = item.m + ' Monate';
+                    document.getElementById('sum-rate').innerText = monthlyRate.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' EUR';
+                    document.getElementById('sum-soll').innerText = item.soll.toFixed(2).replace('.', ',') + ' %';
+                    document.getElementById('sum-effekt').innerText = item.zins.toFixed(2).replace('.', ',') + ' %';
+                    document.getElementById('sum-gesamt').innerText = gesamt.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' EUR';
+                }
+            });
+        }
+
+        // 8. Transaction Table Filter
+        function filterTransactionTable() {
+            const query = document.getElementById('input-trans-filter').value.toLowerCase();
+            const rows = document.querySelectorAll('#table-full-umsatze tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        // 9. PDF Viewer & Modal Handlers
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function openPDFModal(docName) {
+            document.getElementById('pdf-modal-title').innerHTML = `<i class="fa-solid fa-file-pdf" style="color:red;"></i> ${docName}`;
+            openModal('modal-pdf');
+        }
+
+        function downloadPDFStatement() {
+            openPDFModal('Guthabenbestaetigung_THYSSENKRUPP_10M_EUR.pdf');
+        }
+
+        function downloadSinglePDF(name, amount) {
+            openPDFModal(`Buchungsbeleg_${name.replace(/\s+/g, '_')}.pdf`);
+        }
+
+        function confirmLogout() {
+            if (confirm('Möchten Sie sich wirklich aus dem Commerzbank Firmenkunden-Portal abmelden?')) {
+                alert('THYSSENKRUPP PLASTICS GmbH wurde erfolgreich abgemeldet.');
+            }
+        }
+
+        function switchMainSegment(segmentName) {
+            document.querySelectorAll('.customer-segments a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+            alert(`Umschaltung auf den Bereich "${segmentName}"`);
+        }
+
+        // Initialize Page
+        window.onload = function () {
+            renderEinnahmenChart();
+            updateLoanTable();
+        };
+    </script>
+</body>
+
+</html>

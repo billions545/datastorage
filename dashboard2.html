@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First National Bank Financial Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Theme Color Palette - Derived from user image */
+            --primary-blue: #0d9488;
+            --primary-blue-hover: #0f766e;
+            --header-teal-left: #008e9b;
+            --header-teal-mid: #14b8a6;
+            --header-teal-right: #67e8f9;
+
+            --bg-body: #f0fdfa;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-alt: #f0fdfa;
+            --bg-card-hover: #e6fffa;
+
+            --border-color: #ccfbf1;
+            --border-subtle: #f0fdfa;
+
+            --text-main: #0f172a;
+            --text-secondary: #1e293b;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --text-white: #ffffff;
+            --text-blue-light: #ccfbf1;
+
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbe6;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --info-blue: #0ea5e9;
+
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --radius-xs: 6px;
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+
+            --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        /* App Container */
+        .app-container {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* ---------------------------------------------------- */
+        /* SIDEBAR STYLES                                       */
+        /* ---------------------------------------------------- */
+        .sidebar {
+            width: 250px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 14px;
+            flex-shrink: 0;
+            z-index: 50;
+            transition: var(--transition);
+        }
+
+        .brand-container {
+            padding: 4px 12px 20px 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo-svg {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+        }
+
+        .brand-text-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .brand-tagline {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Nav List */
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-item-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: var(--transition);
+        }
+
+        .nav-item a:hover {
+            color: var(--primary-blue);
+            background: #f0fdfa;
+        }
+
+        .nav-item.active a {
+            color: var(--primary-blue);
+            background: #ccfbf1;
+            font-weight: 700;
+            border-left: 3.5px solid var(--primary-blue);
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+
+        .nav-badge {
+            background: var(--danger);
+            color: var(--text-white);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: var(--radius-full);
+            line-height: 1;
+        }
+
+        /* Sidebar Profile Bottom */
+        .sidebar-footer {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .user-profile-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .user-profile-bar:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .chevron-icon {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-muted);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Profile Menu Popup */
+        .profile-dropdown {
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+            width: 210px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            padding: 6px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 100;
+        }
+
+        .profile-dropdown.show {
+            display: flex;
+        }
+
+        .dropdown-item {
+            padding: 8px 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-body);
+            color: var(--primary-blue);
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN CONTENT LAYOUT                                  */
+        /* ---------------------------------------------------- */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow-y: auto;
+        }
+
+        /* Top Teal/Cyan Banner Section */
+        .header-banner {
+            background: linear-gradient(120deg, var(--header-teal-left) 0%, var(--header-teal-mid) 55%, var(--header-teal-right) 100%);
+            padding: 28px 32px 32px 32px;
+            color: var(--text-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle background watermark highlight matching theme image */
+        .header-banner::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .greeting-text h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .greeting-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-user-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-full);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .header-user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-options-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.85);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+        }
+
+        .header-options-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Account Cards Row (3 Cards) */
+        .account-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .account-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 95px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .account-card:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .account-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .account-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .account-number {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .account-body-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .account-balance {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .account-status-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 500;
+        }
+
+        /* Quick Action Buttons Row (5 Icons) */
+        .quick-actions-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .action-btn-card {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: var(--radius-md);
+            padding: 14px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .action-btn-card:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn-icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn-icon-box svg {
+            width: 20px;
+            height: 20px;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .action-btn-label {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ---------------------------------------------------- */
+        /* LOWER BODY CONTENT GRID                             */
+        /* ---------------------------------------------------- */
+        .content-body {
+            padding: 28px 32px;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .column-main,
+        .column-side {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Generic Widget Card */
+        .widget-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .widget-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .widget-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .widget-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-btn-subtle {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn-subtle:hover {
+            background: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        .icon-btn-subtle svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Transactions List */
+        .transactions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border-subtle);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .transaction-item {
+            background: var(--bg-card);
+            padding: 13px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .transaction-item:hover {
+            background: #f8fafc;
+        }
+
+        .trans-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trans-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.01em;
+        }
+
+        .trans-details {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .trans-amount {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+        }
+
+        .trans-amount.positive {
+            color: var(--success);
+        }
+
+        .trans-amount.negative {
+            color: var(--danger);
+        }
+
+        /* Widget Footers */
+        .widget-footer {
+            margin-top: 14px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .see-more-btn {
+            background: #eff6ff;
+            color: var(--primary-blue);
+            border: none;
+            padding: 7px 16px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .see-more-btn:hover {
+            background: #dbeafe;
+            color: var(--primary-blue-hover);
+        }
+
+        /* Payments Card Shortcuts */
+        .payment-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .payment-shortcut-btn {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-shortcut-btn:hover {
+            background: #ffffff;
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .payment-shortcut-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: #eff6ff;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-shortcut-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .payment-shortcut-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Scheduled Payments Sublist */
+        .scheduled-payments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .scheduled-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card-alt);
+        }
+
+        .scheduled-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .scheduled-icon-status {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .scheduled-icon-status.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .scheduled-icon-status.done {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .scheduled-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .scheduled-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .scheduled-amount {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* ---------------------------------------------------- */
+        /* RIGHT SIDEBAR WIDGETS                               */
+        /* ---------------------------------------------------- */
+        /* First National Bank Brand Contact Widget */
+        .brand-contact-widget {
+            text-align: center;
+            padding: 24px 18px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .contact-logo-svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 6px;
+        }
+
+        .contact-brand-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+
+        .contact-brand-subtitle {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .contact-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 16px;
+        }
+
+        .contact-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact-action-btn:hover {
+            color: var(--primary-blue-hover);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card-alt);
+        }
+
+        .contact-icon-circle svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .contact-action-label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Remote Deposits Widget */
+        .remote-deposits-pills {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .deposit-pill {
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .deposit-pill.processing {
+            background: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        .deposit-pill.accepted {
+            background: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        /* Messages Widget */
+        .messages-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg-item {
+            display: flex;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .msg-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .msg-icon-box {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-full);
+            background: var(--bg-card-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--text-muted);
+        }
+
+        .msg-icon-box.warning {
+            color: var(--warning);
+            background: var(--warning-bg);
+        }
+
+        .msg-icon-box svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .msg-content-wrap {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .msg-header-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .msg-sender {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .msg-time {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .msg-snippet {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Transfers Widget */
+        .transfer-widget-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group-sm {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-group-sm label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-control-sm {
+            padding: 8px 10px;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border-color);
+            font-size: 12px;
+            font-family: var(--font-sans);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control-sm:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.15);
+        }
+
+        .btn-submit-transfer {
+            background: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            padding: 9px;
+            border-radius: var(--radius-xs);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: var(--transition);
+        }
+
+        .btn-submit-transfer:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        /* ---------------------------------------------------- */
+        /* FLOATING HELP BUTTON & POPUP                        */
+        /* ---------------------------------------------------- */
+        .floating-help-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-full);
+            background: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .floating-help-btn:hover {
+            transform: scale(1.08);
+            background: var(--primary-blue-hover);
+        }
+
+        .help-popup-box {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 320px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: 18px;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .help-popup-box.show {
+            display: flex;
+        }
+
+        .help-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 8px;
+        }
+
+        .help-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .help-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MODALS SYSTEM                                        */
+        /* ---------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            width: 440px;
+            max-width: 90%;
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            animation: modalSlide 0.25s ease-out forwards;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-body-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-field input,
+        .form-field select {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 13px;
+            outline: none;
+            font-family: var(--font-sans);
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .modal-btn-primary {
+            background: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius-xs);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        /* Search input inside transactions header */
+        .search-input-wrap {
+            display: none;
+            align-items: center;
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            padding: 2px 8px;
+        }
+
+        .search-input-wrap.show {
+            display: flex;
+        }
+
+        .search-input-wrap input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 12px;
+            padding: 4px;
+            width: 140px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* RESPONSIVE BREAKPOINTS                               */
+        /* ---------------------------------------------------- */
+        @media (max-width: 1024px) {
+            .content-body {
+                grid-template-columns: 1fr;
+            }
+
+            .account-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                height: 100vh;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .quick-actions-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- ---------------------------------------------------- -->
+        <!-- SIDEBAR NAVIGATION                                   -->
+        <!-- ---------------------------------------------------- -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <!-- First National Bank Brand Header -->
+                <div class="brand-container">
+                    <svg class="brand-logo-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Sun Circle (Golden Amber) -->
+                        <circle cx="250" cy="250" r="230" fill="#F5A623" />
+                        <!-- Teal Horizon Arc -->
+                        <path d="M 20 270 A 230 230 0 0 0 480 270 A 230 230 0 0 1 20 270 Z" fill="#008080" />
+                        <!-- Acacia Tree Silhouette -->
+                        <path d="M 230 435 L 270 435 L 260 250 L 240 250 Z" fill="#000000" />
+                        <path d="M 245 350 L 155 270 L 170 260 L 250 330 Z" fill="#000000" />
+                        <path d="M 245 280 L 95 190 L 105 180 L 252 265 Z" fill="#000000" />
+                        <path d="M 255 310 L 335 220 L 350 230 L 260 325 Z" fill="#000000" />
+                        <path d="M 255 255 L 400 150 L 415 160 L 262 270 Z" fill="#000000" />
+                        <!-- Canopy Tiers -->
+                        <path
+                            d="M 70 160 L 130 120 L 200 120 L 275 75 L 360 80 L 420 125 L 465 165 L 405 160 L 340 135 L 270 135 L 200 100 L 120 135 Z"
+                            fill="#000000" />
+                        <path
+                            d="M 25 210 L 80 175 L 150 175 L 225 135 L 315 140 L 390 180 L 475 210 L 415 205 L 345 180 L 275 180 L 200 145 L 115 185 Z"
+                            fill="#000000" />
+                        <path d="M 75 290 L 130 255 L 210 255 L 255 235 L 210 235 L 140 245 L 80 275 Z"
+                            fill="#000000" />
+                        <path d="M 270 255 L 330 230 L 420 235 L 460 260 L 410 255 L 335 240 L 275 245 Z"
+                            fill="#000000" />
+                    </svg>
+                    <div class="brand-text-wrap">
+                        <span class="brand-name">FNB</span>
+                        <span class="brand-tagline">First National Bank</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="#" onclick="switchTab(this, 'Dashboard')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                                </svg>
+                                <span>Dashboard</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="switchTab(this, 'Accounts')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                                    <line x1="2" y1="10" x2="22" y2="10" />
+                                </svg>
+                                <span>Accounts</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="switchTab(this, 'Transfers')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <polyline points="17 1 21 5 17 9" />
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                                    <polyline points="7 23 3 19 7 15" />
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                                </svg>
+                                <span>Transfers</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="openModal('modal-deposit')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M12 3v12" />
+                                    <path d="m8 11 4 4 4-4" />
+                                    <rect x="3" y="17" width="18" height="4" rx="1" />
+                                </svg>
+                                <span>Deposit check</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="switchTab(this, 'Payments')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="M12 8v8" />
+                                    <path
+                                        d="M9.5 10.5c.5-.8 1.5-1 2.5-1s2.5.5 2.5 1.5-1.5 2-2.5 2.5-2.5 1-2.5 2 1.5 1.5 2.5 1.5 2-.5 2.5-1" />
+                                </svg>
+                                <span>Payments</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="switchTab(this, 'Messages')">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                                <span>Messages</span>
+                            </div>
+                            <span class="nav-badge" id="sidebar-msg-badge">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="toggleHelpPopup()">
+                            <div class="nav-item-content">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                                <span>Support</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sidebar User Profile Bottom Bar -->
+            <div class="sidebar-footer">
+                <div class="user-profile-bar" onclick="toggleProfileMenu(event)">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none"
+                                stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <span class="user-name">Gobid Ltd</span>
+                    </div>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </div>
+                <!-- Profile Dropdown Popup -->
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <a href="#" class="dropdown-item" onclick="alert('Profile Settings opened')">⚙️ Account Settings</a>
+                    <a href="#" class="dropdown-item" onclick="alert('Security Preferences')">🔒 Security & PIN</a>
+                    <a href="#" class="dropdown-item" onclick="alert('Logged out safely')">🚪 Log Out</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- MAIN VIEW WRAPPER                                    -->
+        <!-- ---------------------------------------------------- -->
+        <main class="main-wrapper">
+            <!-- Top Blue Header Banner -->
+            <header class="header-banner">
+                <div class="header-top-row">
+                    <div class="greeting-text">
+                        <h2>Hi, GoBid Ltd</h2>
+                        <p>Accounts</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-options-btn" title="More Options"
+                            onclick="alert('Header Menu: Settings, Statement Download, Help')">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="5" cy="12" r="2" />
+                                <circle cx="12" cy="12" r="2" />
+                                <circle cx="19" cy="12" r="2" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Account Cards (3 Horizontal Columns) -->
+                <div class="account-cards-grid">
+                    <!-- Checking Card -->
+                    <div class="account-card" onclick="alert('Viewing Checking Details')">
+                        <div class="account-header-row">
+                            <span class="account-title">Checking</span>
+                            <span class="account-number">x1234</span>
+                        </div>
+                        <div class="account-body-row">
+                            <span class="account-balance" id="val-checking">R7,843,920.00</span>
+                            <span class="account-status-label">Available</span>
+                        </div>
+                    </div>
+
+                    <!-- Savings Card -->
+                    <div class="account-card" onclick="alert('Viewing Savings Details')">
+                        <div class="account-header-row">
+                            <span class="account-title">Savings</span>
+                            <span class="account-number">x4321</span>
+                        </div>
+                        <div class="account-body-row">
+                            <span class="account-balance" id="val-savings">R39,349,529.42</span>
+                            <span class="account-status-label">Available</span>
+                        </div>
+                    </div>
+
+                    <!-- Loan Card -->
+                    <div class="account-card" onclick="alert('Viewing Loan Details')">
+                        <div class="account-header-row">
+                            <span class="account-title">Loan</span>
+                            <span class="account-number">x2345</span>
+                        </div>
+                        <div class="account-body-row">
+                            <span class="account-balance" id="val-loan">R109,008.89</span>
+                            <span class="account-status-label">Balance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons Row (5 Buttons) -->
+                <div class="quick-actions-row">
+                    <div class="action-btn-card" onclick="openModal('modal-transfer')">
+                        <div class="action-btn-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="17 1 21 5 17 9" />
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                                <polyline points="7 23 3 19 7 15" />
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                            </svg>
+                        </div>
+                        <span class="action-btn-label">Transfer</span>
+                    </div>
+
+                    <div class="action-btn-card" onclick="openModal('modal-deposit')">
+                        <div class="action-btn-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3v12" />
+                                <path d="m8 11 4 4 4-4" />
+                                <rect x="3" y="17" width="18" height="4" rx="1" />
+                            </svg>
+                        </div>
+                        <span class="action-btn-label">Deposit</span>
+                    </div>
+
+                    <div class="action-btn-card" onclick="openModal('modal-paybill')">
+                        <div class="action-btn-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="M12 8v8" />
+                                <path
+                                    d="M9.5 10.5c.5-.8 1.5-1 2.5-1s2.5.5 2.5 1.5-1.5 2-2.5 2.5-2.5 1-2.5 2 1.5 1.5 2.5 1.5 2-.5 2.5-1" />
+                            </svg>
+                        </div>
+                        <span class="action-btn-label">Pay a bill</span>
+                    </div>
+
+                    <div class="action-btn-card" onclick="openModal('modal-payperson')">
+                        <div class="action-btn-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <span class="action-btn-label">Pay a person</span>
+                    </div>
+
+                    <div class="action-btn-card" onclick="openModal('modal-message')">
+                        <div class="action-btn-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="10" y1="10" x2="14" y2="10" />
+                            </svg>
+                        </div>
+                        <span class="action-btn-label">Message</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Lower Main Content Grid -->
+            <div class="content-body">
+                <!-- Left Main Column (60%) -->
+                <div class="column-main">
+                    <!-- Transactions Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Transactions</h3>
+                            <div class="widget-header-actions">
+                                <div class="search-input-wrap" id="search-bar">
+                                    <input type="text" id="trans-search-input" placeholder="Search..."
+                                        onkeyup="filterTransactions()">
+                                </div>
+                                <button class="icon-btn-subtle" title="Search Transactions"
+                                    onclick="toggleSearchInput()">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="11" cy="11" r="8" />
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    </svg>
+                                </button>
+                                <button class="icon-btn-subtle" title="Options"
+                                    onclick="alert('Transaction Options: Export CSV, Filter by Date')">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="5" cy="12" r="2" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <circle cx="19" cy="12" r="2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Transactions List -->
+                        <div class="transactions-list" id="trans-list-container">
+                            <div class="transaction-item" data-name="DATAKNEAD LTD" style="cursor:pointer;" onclick="openModal('modal-dataknead')">
+                                <div class="trans-info">
+                                    <span class="trans-name">DATAKNEAD LTD</span>
+                                    <span class="trans-details">Nov 26, Checking • Pending</span>
+                                </div>
+                                <span class="trans-amount negative">-R16,110,080.00</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="YOUR TOWN CINEMA">
+                                <div class="trans-info">
+                                    <span class="trans-name"> OFFICE UTILITIES</span>
+                                    <span class="trans-details">Nov 25, Checking</span>
+                                </div>
+                                <span class="trans-amount negative">-R609.00</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="GEORGE'S BBQ & PUB">
+                                <div class="trans-info">
+                                    <span class="trans-name">John'S BBQ & PUB</span>
+                                    <span class="trans-details">Nov 25, Checking</span>
+                                </div>
+                                <span class="trans-amount negative">-R3,024.70</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="YOUR TOWN UTILITIES">
+                                <div class="trans-info">
+                                    <span class="trans-name"> SALARIES</span>
+                                    <span class="trans-details">Nov 29, Checking</span>
+                                </div>
+                                <span class="trans-amount negative">-R6,208.55</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="EL GRAN RESTAURANTE">
+                                <div class="trans-info">
+                                    <span class="trans-name">EL GRAN RESTAURANTE</span>
+                                    <span class="trans-details">Nov 25, Checking</span>
+                                </div>
+                                <span class="trans-amount negative">-R1,135.18</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="ATM DEPOSIT">
+                                <div class="trans-info">
+                                    <span class="trans-name">ATM DEPOSIT</span>
+                                    <span class="trans-details">Nov 25, Checking</span>
+                                </div>
+                                <span class="trans-amount positive">+R10,435.82</span>
+                            </div>
+
+                            <div class="transaction-item" data-name="HOMETOWN PASTERIES">
+                                <div class="trans-info">
+                                    <span class="trans-name"> Stamp duty </span>
+                                    <span class="trans-details">Nov 25, Checking</span>
+                                </div>
+                                <span class="trans-amount negative">-R127.48</span>
+                            </div>
+                        </div>
+
+                        <div class="widget-footer">
+                            <button class="see-more-btn" onclick="alert('Loading full transaction history...')">See
+                                more</button>
+                        </div>
+                    </div>
+
+                    <!-- Payments Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Payments</h3>
+                            <button class="icon-btn-subtle" title="Options"
+                                onclick="alert('Payment settings & auto-pay rules')">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="5" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="19" cy="12" r="2" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Payment Shortcut Buttons Grid -->
+                        <div class="payment-actions-grid">
+                            <div class="payment-shortcut-btn" onclick="openModal('modal-paybill')">
+                                <div class="payment-shortcut-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                                        <path d="M12 8v8" />
+                                        <path
+                                            d="M9.5 10.5c.5-.8 1.5-1 2.5-1s2.5.5 2.5 1.5-1.5 2-2.5 2.5-2.5 1-2.5 2 1.5 1.5 2.5 1.5 2-.5 2.5-1" />
+                                    </svg>
+                                </div>
+                                <span class="payment-shortcut-label">Pay a bill</span>
+                            </div>
+
+                            <div class="payment-shortcut-btn" onclick="openModal('modal-payperson')">
+                                <div class="payment-shortcut-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21v-2a4 4 0 0 4-4H9a4 4 0 0 4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                </div>
+                                <span class="payment-shortcut-label">Pay a person</span>
+                            </div>
+                        </div>
+
+                        <!-- Scheduled & Recent Payments List -->
+                        <div class="scheduled-payments-list">
+                            <div class="scheduled-item">
+                                <div class="scheduled-left">
+                                    <div class="scheduled-icon-status pending">🕒</div>
+                                    <div>
+                                        <div class="scheduled-title">Your Town Utilities <span
+                                                style="font-weight:400; color:var(--text-muted); font-size:11px;">x1234</span>
+                                        </div>
+                                        <div class="scheduled-sub">Scheduled for Nov 28</div>
+                                    </div>
+                                </div>
+                                <div class="scheduled-amount">R4,725.84</div>
+                            </div>
+
+                            <div class="scheduled-item">
+                                <div class="scheduled-left">
+                                    <div class="scheduled-icon-status done">✓</div>
+                                    <div>
+                                        <div class="scheduled-title">Student Loans <span
+                                                style="font-weight:400; color:var(--text-muted); font-size:11px;">x1234</span>
+                                        </div>
+                                        <div class="scheduled-sub">Paid Nov 24</div>
+                                    </div>
+                                </div>
+                                <div class="scheduled-amount">R5,276.54</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Column (40%) -->
+                <div class="column-side">
+                    <!-- First National Bank Quick Contact Widget -->
+                    <div class="brand-contact-widget">
+                        <div class="contact-logo-box">
+                            <svg class="contact-logo-svg" viewBox="0 0 500 500" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Golden Sun Circle -->
+                                <circle cx="250" cy="250" r="230" fill="#F5A623" />
+                                <!-- Teal Horizon Arc -->
+                                <path d="M 20 270 A 230 230 0 0 0 480 270 A 230 230 0 0 1 20 270 Z" fill="#008080" />
+                                <!-- Acacia Tree Silhouette -->
+                                <path d="M 230 435 L 270 435 L 260 250 L 240 250 Z" fill="#000000" />
+                                <path d="M 245 350 L 155 270 L 170 260 L 250 330 Z" fill="#000000" />
+                                <path d="M 245 280 L 95 190 L 105 180 L 252 265 Z" fill="#000000" />
+                                <path d="M 255 310 L 335 220 L 350 230 L 260 325 Z" fill="#000000" />
+                                <path d="M 255 255 L 400 150 L 415 160 L 262 270 Z" fill="#000000" />
+                                <!-- Canopy Tiers -->
+                                <path
+                                    d="M 70 160 L 130 120 L 200 120 L 275 75 L 360 80 L 420 125 L 465 165 L 405 160 L 340 135 L 270 135 L 200 100 L 120 135 Z"
+                                    fill="#000000" />
+                                <path
+                                    d="M 25 210 L 80 175 L 150 175 L 225 135 L 315 140 L 390 180 L 475 210 L 415 205 L 345 180 L 275 180 L 200 145 L 115 185 Z"
+                                    fill="#000000" />
+                                <path d="M 75 290 L 130 255 L 210 255 L 255 235 L 210 235 L 140 245 L 80 275 Z"
+                                    fill="#000000" />
+                                <path d="M 270 255 L 330 230 L 420 235 L 460 260 L 410 255 L 335 240 L 275 245 Z"
+                                    fill="#000000" />
+                            </svg>
+                            <span class="contact-brand-title">FNB</span>
+                            <span class="contact-brand-subtitle">First National Bank</span>
+                        </div>
+                        <div class="contact-actions-row">
+                            <button class="contact-action-btn"
+                                onclick="alert('Calling First National Bank Support at 1-800-555-ECHO')">
+                                <div class="contact-icon-circle">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </div>
+                                <span class="contact-action-label">Call</span>
+                            </button>
+
+                            <button class="contact-action-btn" onclick="openModal('modal-message')">
+                                <div class="contact-icon-circle">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                </div>
+                                <span class="contact-action-label">Message</span>
+                            </button>
+
+                            <button class="contact-action-btn"
+                                onclick="alert('First National Bank Branch Info: Hours Mon-Fri 9am-5pm. Routing #021000021')">
+                                <div class="contact-icon-circle">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="12" y1="16" x2="12" y2="12" />
+                                        <line x1="12" y1="8" x2="12.01" y2="8" />
+                                    </svg>
+                                </div>
+                                <span class="contact-action-label">Info</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remote Deposits Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Remote deposits</h3>
+                            <button class="icon-btn-subtle" title="Options"
+                                onclick="alert('Remote Deposit History & Limits')">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="5" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="19" cy="12" r="2" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="remote-deposits-pills">
+                            <div class="deposit-pill processing"
+                                onclick="alert('0 Deposits currently in processing queue')">
+                                <span>1 Processing</span>
+                            </div>
+                            <div class="deposit-pill accepted"
+                                onclick="alert('9 Deposits successfully processed and accepted')">
+                                <span>✓ 9 Accepted</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Widget -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Messages</h3>
+                            <div class="widget-header-actions">
+                                <button class="icon-btn-subtle" title="Compose" onclick="openModal('modal-message')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 20h9" />
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                    </svg>
+                                </button>
+                                <button class="icon-btn-subtle" title="Options" onclick="alert('Message Settings')">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="5" cy="12" r="2" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <circle cx="19" cy="12" r="2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Messages List -->
+                        <div class="messages-list">
+                            <div class="msg-item" style="cursor:pointer;" onclick="openModal('modal-dataknead')">
+                                <div class="msg-icon-box warning">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                        <line x1="12" y1="9" x2="12" y2="13" />
+                                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                                    </svg>
+                                </div>
+                                <div class="msg-content-wrap">
+                                    <div class="msg-header-line">
+                                        <span class="msg-sender">Dataknead Ltd Transaction</span>
+                                        <span class="msg-time">Just now</span>
+                                    </div>
+                                    <p class="msg-snippet">Transaction of R16,110,080.00 ($992,000.00 USD) to
+                                        Dataknead Ltd is currently pending review.</p>
+                                </div>
+                            </div>
+
+                            <div class="msg-item" onclick="alert('Viewing: Holiday Hours notice')">
+                                <div class="msg-icon-box">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                </div>
+                                <div class="msg-content-wrap">
+                                    <div class="msg-header-line">
+                                        <span class="msg-sender">Holiday Hours</span>
+                                        <span class="msg-time">8hr ago</span>
+                                    </div>
+                                    <p class="msg-snippet">Our branches will be closed on Thursday. We extend...</p>
+                                </div>
+                            </div>
+
+                            <div class="msg-item" onclick="alert('Viewing: Low funds Checking alert')">
+                                <div class="msg-icon-box warning">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                        <line x1="12" y1="9" x2="12" y2="13" />
+                                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                                    </svg>
+                                </div>
+                                <div class="msg-content-wrap">
+                                    <div class="msg-header-line">
+                                        <span class="msg-sender">Low funds Checking</span>
+                                        <span class="msg-time">Nov 25</span>
+                                    </div>
+                                    <p class="msg-snippet">Available balance is low on Checking</p>
+                                </div>
+                            </div>
+
+                            <div class="msg-item" onclick="alert('Viewing: Jennifer and Amy conversation')">
+                                <div class="msg-icon-box">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                                <div class="msg-content-wrap">
+                                    <div class="msg-header-line">
+                                        <span class="msg-sender">Jennifer and Amy</span>
+                                        <span class="msg-time">Nov 25</span>
+                                    </div>
+                                    <p class="msg-snippet">No problem! We'll send a new card out first thin...</p>
+                                </div>
+                            </div>
+
+                            <div class="msg-item" onclick="alert('Viewing: Deposit to Savings notice')">
+                                <div class="msg-icon-box warning">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                        <line x1="12" y1="9" x2="12" y2="13" />
+                                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                                    </svg>
+                                </div>
+                                <div class="msg-content-wrap">
+                                    <div class="msg-header-line">
+                                        <span class="msg-sender">Deposit to Savings</span>
+                                        <span class="msg-time">Nov 22</span>
+                                    </div>
+                                    <p class="msg-snippet">A deposit over R3,248.00 was made to your Saving...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget-footer">
+                            <button class="see-more-btn" onclick="alert('Opening all inbox messages...')">See
+                                more</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Transfer Widget Card -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">Transfers</h3>
+                            <button class="icon-btn-subtle" title="Options"
+                                onclick="alert('Transfer Limits & History')">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="5" cy="12" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="19" cy="12" r="2" />
+                                </svg>
+                            </button>
+                        </div>
+                        <form class="transfer-widget-form" onsubmit="handleQuickTransfer(event)">
+                            <div class="form-group-sm">
+                                <label>From Account</label>
+                                <select class="form-control-sm" id="qt-from">
+                                    <option value="checking">Checking (x1234) - R7,843,920.00</option>
+                                    <option value="savings">Savings (x4321) - R39,349,529.42</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label>To Account</label>
+                                <select class="form-control-sm" id="qt-to">
+                                    <option value="savings">Savings (x4321)</option>
+                                    <option value="checking">Checking (x1234)</option>
+                                    <option value="loan">Loan (x2345)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label>Amount (R)</label>
+                                <input type="number" class="form-control-sm" placeholder="0.00" step="0.01"
+                                    id="qt-amount" required>
+                            </div>
+
+                            <button type="submit" class="btn-submit-transfer">Make Quick Transfer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- FLOATING HELP BUTTON & POPUP                        -->
+    <!-- ---------------------------------------------------- -->
+    <button class="floating-help-btn" onclick="toggleHelpPopup()" title="Need Help?">?</button>
+    <div class="help-popup-box" id="help-popup">
+        <div class="help-header">
+            <span class="help-title">First National Bank Support</span>
+            <button class="help-close" onclick="toggleHelpPopup()">&times;</button>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted);">How can we assist you with your First National Bank account
+            today?</p>
+        <button class="modal-btn-primary" style="padding:8px; font-size:12px;"
+            onclick="alert('Starting live chat session with First National Bank AI assistant...')">Start Live
+            Chat</button>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- INTERACTIVE MODALS SYSTEM                            -->
+    <!-- ---------------------------------------------------- -->
+    <!-- Transfer Modal -->
+    <div class="modal-overlay" id="modal-transfer">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3 class="modal-title">Make a Transfer</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-transfer')">&times;</button>
+            </div>
+            <form class="modal-body-form"
+                onsubmit="submitModalForm(event, 'modal-transfer', 'Transfer completed successfully!')">
+                <div class="form-field">
+                    <label>From Account</label>
+                    <select required>
+                        <option>Checking (x1234) - R7,843,920.00</option>
+                        <option>Savings (x4321) - R39,349,529.42</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>To Account</label>
+                    <select required>
+                        <option>Savings (x4321)</option>
+                        <option>Checking (x1234)</option>
+                        <option>Loan (x2345)</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Amount (R)</label>
+                    <input type="number" step="0.01" placeholder="0.00" required>
+                </div>
+                <button type="submit" class="modal-btn-primary">Confirm Transfer</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Deposit Check Modal -->
+    <div class="modal-overlay" id="modal-deposit">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3 class="modal-title">Remote Check Deposit</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-deposit')">&times;</button>
+            </div>
+            <form class="modal-body-form"
+                onsubmit="submitModalForm(event, 'modal-deposit', 'Check submitted for remote processing!')">
+                <div class="form-field">
+                    <label>Deposit To Account</label>
+                    <select required>
+                        <option>Checking (x1234)</option>
+                        <option>Savings (x4321)</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Check Amount (R)</label>
+                    <input type="number" step="0.01" placeholder="0.00" required>
+                </div>
+                <div class="form-field">
+                    <label>Front & Back Check Photo</label>
+                    <input type="file" accept="image/*">
+                </div>
+                <button type="submit" class="modal-btn-primary">Submit Check for Deposit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pay Bill Modal -->
+    <div class="modal-overlay" id="modal-paybill">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3 class="modal-title">Pay a Bill</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-paybill')">&times;</button>
+            </div>
+            <form class="modal-body-form" onsubmit="submitModalForm(event, 'modal-paybill', 'Bill payment scheduled!')">
+                <div class="form-field">
+                    <label>Biller Name</label>
+                    <input type="text" placeholder="e.g. Your Town Utilities" required>
+                </div>
+                <div class="form-field">
+                    <label>From Account</label>
+                    <select required>
+                        <option>Checking (x1234) - R7,843,920.00</option>
+                        <option>Savings (x4321) - R39,349,529.42</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Payment Amount (R)</label>
+                    <input type="number" step="0.01" placeholder="0.00" required>
+                </div>
+                <button type="submit" class="modal-btn-primary">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pay Person Modal -->
+    <div class="modal-overlay" id="modal-payperson">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3 class="modal-title">Pay a Person</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-payperson')">&times;</button>
+            </div>
+            <form class="modal-body-form"
+                onsubmit="submitModalForm(event, 'modal-payperson', 'Payment sent to recipient!')">
+                <div class="form-field">
+                    <label>Recipient Email or Phone</label>
+                    <input type="text" placeholder="name@example.com or 555-0199" required>
+                </div>
+                <div class="form-field">
+                    <label>Amount (R)</label>
+                    <input type="number" step="0.01" placeholder="0.00" required>
+                </div>
+                <div class="form-field">
+                    <label>Memo / Note</label>
+                    <input type="text" placeholder="e.g. Lunch split">
+                </div>
+                <button type="submit" class="modal-btn-primary">Send Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Message Compose Modal -->
+    <div class="modal-overlay" id="modal-message">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3 class="modal-title">Compose Secure Message</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-message')">&times;</button>
+            </div>
+            <form class="modal-body-form"
+                onsubmit="submitModalForm(event, 'modal-message', 'Message sent to First National Bank support team!')">
+                <div class="form-field">
+                    <label>Subject</label>
+                    <input type="text" placeholder="e.g. Question regarding card statement" required>
+                </div>
+                <div class="form-field">
+                    <label>Message Content</label>
+                    <textarea rows="4"
+                        style="padding:8px; border:1px solid var(--border-color); border-radius:4px; font-family:var(--font-sans);"
+                        placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="modal-btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dataknead Pending Transaction Details Modal -->
+    <div class="modal-overlay" id="modal-dataknead">
+        <div class="modal-card" style="width: 480px;">
+            <div class="modal-title-bar">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <h3 class="modal-title">Transaction Details</h3>
+                    <span style="background:var(--warning-bg); color:var(--warning); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; border:1px solid #fde68a;">Pending Review</span>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-dataknead')">&times;</button>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:16px; margin-top:8px;">
+                <!-- Main Amount Header -->
+                <div style="text-align:center; padding:16px; background:#fef2f2; border-radius:var(--radius-sm); border:1px solid #fecaca;">
+                    <div style="font-size:12px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Debited Amount</div>
+                    <div style="font-size:26px; font-weight:800; color:var(--danger); margin:4px 0;">-R16,110,080.00</div>
+                    <div style="font-size:12px; font-weight:600; color:var(--text-muted);">$992,000.00 USD Equivalent (1 USD = 16.24 ZAR)</div>
+                </div>
+
+                <!-- Transaction Details Grid -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:var(--bg-body); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-size:13px;">
+                    <div>
+                        <div style="color:var(--text-muted); font-size:11px; font-weight:600;">Recipient</div>
+                        <div style="font-weight:700; color:var(--text-main);">DATAKNEAD LTD</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:11px; font-weight:600;">Account</div>
+                        <div style="font-weight:700; color:var(--text-main);">Checking (x1234)</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:11px; font-weight:600;">Date & Time</div>
+                        <div style="font-weight:600; color:var(--text-main);">Nov 26, 2026 • 13:34</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:11px; font-weight:600;">Reference No.</div>
+                        <div style="font-family:var(--font-mono); font-size:11px; font-weight:600; color:var(--primary-blue);">TXN-8942019482-ZA</div>
+                    </div>
+                </div>
+
+                <!-- Status Warning Box -->
+                <div style="padding:12px 14px; background:#fffbe6; border-left:4px solid var(--warning); border-radius:var(--radius-xs); font-size:12px; color:#92400e; line-height:1.4;">
+                    <strong>Notice:</strong> This transfer of <strong>R16,110,080.00</strong> ($992,000.00 USD) to <strong>Dataknead Ltd</strong> is pending security compliance review. Funds have been reserved from your available checking balance.
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display:flex; gap:10px; margin-top:4px;">
+                    <button class="modal-btn-primary" style="flex:1; background:#ef4444;" onclick="cancelDatakneadTx()">Cancel Transaction</button>
+                    <button class="modal-btn-primary" style="flex:1; background:var(--primary-blue);" onclick="closeModal('modal-dataknead')">Close Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- JAVASCRIPT LOGIC & INTERACTIVITY                      -->
+    <!-- ---------------------------------------------------- -->
+    <script>
+        // Tab Switch Logic
+        function switchTab(element, tabName) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            const parent = element.closest('.nav-item');
+            if (parent) parent.classList.add('active');
+
+            if (tabName === 'Messages') {
+                const badge = document.getElementById('sidebar-msg-badge');
+                if (badge) badge.style.display = 'none';
+            }
+        }
+
+        // Profile Menu Dropdown Toggle
+        function toggleProfileMenu(e) {
+            e.stopPropagation();
+            const drop = document.getElementById('profile-dropdown');
+            drop.classList.toggle('show');
+        }
+
+        document.addEventListener('click', () => {
+            const drop = document.getElementById('profile-dropdown');
+            if (drop) drop.classList.remove('show');
+        });
+
+        // Floating Help Popup Toggle
+        function toggleHelpPopup() {
+            const popup = document.getElementById('help-popup');
+            popup.classList.toggle('show');
+        }
+
+        // Modals Management
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('active');
+        }
+
+        function submitModalForm(event, modalId, successMessage) {
+            event.preventDefault();
+            closeModal(modalId);
+            alert(successMessage);
+        }
+
+        // Search Filter in Transactions
+        function toggleSearchInput() {
+            const bar = document.getElementById('search-bar');
+            bar.classList.toggle('show');
+            if (bar.classList.contains('show')) {
+                document.getElementById('trans-search-input').focus();
+            }
+        }
+
+        function filterTransactions() {
+            const query = document.getElementById('trans-search-input').value.toLowerCase();
+            const items = document.querySelectorAll('.transaction-item');
+            items.forEach(item => {
+                const name = item.getAttribute('data-name').toLowerCase();
+                if (name.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Quick Transfer Form Handler
+        function handleQuickTransfer(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('qt-amount').value);
+            if (!amount || amount <= 0) return;
+
+            let checkingVal = 7714000.00;
+            let savingsVal = 39349529.42;
+
+            const fromAcc = document.getElementById('qt-from').value;
+            const toAcc = document.getElementById('qt-to').value;
+
+            if (fromAcc === 'checking' && toAcc === 'savings') {
+                checkingVal -= amount;
+                savingsVal += amount;
+            } else if (fromAcc === 'savings' && toAcc === 'checking') {
+                savingsVal -= amount;
+                checkingVal += amount;
+            }
+
+            document.getElementById('val-checking').innerText = `R${checkingVal.toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`;
+            document.getElementById('val-savings').innerText = `R${savingsVal.toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`;
+
+            alert(`Successfully transferred R${amount.toFixed(2)} from ${fromAcc} to ${toAcc}!`);
+            document.getElementById('qt-amount').value = '';
+        }
+
+        // Cancel Dataknead Transaction Handler
+        function cancelDatakneadTx() {
+            if (confirm('Are you sure you want to cancel the R16,110,080.00 pending transfer to Dataknead Ltd and restore funds to your Checking account?')) {
+                let checkingVal = 7843920.00 + 16110080.00;
+                document.getElementById('val-checking').innerText = `R${checkingVal.toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`;
+                
+                const txItem = document.querySelector('.transaction-item[data-name="DATAKNEAD LTD"]');
+                if (txItem) txItem.remove();
+                
+                closeModal('modal-dataknead');
+                alert('Transaction cancelled! R16,110,080.00 ($992,000.00 USD) has been refunded to your Checking account.');
+            }
+        }
+    </script>
+</body>
+
+</html>
