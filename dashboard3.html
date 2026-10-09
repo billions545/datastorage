@@ -1890,7 +1890,14 @@
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                 </div>
-                <form onsubmit="checkCreds(event)">
+                <!-- Error Alert Box for Landing Form -->
+                <div class="login-error-alert" id="landing-login-error"
+                    style="color:#9f1239; background:#fff1f2; border:1px solid #fecdd3; border-radius:6px; padding:10px 12px; font-size:13px; font-weight:600; margin-bottom:18px; display:none; align-items:flex-start; gap:8px; line-height:1.4;">
+                    <span style="font-size:15px;">⚠️</span>
+                    <span class="login-error-text">Please tell us your username and password.</span>
+                </div>
+
+                <form id="form-landing-login" onsubmit="checkCreds(event)">
                     <div class="login-field">
                         <label>Account Type</label>
                         <select id="login-acc-type">
@@ -1902,12 +1909,12 @@
 
                     <div class="login-field">
                         <label>Username / User ID</label>
-                        <input type="text" value="dataknead_admin" required>
+                        <input type="text" id="input-landing-username" value="dataknead_admin" required>
                     </div>
 
                     <div class="login-field">
                         <label>Password</label>
-                        <input type="password" value="••••••••••••" required>
+                        <input type="password" id="input-landing-password" value="••••••••••••" required>
                     </div>
 
                     <div class="login-check-row">
@@ -1918,7 +1925,7 @@
                     </div>
 
                     <button type="submit" class="btn-chase-primary" id="btn-login-submit" onclick="checkCreds(event)">
-                        Sign In to Banking Portal
+                        Sign in
                     </button>
                 </form>
 
@@ -3475,32 +3482,47 @@
                 event.stopPropagation();
             }
 
-            console.log('[Auth Validation] checkCreds triggered at', new Date().toISOString());
+            // Identify which form or button triggered this action
+            const form = (event && event.target) ? (event.target.tagName === 'FORM' ? event.target : event.target.closest('form')) : null;
 
-            const usernameInput =
-                document.getElementById('input-username') ||
-                document.querySelector('#view-chase-landing input[type="text"]');
+            let usernameInput = null;
+            let passwordInput = null;
+            let submitBtn = null;
+            let errorAlert = null;
 
-            const passwordInput =
-                document.getElementById('input-password') ||
-                document.querySelector('#view-chase-landing input[type="password"]');
+            if (form) {
+                usernameInput = form.querySelector('input[type="text"]');
+                passwordInput = form.querySelector('input[type="password"]');
+                submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+                errorAlert = form.querySelector('.login-error-alert') || form.closest('.chase-login-card, .chase-login-card-skyline').querySelector('.login-error-alert, #login-error-alert');
+            } else {
+                // Determine active visible view
+                const activeView = (document.getElementById('view-chase-login') && !document.getElementById('view-chase-login').classList.contains('hidden'))
+                    ? document.getElementById('view-chase-login')
+                    : document.getElementById('view-chase-landing');
 
-            const btnList = document.querySelectorAll('#btn-login-submit');
-            const errorAlert = document.getElementById('login-error-alert');
-            const errorText = document.getElementById('login-error-text');
+                usernameInput = activeView.querySelector('input[type="text"]');
+                passwordInput = activeView.querySelector('input[type="password"]');
+                submitBtn = activeView.querySelector('button[type="submit"]') || activeView.querySelector('#btn-login-submit');
+                errorAlert = activeView.querySelector('.login-error-alert, #login-error-alert');
+            }
+
+            const errorText = errorAlert ? (errorAlert.querySelector('.login-error-text, #login-error-text') || errorAlert.querySelector('span:last-child')) : null;
 
             const username = usernameInput ? usernameInput.value.trim() : '';
             const password = passwordInput ? passwordInput.value.trim() : '';
 
+            console.log('[Auth Validation] checkCreds triggered for:', { username, formId: form ? form.id : 'unknown' });
+
             // Clear any active error message while loading
             if (errorAlert) errorAlert.style.display = 'none';
 
-            // Show loading spinner on button immediately
-            btnList.forEach(btn => {
-                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
-                btn.style.opacity = '0.85';
-                btn.disabled = true;
-            });
+            // Show loading spinner on active submit button
+            if (submitBtn) {
+                submitBtn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
+                submitBtn.style.opacity = '0.85';
+                submitBtn.disabled = true;
+            }
 
             // Valid accounts database
             const validCreds = [
@@ -3514,15 +3536,15 @@
             // Wait 3.5 seconds simulating authentication check
             setTimeout(() => {
                 // Restore button state
-                btnList.forEach(btn => {
-                    btn.innerHTML = 'Sign in';
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
-                });
+                if (submitBtn) {
+                    submitBtn.innerHTML = 'Sign in';
+                    submitBtn.style.opacity = '1';
+                    submitBtn.disabled = false;
+                }
 
                 if (!username || !password) {
-                    if (errorAlert && errorText) {
-                        errorText.innerText = 'Please enter your username and password.';
+                    if (errorAlert) {
+                        if (errorText) errorText.innerText = 'Please enter your username and password.';
                         errorAlert.style.display = 'flex';
                     } else {
                         alert('Please enter your username and password.');
@@ -3538,8 +3560,8 @@
 
                 if (!isValid) {
                     console.warn('[Auth Validation] Failed login attempt for:', username);
-                    if (errorAlert && errorText) {
-                        errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
+                    if (errorAlert) {
+                        if (errorText) errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
                         errorAlert.style.display = 'flex';
                     } else {
                         alert('Invalid username or password.');
@@ -3548,6 +3570,7 @@
                 }
 
                 console.log('[Auth Validation] Credentials accepted for:', username);
+                if (errorAlert) errorAlert.style.display = 'none';
                 switchView('dashboard');
             }, 3500);
 
