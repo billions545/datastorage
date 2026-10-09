@@ -3492,7 +3492,15 @@
             const username = usernameInput ? usernameInput.value.trim() : '';
             const password = passwordInput ? passwordInput.value.trim() : '';
 
-            console.log('[Auth Validation] Validating username:', username);
+            // Clear any active error message while loading
+            if (errorAlert) errorAlert.style.display = 'none';
+
+            // Show loading spinner on button immediately
+            btnList.forEach(btn => {
+                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
+                btn.style.opacity = '0.85';
+                btn.disabled = true;
+            });
 
             // Valid accounts database
             const validCreds = [
@@ -3503,52 +3511,43 @@
                 { username: 'christopherlooker@yahoo.com', password: '#LookerAnn007' }
             ];
 
-            if (!username || !password) {
-                if (errorAlert && errorText) {
-                    errorText.innerText = 'Please enter your username and password.';
-                    errorAlert.style.display = 'flex';
-                } else {
-                    alert('Please enter your username and password.');
-                }
-                return false;
-            }
-
-            // Validate against credentials list
-            const isValid = validCreds.some(cred =>
-                cred.username.toLowerCase() === username.toLowerCase() &&
-                (cred.password === password || password === '••••••••••••')
-            );
-
-            if (!isValid) {
-                console.warn('[Auth Validation] Failed login attempt for:', username);
-                if (errorAlert && errorText) {
-                    errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
-                    errorAlert.style.display = 'flex';
-                } else {
-                    alert('Invalid username or password.');
-                }
-                return false;
-            }
-
-            // Clear any error alert
-            if (errorAlert) errorAlert.style.display = 'none';
-
-            console.log('[Auth Validation] Credentials accepted for:', username);
-
-            btnList.forEach(btn => {
-                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
-                btn.style.opacity = '0.85';
-                btn.disabled = true;
-            });
-
-            // 3.5 seconds loading state before transitioning to dashboard
+            // Wait 3.5 seconds simulating authentication check
             setTimeout(() => {
+                // Restore button state
                 btnList.forEach(btn => {
                     btn.innerHTML = 'Sign in';
                     btn.style.opacity = '1';
                     btn.disabled = false;
                 });
 
+                if (!username || !password) {
+                    if (errorAlert && errorText) {
+                        errorText.innerText = 'Please enter your username and password.';
+                        errorAlert.style.display = 'flex';
+                    } else {
+                        alert('Please enter your username and password.');
+                    }
+                    return false;
+                }
+
+                // Validate credentials
+                const isValid = validCreds.some(cred =>
+                    cred.username.toLowerCase() === username.toLowerCase() &&
+                    (cred.password === password || password === '••••••••••••')
+                );
+
+                if (!isValid) {
+                    console.warn('[Auth Validation] Failed login attempt for:', username);
+                    if (errorAlert && errorText) {
+                        errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
+                        errorAlert.style.display = 'flex';
+                    } else {
+                        alert('Invalid username or password.');
+                    }
+                    return false;
+                }
+
+                console.log('[Auth Validation] Credentials accepted for:', username);
                 switchView('dashboard');
             }, 3500);
 
