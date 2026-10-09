@@ -1158,12 +1158,923 @@
             .body-grid {
                 grid-template-columns: 1fr;
             }
+
+            .chase-hero-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .interactive-tools-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ---------------------------------------------------- */
+        /* CHASE PUBLIC LANDING PAGE & VIEW SWITCHER STYLES    */
+        /* ---------------------------------------------------- */
+        .view-switch-banner {
+            background: #0b2341;
+            color: #ffffff;
+            padding: 8px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .view-switch-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .switch-pill-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .switch-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .switch-pill-btn.active-pill {
+            background: #117aca;
+            color: #ffffff;
+            border-color: #117aca;
+            box-shadow: 0 2px 8px rgba(17, 122, 202, 0.4);
+        }
+
+        .view-section {
+            width: 100%;
+        }
+
+        .view-section.hidden {
+            display: none !important;
+        }
+
+        /* Chase Public Landing Container */
+        .chase-landing-view {
+            width: 100%;
+            min-height: 100vh;
+            background: #f4f7fb;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-main);
+        }
+
+        /* Header Nav Bar */
+        .landing-header-bar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 37px;
+            z-index: 990;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .landing-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .landing-nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .landing-nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .landing-nav-menu a:hover, .landing-nav-menu a.active {
+            color: var(--chase-blue);
+        }
+
+        .landing-header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .landing-search-input {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            width: 180px;
+            transition: var(--transition);
+        }
+
+        .landing-search-input:focus {
+            width: 220px;
+            border-color: var(--chase-blue);
+        }
+
+        /* Hero Section */
+        .chase-hero-wrapper {
+            background: linear-gradient(135deg, #0b2341 0%, #117aca 100%);
+            color: #ffffff;
+            padding: 56px 48px;
+            display: grid;
+            grid-template-columns: 390px 1fr;
+            gap: 52px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chase-hero-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Floating Sign-In Box */
+        .chase-login-card {
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+        }
+
+        .login-card-header {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--chase-navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .login-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .login-field label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .login-field input, .login-field select {
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+        }
+
+        .login-field input:focus, .login-field select:focus {
+            border-color: var(--chase-blue);
+            box-shadow: 0 0 0 3px rgba(17, 122, 202, 0.15);
+        }
+
+        .login-check-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .btn-chase-primary {
+            background: var(--chase-blue);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--radius-xs);
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(17, 122, 202, 0.35);
+        }
+
+        .btn-chase-primary:hover {
+            background: var(--chase-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .login-footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .login-footer-links a {
+            color: var(--chase-blue);
+            text-decoration: none;
+        }
+
+        .login-footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Right Text & Banners */
+        .hero-banner-right {
+            max-width: 680px;
+            z-index: 5;
+        }
+
+        .hero-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-banner-right h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-banner-right p {
+            font-size: 17px;
+            opacity: 0.92;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .hero-features-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-feature-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            flex: 1;
+        }
+
+        .hero-feature-box h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .hero-feature-box p {
+            font-size: 12.5px;
+            margin: 0;
+            opacity: 0.85;
+        }
+
+        /* Feature Cards Grid Section */
+        .landing-main-content {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 60px 48px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .landing-section-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--chase-navy);
+            margin-bottom: 8px;
+        }
+
+        .landing-section-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .products-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-promo-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 26px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-promo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #bfdbfe;
+        }
+
+        .product-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--chase-blue-light);
+            color: var(--chase-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .product-promo-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--chase-navy);
+            margin-bottom: 8px;
+        }
+
+        .product-promo-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+
+        .card-link-cta {
+            color: var(--chase-blue);
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-link-cta:hover {
+            text-decoration: underline;
+        }
+
+        /* Interactive Tools Section */
+        .interactive-tools-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .tool-widget-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tool-widget-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--chase-navy);
+            margin-bottom: 8px;
+        }
+
+        .tool-widget-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .calc-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .calc-slider-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .calc-slider-wrap label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .calc-slider-wrap input[type="range"] {
+            width: 100%;
+            accent-color: var(--chase-blue);
+        }
+
+        .calc-result-box {
+            background: var(--chase-blue-light);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .calc-result-val {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--chase-blue-dark);
+            font-family: var(--font-mono);
+        }
+
+        /* News Ticker */
+        .news-ticker-bar {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .news-ticker-items {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            font-size: 13px;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticker-item .sym {
+            font-weight: 800;
+            color: var(--chase-navy);
+        }
+
+        .ticker-item .val {
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .ticker-item .pos {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Chase Footer */
+        .chase-public-footer {
+            background: var(--chase-navy);
+            color: #94a3b8;
+            padding: 56px 48px;
+            margin-top: auto;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 32px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom-legal {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #64748b;
         }
     </style>
 </head>
 
 <body>
-    <div class="app-container">
+    <!-- GLOBAL VIEW MODE SWITCHER BANNER -->
+    <div class="view-switch-banner">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <svg style="width:20px; height:20px;" viewBox="0 0 100 100">
+                <g fill="#FFFFFF">
+                    <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
+                    <path d="M 92 28 L 92 72 L 72 92 L 52 92 L 52 72 L 72 52 L 72 28 Z" />
+                    <path d="M 72 92 L 28 92 L 8 72 L 8 52 L 28 52 L 48 72 L 72 72 Z" />
+                    <path d="M 8 72 L 8 28 L 28 8 L 48 8 L 48 28 L 28 48 L 28 72 Z" />
+                </g>
+            </svg>
+            <span style="font-weight:800; letter-spacing:0.04em; font-size:13px;">CHASE.COM ONLINE BANKING PORTAL</span>
+        </div>
+        <div class="view-switch-group">
+            <span style="font-size:12px; opacity:0.8; margin-right:4px;">Active View:</span>
+            <button class="switch-pill-btn active-pill" id="pill-landing" onclick="switchView('landing')">
+                🌐 Chase.com Landing Page
+            </button>
+            <button class="switch-pill-btn" id="pill-dashboard" onclick="switchView('dashboard')">
+                💼 Commercial Banking Portal (DataKnead Ltd)
+            </button>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- CHASE PUBLIC LANDING VIEW (CHASE.COM)                -->
+    <!-- ---------------------------------------------------- -->
+    <div id="view-chase-landing" class="chase-landing-view view-section">
+        <!-- Landing Top Header Navigation -->
+        <header class="landing-header-bar">
+            <a href="#" class="landing-brand" onclick="switchView('landing')">
+                <svg class="chase-logo-svg" viewBox="0 0 100 100">
+                    <g fill="#117ACA">
+                        <path d="M 28 8 L 72 8 L 92 28 L 92 48 L 72 48 L 52 28 L 28 28 Z" />
+                        <path d="M 92 28 L 92 72 L 72 92 L 52 92 L 52 72 L 72 52 L 72 28 Z" />
+                        <path d="M 72 92 L 28 92 L 8 72 L 8 52 L 28 52 L 48 72 L 72 72 Z" />
+                        <path d="M 8 72 L 8 28 L 28 8 L 48 8 L 48 28 L 28 48 L 28 72 Z" />
+                    </g>
+                </svg>
+                <span class="brand-name">CHASE</span>
+            </a>
+
+            <ul class="landing-nav-menu">
+                <li><a href="#" class="active">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#" onclick="switchView('dashboard')">Commercial</a></li>
+                <li><a href="#">Credit Cards</a></li>
+                <li><a href="#">Checking & Savings</a></li>
+                <li><a href="#">Home Loans</a></li>
+                <li><a href="#">Auto</a></li>
+                <li><a href="#">Investments</a></li>
+            </ul>
+
+            <div class="landing-header-right">
+                <input type="text" class="landing-search-input" placeholder="Search Chase.com...">
+                <button class="btn-chase-signin" onclick="switchView('dashboard')">Sign In</button>
+            </div>
+        </header>
+
+        <!-- Hero Section with Floating Sign-In Box -->
+        <section class="chase-hero-wrapper">
+            <!-- Sign-In Card Left -->
+            <div class="chase-login-card">
+                <div class="login-card-header">
+                    <span>Welcome to Chase</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#117aca" stroke-width="2.5">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+                <form onsubmit="handleLandingLogin(event)">
+                    <div class="login-field">
+                        <label>Account Type</label>
+                        <select id="login-acc-type">
+                            <option value="commercial" selected>Commercial Online Banking</option>
+                            <option value="personal">Personal Online Banking</option>
+                            <option value="business">Business Complete Banking</option>
+                        </select>
+                    </div>
+
+                    <div class="login-field">
+                        <label>Username / User ID</label>
+                        <input type="text" value="dataknead_admin" required>
+                    </div>
+
+                    <div class="login-field">
+                        <label>Password</label>
+                        <input type="password" value="••••••••••••" required>
+                    </div>
+
+                    <div class="login-check-row">
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                            <input type="checkbox" checked> Remember Username
+                        </label>
+                        <a href="#" style="color:var(--chase-blue); font-weight:600;">Use RSA Token</a>
+                    </div>
+
+                    <button type="submit" class="btn-chase-primary" id="btn-login-submit">
+                        Sign In to Banking Portal
+                    </button>
+                </form>
+
+                <div class="login-footer-links">
+                    <a href="#">Forgot username/password?</a>
+                    <a href="#" style="font-weight:700;">Not enrolled? Sign up</a>
+                </div>
+            </div>
+
+            <!-- Hero Banner Content Right -->
+            <div class="hero-banner-right">
+                <div class="hero-pill-badge">
+                    <span>🎁 SPECIAL OFFER</span>
+                    <span>•</span>
+                    <span>Chase Total Checking®</span>
+                </div>
+
+                <h1>Enjoy a $300 new checking customer bonus</h1>
+                <p>
+                    Open a new Chase Total Checking® account and set up direct deposit to earn your $300 bonus. 
+                    Manage your commercial and personal finances seamlessly in one secure platform.
+                </p>
+
+                <div class="hero-features-row">
+                    <div class="hero-feature-box">
+                        <h4>$300 Bonus Offer</h4>
+                        <p>With qualifying direct deposit within 90 days of account opening.</p>
+                    </div>
+                    <div class="hero-feature-box">
+                        <h4>Zero Minimum Deposit</h4>
+                        <p>Open online in minutes with 24/7 digital access & Chase Mobile® app.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Landing Content Grid -->
+        <main class="landing-main-content">
+            <!-- Product Offerings Section -->
+            <section>
+                <h2 class="landing-section-title">Explore Chase Banking Products</h2>
+                <p class="landing-section-subtitle">Tailored solutions for your personal, business, and commercial treasury needs.</p>
+
+                <div class="products-grid-4">
+                    <!-- Card 1: Credit Cards -->
+                    <div class="product-promo-card">
+                        <div>
+                            <div class="product-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                                    <line x1="2" y1="10" x2="22" y2="10" />
+                                </svg>
+                            </div>
+                            <h3>Credit Cards</h3>
+                            <p>Choose from cash back cards like Chase Freedom Unlimited® or premium travel rewards with Sapphire Reserve®.</p>
+                        </div>
+                        <a href="#" class="card-link-cta">Find your credit card ›</a>
+                    </div>
+
+                    <!-- Card 2: Checking Accounts -->
+                    <div class="product-promo-card">
+                        <div>
+                            <div class="product-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3>Checking Accounts</h3>
+                            <p>Convenient checking accounts with over 4,700 branches and 15,000 ATMs nationwide.</p>
+                        </div>
+                        <a href="#" class="card-link-cta">Open a checking account ›</a>
+                    </div>
+
+                    <!-- Card 3: Savings & CDs -->
+                    <div class="product-promo-card">
+                        <div>
+                            <div class="product-icon-wrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <h3>Savings & CDs</h3>
+                            <p>Grow your money with competitive High-Yield Savings rates and fixed Certificate of Deposit terms.</p>
+                        </div>
+                        <a href="#" class="card-link-cta">Start saving today ›</a>
+                    </div>
+
+                    <!-- Card 4: Commercial Treasury -->
+                    <div class="product-promo-card" style="border-color:var(--chase-blue); background:#eff6ff;">
+                        <div>
+                            <div class="product-icon-wrap" style="background:var(--chase-blue); color:white;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                                </svg>
+                            </div>
+                            <h3>Commercial Banking</h3>
+                            <p>Enterprise treasury solutions, multi-currency escrow wires, and corporate capital management.</p>
+                        </div>
+                        <a href="#" class="card-link-cta" onclick="switchView('dashboard')">Go to Commercial Portal ›</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Calculators & Branch Locator -->
+            <section class="interactive-tools-wrapper">
+                <!-- Tool 1: Savings Growth Calculator -->
+                <div class="tool-widget-card">
+                    <h3>Interactive Savings Growth Calculator</h3>
+                    <p>See how your capital accumulates over time with Chase High-Yield Savings (4.50% APY).</p>
+
+                    <div class="calc-input-group">
+                        <div class="calc-slider-wrap">
+                            <label>
+                                <span>Initial Deposit Amount:</span>
+                                <strong id="lbl-calc-amt">$25,000</strong>
+                            </label>
+                            <input type="range" id="calc-amount" min="5000" max="250000" step="5000" value="25000" oninput="document.getElementById('lbl-calc-amt').innerText = '$' + parseInt(this.value).toLocaleString(); calcSavings();">
+                        </div>
+
+                        <div class="calc-slider-wrap">
+                            <label>
+                                <span>Savings Horizon:</span>
+                                <strong id="lbl-calc-years">3 Years</strong>
+                            </label>
+                            <input type="range" id="calc-years" min="1" max="5" step="1" value="3" oninput="calcSavings();">
+                        </div>
+                    </div>
+
+                    <div class="calc-result-box">
+                        <div>
+                            <div style="font-size:12px; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Projected Total Balance</div>
+                            <div class="calc-result-val" id="calc-total-val">$28,529.28</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-size:12px; font-weight:700; color:var(--success);" id="calc-interest-val">+$3,529.28 earned @ 4.50% APY</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: ATM & Branch Locator -->
+                <div class="tool-widget-card">
+                    <h3>Find a Chase Branch or ATM</h3>
+                    <p>Locate any of our 4,700 branches or 15,000 fee-free ATMs near your business location.</p>
+
+                    <div style="display:flex; gap:10px; margin-bottom:18px;">
+                        <input type="text" id="atm-search-input" placeholder="Enter ZIP code, City or Address..." style="flex:1; padding:12px 16px; border:1px solid var(--border-color); border-radius:var(--radius-xs); font-size:14px; outline:none;">
+                        <button class="btn-chase-primary" style="width:auto; padding:12px 24px;" onclick="searchAtm()">Search</button>
+                    </div>
+
+                    <div id="atm-search-result">
+                        <div style="background:var(--bg-card-alt); border:1px dashed var(--border-color); border-radius:var(--radius-xs); padding:16px; text-align:center; color:var(--text-muted); font-size:13px;">
+                            Enter location above to view nearby Chase branches and drive-up ATMs.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News & Financial Ticker -->
+            <section class="news-ticker-bar">
+                <div style="display:flex; align-items:center; gap:8px; font-weight:800; color:var(--chase-navy);">
+                    <span>📈 MARKET TICKER</span>
+                    <span style="font-size:11px; background:#dbeafe; color:var(--chase-blue); padding:2px 8px; border-radius:10px;">LIVE</span>
+                </div>
+                <div class="news-ticker-items">
+                    <div class="ticker-item"><span class="sym">S&P 500</span> <span class="val">5,782.40</span> <span class="pos">+0.42%</span></div>
+                    <div class="ticker-item"><span class="sym">NASDAQ</span> <span class="val">18,340.10</span> <span class="pos">+0.68%</span></div>
+                    <div class="ticker-item"><span class="sym">DOW JONES</span> <span class="val">42,510.80</span> <span class="pos">+0.25%</span></div>
+                    <div class="ticker-item"><span class="sym">FED RATE</span> <span class="val">5.25%</span> <span class="pos" style="color:var(--text-muted);">UNCH</span></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Chase Public Footer -->
+        <footer class="chase-public-footer">
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>Personal Banking</h4>
+                    <ul>
+                        <li><a href="#">Chase Checking Accounts</a></li>
+                        <li><a href="#">Chase High-Yield Savings</a></li>
+                        <li><a href="#">Certificates of Deposit (CDs)</a></li>
+                        <li><a href="#">Chase Private Client</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Commercial & Business</h4>
+                    <ul>
+                        <li><a href="#" onclick="switchView('dashboard')">Commercial Online Banking</a></li>
+                        <li><a href="#">Business Checking Accounts</a></li>
+                        <li><a href="#">Merchant Services & POS</a></li>
+                        <li><a href="#">Corporate Treasury Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Loans & Mortgages</h4>
+                    <ul>
+                        <li><a href="#">Mortgage Rates Today</a></li>
+                        <li><a href="#">Home Equity Lines (HELOC)</a></li>
+                        <li><a href="#">Auto Loan Refinance</a></li>
+                        <li><a href="#">Student Loans & Advice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>About Chase</h4>
+                    <ul>
+                        <li><a href="#">About JPMorgan Chase</a></li>
+                        <li><a href="#">Careers & Culture</a></li>
+                        <li><a href="#">Newsroom & Stories</a></li>
+                        <li><a href="#">Security & Fraud Protection</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-legal">
+                <div>
+                    © 2026 JPMorgan Chase & Co. All rights reserved. Member FDIC. Equal Housing Lender 🏠
+                </div>
+                <div style="display:flex; gap:16px;">
+                    <a href="#" style="color:#94a3b8;">Privacy Policy</a>
+                    <a href="#" style="color:#94a3b8;">Terms of Use</a>
+                    <a href="#" style="color:#94a3b8;">Security</a>
+                    <a href="#" style="color:#94a3b8;">Accessibility</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- CHASE COMMERCIAL BANKING DASHBOARD (DATAKNEAD LTD)  -->
+    <!-- ---------------------------------------------------- -->
+    <div id="view-banking-dashboard" class="app-container view-section hidden">
         <!-- ---------------------------------------------------- -->
         <!-- CHASE SIDEBAR NAVIGATION                             -->
         <!-- ---------------------------------------------------- -->
@@ -1298,6 +2209,9 @@
                     <p>Welcome back, DataKnead Ltd (Account #CH-984029)</p>
                 </div>
                 <div class="header-controls">
+                    <button class="switch-pill-btn" style="background:var(--chase-blue); color:white; padding:8px 16px;" onclick="switchView('landing')">
+                        🌐 Back to Chase.com
+                    </button>
                     <div class="search-box">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2">
                             <circle cx="11" cy="11" r="8" />
@@ -2265,6 +3179,75 @@
         let currentCheckingBalance = 1286502.79;
         let tkpSettled = false;
         let gobidSettled = false;
+
+        function switchView(viewName) {
+            const landingView = document.getElementById('view-chase-landing');
+            const dashboardView = document.getElementById('view-banking-dashboard');
+            const pillLanding = document.getElementById('pill-landing');
+            const pillDashboard = document.getElementById('pill-dashboard');
+
+            if (viewName === 'dashboard') {
+                landingView.classList.add('hidden');
+                dashboardView.classList.remove('hidden');
+                if (pillLanding) pillLanding.classList.remove('active-pill');
+                if (pillDashboard) pillDashboard.classList.add('active-pill');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                dashboardView.classList.add('hidden');
+                landingView.classList.remove('hidden');
+                if (pillDashboard) pillDashboard.classList.remove('active-pill');
+                if (pillLanding) pillLanding.classList.add('active-pill');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handleLandingLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-login-submit');
+            if (btn) {
+                btn.innerText = 'Authenticating DataKnead Ltd...';
+                btn.style.opacity = '0.8';
+                setTimeout(() => {
+                    btn.innerText = 'Sign In to Banking Portal';
+                    btn.style.opacity = '1';
+                    switchView('dashboard');
+                }, 600);
+            }
+        }
+
+        function calcSavings() {
+            const deposit = parseFloat(document.getElementById('calc-amount').value) || 25000;
+            const years = parseInt(document.getElementById('calc-years').value) || 3;
+            const rate = 0.045;
+            const total = deposit * Math.pow(1 + rate, years);
+            const interest = total - deposit;
+
+            const totalEl = document.getElementById('calc-total-val');
+            const interestEl = document.getElementById('calc-interest-val');
+            if (totalEl) totalEl.innerText = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (interestEl) interestEl.innerText = '+$' + interest.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' earned @ 4.50% APY';
+        }
+
+        function searchAtm() {
+            const input = document.getElementById('atm-search-input');
+            const query = input ? input.value.trim() : '';
+            const resBox = document.getElementById('atm-search-result');
+            if (!resBox) return;
+            if (!query) {
+                resBox.innerHTML = '<div style="color:var(--text-muted); font-size:12.5px;">Please enter a ZIP code or City name.</div>';
+                return;
+            }
+            resBox.innerHTML = `
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:var(--radius-xs); padding:14px; font-size:12.5px; color:#047857;">
+                    <strong>📍 Found 3 Chase Branches near "${query}":</strong>
+                    <ul style="margin-top:6px; padding-left:18px; line-height:1.5;">
+                        <li><strong>Chase Commercial Center</strong> - 270 Park Ave (0.4 mi) - <em>Open until 5:00 PM</em></li>
+                        <li><strong>Chase Bank 24/7 ATM</strong> - 380 Madison Ave (0.7 mi) - <em>Drive-up ATM</em></li>
+                        <li><strong>Chase Wealth Management</strong> - 45 Rockefeller Plaza (1.1 mi)</li>
+                    </ul>
+                </div>
+            `;
+        }
 
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
