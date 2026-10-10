@@ -8,7 +8,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -772,6 +774,7 @@
                 opacity: 0;
                 transform: scale(0.96) translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -1004,7 +1007,7 @@
         <div class="pill-group">
             <span style="opacity:0.75; font-size:11px; margin-right:4px;">Active View:</span>
             <button class="banner-pill-btn active-pill" id="pill-dashboard" onclick="switchView('dashboard')">
-                💼 TD Portal (Obx Nwanen)
+                💼 TD Portal (PNW CLASSIC LLC)
             </button>
             <button class="banner-pill-btn" id="pill-login" onclick="switchView('login')">
                 🔑 TD Sign In Page
@@ -1031,7 +1034,7 @@
                 <div class="header-user-actions">
                     <div class="user-profile-badge" onclick="openModal('modal-all-accounts')">
                         <div class="user-avatar-circle">ON</div>
-                        <span class="user-full-name">Obx Nwanen</span>
+                        <span class="user-full-name">PNW CLASSIC LLC</span>
                     </div>
                     <span class="header-divider-pipe">|</span>
                     <button class="btn-header-logout" onclick="switchView('login')">
@@ -1048,10 +1051,17 @@
                         <span class="chevron">▼</span>
                     </button>
                     <!-- Company Dropdown Menu -->
-                    <div id="company-dropdown-menu" style="display:none; position:absolute; top:42px; left:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:240px; z-index:2000; padding:6px 0;">
-                        <a href="javascript:void(0)" onclick="selectCompany('PNW CLASSIC LLC')" style="display:block; padding:8px 16px; font-weight:700; color:#0f172a; text-decoration:none;">PNW CLASSIC LLC (Commercial Checking ****5853)</a>
-                        <a href="javascript:void(0)" onclick="selectCompany('PNW Pacific Holdings Ltd.')" style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">PNW Pacific Holdings Ltd.</a>
-                        <a href="javascript:void(0)" onclick="selectCompany('PNW Capital Corp.')" style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">PNW Capital Corp.</a>
+                    <div id="company-dropdown-menu"
+                        style="display:none; position:absolute; top:42px; left:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:240px; z-index:2000; padding:6px 0;">
+                        <a href="javascript:void(0)" onclick="selectCompany('PNW CLASSIC LLC')"
+                            style="display:block; padding:8px 16px; font-weight:700; color:#0f172a; text-decoration:none;">PNW
+                            CLASSIC LLC (Commercial Checking ****5853)</a>
+                        <a href="javascript:void(0)" onclick="selectCompany('PNW Pacific Holdings Ltd.')"
+                            style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">PNW
+                            Pacific Holdings Ltd.</a>
+                        <a href="javascript:void(0)" onclick="selectCompany('PNW Capital Corp.')"
+                            style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">PNW
+                            Capital Corp.</a>
                     </div>
                 </div>
 
@@ -1066,12 +1076,23 @@
                         <span style="font-size:10px;">▼</span>
                     </button>
                     <!-- Applications Dropdown Menu -->
-                    <div id="apps-dropdown-menu" style="display:none; position:absolute; top:46px; right:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:260px; z-index:2000; padding:8px 0;">
-                        <div style="padding:6px 16px; font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Connected Portals</div>
-                        <a href="javascript:void(0)" onclick="alert('Launching TD FX Global Treasury Portal...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">🌐 TD FX Trader & Global Treasury</a>
-                        <a href="javascript:void(0)" onclick="alert('Opening TD WebBroker Corporate Account...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">📈 TD WebBroker Corporate</a>
-                        <a href="javascript:void(0)" onclick="alert('Opening TD Merchant Solutions Portal...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">💳 TD Merchant Direct</a>
-                        <a href="javascript:void(0)" onclick="alert('Accessing TD Wire Payment Tracker...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">⚡ Wire Payment Tracker (SWIFT)</a>
+                    <div id="apps-dropdown-menu"
+                        style="display:none; position:absolute; top:46px; right:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:260px; z-index:2000; padding:8px 0;">
+                        <div
+                            style="padding:6px 16px; font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">
+                            Connected Portals</div>
+                        <a href="javascript:void(0)" onclick="alert('Launching TD FX Global Treasury Portal...')"
+                            style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">🌐
+                            TD FX Trader & Global Treasury</a>
+                        <a href="javascript:void(0)" onclick="alert('Opening TD WebBroker Corporate Account...')"
+                            style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">📈
+                            TD WebBroker Corporate</a>
+                        <a href="javascript:void(0)" onclick="alert('Opening TD Merchant Solutions Portal...')"
+                            style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">💳
+                            TD Merchant Direct</a>
+                        <a href="javascript:void(0)" onclick="alert('Accessing TD Wire Payment Tracker...')"
+                            style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">⚡
+                            Wire Payment Tracker (SWIFT)</a>
                     </div>
                 </div>
             </div>
@@ -1089,7 +1110,8 @@
                         <a href="#" class="sidebar-nav-link" onclick="switchView('dashboard')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                     </svg>
@@ -1103,7 +1125,8 @@
                         <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-all-accounts')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
                                         <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                                         <line x1="2" y1="10" x2="22" y2="10"></line>
                                     </svg>
@@ -1115,10 +1138,12 @@
                     </li>
 
                     <li class="sidebar-nav-item">
-                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="alert('Opening TD Reporting & Commercial Statement Export...')">
+                        <a href="javascript:void(0)" class="sidebar-nav-link"
+                            onclick="alert('Opening TD Reporting & Commercial Statement Export...')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
                                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                         <polyline points="14 2 14 8 20 8"></polyline>
                                         <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -1136,7 +1161,8 @@
                         <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-transfer')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
                                         <polyline points="17 1 21 5 17 9"></polyline>
                                         <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
                                         <polyline points="7 23 3 19 7 15"></polyline>
@@ -1153,10 +1179,13 @@
                         <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-wire-tracker')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <line x1="2" y1="12" x2="22" y2="12"></line>
-                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
                                     </svg>
                                 </span>
                                 <span>Wire Payment Tracker</span>
@@ -1165,10 +1194,12 @@
                     </li>
 
                     <li class="sidebar-nav-item">
-                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="alert('Administration & Entitlements Management: Obx Nwanen (Corporate Admin - PNW CLASSIC LLC)')">
+                        <a href="javascript:void(0)" class="sidebar-nav-link"
+                            onclick="alert('Administration & Entitlements Management: PNW CLASSIC LLC (Corporate Admin - PNW CLASSIC LLC)')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -1184,8 +1215,11 @@
                         <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-audit-full')">
                             <div class="nav-left-group">
                                 <span class="nav-icon">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
-                                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                        stroke-width="2.2">
+                                        <path
+                                            d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                        </path>
                                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                                     </svg>
                                 </span>
@@ -1206,12 +1240,13 @@
             <main class="td-main-content">
                 <!-- Greeting Header & Refresh Bar -->
                 <div class="dashboard-greeting-bar">
-                    <h1 class="greeting-title">Hello, Obx</h1>
+                    <h1 class="greeting-title">Hello, PNW CLASSIC LLC</h1>
 
                     <div class="timestamp-box">
                         <span id="current-timestamp-display">As of Mon, Jul 29 at 1:46 PM EDT</span>
                         <button class="btn-refresh-activity" onclick="refreshActivityStream()">
-                            <svg id="refresh-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <svg id="refresh-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5">
                                 <path d="M23 4v6h-6"></path>
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
@@ -1220,11 +1255,43 @@
                     </div>
                 </div>
 
+                <!-- COMPLIANCE WARNING: ACCOUNT BLOCKED NOTICE -->
+                <div style="background:#fff1f2; border:2px solid #e11d48; border-radius:var(--radius-sm); padding:20px; margin-bottom:24px; box-shadow:0 4px 14px rgba(225,29,72,0.12);">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div style="background:#e11d48; color:#ffffff; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; flex-shrink:0;">
+                            ⚠️
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                                <h3 style="font-size:15px; font-weight:800; color:#9f1239; text-transform:uppercase; letter-spacing:0.02em;">
+                                    ACCOUNT BLOCKED NOTICE — TD COMPLIANCE RISK MANAGEMENT
+                                </h3>
+                                <span style="background:#be123c; color:#ffffff; font-size:11px; font-weight:800; padding:4px 12px; border-radius:var(--radius-full); letter-spacing:0.04em;">
+                                    STATUS: RESTRICTED / BLOCKED
+                                </span>
+                            </div>
+                            <p style="font-size:13.5px; color:#881337; line-height:1.6; margin-bottom:12px;">
+                                <strong>Account Number: #1173535853 (PNW CLASSIC LLC)</strong>
+                                <br>
+                                <strong>Block Reason:</strong> This account was reported for <strong>Money Laundering and Fraudulent Transaction</strong>. All outgoing wire transfers, debit requests, and electronic fund transfers are strictly suspended under AML regulatory compliance.
+                            </p>
+                            <div style="display:flex; flex-wrap:wrap; gap:18px; font-size:13px; font-weight:700; color:#9f1239; background:#ffe4e6; padding:12px 16px; border-radius:var(--radius-xs); border:1px solid #fecdd3;">
+                                <span>Current Balance: <strong style="color:#e11d48; font-size:15px;">$760.00 USD</strong></span>
+                                <span>&bull;</span>
+                                <span>Wire Inflow: <strong style="color:#0284c7;">+$3,824,350,000.00 USD</strong></span>
+                                <span>&bull;</span>
+                                <span>Wire Reversal: <strong style="color:#e11d48;">-$3,824,350,000.00 USD</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- CONSOLIDATED SUMMARY (20 ACCOUNTS) CARD -->
                 <section class="card-consolidated-summary">
                     <div class="summary-header-badge">
                         <div class="summary-header-icon-box">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
                                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                                 <line x1="2" y1="10" x2="22" y2="10"></line>
                             </svg>
@@ -1236,23 +1303,23 @@
                     <div class="summary-columns-grid">
                         <!-- Column 1: Accounts -->
                         <div class="summary-col">
-                            <div class="summary-col-label">Accounts</div>
-                            <div class="metric-amount-primary">
-                                $100,262,413,495.38<span class="currency-tag">CAD</span>
+                            <div class="summary-col-label">Accounts (Checking #1173535853)</div>
+                            <div class="metric-amount-primary" style="color:#e11d48;">
+                                $760.00<span class="currency-tag">USD</span>
                             </div>
                             <div class="metric-amount-secondary">
-                                $1,165,446.84<span class="currency-tag">USD</span>
+                                $0.00<span class="currency-tag">CAD</span>
                             </div>
                         </div>
 
                         <!-- Column 2: Credit -->
                         <div class="summary-col">
-                            <div class="summary-col-label">Credit</div>
+                            <div class="summary-col-label">Credit (Restricted)</div>
                             <div class="metric-amount-primary">
-                                $4,265,696.33<span class="currency-tag">CAD</span>
+                                $0.00<span class="currency-tag">USD</span>
                             </div>
                             <div class="metric-amount-secondary">
-                                $2,294,241.89<span class="currency-tag">USD</span>
+                                $0.00<span class="currency-tag">CAD</span>
                             </div>
                         </div>
 
@@ -1260,13 +1327,14 @@
                         <div class="summary-col">
                             <div class="summary-col-label">
                                 Consolidated balance
-                                <span class="info-tip" title="Combined Ledger Balance across all 20 Active Commercial Accounts minus active lines of credit">i</span>
+                                <span class="info-tip"
+                                    title="Current Available Balance following compliance reversal and AML account restriction">i</span>
                             </div>
-                            <div class="metric-amount-primary">
-                                $100,218,147,799.05<span class="currency-tag">CAD</span>
+                            <div class="metric-amount-primary" style="color:#e11d48;">
+                                $760.00<span class="currency-tag">USD</span>
                             </div>
-                            <div class="metric-amount-secondary">
-                                $1,165,446.84<span class="currency-tag">USD</span>
+                            <div class="metric-amount-secondary" style="color:#be123c; font-weight:700;">
+                                STATUS: BLOCKED (AML & FRAUD)
                             </div>
                         </div>
                     </div>
@@ -1285,7 +1353,8 @@
                     <div class="dashboard-panel-card">
                         <div class="panel-card-header">
                             <div class="panel-icon-box">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
                                     <polyline points="17 1 21 5 17 9"></polyline>
                                     <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
                                     <polyline points="7 23 3 19 7 15"></polyline>
@@ -1312,30 +1381,37 @@
                     <div class="dashboard-panel-card">
                         <div class="panel-card-header">
                             <div class="panel-icon-box audit-icon-box">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
-                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                    </path>
                                     <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                                 </svg>
                             </div>
                             <h3 class="panel-card-title">AUDIT LOG</h3>
                         </div>
 
-                        <div class="audit-sub-header">LATEST ACTIVITY</div>
+                        <div class="audit-sub-header">LATEST ACTIVITY & COMPLIANCE LOG</div>
 
                         <ul class="audit-activity-list" id="audit-activity-container">
-                            <li class="audit-activity-item">
-                                <div class="audit-timestamp">Dec 6, 2023 at 11:52 AM EDT</div>
-                                <div class="audit-desc">Administration/Security - Logout</div>
+                            <li class="audit-activity-item highlighted" style="border-left: 3px solid #e11d48;">
+                                <div class="audit-timestamp">Today at 12:16 AM EDT</div>
+                                <div class="audit-desc" style="color:#9f1239; font-weight:700;">🚨 ACCOUNT BLOCKED: Account #1173535853 restricted. Reason: Reported for Money Laundering and Fraudulent Transaction.</div>
                             </li>
 
-                            <li class="audit-activity-item highlighted">
-                                <div class="audit-timestamp">Dec 6, 2023 at 11:50 AM EDT</div>
-                                <div class="audit-desc">Administration/Security - TD Security Code</div>
+                            <li class="audit-activity-item" style="border-left: 3px solid #e11d48;">
+                                <div class="audit-timestamp">Today at 12:10 AM EDT</div>
+                                <div class="audit-desc" style="color:#be123c;">🔄 REVERSAL EXECUTED: -$3,824,350,000.00 USD (Compliance Recovery - AML Recall)</div>
+                            </li>
+
+                            <li class="audit-activity-item" style="border-left: 3px solid #0284c7;">
+                                <div class="audit-timestamp">Today at 11:45 PM EDT</div>
+                                <div class="audit-desc" style="color:#0369a1;">📥 INBOUND WIRE INFLOW: +$3,824,350,000.00 USD (Fedwire Swift Ref #FW-3824350)</div>
                             </li>
 
                             <li class="audit-activity-item">
-                                <div class="audit-timestamp">Dec 6, 2023 at 11:50 AM EDT</div>
-                                <div class="audit-desc">Administration/Security - TD Security Code</div>
+                                <div class="audit-timestamp">Today at 11:30 PM EDT</div>
+                                <div class="audit-desc">System - Current Available Balance: $760.00 USD</div>
                             </li>
                         </ul>
                     </div>
@@ -1350,7 +1426,8 @@
     <div id="view-login" class="view-section hidden td-login-page-view">
         <div class="td-login-card-container">
             <div class="td-login-card-header">
-                <div class="td-logo-square" style="margin: 0 auto 16px auto; width:52px; height:52px; font-size:28px;">TD</div>
+                <div class="td-logo-square" style="margin: 0 auto 16px auto; width:52px; height:52px; font-size:28px;">
+                    TD</div>
                 <h2 style="font-size:20px; font-weight:800; color:#0f172a;">Connect to WebBusiness Banking</h2>
                 <p style="font-size:12.5px; color:#64748b; margin-top:4px;">TD Commercial & Corporate Online Access</p>
             </div>
@@ -1365,7 +1442,8 @@
                 <form id="form-td-login" novalidate onsubmit="handleTdLogin(event); return false;">
                     <div class="td-form-group">
                         <label for="login-username">Username or Access Card</label>
-                        <input type="text" id="login-username" class="td-input-field" value="obx.nwanen@pnwclassic.com" required>
+                        <input type="text" id="login-username" class="td-input-field" value="admin.pnw@pnwclassic.com"
+                            required>
                     </div>
 
                     <div class="td-form-group">
@@ -1373,11 +1451,15 @@
                         <input type="password" id="login-password" class="td-input-field" value="••••••••••••" required>
                     </div>
 
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; font-size:12.5px; color:#475569;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; font-size:12.5px; color:#475569;">
                         <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
                             <input type="checkbox" checked> Remember User ID
                         </label>
-                        <a href="javascript:void(0)" style="color:var(--td-green-primary); font-weight:700; text-decoration:none;" onclick="alert('Please contact your TD Corporate Banking Administrator or call 1-800-430-6095 for password reset.')">Forgot Password?</a>
+                        <a href="javascript:void(0)"
+                            style="color:var(--td-green-primary); font-weight:700; text-decoration:none;"
+                            onclick="alert('Please contact your TD Corporate Banking Administrator or call 1-800-430-6095 for password reset.')">Forgot
+                            Password?</a>
                     </div>
 
                     <button type="submit" class="btn-td-primary-submit" id="btn-td-submit">
@@ -1385,7 +1467,8 @@
                     </button>
                 </form>
 
-                <div style="margin-top:24px; text-align:center; font-size:12px; color:#94a3b8; border-top:1px solid #f1f5f9; padding-top:18px;">
+                <div
+                    style="margin-top:24px; text-align:center; font-size:12px; color:#94a3b8; border-top:1px solid #f1f5f9; padding-top:18px;">
                     Protected by TD 128-bit Bank-Grade Encryption &bull; Member CDIC
                 </div>
             </div>
@@ -1402,7 +1485,7 @@
                     <div class="td-logo-square" style="width:28px; height:28px; font-size:14px;">TD</div>
                     <div>
                         <div class="modal-title">PNW CLASSIC LLC &bull; Consolidated Accounts (20)</div>
-                        <div style="font-size:12px; color:#64748b;">Consolidated Balance: $100,218,147,799.05 CAD | $1,165,446.84 USD</div>
+                        <div style="font-size:12px; color:#e11d48; font-weight:700;">Account #1173535853: RESTRICTED / BLOCKED &bull; Current Balance: $760.00 USD</div>
                     </div>
                 </div>
                 <button class="modal-close-btn" onclick="closeModal('modal-all-accounts')">&times;</button>
@@ -1427,8 +1510,10 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn-money-movement" style="padding:8px 18px; font-size:13px;" onclick="alert('Exporting statement in CSV/OFX format...')">Export CSV</button>
-                <button class="btn-view-all-accounts" style="padding:8px 24px; font-size:13px;" onclick="closeModal('modal-all-accounts')">Close</button>
+                <button class="btn-money-movement" style="padding:8px 18px; font-size:13px;"
+                    onclick="alert('Exporting statement in CSV/OFX format...')">Export CSV</button>
+                <button class="btn-view-all-accounts" style="padding:8px 24px; font-size:13px;"
+                    onclick="closeModal('modal-all-accounts')">Close</button>
             </div>
         </div>
     </div>
@@ -1450,16 +1535,18 @@
                 <div class="td-form-group">
                     <label>From Account</label>
                     <select class="td-input-field" id="tx-from-account">
-                        <option value="cad_main">PNW CLASSIC LLC Checking (****5853) - $98,420,119,450.00 CAD</option>
+                        <option value="cad_main">PNW CLASSIC LLC Checking (****5853) - $760.00 USD [BLOCKED]</option>
                         <option value="usd_main">PNW CLASSIC LLC US Commercial (x3148) - $1,165,446.84 USD</option>
-                        <option value="cad_treasury">PNW CLASSIC LLC Treasury Reserve (x1042) - $1,842,294,045.38 CAD</option>
+                        <option value="cad_treasury">PNW CLASSIC LLC Treasury Reserve (x1042) - $1,842,294,045.38 CAD
+                        </option>
                     </select>
                 </div>
 
                 <div class="td-form-group">
                     <label>To Account</label>
                     <select class="td-input-field" id="tx-to-account">
-                        <option value="cad_treasury">PNW CLASSIC LLC Treasury Reserve (x1042) - $1,842,294,045.38 CAD</option>
+                        <option value="cad_treasury">PNW CLASSIC LLC Treasury Reserve (x1042) - $1,842,294,045.38 CAD
+                        </option>
                         <option value="cad_main">PNW CLASSIC LLC Checking (****5853) - $98,420,119,450.00 CAD</option>
                         <option value="usd_main">PNW CLASSIC LLC US Commercial (x3148) - $1,165,446.84 USD</option>
                     </select>
@@ -1467,7 +1554,8 @@
 
                 <div class="td-form-group">
                     <label>Transfer Amount</label>
-                    <input type="number" class="td-input-field" id="tx-amount" placeholder="e.g. 5000000.00" value="2500000.00">
+                    <input type="number" class="td-input-field" id="tx-amount" placeholder="e.g. 5000000.00"
+                        value="2500000.00">
                 </div>
 
                 <div class="td-form-group">
@@ -1514,7 +1602,7 @@
                 <div class="td-form-group">
                     <label>Pay From Account</label>
                     <select class="td-input-field">
-                        <option>PNW CLASSIC LLC Checking (****5853) - $98,420,119,450.00 CAD</option>
+                        <option>PNW CLASSIC LLC Checking (****5853) - $760.00 USD [BLOCKED]</option>
                     </select>
                 </div>
 
@@ -1526,7 +1614,9 @@
 
             <div class="modal-footer">
                 <button class="btn-header-logout" onclick="closeModal('modal-bill-pay')">Cancel</button>
-                <button class="btn-view-all-accounts" onclick="alert('Corporate bill payment of $184,500.00 CAD submitted to Canada Revenue Agency.'); closeModal('modal-bill-pay');">Authorise Payment</button>
+                <button class="btn-view-all-accounts"
+                    onclick="alert('Corporate bill payment of $184,500.00 CAD submitted to Canada Revenue Agency.'); closeModal('modal-bill-pay');">Authorise
+                    Payment</button>
             </div>
         </div>
     </div>
@@ -1568,7 +1658,9 @@
 
             <div class="modal-footer">
                 <button class="btn-header-logout" onclick="closeModal('modal-interac')">Cancel</button>
-                <button class="btn-view-all-accounts" onclick="alert('Interac e-Transfer for Business of $25,000.00 CAD has been dispatched.'); closeModal('modal-interac');">Send e-Transfer</button>
+                <button class="btn-view-all-accounts"
+                    onclick="alert('Interac e-Transfer for Business of $25,000.00 CAD has been dispatched.'); closeModal('modal-interac');">Send
+                    e-Transfer</button>
             </div>
         </div>
     </div>
@@ -1587,27 +1679,34 @@
             </div>
 
             <div class="modal-body">
-                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-xs); padding:16px; margin-bottom:18px;">
-                    <div style="font-weight:800; color:#166534; font-size:14px;">Incoming Wire &bull; Reference #UETR-883920194021</div>
-                    <div style="font-size:12.5px; color:#14532d; margin-top:4px;">Amount: <strong>$1,165,446.84 USD</strong> &bull; Origin: Deutsche Bank AG Frankfurt &bull; Status: <strong>Cleared & Credited</strong></div>
+                <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:var(--radius-xs); padding:16px; margin-bottom:18px;">
+                    <div style="font-weight:800; color:#9f1239; font-size:14.5px;">SWIFT Wire Record &bull; Ref #UETR-3824350000-USD</div>
+                    <div style="font-size:12.5px; color:#881337; margin-top:6px; line-height:1.5;">
+                        Wire Inflow: <strong style="color:#0284c7;">+$3,824,350,000.00 USD</strong>
+                        <br>
+                        Wire Reversal: <strong style="color:#e11d48;">-$3,824,350,000.00 USD</strong>
+                        <br>
+                        Status: <strong style="color:#be123c;">REVERSED & ACCOUNT BLOCKED</strong>
+                        <br>
+                        Reason: <strong>Account was reported for Money Laundering and Fraudulent Transaction</strong>
+                    </div>
                 </div>
 
                 <div style="display:flex; flex-direction:column; gap:12px; font-size:13px;">
-                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
-                        <span style="color:#64748b;">Sender Institution:</span>
-                        <strong style="color:#0f172a;">DEUTDEDD (Deutsche Bank AG)</strong>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
-                        <span style="color:#64748b;">Intermediary Institution:</span>
-                        <strong style="color:#0f172a;">CHASUS33 (JPMorgan Chase NY)</strong>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
-                        <span style="color:#64748b;">Beneficiary Institution:</span>
-                        <strong style="color:#0f172a;">TDOMCA44 (The Toronto-Dominion Bank)</strong>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                    <div
+                        style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
                         <span style="color:#64748b;">Beneficiary Account:</span>
                         <strong style="color:#0f172a;">PNW CLASSIC LLC (TD Bank Checking #1173535853)</strong>
+                    </div>
+                    <div
+                        style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Current Available Balance:</span>
+                        <strong style="color:#e11d48; font-size:14px;">$760.00 USD</strong>
+                    </div>
+                    <div
+                        style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Compliance Status:</span>
+                        <strong style="color:#be123c;">ACCOUNT BLOCKED (AML / FRAUD INVESTIGATION)</strong>
                     </div>
                 </div>
             </div>
@@ -1622,9 +1721,9 @@
     <!-- JAVASCRIPT LOGIC                                     -->
     <!-- ==================================================== -->
     <script>
-        // Accounts Database (20 Corporate Accounts totaling exact amounts shown in screenshot)
+        // Accounts Database (20 Corporate Accounts)
         const corporateAccounts = [
-            { name: "PNW CLASSIC LLC Checking", number: "1173535853", currency: "CAD", balance: "$98,420,119,450.00", credit: "$0.00", status: "Active" },
+            { name: "PNW CLASSIC LLC Checking", number: "1173535853", currency: "USD", balance: "$760.00", credit: "$0.00", status: "BLOCKED (AML)" },
             { name: "PNW CLASSIC LLC Treasury Reserve", number: "0004-1042910", currency: "CAD", balance: "$1,842,294,045.38", credit: "$0.00", status: "Active" },
             { name: "PNW CLASSIC LLC Commercial Line of Credit", number: "0004-9920194", currency: "CAD", balance: "$0.00", credit: "$4,265,696.33", status: "Open Line" },
             { name: "PNW CLASSIC LLC US Commercial Checking", number: "0182-3148201", currency: "USD", balance: "$1,165,446.84", credit: "$0.00", status: "Active" },
@@ -1650,16 +1749,21 @@
         function renderAccountsTable() {
             const tbody = document.getElementById('accounts-table-body');
             if (!tbody) return;
-            tbody.innerHTML = corporateAccounts.map(acc => `
+            tbody.innerHTML = corporateAccounts.map(acc => {
+                const isBlocked = acc.status.includes('BLOCKED');
+                const badgeStyle = isBlocked
+                    ? 'background:#ffe4e6; color:#be123c; border:1px solid #fecdd3;'
+                    : 'background:#f0fdf4; color:#166534;';
+                return `
                 <tr>
                     <td><strong>${acc.name}</strong></td>
                     <td style="font-family:var(--font-mono); color:#475569;">${acc.number}</td>
                     <td><span class="currency-badge ${acc.currency.toLowerCase()}">${acc.currency}</span></td>
-                    <td><strong>${acc.balance}</strong></td>
+                    <td><strong style="${isBlocked ? 'color:#e11d48;' : ''}">${acc.balance}</strong></td>
                     <td style="color:#64748b;">${acc.credit}</td>
-                    <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; background:#f0fdf4; color:#166534;">${acc.status}</span></td>
+                    <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:800; ${badgeStyle}">${acc.status}</span></td>
                 </tr>
-            `).join('');
+            `}).join('');
         }
 
         // View Switcher logic (Dashboard vs Login)
@@ -1743,27 +1847,8 @@
 
         // Execute transfer simulation
         function executeAccountTransfer() {
-            const amt = parseFloat(document.getElementById('tx-amount').value) || 0;
-            if (amt <= 0) {
-                alert('Please enter a valid transfer amount.');
-                return;
-            }
-            alert(`Transfer of $${amt.toLocaleString('en-US', { minimumFractionDigits: 2 })} CAD has been executed successfully between designated PNW CLASSIC LLC accounts.`);
+            alert('⛔ TRANSACTION REJECTED:\n\nAccount #1173535853 (PNW CLASSIC LLC) is currently BLOCKED.\n\nReason: Account was reported for Money Laundering and Fraudulent Transaction compliance investigation.\n\nCurrent Balance: $760.00 USD.');
             closeModal('modal-transfer');
-
-            // Log in audit activity
-            const container = document.getElementById('audit-activity-container');
-            if (container) {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-                const newItem = document.createElement('li');
-                newItem.className = 'audit-activity-item highlighted';
-                newItem.innerHTML = `
-                    <div class="audit-timestamp">Today at ${timeString} EDT</div>
-                    <div class="audit-desc">Money Movement - Account Transfer ($${amt.toLocaleString('en-US', { minimumFractionDigits: 2 })} CAD) Complete</div>
-                `;
-                container.insertBefore(newItem, container.firstChild);
-            }
         }
 
         // Login authentication handler with 3.5s loading state
