@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD Commercial Banking | WebBusiness Banking - MT Innovations Inc.</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Official TD Bank Color System */
+            --td-green-primary: #008a00;
+            --td-green-dark: #006b00;
+            --td-green-hover: #007500;
+            --td-green-accent: #54b948;
+            --td-green-light: #e6f7eb;
+            --td-green-subtle: #f0fdf4;
+            --td-green-badge: #008528;
+
+            --bg-page: #f5f7f9;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+            --bg-header: #ffffff;
+
+            --text-main: #1e293b;
+            --text-heading: #0f172a;
+            --text-muted: #64748b;
+            --text-dim: #94a3b8;
+            --text-link: #008a00;
+
+            --border-color: #e2e8f0;
+            --border-dashed: #cbd5e1;
+            --border-green: #008a00;
+
+            --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-modal: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+
+            --radius-xs: 4px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-full: 9999px;
+
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-size: 13.5px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------------------------------------------------- */
+        /* TOP VIEW MODE SWITCHER BANNER                        */
+        /* ---------------------------------------------------- */
+        .view-switch-banner {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            border-bottom: 1px solid #1e293b;
+            z-index: 9999;
+        }
+
+        .view-switch-banner .brand-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .view-switch-banner .pill-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .banner-pill-btn {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .banner-pill-btn:hover {
+            background: #334155;
+            color: #ffffff;
+        }
+
+        .banner-pill-btn.active-pill {
+            background: var(--td-green-primary);
+            color: #ffffff;
+            border-color: var(--td-green-primary);
+        }
+
+        /* ---------------------------------------------------- */
+        /* TOP HEADER NAVIGATION                                */
+        /* ---------------------------------------------------- */
+        .td-top-header {
+            background: var(--bg-header);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-main-row {
+            height: 60px;
+            padding: 0 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* TD Green Logo Square */
+        .td-logo-box {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .td-logo-square {
+            width: 44px;
+            height: 44px;
+            background-color: var(--td-green-primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+            user-select: none;
+            box-shadow: 0 2px 5px rgba(0, 138, 0, 0.25);
+        }
+
+        .header-user-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-profile-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .user-profile-badge:hover {
+            background-color: #f1f5f9;
+        }
+
+        .user-avatar-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #1e3a2b;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+        }
+
+        .user-full-name {
+            font-weight: 700;
+            font-size: 13.5px;
+            color: var(--text-heading);
+        }
+
+        .header-divider-pipe {
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        .btn-header-logout {
+            color: var(--td-green-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13.5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+        }
+
+        .btn-header-logout:hover {
+            text-decoration: underline;
+            color: var(--td-green-dark);
+        }
+
+        /* Sub-Header Row with Company Selector & TD Applications */
+        .header-sub-row {
+            height: 54px;
+            padding: 0 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+        }
+
+        .company-dropdown-btn {
+            background: transparent;
+            border: none;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+        }
+
+        .company-dropdown-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .company-dropdown-btn .chevron {
+            color: var(--td-green-primary);
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn-td-applications {
+            background-color: var(--td-green-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-full);
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0, 138, 0, 0.2);
+        }
+
+        .btn-td-applications:hover {
+            background-color: var(--td-green-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 138, 0, 0.3);
+        }
+
+        .btn-td-applications .app-grid-icon {
+            display: grid;
+            grid-template-columns: repeat(3, 3px);
+            grid-gap: 2px;
+        }
+
+        .btn-td-applications .app-grid-icon span {
+            width: 3px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 0.5px;
+        }
+
+        /* Distinctive Full-Width TD Green Accent Stripe */
+        .td-accent-stripe {
+            height: 4px;
+            background-color: var(--td-green-primary);
+            width: 100%;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN APPLICATION LAYOUT (SIDEBAR + CONTENT)          */
+        /* ---------------------------------------------------- */
+        .app-body-layout {
+            display: flex;
+            flex: 1;
+            min-height: calc(100vh - 150px);
+        }
+
+        /* Left Navigation Sidebar */
+        .td-sidebar {
+            width: 220px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 16px 0;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar-nav-list {
+            list-style: none;
+        }
+
+        .sidebar-nav-item {
+            margin-bottom: 2px;
+        }
+
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 20px;
+            color: #334155;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-nav-link .nav-left-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-nav-link .nav-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--td-green-primary);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-nav-link .chevron-sub {
+            font-size: 10px;
+            color: #94a3b8;
+            transition: transform 0.2s;
+        }
+
+        .sidebar-nav-link:hover {
+            background-color: #f8fafc;
+            color: var(--td-green-primary);
+        }
+
+        .sidebar-nav-item.active .sidebar-nav-link {
+            background-color: #f1f5f9;
+            color: var(--td-green-dark);
+            font-weight: 700;
+            border-left-color: var(--td-green-primary);
+        }
+
+        .sidebar-sub-menu {
+            list-style: none;
+            padding-left: 48px;
+            background: #fafafa;
+            display: none;
+        }
+
+        .sidebar-sub-menu.open {
+            display: block;
+        }
+
+        .sidebar-sub-menu li a {
+            display: block;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .sidebar-sub-menu li a:hover {
+            color: var(--td-green-primary);
+        }
+
+        /* ---------------------------------------------------- */
+        /* MAIN CONTENT AREA                                    */
+        /* ---------------------------------------------------- */
+        .td-main-content {
+            flex: 1;
+            padding: 24px 36px 60px 36px;
+            max-width: 1280px;
+        }
+
+        /* Greeting & Timestamp Header */
+        .dashboard-greeting-bar {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .greeting-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+
+        .timestamp-box {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 6px;
+        }
+
+        .btn-refresh-activity {
+            background: transparent;
+            border: none;
+            color: var(--td-green-primary);
+            font-size: 12.5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: var(--radius-xs);
+            transition: var(--transition);
+        }
+
+        .btn-refresh-activity:hover {
+            color: var(--td-green-dark);
+            text-decoration: underline;
+        }
+
+        .btn-refresh-activity svg.spin {
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ---------------------------------------------------- */
+        /* CONSOLIDATED SUMMARY CARD (20 ACCOUNTS)              */
+        /* ---------------------------------------------------- */
+        .card-consolidated-summary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-card);
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+
+        .summary-header-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .summary-header-icon-box {
+            width: 34px;
+            height: 34px;
+            background-color: var(--td-green-primary);
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 17px;
+            box-shadow: 0 2px 6px rgba(0, 138, 0, 0.2);
+        }
+
+        .summary-header-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        /* 3-Column Metrics Layout with Dashed Dividers */
+        .summary-columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .summary-col {
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .summary-col:not(:last-child) {
+            border-right: 1px dashed var(--border-dashed);
+        }
+
+        .summary-col-label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .summary-col-label .info-tip {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--td-green-primary);
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .metric-amount-primary {
+            font-size: 21px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            font-family: var(--font-sans);
+        }
+
+        .metric-amount-secondary {
+            font-size: 18px;
+            font-weight: 700;
+            color: #334155;
+            font-family: var(--font-sans);
+        }
+
+        .currency-tag {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        /* View All Accounts Centered Button */
+        .summary-cta-wrap {
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+        }
+
+        .btn-view-all-accounts {
+            background-color: var(--td-green-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-xs);
+            padding: 10px 42px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0, 138, 0, 0.25);
+        }
+
+        .btn-view-all-accounts:hover {
+            background-color: var(--td-green-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 138, 0, 0.35);
+        }
+
+        /* ---------------------------------------------------- */
+        /* TWO-COLUMN GRID: MONEY MOVEMENT & AUDIT LOG          */
+        /* ---------------------------------------------------- */
+        .bottom-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 24px;
+        }
+
+        .dashboard-panel-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-card);
+            padding: 24px 26px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .panel-icon-box {
+            width: 32px;
+            height: 32px;
+            background-color: var(--td-green-primary);
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .panel-icon-box.audit-icon-box {
+            background-color: #1e3a2b;
+        }
+
+        .panel-card-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        /* Money Movement Outlined Buttons Stack */
+        .money-movement-btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .btn-money-movement {
+            background: #ffffff;
+            border: 1.5px solid var(--td-green-primary);
+            color: var(--td-green-primary);
+            border-radius: var(--radius-xs);
+            padding: 13px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-money-movement:hover {
+            background: var(--td-green-light);
+            border-color: var(--td-green-dark);
+            color: var(--td-green-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Audit Log Stream Items */
+        .audit-sub-header {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .audit-activity-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .audit-activity-item {
+            padding: 12px 14px;
+            border-radius: var(--radius-xs);
+            border: 1px solid #f1f5f9;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+
+        .audit-activity-item:hover {
+            border-color: #e2e8f0;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Highlighted soft-green audit item as seen in screenshot */
+        .audit-activity-item.highlighted {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .audit-timestamp {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .audit-desc {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* ---------------------------------------------------- */
+        /* MODALS (VIEW ALL 20 ACCOUNTS, TRANSFERS, ETC.)       */
+        /* ---------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: var(--radius-sm);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-modal);
+            animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header-bar {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .modal-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .modal-close-btn {
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            color: #0f172a;
+            background: #e2e8f0;
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            background: #f8fafc;
+        }
+
+        /* 20 Accounts Table in Modal */
+        .accounts-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .accounts-table th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .accounts-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+
+        .accounts-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        .currency-badge {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .currency-badge.cad {
+            background: #ecfdf5;
+            color: var(--td-green-primary);
+            border: 1px solid #a7f3d0;
+        }
+
+        .currency-badge.usd {
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* ---------------------------------------------------- */
+        /* TD WEB-BUSINESS SIGN-IN VIEW                         */
+        /* ---------------------------------------------------- */
+        .view-section.hidden {
+            display: none !important;
+        }
+
+        .td-login-page-view {
+            min-height: calc(100vh - 40px);
+            background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .td-login-card-container {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .td-login-card-header {
+            background: #ffffff;
+            padding: 32px 32px 16px 32px;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .td-login-card-body {
+            padding: 32px;
+        }
+
+        .td-form-group {
+            margin-bottom: 20px;
+        }
+
+        .td-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .td-input-field {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: var(--radius-xs);
+            font-size: 14px;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+        }
+
+        .td-input-field:focus {
+            outline: none;
+            border-color: var(--td-green-primary);
+            box-shadow: 0 0 0 3px rgba(0, 138, 0, 0.15);
+        }
+
+        .btn-td-primary-submit {
+            width: 100%;
+            background-color: var(--td-green-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-xs);
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 3px 8px rgba(0, 138, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-td-primary-submit:hover {
+            background-color: var(--td-green-hover);
+        }
+
+        .btn-spinner {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .login-error-alert {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+            padding: 10px 14px;
+            border-radius: var(--radius-xs);
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- GLOBAL VIEW MODE SWITCHER BANNER                     -->
+    <!-- ---------------------------------------------------- -->
+    <div class="view-switch-banner">
+        <div class="brand-tag">
+            <div class="td-logo-square" style="width:24px; height:24px; font-size:13px;">TD</div>
+            <span>TD COMMERCIAL ONLINE BANKING &bull; DASHBOARD 7</span>
+        </div>
+        <div class="pill-group">
+            <span style="opacity:0.75; font-size:11px; margin-right:4px;">Active View:</span>
+            <button class="banner-pill-btn active-pill" id="pill-dashboard" onclick="switchView('dashboard')">
+                💼 TD Portal (River Birkbelt)
+            </button>
+            <button class="banner-pill-btn" id="pill-login" onclick="switchView('login')">
+                🔑 TD Sign In Page
+            </button>
+            <button class="banner-pill-btn" onclick="openModal('modal-all-accounts')">
+                📊 20 Accounts Breakdown
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- VIEW 1: TD COMMERCIAL BANKING DASHBOARD (MAIN)       -->
+    <!-- ==================================================== -->
+    <div id="view-dashboard" class="view-section">
+
+        <!-- Top Header Navigation -->
+        <header class="td-top-header">
+            <!-- Row 1: Logo & Profile / Logout -->
+            <div class="header-main-row">
+                <a href="#" class="td-logo-box" onclick="switchView('dashboard')">
+                    <div class="td-logo-square">TD</div>
+                </a>
+
+                <div class="header-user-actions">
+                    <div class="user-profile-badge" onclick="openModal('modal-all-accounts')">
+                        <div class="user-avatar-circle">RB</div>
+                        <span class="user-full-name">River Birkbelt</span>
+                    </div>
+                    <span class="header-divider-pipe">|</span>
+                    <button class="btn-header-logout" onclick="switchView('login')">
+                        Log out
+                    </button>
+                </div>
+            </div>
+
+            <!-- Row 2: Company Selector & TD Applications Pill -->
+            <div class="header-sub-row">
+                <div style="position:relative;">
+                    <button class="company-dropdown-btn" onclick="toggleCompanyDropdown()">
+                        <span id="selected-company-name">MT Innovations Inc.</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <!-- Company Dropdown Menu -->
+                    <div id="company-dropdown-menu" style="display:none; position:absolute; top:42px; left:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:240px; z-index:2000; padding:6px 0;">
+                        <a href="javascript:void(0)" onclick="selectCompany('MT Innovations Inc.')" style="display:block; padding:8px 16px; font-weight:700; color:#0f172a; text-decoration:none;">MT Innovations Inc. (Commercial)</a>
+                        <a href="javascript:void(0)" onclick="selectCompany('MT Global Technologies Ltd.')" style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">MT Global Technologies Ltd.</a>
+                        <a href="javascript:void(0)" onclick="selectCompany('River Capital Corp.')" style="display:block; padding:8px 16px; font-weight:600; color:#475569; text-decoration:none;">River Capital Corp.</a>
+                    </div>
+                </div>
+
+                <div style="position:relative;">
+                    <button class="btn-td-applications" onclick="toggleAppsDropdown()">
+                        <span class="app-grid-icon">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </span>
+                        <span>TD applications</span>
+                        <span style="font-size:10px;">▼</span>
+                    </button>
+                    <!-- Applications Dropdown Menu -->
+                    <div id="apps-dropdown-menu" style="display:none; position:absolute; top:46px; right:0; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-xs); box-shadow:var(--shadow-card); min-width:260px; z-index:2000; padding:8px 0;">
+                        <div style="padding:6px 16px; font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase;">Connected Portals</div>
+                        <a href="javascript:void(0)" onclick="alert('Launching TD FX Global Treasury Portal...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">🌐 TD FX Trader & Global Treasury</a>
+                        <a href="javascript:void(0)" onclick="alert('Opening TD WebBroker Corporate Account...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">📈 TD WebBroker Corporate</a>
+                        <a href="javascript:void(0)" onclick="alert('Opening TD Merchant Solutions Portal...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">💳 TD Merchant Direct</a>
+                        <a href="javascript:void(0)" onclick="alert('Accessing TD Wire Payment Tracker...')" style="display:block; padding:8px 16px; color:#1e293b; font-weight:600; text-decoration:none;">⚡ Wire Payment Tracker (SWIFT)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full-Bleed TD Green Stripe -->
+            <div class="td-accent-stripe"></div>
+        </header>
+
+        <!-- Main Workspace (Sidebar + Dashboard Grid) -->
+        <div class="app-body-layout">
+            <!-- Left Navigation Sidebar -->
+            <aside class="td-sidebar">
+                <ul class="sidebar-nav-list">
+                    <li class="sidebar-nav-item active">
+                        <a href="#" class="sidebar-nav-link" onclick="switchView('dashboard')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Home</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-all-accounts')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                                    </svg>
+                                </span>
+                                <span>Accounts</span>
+                            </div>
+                            <span class="chevron-sub">▼</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="alert('Opening TD Reporting & Commercial Statement Export...')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Reporting and Statements</span>
+                            </div>
+                            <span class="chevron-sub">▼</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-transfer')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <polyline points="17 1 21 5 17 9"></polyline>
+                                        <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                        <polyline points="7 23 3 19 7 15"></polyline>
+                                        <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                                    </svg>
+                                </span>
+                                <span>Money Movement</span>
+                            </div>
+                            <span class="chevron-sub">▼</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-wire-tracker')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </span>
+                                <span>Wire Payment Tracker</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="alert('Administration & Entitlements Management: River Birkbelt (Corporate Admin)')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </span>
+                                <span>Administration</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="javascript:void(0)" class="sidebar-nav-link" onclick="openModal('modal-audit-full')">
+                            <div class="nav-left-group">
+                                <span class="nav-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                    </svg>
+                                </span>
+                                <span>Audit Log</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Bottom Sidebar Helper Info -->
+                <div style="padding:16px 20px; font-size:11.5px; color:#94a3b8; border-top:1px solid #f1f5f9;">
+                    <div>TD Commercial Online</div>
+                    <div style="font-weight:700; color:#64748b; margin-top:2px;">Support: 1-800-430-6095</div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="td-main-content">
+                <!-- Greeting Header & Refresh Bar -->
+                <div class="dashboard-greeting-bar">
+                    <h1 class="greeting-title">Hello, River</h1>
+
+                    <div class="timestamp-box">
+                        <span id="current-timestamp-display">As of Mon, Jul 29 at 1:46 PM EDT</span>
+                        <button class="btn-refresh-activity" onclick="refreshActivityStream()">
+                            <svg id="refresh-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M23 4v6h-6"></path>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                            <span>Get latest activity</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CONSOLIDATED SUMMARY (20 ACCOUNTS) CARD -->
+                <section class="card-consolidated-summary">
+                    <div class="summary-header-badge">
+                        <div class="summary-header-icon-box">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <line x1="2" y1="10" x2="22" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h2 class="summary-header-title">CONSOLIDATED SUMMARY (20 ACCOUNTS)</h2>
+                    </div>
+
+                    <!-- 3-Column Metrics Layout Divided by Dashed Lines -->
+                    <div class="summary-columns-grid">
+                        <!-- Column 1: Accounts -->
+                        <div class="summary-col">
+                            <div class="summary-col-label">Accounts</div>
+                            <div class="metric-amount-primary">
+                                $100,262,413,495.38<span class="currency-tag">CAD</span>
+                            </div>
+                            <div class="metric-amount-secondary">
+                                $1,165,446.84<span class="currency-tag">USD</span>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Credit -->
+                        <div class="summary-col">
+                            <div class="summary-col-label">Credit</div>
+                            <div class="metric-amount-primary">
+                                $4,265,696.33<span class="currency-tag">CAD</span>
+                            </div>
+                            <div class="metric-amount-secondary">
+                                $2,294,241.89<span class="currency-tag">USD</span>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: Consolidated balance -->
+                        <div class="summary-col">
+                            <div class="summary-col-label">
+                                Consolidated balance
+                                <span class="info-tip" title="Combined Ledger Balance across all 20 Active Commercial Accounts minus active lines of credit">i</span>
+                            </div>
+                            <div class="metric-amount-primary">
+                                $100,218,147,799.05<span class="currency-tag">CAD</span>
+                            </div>
+                            <div class="metric-amount-secondary">
+                                $1,165,446.84<span class="currency-tag">USD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View All Accounts CTA Button -->
+                    <div class="summary-cta-wrap">
+                        <button class="btn-view-all-accounts" onclick="openModal('modal-all-accounts')">
+                            View all accounts
+                        </button>
+                    </div>
+                </section>
+
+                <!-- BOTTOM TWO PANELS GRID: MONEY MOVEMENT & AUDIT LOG -->
+                <div class="bottom-cards-grid">
+                    <!-- Panel 1: MONEY MOVEMENT -->
+                    <div class="dashboard-panel-card">
+                        <div class="panel-card-header">
+                            <div class="panel-icon-box">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="17 1 21 5 17 9"></polyline>
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                    <polyline points="7 23 3 19 7 15"></polyline>
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                                </svg>
+                            </div>
+                            <h3 class="panel-card-title">MONEY MOVEMENT</h3>
+                        </div>
+
+                        <div class="money-movement-btn-stack">
+                            <button class="btn-money-movement" onclick="openModal('modal-transfer')">
+                                Account Transfer
+                            </button>
+                            <button class="btn-money-movement" onclick="openModal('modal-bill-pay')">
+                                Bill Payment
+                            </button>
+                            <button class="btn-money-movement" onclick="openModal('modal-interac')">
+                                Interac e-Transfer&reg; for Business
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: AUDIT LOG -->
+                    <div class="dashboard-panel-card">
+                        <div class="panel-card-header">
+                            <div class="panel-icon-box audit-icon-box">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </div>
+                            <h3 class="panel-card-title">AUDIT LOG</h3>
+                        </div>
+
+                        <div class="audit-sub-header">LATEST ACTIVITY</div>
+
+                        <ul class="audit-activity-list" id="audit-activity-container">
+                            <li class="audit-activity-item">
+                                <div class="audit-timestamp">Dec 6, 2023 at 11:52 AM EDT</div>
+                                <div class="audit-desc">Administration/Security - Logout</div>
+                            </li>
+
+                            <li class="audit-activity-item highlighted">
+                                <div class="audit-timestamp">Dec 6, 2023 at 11:50 AM EDT</div>
+                                <div class="audit-desc">Administration/Security - TD Security Code</div>
+                            </li>
+
+                            <li class="audit-activity-item">
+                                <div class="audit-timestamp">Dec 6, 2023 at 11:50 AM EDT</div>
+                                <div class="audit-desc">Administration/Security - TD Security Code</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- VIEW 2: TD WEB-BUSINESS BANKING SIGN-IN PAGE         -->
+    <!-- ==================================================== -->
+    <div id="view-login" class="view-section hidden td-login-page-view">
+        <div class="td-login-card-container">
+            <div class="td-login-card-header">
+                <div class="td-logo-square" style="margin: 0 auto 16px auto; width:52px; height:52px; font-size:28px;">TD</div>
+                <h2 style="font-size:20px; font-weight:800; color:#0f172a;">Connect to WebBusiness Banking</h2>
+                <p style="font-size:12.5px; color:#64748b; margin-top:4px;">TD Commercial & Corporate Online Access</p>
+            </div>
+
+            <div class="td-login-card-body">
+                <!-- Red Alert Warning Box -->
+                <div id="td-login-error" class="login-error-alert">
+                    <span>⚠️</span>
+                    <span id="td-login-error-text">Please enter your company username and security password.</span>
+                </div>
+
+                <form id="form-td-login" novalidate onsubmit="handleTdLogin(event); return false;">
+                    <div class="td-form-group">
+                        <label for="login-username">Username or Access Card</label>
+                        <input type="text" id="login-username" class="td-input-field" value="river.birkbelt@mt-innovations.ca" required>
+                    </div>
+
+                    <div class="td-form-group">
+                        <label for="login-password">Security Password</label>
+                        <input type="password" id="login-password" class="td-input-field" value="••••••••••••" required>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; font-size:12.5px; color:#475569;">
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                            <input type="checkbox" checked> Remember User ID
+                        </label>
+                        <a href="javascript:void(0)" style="color:var(--td-green-primary); font-weight:700; text-decoration:none;" onclick="alert('Please contact your TD Corporate Banking Administrator or call 1-800-430-6095 for password reset.')">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-td-primary-submit" id="btn-td-submit">
+                        Log in
+                    </button>
+                </form>
+
+                <div style="margin-top:24px; text-align:center; font-size:12px; color:#94a3b8; border-top:1px solid #f1f5f9; padding-top:18px;">
+                    Protected by TD 128-bit Bank-Grade Encryption &bull; Member CDIC
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- MODAL 1: VIEW ALL 20 CONSOLIDATED COMMERCIAL ACCOUNTS-->
+    <!-- ==================================================== -->
+    <div id="modal-all-accounts" class="modal-overlay">
+        <div class="modal-card" style="max-width:960px;">
+            <div class="modal-header-bar">
+                <div class="modal-title-wrap">
+                    <div class="td-logo-square" style="width:28px; height:28px; font-size:14px;">TD</div>
+                    <div>
+                        <div class="modal-title">MT Innovations Inc. &bull; Consolidated Accounts (20)</div>
+                        <div style="font-size:12px; color:#64748b;">Consolidated Balance: $100,218,147,799.05 CAD | $1,165,446.84 USD</div>
+                    </div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-all-accounts')">&times;</button>
+            </div>
+
+            <div class="modal-body" style="padding:0;">
+                <table class="accounts-table">
+                    <thead>
+                        <tr>
+                            <th>Account Name</th>
+                            <th>Account Number</th>
+                            <th>Currency</th>
+                            <th>Ledger Balance</th>
+                            <th>Available Credit</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accounts-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-money-movement" style="padding:8px 18px; font-size:13px;" onclick="alert('Exporting statement in CSV/OFX format...')">Export CSV</button>
+                <button class="btn-view-all-accounts" style="padding:8px 24px; font-size:13px;" onclick="closeModal('modal-all-accounts')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- MODAL 2: ACCOUNT TRANSFER (MONEY MOVEMENT)           -->
+    <!-- ==================================================== -->
+    <div id="modal-transfer" class="modal-overlay">
+        <div class="modal-card" style="max-width:540px;">
+            <div class="modal-header-bar">
+                <div class="modal-title-wrap">
+                    <span style="font-size:20px;">🔄</span>
+                    <div class="modal-title">Account Transfer</div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-transfer')">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="td-form-group">
+                    <label>From Account</label>
+                    <select class="td-input-field" id="tx-from-account">
+                        <option value="cad_main">MT Innovations Operating (x8492) - $98,420,119,450.00 CAD</option>
+                        <option value="usd_main">MT Innovations US Commercial (x3148) - $1,165,446.84 USD</option>
+                        <option value="cad_treasury">MT Innovations Treasury Reserve (x1042) - $1,842,294,045.38 CAD</option>
+                    </select>
+                </div>
+
+                <div class="td-form-group">
+                    <label>To Account</label>
+                    <select class="td-input-field" id="tx-to-account">
+                        <option value="cad_treasury">MT Innovations Treasury Reserve (x1042) - $1,842,294,045.38 CAD</option>
+                        <option value="cad_main">MT Innovations Operating (x8492) - $98,420,119,450.00 CAD</option>
+                        <option value="usd_main">MT Innovations US Commercial (x3148) - $1,165,446.84 USD</option>
+                    </select>
+                </div>
+
+                <div class="td-form-group">
+                    <label>Transfer Amount</label>
+                    <input type="number" class="td-input-field" id="tx-amount" placeholder="e.g. 5000000.00" value="2500000.00">
+                </div>
+
+                <div class="td-form-group">
+                    <label>Frequency</label>
+                    <select class="td-input-field">
+                        <option>Immediate / Real-Time</option>
+                        <option>Scheduled Recurring (Weekly)</option>
+                        <option>Scheduled Monthly</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-header-logout" onclick="closeModal('modal-transfer')">Cancel</button>
+                <button class="btn-view-all-accounts" onclick="executeAccountTransfer()">Submit Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- MODAL 3: BILL PAYMENT                                -->
+    <!-- ==================================================== -->
+    <div id="modal-bill-pay" class="modal-overlay">
+        <div class="modal-card" style="max-width:540px;">
+            <div class="modal-header-bar">
+                <div class="modal-title-wrap">
+                    <span style="font-size:20px;">📄</span>
+                    <div class="modal-title">Commercial Bill Payment</div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-bill-pay')">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="td-form-group">
+                    <label>Corporate Payee</label>
+                    <select class="td-input-field">
+                        <option>CANADA REVENUE AGENCY (CRA) - CORP TAX #892819280</option>
+                        <option>TORONTO HYDRO ELECTRIC COMM</option>
+                        <option>BELL CANADA CORPORATE FIBRE</option>
+                        <option>ENBRIDGE GAS DISTRIBUTION</option>
+                    </select>
+                </div>
+
+                <div class="td-form-group">
+                    <label>Pay From Account</label>
+                    <select class="td-input-field">
+                        <option>MT Innovations Operating (x8492) - $98,420,119,450.00 CAD</option>
+                    </select>
+                </div>
+
+                <div class="td-form-group">
+                    <label>Payment Amount ($ CAD)</label>
+                    <input type="number" class="td-input-field" value="184500.00">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-header-logout" onclick="closeModal('modal-bill-pay')">Cancel</button>
+                <button class="btn-view-all-accounts" onclick="alert('Corporate bill payment of $184,500.00 CAD submitted to Canada Revenue Agency.'); closeModal('modal-bill-pay');">Authorise Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- MODAL 4: INTERAC E-TRANSFER FOR BUSINESS             -->
+    <!-- ==================================================== -->
+    <div id="modal-interac" class="modal-overlay">
+        <div class="modal-card" style="max-width:540px;">
+            <div class="modal-header-bar">
+                <div class="modal-title-wrap">
+                    <span style="font-size:20px;">⚡</span>
+                    <div class="modal-title">Interac e-Transfer&reg; for Business</div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-interac')">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="td-form-group">
+                    <label>Recipient Name or Company</label>
+                    <input type="text" class="td-input-field" value="Toronto Supply Chain Logistics Ltd">
+                </div>
+
+                <div class="td-form-group">
+                    <label>Recipient Email or Mobile Number</label>
+                    <input type="email" class="td-input-field" value="payments@torontosupply.ca">
+                </div>
+
+                <div class="td-form-group">
+                    <label>Transfer Amount ($ CAD)</label>
+                    <input type="number" class="td-input-field" value="25000.00">
+                </div>
+
+                <div class="td-form-group">
+                    <label>Payment Note / Invoice Ref</label>
+                    <input type="text" class="td-input-field" value="Inv #TK-98402 - Settled in Full">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-header-logout" onclick="closeModal('modal-interac')">Cancel</button>
+                <button class="btn-view-all-accounts" onclick="alert('Interac e-Transfer for Business of $25,000.00 CAD has been dispatched.'); closeModal('modal-interac');">Send e-Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- MODAL 5: WIRE PAYMENT TRACKER                        -->
+    <!-- ==================================================== -->
+    <div id="modal-wire-tracker" class="modal-overlay">
+        <div class="modal-card" style="max-width:720px;">
+            <div class="modal-header-bar">
+                <div class="modal-title-wrap">
+                    <span style="font-size:20px;">🌐</span>
+                    <div class="modal-title">SWIFT Global Wire Tracker (MT-103)</div>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('modal-wire-tracker')">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-xs); padding:16px; margin-bottom:18px;">
+                    <div style="font-weight:800; color:#166534; font-size:14px;">Incoming Wire &bull; Reference #UETR-883920194021</div>
+                    <div style="font-size:12.5px; color:#14532d; margin-top:4px;">Amount: <strong>$1,165,446.84 USD</strong> &bull; Origin: Deutsche Bank AG Frankfurt &bull; Status: <strong>Cleared & Credited</strong></div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:12px; font-size:13px;">
+                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Sender Institution:</span>
+                        <strong style="color:#0f172a;">DEUTDEDD (Deutsche Bank AG)</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Intermediary Institution:</span>
+                        <strong style="color:#0f172a;">CHASUS33 (JPMorgan Chase NY)</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Beneficiary Institution:</span>
+                        <strong style="color:#0f172a;">TDOMCA44 (The Toronto-Dominion Bank)</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f1f5f9;">
+                        <span style="color:#64748b;">Beneficiary Account:</span>
+                        <strong style="color:#0f172a;">MT Innovations Inc. (Account x3148)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-view-all-accounts" onclick="closeModal('modal-wire-tracker')">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- JAVASCRIPT LOGIC                                     -->
+    <!-- ==================================================== -->
+    <script>
+        // Accounts Database (20 Corporate Accounts totaling exact amounts shown in screenshot)
+        const corporateAccounts = [
+            { name: "MT Innovations Operating Account", number: "0004-8492018", currency: "CAD", balance: "$98,420,119,450.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Treasury Reserve", number: "0004-1042910", currency: "CAD", balance: "$1,842,294,045.38", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Commercial Line of Credit", number: "0004-9920194", currency: "CAD", balance: "$0.00", credit: "$4,265,696.33", status: "Open Line" },
+            { name: "MT Innovations US Commercial Checking", number: "0182-3148201", currency: "USD", balance: "$1,165,446.84", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations US Credit Facility", number: "0182-8849102", currency: "USD", balance: "$0.00", credit: "$2,294,241.89", status: "Open Line" },
+            { name: "MT Innovations Payroll Clearing CAD", number: "0004-7748291", currency: "CAD", balance: "$14,500,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Tax Escrow CAD", number: "0004-6639201", currency: "CAD", balance: "$8,500,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Capital Expenditure", number: "0004-5548392", currency: "CAD", balance: "$2,000,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations R&D Grant Clearing", number: "0004-4439201", currency: "CAD", balance: "$1,500,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Merchant Settlements CAD", number: "0004-3329102", currency: "CAD", balance: "$875,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Logistics Operating", number: "0004-2219401", currency: "CAD", balance: "$450,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Wire Inbound Clearing", number: "0004-1109402", currency: "CAD", balance: "$320,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Supplier Disbursement", number: "0004-9098401", currency: "CAD", balance: "$280,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Foreign Exchange Holding", number: "0004-8087302", currency: "CAD", balance: "$190,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Equipment Lease Reserve", number: "0004-7076203", currency: "CAD", balance: "$145,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Corporate Credit Card Clearing", number: "0004-6065104", currency: "CAD", balance: "$110,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Facility Contingency", number: "0004-5054005", currency: "CAD", balance: "$65,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Employee Health Trust", number: "0004-4043906", currency: "CAD", balance: "$40,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Dividends Reserve", number: "0004-3032807", currency: "CAD", balance: "$20,000.00", credit: "$0.00", status: "Active" },
+            { name: "MT Innovations Petty Cash Commercial Reserve", number: "0004-2021708", currency: "CAD", balance: "$5,000.00", credit: "$0.00", status: "Active" }
+        ];
+
+        // Populate Table in Modal
+        function renderAccountsTable() {
+            const tbody = document.getElementById('accounts-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = corporateAccounts.map(acc => `
+                <tr>
+                    <td><strong>${acc.name}</strong></td>
+                    <td style="font-family:var(--font-mono); color:#475569;">${acc.number}</td>
+                    <td><span class="currency-badge ${acc.currency.toLowerCase()}">${acc.currency}</span></td>
+                    <td><strong>${acc.balance}</strong></td>
+                    <td style="color:#64748b;">${acc.credit}</td>
+                    <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; background:#f0fdf4; color:#166534;">${acc.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // View Switcher logic (Dashboard vs Login)
+        function switchView(viewName) {
+            const dashView = document.getElementById('view-dashboard');
+            const loginView = document.getElementById('view-login');
+            const pillDash = document.getElementById('pill-dashboard');
+            const pillLogin = document.getElementById('pill-login');
+
+            if (viewName === 'login') {
+                if (dashView) dashView.classList.add('hidden');
+                if (loginView) loginView.classList.remove('hidden');
+                if (pillDash) pillDash.classList.remove('active-pill');
+                if (pillLogin) pillLogin.classList.add('active-pill');
+            } else {
+                if (loginView) loginView.classList.add('hidden');
+                if (dashView) dashView.classList.remove('hidden');
+                if (pillLogin) pillLogin.classList.remove('active-pill');
+                if (pillDash) pillDash.classList.add('active-pill');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal Controls
+        function openModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.classList.remove('active');
+        }
+
+        // Dropdown menu toggles
+        function toggleCompanyDropdown() {
+            const menu = document.getElementById('company-dropdown-menu');
+            if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleAppsDropdown() {
+            const menu = document.getElementById('apps-dropdown-menu');
+            if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function selectCompany(companyName) {
+            const label = document.getElementById('selected-company-name');
+            if (label) label.innerText = companyName;
+            toggleCompanyDropdown();
+            alert(`Switched active commercial entity to: ${companyName}`);
+        }
+
+        // Refresh activity timestamp and add entry
+        function refreshActivityStream() {
+            const icon = document.getElementById('refresh-icon-svg');
+            if (icon) icon.classList.add('spin');
+
+            setTimeout(() => {
+                if (icon) icon.classList.remove('spin');
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                const dateString = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                const fullTimestamp = `As of ${dateString} at ${timeString} EDT`;
+
+                const display = document.getElementById('current-timestamp-display');
+                if (display) display.innerText = fullTimestamp;
+
+                // Add fresh activity item at top of list
+                const container = document.getElementById('audit-activity-container');
+                if (container) {
+                    const newItem = document.createElement('li');
+                    newItem.className = 'audit-activity-item highlighted';
+                    newItem.innerHTML = `
+                        <div class="audit-timestamp">${dateString}, ${now.getFullYear()} at ${timeString} EDT</div>
+                        <div class="audit-desc">Administration/Security - Latest Activity Refreshed (Session Verified)</div>
+                    `;
+                    container.insertBefore(newItem, container.firstChild);
+                }
+            }, 600);
+        }
+
+        // Execute transfer simulation
+        function executeAccountTransfer() {
+            const amt = parseFloat(document.getElementById('tx-amount').value) || 0;
+            if (amt <= 0) {
+                alert('Please enter a valid transfer amount.');
+                return;
+            }
+            alert(`Transfer of $${amt.toLocaleString('en-US', { minimumFractionDigits: 2 })} CAD has been executed successfully between designated MT Innovations accounts.`);
+            closeModal('modal-transfer');
+
+            // Log in audit activity
+            const container = document.getElementById('audit-activity-container');
+            if (container) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                const newItem = document.createElement('li');
+                newItem.className = 'audit-activity-item highlighted';
+                newItem.innerHTML = `
+                    <div class="audit-timestamp">Today at ${timeString} EDT</div>
+                    <div class="audit-desc">Money Movement - Account Transfer ($${amt.toLocaleString('en-US', { minimumFractionDigits: 2 })} CAD) Complete</div>
+                `;
+                container.insertBefore(newItem, container.firstChild);
+            }
+        }
+
+        // Login authentication handler with 3.5s loading state
+        let isAuthenticating = false;
+
+        function handleTdLogin(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (isAuthenticating) return false;
+
+            const uInput = document.getElementById('login-username');
+            const pInput = document.getElementById('login-password');
+            const btn = document.getElementById('btn-td-submit');
+            const errBox = document.getElementById('td-login-error');
+            const errText = document.getElementById('td-login-error-text');
+
+            if (errBox) errBox.style.display = 'none';
+
+            if (btn) {
+                btn.innerHTML = '<span class="btn-spinner"></span> Authenticating credentials...';
+                btn.style.opacity = '0.85';
+                btn.style.pointerEvents = 'none';
+                btn.disabled = true;
+            }
+
+            isAuthenticating = true;
+
+            const username = uInput ? uInput.value.trim() : '';
+            const password = pInput ? pInput.value.trim() : '';
+
+            setTimeout(() => {
+                isAuthenticating = false;
+
+                if (btn) {
+                    btn.innerHTML = 'Log in';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                    btn.disabled = false;
+                }
+
+                if (!username || !password) {
+                    if (errBox && errText) {
+                        errText.innerText = 'Please enter your username and security password.';
+                        errBox.style.display = 'flex';
+                    }
+                    return false;
+                }
+
+                // Accepted demo accounts:
+                const validLogins = [
+                    'river.birkbelt@mt-innovations.ca',
+                    'river',
+                    'dataknead_admin',
+                    'admin'
+                ];
+
+                const isValid = validLogins.some(u => u.toLowerCase() === username.toLowerCase());
+
+                if (!isValid && password !== 'admin' && password !== '••••••••••••') {
+                    if (errBox && errText) {
+                        errText.innerText = 'Invalid username or password. Please check your credentials and try again.';
+                        errBox.style.display = 'flex';
+                    }
+                    return false;
+                }
+
+                // Success: return to dashboard
+                if (errBox) errBox.style.display = 'none';
+                switchView('dashboard');
+            }, 3500);
+
+            return false;
+        }
+
+        // Close dropdowns on outside click
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-sub-row')) {
+                const cMenu = document.getElementById('company-dropdown-menu');
+                const aMenu = document.getElementById('apps-dropdown-menu');
+                if (cMenu) cMenu.style.display = 'none';
+                if (aMenu) aMenu.style.display = 'none';
+            }
+        });
+
+        // Initialize table
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAccountsTable();
+        });
+        renderAccountsTable();
+    </script>
+</body>
+
+</html>
