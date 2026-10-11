@@ -2375,437 +2375,6 @@
                 </div>
             </section>
             </div>
-
-            <!-- ====== FULL PAGE: TRANSACTIONS ====== -->
-            <div id="page-transactions" class="page-view">
-                <div class="full-page-header">
-                    <div>
-                        <div class="page-breadcrumb">Dashboard / Transactions</div>
-                        <h2>📊 Commercial Transactions Ledger</h2>
-                    </div>
-                    <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                        Back to Dashboard
-                    </button>
-                </div>
-
-                <div class="tx-stats-bar">
-                    <div class="tx-stat-card">
-                        <div class="stat-value" style="color:#047857;">+$6,004,500.00</div>
-                        <div class="stat-label">Total Inbound</div>
-                    </div>
-                    <div class="tx-stat-card">
-                        <div class="stat-value" style="color:#dc2626;">-$1,319,549.00</div>
-                        <div class="stat-label">Total Outbound</div>
-                    </div>
-                    <div class="tx-stat-card">
-                        <div class="stat-value" style="color:#d97706;">2</div>
-                        <div class="stat-label">Pending Clearance</div>
-                    </div>
-                    <div class="tx-stat-card">
-                        <div class="stat-value">8</div>
-                        <div class="stat-label">Total Transactions</div>
-                    </div>
-                </div>
-
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:#f8fafc; border:1px solid var(--border-color); padding:12px; border-radius:var(--radius-xs); margin-bottom:16px;">
-                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                        <button class="filter-pill active" onclick="filterLedger('all', this)">All (8)</button>
-                        <button class="filter-pill" onclick="filterLedger('inbound', this)">Inbound Wires</button>
-                        <button class="filter-pill" onclick="filterLedger('outbound', this)">Outbound</button>
-                        <button class="filter-pill" onclick="filterLedger('operating', this)">Operating / ACH</button>
-                    </div>
-                    <div style="display:flex; gap:8px;">
-                        <input type="text" placeholder="Search transactions..." onkeyup="searchLedgerTable(this.value)" style="padding:6px 12px; font-size:12px; border:1px solid var(--border-color); border-radius:6px; outline:none; width:200px;">
-                        <button class="card-action-btn primary" onclick="exportTransactionsCSV()">📥 Export CSV</button>
-                        <button class="card-action-btn" onclick="window.print()">🖨️ Print</button>
-                    </div>
-                </div>
-
-                <div style="border:1px solid var(--border-color); border-radius:var(--radius-xs); overflow:hidden;">
-                    <table style="width:100%; border-collapse:collapse; font-size:12.5px; text-align:left;">
-                        <thead style="background:#f1f5f9; border-bottom:2px solid var(--border-color);">
-                            <tr>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155;">Date</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155;">Description / Payee</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155;">Category</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155;">Reference</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155;">Status</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155; text-align:right;">Amount (USD)</th>
-                                <th style="padding:12px 16px; font-weight:800; color:#334155; text-align:center;">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="page-ledger-body">
-                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Sep 23, 2026</td>
-                                <td style="padding:14px 16px;"><strong>THYSSENKRUPP PLASTICS GmbH</strong><div style="font-size:11px; color:#92400e;">Inbound Telegraphic Wire (Frankfurt)</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#fef3c7; color:#b45309; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Corporate Wire</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">CTT-30040204-DE</td>
-                                <td style="padding:14px 16px;"><span style="color:#d97706; font-weight:800;">⏳ Pending Step 3</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#d97706;">+$4,970,000.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn primary" style="padding:4px 12px; font-size:11px;" onclick="openModal('modal-compliance-tkp')">Review</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="outbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Sep 23, 2026</td>
-                                <td style="padding:14px 16px;"><strong>Krytine Exchange</strong><div style="font-size:11px; color:#64748b;">Ethereum Mainnet Token Swap (Tx: 0x8f2a...901a)</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#fee2e2; color:#b91c1c; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">On-Chain Swap</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">EVM-0x8f2a901a</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Settled</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#dc2626;">-$1,300,000.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="openModal('modal-evm-transfer')">Inspect</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 18, 2026</td>
-                                <td style="padding:14px 16px;"><strong>GoBid Ltd (First National Bank)</strong><div style="font-size:11px; color:#047857;">Telegraphic Wire Batch - Cleared & Credited</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#ecfdf5; color:#047857; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Inbound Wire</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">CTT-9840211-ZA</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Credited</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#047857;">+$1,000,000.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="openModal('modal-compliance-gobid-completed')">Receipt</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 26, 2026</td>
-                                <td style="padding:14px 16px;"><strong>GoBid Ltd (Wire Tranche 2)</strong><div style="font-size:11px; color:#92400e;">Telegraphic Wire Transfer - Compliance Hold</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#fef3c7; color:#b45309; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Inbound Wire</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">CTT-9840291-ZA</td>
-                                <td style="padding:14px 16px;"><span style="color:#d97706; font-weight:800;">⏳ Pending Step 3</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#d97706;">+$992,000.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn primary" style="padding:4px 12px; font-size:11px;" onclick="openModal('modal-compliance-gobid')">Review</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="operating" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 25, 2026</td>
-                                <td style="padding:14px 16px;"><strong>AWS Cloud Services</strong><div style="font-size:11px; color:#64748b;">EC2 / S3 Infrastructure Monthly Retainer</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#e0f2fe; color:#0369a1; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Infrastructure</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">ACH-99402194</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Cleared</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#dc2626;">-$1,249.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="showTxReceipt('ACH-99402194', 'AWS Cloud Services', '-$1,249.00', 'Nov 25, 2026', 'ACH Debit', 'Cleared')">Receipt</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 24, 2026</td>
-                                <td style="padding:14px 16px;"><strong>Stripe Merchant Payout</strong><div style="font-size:11px; color:#64748b;">E-Commerce Revenue Direct Deposit</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#ecfdf5; color:#047857; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Revenue</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">STR-88491029</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Credited</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#047857;">+$42,500.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="showTxReceipt('STR-88491029', 'Stripe Merchant Payout', '+$42,500.00', 'Nov 24, 2026', 'ACH Credit', 'Credited')">Receipt</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="outbound" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 23, 2026</td>
-                                <td style="padding:14px 16px;"><strong>Tech Hub Lease Center</strong><div style="font-size:11px; color:#64748b;">Office Suite 400, Madison Ave Lease Wire</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#f1f5f9; color:#475569; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Commercial Rent</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">WIR-10492819</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Debited</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#dc2626;">-$14,500.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="showTxReceipt('WIR-10492819', 'Tech Hub Lease Center', '-$14,500.00', 'Nov 23, 2026', 'Wire Transfer', 'Debited')">Receipt</button></td>
-                            </tr>
-                            <tr class="ledger-row" data-type="operating" style="border-bottom:1px solid #f1f5f9;">
-                                <td style="padding:14px 16px; color:#64748b; font-weight:600;">Nov 22, 2026</td>
-                                <td style="padding:14px 16px;"><strong>Salesforce Enterprise CRM</strong><div style="font-size:11px; color:#64748b;">50-Seat Enterprise License Renewal</div></td>
-                                <td style="padding:14px 16px;"><span style="background:#e0e7ff; color:#3730a3; padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700;">Software</span></td>
-                                <td style="padding:14px 16px; font-family:monospace; font-size:11px; color:#64748b;">ACH-55102948</td>
-                                <td style="padding:14px 16px;"><span style="color:#10b981; font-weight:800;">✓ Cleared</span></td>
-                                <td style="padding:14px 16px; text-align:right; font-weight:800; color:#dc2626;">-$3,800.00</td>
-                                <td style="padding:14px 16px; text-align:center;"><button class="card-action-btn" style="padding:4px 12px; font-size:11px;" onclick="showTxReceipt('ACH-55102948', 'Salesforce Enterprise CRM', '-$3,800.00', 'Nov 22, 2026', 'ACH Debit', 'Cleared')">Receipt</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- ====== FULL PAGE: CREDIT CARDS & ACCOUNTS ====== -->
-            <div id="page-cards" class="page-view">
-                <div class="full-page-header">
-                    <div>
-                        <div class="page-breadcrumb">Dashboard / Cards & Accounts</div>
-                        <h2>💳 Credit Cards & Account Management</h2>
-                    </div>
-                    <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                        Back to Dashboard
-                    </button>
-                </div>
-
-                <div class="cards-grid-full">
-                    <div class="bank-card card-blue" style="min-height:160px; cursor:default;">
-                        <div class="card-top-type"><span>Commercial Checking</span><span>VISA</span></div>
-                        <div class="card-balance-wrap">
-                            <div class="card-label">Available Balance</div>
-                            <div class="card-val" id="page-val-checking">$1,286,502.79</div>
-                        </div>
-                        <div class="card-bottom-num"><span>•••• •••• •••• 4562</span><span>03/28</span></div>
-                    </div>
-                    <div class="bank-card card-navy" style="min-height:160px; cursor:default;">
-                        <div class="card-top-type"><span>Treasury Reserve</span><span>Mastercard</span></div>
-                        <div class="card-balance-wrap">
-                            <div class="card-label">Reserved Capital</div>
-                            <div class="card-val" id="page-val-treasury">$250,000.00</div>
-                        </div>
-                        <div class="card-bottom-num"><span>•••• •••• •••• 1544</span><span>11/29</span></div>
-                    </div>
-                </div>
-
-                <div class="cards-grid-full">
-                    <div class="card-detail-panel">
-                        <h4>🔒 Corporate Card *4189 <span id="page-card-status-badge" style="background:#ecfdf5; color:#047857; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700;">Active</span></h4>
-                        <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Card Type:</span><strong>Chase Ink Business Preferred</strong></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Credit Limit:</span><strong>$250,000.00</strong></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Current Balance:</span><strong style="color:#dc2626;">$18,429.50</strong></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Available Credit:</span><strong style="color:#047857;">$231,570.50</strong></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Rewards Points:</span><strong style="color:var(--chase-blue);">842,950 pts</strong></div>
-                            <div style="display:flex; justify-content:space-between;"><span>Payment Due:</span><strong>Dec 15, 2026</strong></div>
-                        </div>
-                        <div class="card-action-row">
-                            <button class="card-action-btn danger" id="page-btn-freeze" onclick="requireOTP('toggleCardFreeze', 'Freeze/Unfreeze Corporate Card *4189')">🔒 Freeze Card</button>
-                            <button class="card-action-btn primary" onclick="requireOTP('requestLimitIncrease', 'Request Credit Limit Increase')">📈 Request Limit Increase</button>
-                            <button class="card-action-btn" onclick="requireOTP('generateVirtualCard', 'Generate Single-Use Virtual Card')">💳 Generate Virtual Card</button>
-                        </div>
-                    </div>
-
-                    <div class="card-detail-panel">
-                        <h4>📋 Recent Card Transactions</h4>
-                        <div style="font-size:13px;">
-                            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Amazon Web Services</span><strong style="color:#dc2626;">-$1,249.00</strong></div>
-                            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Uber for Business</span><strong style="color:#dc2626;">-$342.80</strong></div>
-                            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Delta Airlines (SFO-JFK)</span><strong style="color:#dc2626;">-$1,875.00</strong></div>
-                            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>WeWork Coworking</span><strong style="color:#dc2626;">-$950.00</strong></div>
-                            <div style="display:flex; justify-content:space-between; padding:10px 0;"><span>Stripe Revenue Deposit</span><strong style="color:#047857;">+$42,500.00</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-detail-panel" style="margin-top:20px;">
-                    <h4>🏦 Treasury Sweep</h4>
-                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Transfer funds between your Treasury Reserve x1544 and Commercial Checking x4562.</p>
-                    <div class="card-action-row">
-                        <button class="card-action-btn primary" onclick="requireOTP('transferTreasuryToChecking', 'Sweep Funds from Treasury to Checking')">💰 Sweep to Checking</button>
-                        <button class="card-action-btn" onclick="openModal('modal-add-account')">➕ Open New Account</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== FULL PAGE: STATEMENTS ====== -->
-            <div id="page-statements" class="page-view">
-                <div class="full-page-header">
-                    <div>
-                        <div class="page-breadcrumb">Dashboard / Statements</div>
-                        <h2>📄 Monthly Commercial Statements</h2>
-                    </div>
-                    <div style="display:flex; gap:10px;">
-                        <button class="card-action-btn primary" onclick="downloadAllStatementsZip()">📦 Download All (ZIP)</button>
-                        <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                            Back
-                        </button>
-                    </div>
-                </div>
-
-                <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-xs); padding:16px 20px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <div style="font-size:14px; font-weight:800; color:var(--text-primary);">DataKnead Ltd — Commercial Checking (•••• 4562)</div>
-                        <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Statements are generated on the 1st of each month. All amounts in USD.</div>
-                    </div>
-                    <div style="font-size:12px; font-weight:700; color:var(--chase-blue);">12 Statements Available</div>
-                </div>
-
-                <div class="statements-grid">
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>November 2026</h4><p>Period: Nov 1 – Nov 30 • 14 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('November 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>October 2026</h4><p>Period: Oct 1 – Oct 31 • 22 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('October 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>September 2026</h4><p>Period: Sep 1 – Sep 30 • 18 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('September 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>August 2026</h4><p>Period: Aug 1 – Aug 31 • 26 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('August 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>July 2026</h4><p>Period: Jul 1 – Jul 31 • 20 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('July 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>June 2026</h4><p>Period: Jun 1 – Jun 30 • 17 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('June 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>May 2026</h4><p>Period: May 1 – May 31 • 24 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('May 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>April 2026</h4><p>Period: Apr 1 – Apr 30 • 19 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('April 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>March 2026</h4><p>Period: Mar 1 – Mar 31 • 21 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('March 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>February 2026</h4><p>Period: Feb 1 – Feb 28 • 16 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('February 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>January 2026</h4><p>Period: Jan 1 – Jan 31 • 23 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('January 2026')">📥 Download PDF</button>
-                    </div>
-                    <div class="statement-card">
-                        <div class="stmt-info"><h4>December 2025</h4><p>Period: Dec 1 – Dec 31 • 28 transactions</p></div>
-                        <button class="stmt-download-btn" onclick="downloadStatement('December 2025')">📥 Download PDF</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== FULL PAGE: REWARDS & DEALS ====== -->
-            <div id="page-rewards" class="page-view">
-                <div class="full-page-header">
-                    <div>
-                        <div class="page-breadcrumb">Dashboard / Rewards</div>
-                        <h2>🏆 Chase Ultimate Rewards</h2>
-                    </div>
-                    <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                        Back to Dashboard
-                    </button>
-                </div>
-
-                <div class="rewards-hero">
-                    <div>
-                        <div class="pts-label">ULTIMATE REWARDS BALANCE</div>
-                        <div class="pts-value" id="page-rewards-pts">842,950</div>
-                        <div class="pts-cash">Cash Value: <span id="page-rewards-cash">$8,429.50</span></div>
-                    </div>
-                    <div style="text-align:right;">
-                        <div class="pts-label">REWARDS TIER</div>
-                        <div style="font-size:22px; font-weight:900;">💎 Sapphire Reserve</div>
-                        <div class="pts-label" style="margin-top:4px;">3x Points on Travel & Dining</div>
-                    </div>
-                </div>
-
-                <h3 style="font-size:16px; font-weight:800; margin-bottom:16px; color:var(--text-primary);">Redeem Your Points</h3>
-                <div class="rewards-tiers">
-                    <div class="reward-tier-card">
-                        <div style="font-size:28px; margin-bottom:8px;">💵</div>
-                        <div class="tier-pts">25,000 pts</div>
-                        <div class="tier-name">Cash Back Deposit</div>
-                        <div class="tier-value">$250.00 credit to Checking</div>
-                        <button class="card-action-btn primary" style="margin-top:14px; width:100%;" onclick="requireOTP('redeemRewardPoints(25000, 250)', 'Redeem 25,000 points for $250.00 Cash Back')">Redeem</button>
-                    </div>
-                    <div class="reward-tier-card">
-                        <div style="font-size:28px; margin-bottom:8px;">✈️</div>
-                        <div class="tier-pts">50,000 pts</div>
-                        <div class="tier-name">Travel Credit</div>
-                        <div class="tier-value">$750.00 travel statement credit</div>
-                        <button class="card-action-btn primary" style="margin-top:14px; width:100%;" onclick="requireOTP('redeemRewardPoints(50000, 750)', 'Redeem 50,000 points for $750.00 Travel Credit')">Redeem</button>
-                    </div>
-                    <div class="reward-tier-card">
-                        <div style="font-size:28px; margin-bottom:8px;">🎁</div>
-                        <div class="tier-pts">100,000 pts</div>
-                        <div class="tier-name">Premium Redemption</div>
-                        <div class="tier-value">$1,500.00 cash + bonus multiplier</div>
-                        <button class="card-action-btn primary" style="margin-top:14px; width:100%;" onclick="requireOTP('redeemRewardPoints(100000, 1500)', 'Redeem 100,000 points for $1,500.00 Premium Cash')">Redeem</button>
-                    </div>
-                </div>
-
-                <div class="card-detail-panel">
-                    <h4>📊 Points History (Last 30 Days)</h4>
-                    <div style="font-size:13px;">
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Nov 25 — AWS Cloud Services (3x Infrastructure)</span><strong style="color:var(--chase-blue);">+3,747 pts</strong></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Nov 24 — Delta Airlines SFO-JFK (3x Travel)</span><strong style="color:var(--chase-blue);">+5,625 pts</strong></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f1f5f9;"><span>Nov 23 — The Capital Grille (3x Dining)</span><strong style="color:var(--chase-blue);">+1,290 pts</strong></div>
-                        <div style="display:flex; justify-content:space-between; padding:10px 0;"><span>Nov 22 — Salesforce CRM (1x General)</span><strong style="color:var(--chase-blue);">+3,800 pts</strong></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== FULL PAGE: NOTIFICATIONS ====== -->
-            <div id="page-notifications" class="page-view">
-                <div class="full-page-header">
-                    <div>
-                        <div class="page-breadcrumb">Dashboard / Notifications</div>
-                        <h2>🔔 Notifications & Alerts</h2>
-                    </div>
-                    <div style="display:flex; gap:10px;">
-                        <button class="card-action-btn primary" onclick="markNotificationsRead()">✓ Mark All Read</button>
-                        <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-                            Back
-                        </button>
-                    </div>
-                </div>
-
-                <div class="notif-list-full">
-                    <div class="notif-card unread">
-                        <div class="notif-icon-circle" style="background:#fef3c7;">⚠️</div>
-                        <div class="notif-body">
-                            <h4>Compliance Hold — THYSSENKRUPP PLASTICS GmbH ($4,970,000.00)</h4>
-                            <p>Inbound telegraphic wire of $4,970,000.00 USD from Commerzbank AG (Frankfurt) requires Step 3 Regulatory Compliance Fee settlement. Repatriation deadline in 4 days. <a href="#" onclick="openModal('modal-compliance-tkp')" style="color:var(--chase-blue); font-weight:700;">Review &amp; Resolve →</a></p>
-                        </div>
-                        <div class="notif-time">2h ago</div>
-                    </div>
-                    <div class="notif-card unread">
-                        <div class="notif-icon-circle" style="background:#fef3c7;">⚠️</div>
-                        <div class="notif-body">
-                            <h4>Compliance Hold — GoBid Ltd ($992,000.00)</h4>
-                            <p>Inbound telegraphic wire of $992,000.00 USD from First National Bank requires Step 3 Compliance Fee settlement. <a href="#" onclick="openModal('modal-compliance-gobid')" style="color:var(--chase-blue); font-weight:700;">Review &amp; Resolve →</a></p>
-                        </div>
-                        <div class="notif-time">5h ago</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#ecfdf5;">✅</div>
-                        <div class="notif-body">
-                            <h4>Wire Transfer Completed — GoBid Ltd ($1,000,000.00)</h4>
-                            <p>Inbound wire from First National Bank has cleared all 3 compliance steps and $1,000,000.00 USD has been credited to Commercial Checking x4562.</p>
-                        </div>
-                        <div class="notif-time">Nov 18</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#fee2e2;">🔴</div>
-                        <div class="notif-body">
-                            <h4>Outbound Transfer Executed — Krytine Exchange (-$1,300,000.00)</h4>
-                            <p>EVM Ethereum Mainnet token swap of $1,300,000.00 USD was executed via on-chain settlement. Transaction hash: 0x8f2a...901a.</p>
-                        </div>
-                        <div class="notif-time">Sep 23</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#e0f2fe;">💳</div>
-                        <div class="notif-body">
-                            <h4>Card Payment — AWS Cloud Services (-$1,249.00)</h4>
-                            <p>Monthly EC2/S3 infrastructure retainer debited from Corporate Card *4189. 3,747 Ultimate Rewards points earned.</p>
-                        </div>
-                        <div class="notif-time">Nov 25</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#ecfdf5;">💰</div>
-                        <div class="notif-body">
-                            <h4>Merchant Deposit — Stripe Payout (+$42,500.00)</h4>
-                            <p>Weekly e-commerce revenue settlement from Stripe has been credited to Commercial Checking x4562.</p>
-                        </div>
-                        <div class="notif-time">Nov 24</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#f0f7ff;">🔐</div>
-                        <div class="notif-body">
-                            <h4>Security Alert — New Login Detected</h4>
-                            <p>A new sign-in to your Chase Commercial account was detected from Windows 11 (Chrome) at IP 192.168.1.x. If this wasn't you, please contact Chase Fraud Services immediately.</p>
-                        </div>
-                        <div class="notif-time">Nov 22</div>
-                    </div>
-                    <div class="notif-card">
-                        <div class="notif-icon-circle" style="background:#fef3c7;">📋</div>
-                        <div class="notif-body">
-                            <h4>Statement Ready — October 2026</h4>
-                            <p>Your monthly commercial statement for October 2026 is now available for download. 22 transactions processed.</p>
-                        </div>
-                        <div class="notif-time">Nov 1</div>
-                    </div>
-                </div>
-            </div>
         </main>
 
         <!-- Chase Public Footer -->
@@ -3554,6 +3123,348 @@
                     </div>
                 </div>
             </div>
+
+            </div>
+            <!-- ====== FULL PAGE: TRANSACTIONS ====== -->
+            <div id="page-transactions" class="page-view">
+                <div class="full-page-header">
+                    <div>
+                        <div class="page-breadcrumb">Dashboard / Transactions</div>
+                        <h2>&#x1F4CA; Commercial Transactions Ledger</h2>
+                    </div>
+                    <button class="back-to-dash-btn" onclick="navigateToPage(null, 'dashboard')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                        Back to Dashboard
+                    </button>
+                </div>
+                <div class="tx-stats-bar">
+                    <div class="tx-stat-card"><div class="stat-value" style="color:#047857;">+$6,004,500.00</div><div class="stat-label">Total Inbound</div></div>
+                    <div class="tx-stat-card"><div class="stat-value" style="color:#dc2626;">-$1,319,549.00</div><div class="stat-label">Total Outbound</div></div>
+                    <div class="tx-stat-card"><div class="stat-value" style="color:#d97706;">2</div><div class="stat-label">Pending Clearance</div></div>
+                    <div class="tx-stat-card"><div class="stat-value">8</div><div class="stat-label">Total Transactions</div></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#f8fafc;border:1px solid var(--border-color);padding:12px;border-radius:var(--radius-xs);margin-bottom:16px;">
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                        <button class="filter-pill active" onclick="filterLedger('all',this)">All (8)</button>
+                        <button class="filter-pill" onclick="filterLedger('inbound',this)">Inbound Wires</button>
+                        <button class="filter-pill" onclick="filterLedger('outbound',this)">Outbound</button>
+                        <button class="filter-pill" onclick="filterLedger('operating',this)">Operating / ACH</button>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <input type="text" placeholder="Search transactions..." onkeyup="searchLedgerTable(this.value)" style="padding:6px 12px;font-size:12px;border:1px solid var(--border-color);border-radius:6px;outline:none;width:200px;">
+                        <button class="card-action-btn primary" onclick="exportTransactionsCSV()">&#x1F4E5; Export CSV</button>
+                        <button class="card-action-btn" onclick="window.print()">&#x1F5A8;&#xFE0F; Print</button>
+                    </div>
+                </div>
+                <div style="border:1px solid var(--border-color);border-radius:var(--radius-xs);overflow:hidden;">
+                    <table style="width:100%;border-collapse:collapse;font-size:12.5px;text-align:left;">
+                        <thead style="background:#f1f5f9;border-bottom:2px solid var(--border-color);">
+                            <tr>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;">Date</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;">Description / Payee</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;">Category</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;">Reference</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;">Status</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;text-align:right;">Amount (USD)</th>
+                                <th style="padding:12px 16px;font-weight:800;color:#334155;text-align:center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="page-ledger-body">
+                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Sep 23, 2026</td>
+                                <td style="padding:14px 16px;"><strong>THYSSENKRUPP PLASTICS GmbH</strong><div style="font-size:11px;color:#92400e;">Inbound Telegraphic Wire (Frankfurt)</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#fef3c7;color:#b45309;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Corporate Wire</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">CTT-30040204-DE</td>
+                                <td style="padding:14px 16px;"><span style="color:#d97706;font-weight:800;">&#x23F3; Pending Step 3</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#d97706;">+$4,970,000.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn primary" style="padding:4px 12px;font-size:11px;" onclick="openModal('modal-compliance-tkp')">Review</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="outbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Sep 23, 2026</td>
+                                <td style="padding:14px 16px;"><strong>Krytine Exchange</strong><div style="font-size:11px;color:#64748b;">Ethereum Mainnet Token Swap (Tx: 0x8f2a...901a)</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">On-Chain Swap</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">EVM-0x8f2a901a</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Settled</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#dc2626;">-$1,300,000.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="openModal('modal-evm-transfer')">Inspect</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 18, 2026</td>
+                                <td style="padding:14px 16px;"><strong>GoBid Ltd (First National Bank)</strong><div style="font-size:11px;color:#047857;">Wire Batch - Cleared &amp; Credited</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#ecfdf5;color:#047857;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Inbound Wire</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">CTT-9840211-ZA</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Credited</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#047857;">+$1,000,000.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="openModal('modal-compliance-gobid-completed')">Receipt</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 26, 2026</td>
+                                <td style="padding:14px 16px;"><strong>GoBid Ltd (Wire Tranche 2)</strong><div style="font-size:11px;color:#92400e;">Telegraphic Wire - Compliance Hold</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#fef3c7;color:#b45309;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Inbound Wire</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">CTT-9840291-ZA</td>
+                                <td style="padding:14px 16px;"><span style="color:#d97706;font-weight:800;">&#x23F3; Pending Step 3</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#d97706;">+$992,000.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn primary" style="padding:4px 12px;font-size:11px;" onclick="openModal('modal-compliance-gobid')">Review</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="operating" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 25, 2026</td>
+                                <td style="padding:14px 16px;"><strong>AWS Cloud Services</strong><div style="font-size:11px;color:#64748b;">EC2 / S3 Infrastructure Monthly Retainer</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#e0f2fe;color:#0369a1;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Infrastructure</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">ACH-99402194</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Cleared</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#dc2626;">-$1,249.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="showTxReceipt('ACH-99402194','AWS Cloud Services','-$1,249.00','Nov 25, 2026','ACH Debit','Cleared')">Receipt</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="inbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 24, 2026</td>
+                                <td style="padding:14px 16px;"><strong>Stripe Merchant Payout</strong><div style="font-size:11px;color:#64748b;">E-Commerce Revenue Direct Deposit</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#ecfdf5;color:#047857;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Revenue</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">STR-88491029</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Credited</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#047857;">+$42,500.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="showTxReceipt('STR-88491029','Stripe Merchant Payout','+$42,500.00','Nov 24, 2026','ACH Credit','Credited')">Receipt</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="outbound" style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 23, 2026</td>
+                                <td style="padding:14px 16px;"><strong>Tech Hub Lease Center</strong><div style="font-size:11px;color:#64748b;">Office Suite 400, Madison Ave Lease Wire</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#f1f5f9;color:#475569;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Commercial Rent</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">WIR-10492819</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Debited</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#dc2626;">-$14,500.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="showTxReceipt('WIR-10492819','Tech Hub Lease Center','-$14,500.00','Nov 23, 2026','Wire Transfer','Debited')">Receipt</button></td>
+                            </tr>
+                            <tr class="ledger-row" data-type="operating">
+                                <td style="padding:14px 16px;color:#64748b;font-weight:600;">Nov 22, 2026</td>
+                                <td style="padding:14px 16px;"><strong>Salesforce Enterprise CRM</strong><div style="font-size:11px;color:#64748b;">50-Seat Enterprise License Renewal</div></td>
+                                <td style="padding:14px 16px;"><span style="background:#e0e7ff;color:#3730a3;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;">Software</span></td>
+                                <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#64748b;">ACH-55102948</td>
+                                <td style="padding:14px 16px;"><span style="color:#10b981;font-weight:800;">&#x2713; Cleared</span></td>
+                                <td style="padding:14px 16px;text-align:right;font-weight:800;color:#dc2626;">-$3,800.00</td>
+                                <td style="padding:14px 16px;text-align:center;"><button class="card-action-btn" style="padding:4px 12px;font-size:11px;" onclick="showTxReceipt('ACH-55102948','Salesforce Enterprise CRM','-$3,800.00','Nov 22, 2026','ACH Debit','Cleared')">Receipt</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ====== FULL PAGE: CREDIT CARDS ====== -->
+            <div id="page-cards" class="page-view">
+                <div class="full-page-header">
+                    <div>
+                        <div class="page-breadcrumb">Dashboard / Cards &amp; Accounts</div>
+                        <h2>&#x1F4B3; Credit Cards &amp; Account Management</h2>
+                    </div>
+                    <button class="back-to-dash-btn" onclick="navigateToPage(null,'dashboard')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                        Back to Dashboard
+                    </button>
+                </div>
+                <div class="cards-grid-full">
+                    <div class="bank-card card-blue" style="min-height:160px;cursor:default;">
+                        <div class="card-top-type"><span>Commercial Checking</span><span>VISA</span></div>
+                        <div class="card-balance-wrap"><div class="card-label">Available Balance</div><div class="card-val" id="page-val-checking">$1,286,502.79</div></div>
+                        <div class="card-bottom-num"><span>&#x2022;&#x2022;&#x2022;&#x2022; &#x2022;&#x2022;&#x2022;&#x2022; &#x2022;&#x2022;&#x2022;&#x2022; 4562</span><span>03/28</span></div>
+                    </div>
+                    <div class="bank-card card-navy" style="min-height:160px;cursor:default;">
+                        <div class="card-top-type"><span>Treasury Reserve</span><span>Mastercard</span></div>
+                        <div class="card-balance-wrap"><div class="card-label">Reserved Capital</div><div class="card-val" id="page-val-treasury">$250,000.00</div></div>
+                        <div class="card-bottom-num"><span>&#x2022;&#x2022;&#x2022;&#x2022; &#x2022;&#x2022;&#x2022;&#x2022; &#x2022;&#x2022;&#x2022;&#x2022; 1544</span><span>11/29</span></div>
+                    </div>
+                </div>
+                <div class="cards-grid-full">
+                    <div class="card-detail-panel">
+                        <h4>&#x1F512; Corporate Card *4189 <span id="page-card-status-badge" style="background:#ecfdf5;color:#047857;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">Active</span></h4>
+                        <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Card Type:</span><strong>Chase Ink Business Preferred</strong></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Credit Limit:</span><strong>$250,000.00</strong></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Current Balance:</span><strong style="color:#dc2626;">$18,429.50</strong></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Available Credit:</span><strong style="color:#047857;">$231,570.50</strong></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Rewards Points:</span><strong style="color:var(--chase-blue);">842,950 pts</strong></div>
+                            <div style="display:flex;justify-content:space-between;"><span>Payment Due:</span><strong>Dec 15, 2026</strong></div>
+                        </div>
+                        <div class="card-action-row">
+                            <button class="card-action-btn danger" id="page-btn-freeze" onclick="requireOTP('toggleCardFreeze','Freeze/Unfreeze Corporate Card *4189')">&#x1F512; Freeze Card</button>
+                            <button class="card-action-btn primary" onclick="requireOTP('requestLimitIncrease','Request Credit Limit Increase')">&#x1F4C8; Request Limit Increase</button>
+                            <button class="card-action-btn" onclick="requireOTP('generateVirtualCard','Generate Single-Use Virtual Card')">&#x1F4B3; Generate Virtual Card</button>
+                        </div>
+                    </div>
+                    <div class="card-detail-panel">
+                        <h4>&#x1F4CB; Recent Card Transactions</h4>
+                        <div style="font-size:13px;">
+                            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Amazon Web Services</span><strong style="color:#dc2626;">-$1,249.00</strong></div>
+                            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Uber for Business</span><strong style="color:#dc2626;">-$342.80</strong></div>
+                            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Delta Airlines (SFO-JFK)</span><strong style="color:#dc2626;">-$1,875.00</strong></div>
+                            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>WeWork Coworking</span><strong style="color:#dc2626;">-$950.00</strong></div>
+                            <div style="display:flex;justify-content:space-between;padding:10px 0;"><span>Stripe Revenue Deposit</span><strong style="color:#047857;">+$42,500.00</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-detail-panel" style="margin-top:20px;">
+                    <h4>&#x1F3E6; Treasury Sweep</h4>
+                    <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Transfer funds between your Treasury Reserve x1544 and Commercial Checking x4562.</p>
+                    <div class="card-action-row">
+                        <button class="card-action-btn primary" onclick="requireOTP('transferTreasuryToChecking','Sweep Funds from Treasury to Checking')">&#x1F4B0; Sweep to Checking</button>
+                        <button class="card-action-btn" onclick="openModal('modal-add-account')">&#x2795; Open New Account</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== FULL PAGE: STATEMENTS ====== -->
+            <div id="page-statements" class="page-view">
+                <div class="full-page-header">
+                    <div>
+                        <div class="page-breadcrumb">Dashboard / Statements</div>
+                        <h2>&#x1F4C4; Monthly Commercial Statements</h2>
+                    </div>
+                    <div style="display:flex;gap:10px;">
+                        <button class="card-action-btn primary" onclick="downloadAllStatementsZip()">&#x1F4E6; Download All (ZIP)</button>
+                        <button class="back-to-dash-btn" onclick="navigateToPage(null,'dashboard')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                            Back
+                        </button>
+                    </div>
+                </div>
+                <div style="background:#f8fafc;border:1px solid var(--border-color);border-radius:var(--radius-xs);padding:16px 20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <div style="font-size:14px;font-weight:800;color:var(--text-primary);">DataKnead Ltd &#x2014; Commercial Checking (&#x2022;&#x2022;&#x2022;&#x2022; 4562)</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Statements generated on the 1st of each month. All amounts in USD.</div>
+                    </div>
+                    <div style="font-size:12px;font-weight:700;color:var(--chase-blue);">12 Statements Available</div>
+                </div>
+                <div class="statements-grid">
+                    <div class="statement-card"><div class="stmt-info"><h4>November 2026</h4><p>Nov 1 &#x2013; Nov 30 &#x2022; 14 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('November 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>October 2026</h4><p>Oct 1 &#x2013; Oct 31 &#x2022; 22 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('October 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>September 2026</h4><p>Sep 1 &#x2013; Sep 30 &#x2022; 18 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('September 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>August 2026</h4><p>Aug 1 &#x2013; Aug 31 &#x2022; 26 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('August 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>July 2026</h4><p>Jul 1 &#x2013; Jul 31 &#x2022; 20 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('July 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>June 2026</h4><p>Jun 1 &#x2013; Jun 30 &#x2022; 17 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('June 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>May 2026</h4><p>May 1 &#x2013; May 31 &#x2022; 24 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('May 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>April 2026</h4><p>Apr 1 &#x2013; Apr 30 &#x2022; 19 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('April 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>March 2026</h4><p>Mar 1 &#x2013; Mar 31 &#x2022; 21 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('March 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>February 2026</h4><p>Feb 1 &#x2013; Feb 28 &#x2022; 16 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('February 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>January 2026</h4><p>Jan 1 &#x2013; Jan 31 &#x2022; 23 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('January 2026')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>December 2025</h4><p>Dec 1 &#x2013; Dec 31 &#x2022; 28 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('December 2025')">&#x1F4E5; PDF</button></div>
+                </div>
+            </div>
+
+            <!-- ====== FULL PAGE: REWARDS ====== -->
+            <div id="page-rewards" class="page-view">
+                <div class="full-page-header">
+                    <div>
+                        <div class="page-breadcrumb">Dashboard / Rewards</div>
+                        <h2>&#x1F3C6; Chase Ultimate Rewards</h2>
+                    </div>
+                    <button class="back-to-dash-btn" onclick="navigateToPage(null,'dashboard')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                        Back to Dashboard
+                    </button>
+                </div>
+                <div class="rewards-hero">
+                    <div>
+                        <div class="pts-label">ULTIMATE REWARDS BALANCE</div>
+                        <div class="pts-value" id="page-rewards-pts">842,950</div>
+                        <div class="pts-cash">Cash Value: <span id="page-rewards-cash">$8,429.50</span></div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div class="pts-label">REWARDS TIER</div>
+                        <div style="font-size:22px;font-weight:900;">&#x1F48E; Sapphire Reserve</div>
+                        <div class="pts-label" style="margin-top:4px;">3x Points on Travel &amp; Dining</div>
+                    </div>
+                </div>
+                <h3 style="font-size:16px;font-weight:800;margin-bottom:16px;color:var(--text-primary);">Redeem Your Points</h3>
+                <div class="rewards-tiers">
+                    <div class="reward-tier-card">
+                        <div style="font-size:28px;margin-bottom:8px;">&#x1F4B5;</div>
+                        <div class="tier-pts">25,000 pts</div>
+                        <div class="tier-name">Cash Back Deposit</div>
+                        <div class="tier-value">$250.00 credit to Checking</div>
+                        <button class="card-action-btn primary" style="margin-top:14px;width:100%;" onclick="requireOTP('redeemRewardPoints(25000,250)','Redeem 25,000 points for $250.00 Cash Back')">Redeem</button>
+                    </div>
+                    <div class="reward-tier-card">
+                        <div style="font-size:28px;margin-bottom:8px;">&#x2708;&#xFE0F;</div>
+                        <div class="tier-pts">50,000 pts</div>
+                        <div class="tier-name">Travel Credit</div>
+                        <div class="tier-value">$750.00 travel statement credit</div>
+                        <button class="card-action-btn primary" style="margin-top:14px;width:100%;" onclick="requireOTP('redeemRewardPoints(50000,750)','Redeem 50,000 points for $750.00 Travel Credit')">Redeem</button>
+                    </div>
+                    <div class="reward-tier-card">
+                        <div style="font-size:28px;margin-bottom:8px;">&#x1F381;</div>
+                        <div class="tier-pts">100,000 pts</div>
+                        <div class="tier-name">Premium Redemption</div>
+                        <div class="tier-value">$1,500.00 cash + bonus multiplier</div>
+                        <button class="card-action-btn primary" style="margin-top:14px;width:100%;" onclick="requireOTP('redeemRewardPoints(100000,1500)','Redeem 100,000 points for $1,500.00 Premium Cash')">Redeem</button>
+                    </div>
+                </div>
+                <div class="card-detail-panel">
+                    <h4>&#x1F4CA; Points History (Last 30 Days)</h4>
+                    <div style="font-size:13px;">
+                        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Nov 25 &#x2014; AWS Cloud Services (3x)</span><strong style="color:var(--chase-blue);">+3,747 pts</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Nov 24 &#x2014; Delta Airlines SFO-JFK (3x Travel)</span><strong style="color:var(--chase-blue);">+5,625 pts</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;"><span>Nov 23 &#x2014; The Capital Grille (3x Dining)</span><strong style="color:var(--chase-blue);">+1,290 pts</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:10px 0;"><span>Nov 22 &#x2014; Salesforce CRM (1x General)</span><strong style="color:var(--chase-blue);">+3,800 pts</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== FULL PAGE: NOTIFICATIONS ====== -->
+            <div id="page-notifications" class="page-view">
+                <div class="full-page-header">
+                    <div>
+                        <div class="page-breadcrumb">Dashboard / Notifications</div>
+                        <h2>&#x1F514; Notifications &amp; Alerts</h2>
+                    </div>
+                    <div style="display:flex;gap:10px;">
+                        <button class="card-action-btn primary" onclick="markNotificationsRead()">&#x2713; Mark All Read</button>
+                        <button class="back-to-dash-btn" onclick="navigateToPage(null,'dashboard')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                            Back
+                        </button>
+                    </div>
+                </div>
+                <div class="notif-list-full">
+                    <div class="notif-card unread">
+                        <div class="notif-icon-circle" style="background:#fef3c7;">&#x26A0;&#xFE0F;</div>
+                        <div class="notif-body"><h4>Compliance Hold &#x2014; THYSSENKRUPP PLASTICS GmbH ($4,970,000.00)</h4><p>Inbound telegraphic wire requires Step 3 Regulatory Compliance Fee settlement. Repatriation deadline in 4 days. <a href="#" onclick="openModal('modal-compliance-tkp')" style="color:var(--chase-blue);font-weight:700;">Review &amp; Resolve &#x2192;</a></p></div>
+                        <div class="notif-time">2h ago</div>
+                    </div>
+                    <div class="notif-card unread">
+                        <div class="notif-icon-circle" style="background:#fef3c7;">&#x26A0;&#xFE0F;</div>
+                        <div class="notif-body"><h4>Compliance Hold &#x2014; GoBid Ltd ($992,000.00)</h4><p>Inbound telegraphic wire requires Step 3 Compliance Fee settlement. <a href="#" onclick="openModal('modal-compliance-gobid')" style="color:var(--chase-blue);font-weight:700;">Review &amp; Resolve &#x2192;</a></p></div>
+                        <div class="notif-time">5h ago</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#ecfdf5;">&#x2705;</div>
+                        <div class="notif-body"><h4>Wire Transfer Completed &#x2014; GoBid Ltd (+$1,000,000.00)</h4><p>Inbound wire has cleared all 3 compliance steps and $1,000,000.00 USD credited to Checking x4562.</p></div>
+                        <div class="notif-time">Nov 18</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#fee2e2;">&#x1F534;</div>
+                        <div class="notif-body"><h4>Outbound Transfer &#x2014; Krytine Exchange (-$1,300,000.00)</h4><p>EVM Ethereum Mainnet token swap of $1,300,000.00 USD executed. Tx hash: 0x8f2a...901a.</p></div>
+                        <div class="notif-time">Sep 23</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#e0f2fe;">&#x1F4B3;</div>
+                        <div class="notif-body"><h4>Card Payment &#x2014; AWS Cloud Services (-$1,249.00)</h4><p>Monthly EC2/S3 infrastructure retainer debited from Corporate Card *4189. 3,747 points earned.</p></div>
+                        <div class="notif-time">Nov 25</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#ecfdf5;">&#x1F4B0;</div>
+                        <div class="notif-body"><h4>Merchant Deposit &#x2014; Stripe Payout (+$42,500.00)</h4><p>Weekly e-commerce revenue settlement from Stripe credited to Checking x4562.</p></div>
+                        <div class="notif-time">Nov 24</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#f0f7ff;">&#x1F510;</div>
+                        <div class="notif-body"><h4>Security Alert &#x2014; New Login Detected</h4><p>Sign-in detected from Windows 11 (Chrome). If this wasn't you, contact Chase Fraud Services immediately.</p></div>
+                        <div class="notif-time">Nov 22</div>
+                    </div>
+                    <div class="notif-card">
+                        <div class="notif-icon-circle" style="background:#fef3c7;">&#x1F4CB;</div>
+                        <div class="notif-body"><h4>Statement Ready &#x2014; October 2026</h4><p>Your monthly commercial statement for October 2026 is now available. 22 transactions processed.</p></div>
+                        <div class="notif-time">Nov 1</div>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
