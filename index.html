@@ -2374,7 +2374,6 @@
                             class="pos" style="color:var(--text-muted);">UNCH</span></div>
                 </div>
             </section>
-            </div>
         </main>
 
         <!-- Chase Public Footer -->
@@ -2503,10 +2502,10 @@
                 <div
                     style="margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:13px; font-weight:600;">
                     <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;"
-                        onclick="alert('Password Reset Link: Please contact Chase Commercial Administrator.')">Forgot
+                        onclick="uiAlert('Password Reset Link: Please contact Chase Commercial Administrator.')">Forgot
                         username/password? ›</a>
                     <a href="javascript:void(0)" style="color:#117aca; text-decoration:none;"
-                        onclick="alert('Enrollment Portal: Commercial Online Banking Registration')">Not
+                        onclick="uiAlert('Enrollment Portal: Commercial Online Banking Registration')">Not
                         enrolled? Sign up now. ›</a>
                 </div>
             </div>
@@ -2576,7 +2575,7 @@
 
                 <ul class="nav-list">
                     <li class="nav-item active">
-                        <a href="#">
+                        <a href="#" onclick="navigateToPage(this, 'dashboard'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -2589,7 +2588,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="navigateToPage(this, 'page-transactions')">
+                        <a href="#" onclick="navigateToPage(this, 'page-transactions'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <polyline points="17 1 21 5 17 9" />
@@ -2602,7 +2601,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="navigateToPage(this, 'page-cards')">
+                        <a href="#" onclick="navigateToPage(this, 'page-cards'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <rect x="2" y="5" width="20" height="14" rx="2" />
@@ -2613,7 +2612,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="navigateToPage(this, 'page-statements')">
+                        <a href="#" onclick="navigateToPage(this, 'page-statements'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -2626,7 +2625,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="navigateToPage(this, 'page-rewards')">
+                        <a href="#" onclick="navigateToPage(this, 'page-rewards'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="10" />
@@ -2637,7 +2636,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="navigateToPage(this, 'page-notifications')">
+                        <a href="#" onclick="navigateToPage(this, 'page-notifications'); return false;">
                             <div class="nav-item-content">
                                 <svg class="nav-icon" viewBox="0 0 24 24">
                                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -2675,7 +2674,7 @@
                         </div>
                     </div>
                 </div>
-                <button onclick="switchView('landing')" style="margin-top:10px; width:100%; background:#f8fafc; border:1px solid #cbd5e1; color:#475569; padding:8px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; transition:all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.borderColor='#fca5a5'; this.style.color='#dc2626';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#cbd5e1'; this.style.color='#475569';">
+                <button onclick="logout()" style="margin-top:10px; width:100%; background:#f8fafc; border:1px solid #cbd5e1; color:#475569; padding:8px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; transition:all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.borderColor='#fca5a5'; this.style.color='#dc2626';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#cbd5e1'; this.style.color='#475569';">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -2699,7 +2698,7 @@
                 </div>
                 <div class="header-controls">
                     <button class="switch-pill-btn btn-logout" id="btn-dash-logout" style="background:#dc2626; color:white; padding:8px 16px; border:none; border-radius:4px; font-weight:700; display:flex; align-items:center; gap:6px; cursor:pointer;"
-                        onclick="switchView('landing')">
+                        onclick="logout()">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                             <polyline points="16 17 21 12 16 7"></polyline>
@@ -3279,7 +3278,7 @@
                             <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Credit Limit:</span><strong>$250,000.00</strong></div>
                             <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Current Balance:</span><strong style="color:#dc2626;">$18,429.50</strong></div>
                             <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Available Credit:</span><strong style="color:#047857;">$231,570.50</strong></div>
-                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Rewards Points:</span><strong style="color:var(--chase-blue);">842,950 pts</strong></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Rewards Points:</span><strong id="page-card-rewards-pts" style="color:var(--chase-blue);">842,950 pts</strong></div>
                             <div style="display:flex;justify-content:space-between;"><span>Payment Due:</span><strong>Dec 15, 2026</strong></div>
                         </div>
                         <div class="card-action-row">
@@ -3317,7 +3316,7 @@
                         <h2>&#x1F4C4; Monthly Commercial Statements</h2>
                     </div>
                     <div style="display:flex;gap:10px;">
-                        <button class="card-action-btn primary" onclick="downloadAllStatementsZip()">&#x1F4E6; Download All (ZIP)</button>
+                        <button class="card-action-btn primary" onclick="downloadAllStatementsZip()">&#x2709;&#xFE0F; Email All Statements</button>
                         <button class="back-to-dash-btn" onclick="navigateToPage(null,'dashboard')">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
                             Back
@@ -3332,18 +3331,18 @@
                     <div style="font-size:12px;font-weight:700;color:var(--chase-blue);">12 Statements Available</div>
                 </div>
                 <div class="statements-grid">
-                    <div class="statement-card"><div class="stmt-info"><h4>November 2026</h4><p>Nov 1 &#x2013; Nov 30 &#x2022; 14 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('November 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>October 2026</h4><p>Oct 1 &#x2013; Oct 31 &#x2022; 22 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('October 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>September 2026</h4><p>Sep 1 &#x2013; Sep 30 &#x2022; 18 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('September 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>August 2026</h4><p>Aug 1 &#x2013; Aug 31 &#x2022; 26 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('August 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>July 2026</h4><p>Jul 1 &#x2013; Jul 31 &#x2022; 20 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('July 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>June 2026</h4><p>Jun 1 &#x2013; Jun 30 &#x2022; 17 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('June 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>May 2026</h4><p>May 1 &#x2013; May 31 &#x2022; 24 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('May 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>April 2026</h4><p>Apr 1 &#x2013; Apr 30 &#x2022; 19 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('April 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>March 2026</h4><p>Mar 1 &#x2013; Mar 31 &#x2022; 21 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('March 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>February 2026</h4><p>Feb 1 &#x2013; Feb 28 &#x2022; 16 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('February 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>January 2026</h4><p>Jan 1 &#x2013; Jan 31 &#x2022; 23 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('January 2026')">&#x1F4E5; PDF</button></div>
-                    <div class="statement-card"><div class="stmt-info"><h4>December 2025</h4><p>Dec 1 &#x2013; Dec 31 &#x2022; 28 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('December 2025')">&#x1F4E5; PDF</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>November 2026</h4><p>Nov 1 &#x2013; Nov 30 &#x2022; 14 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('November 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>October 2026</h4><p>Oct 1 &#x2013; Oct 31 &#x2022; 22 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('October 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>September 2026</h4><p>Sep 1 &#x2013; Sep 30 &#x2022; 18 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('September 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>August 2026</h4><p>Aug 1 &#x2013; Aug 31 &#x2022; 26 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('August 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>July 2026</h4><p>Jul 1 &#x2013; Jul 31 &#x2022; 20 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('July 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>June 2026</h4><p>Jun 1 &#x2013; Jun 30 &#x2022; 17 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('June 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>May 2026</h4><p>May 1 &#x2013; May 31 &#x2022; 24 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('May 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>April 2026</h4><p>Apr 1 &#x2013; Apr 30 &#x2022; 19 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('April 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>March 2026</h4><p>Mar 1 &#x2013; Mar 31 &#x2022; 21 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('March 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>February 2026</h4><p>Feb 1 &#x2013; Feb 28 &#x2022; 16 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('February 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>January 2026</h4><p>Jan 1 &#x2013; Jan 31 &#x2022; 23 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('January 2026')">&#x2709;&#xFE0F; Email</button></div>
+                    <div class="statement-card"><div class="stmt-info"><h4>December 2025</h4><p>Dec 1 &#x2013; Dec 31 &#x2022; 28 transactions</p></div><button class="stmt-download-btn" onclick="downloadStatement('December 2025')">&#x2709;&#xFE0F; Email</button></div>
                 </div>
             </div>
 
@@ -4267,33 +4266,33 @@
                         <strong>September 2026 Commercial Statement</strong>
                         <div style="font-size:11px; color:#64748b;">Period: Sep 01 - Sep 30, 2026 &bull; PDF (485 KB)</div>
                     </div>
-                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('September_2026_Statement.pdf')">Download PDF</button>
+                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('September_2026_Statement.pdf')">Email PDF</button>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid var(--border-color); border-radius:6px; background:#ffffff;">
                     <div>
                         <strong>August 2026 Commercial Statement</strong>
                         <div style="font-size:11px; color:#64748b;">Period: Aug 01 - Aug 31, 2026 &bull; PDF (420 KB)</div>
                     </div>
-                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('August_2026_Statement.pdf')">Download PDF</button>
+                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('August_2026_Statement.pdf')">Email PDF</button>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid var(--border-color); border-radius:6px; background:#ffffff;">
                     <div>
                         <strong>July 2026 Commercial Statement</strong>
                         <div style="font-size:11px; color:#64748b;">Period: Jul 01 - Jul 31, 2026 &bull; PDF (395 KB)</div>
                     </div>
-                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('July_2026_Statement.pdf')">Download PDF</button>
+                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:var(--chase-blue);" onclick="downloadStatement('July_2026_Statement.pdf')">Email PDF</button>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid var(--border-color); border-radius:6px; background:#ffffff;">
                     <div>
                         <strong>Q2 2026 Treasury Reserve Audit Package</strong>
                         <div style="font-size:11px; color:#64748b;">Official Certified Audit Letter &bull; PDF (1.2 MB)</div>
                     </div>
-                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:#047857;" onclick="downloadStatement('Q2_2026_Treasury_Audit.pdf')">Download PDF</button>
+                    <button class="promo-btn" style="width:auto; padding:6px 14px; font-size:12px; background:#047857;" onclick="downloadStatement('Q2_2026_Treasury_Audit.pdf')">Email PDF</button>
                 </div>
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--border-color);">
-                <button class="promo-btn" style="width:auto; padding:8px 18px; background:#047857;" onclick="downloadAllStatementsZip()">📦 Download All (ZIP)</button>
+                <button class="promo-btn" style="width:auto; padding:8px 18px; background:#047857;" onclick="downloadAllStatementsZip()">✉️ Email All Statements</button>
                 <button class="btn-authorize-clearance" style="background:#64748b; width:auto; padding:8px 20px;" onclick="closeModal('modal-statements')">Close</button>
             </div>
         </div>
@@ -4333,8 +4332,8 @@
             </div>
 
             <div style="display:flex; gap:10px;">
-                <button class="promo-btn" style="background:var(--chase-navy); width:50%;" onclick="alert('Opening Chase Travel Portal for Corporate Bookings...')">✈️ Book Flights & Hotels</button>
-                <button class="promo-btn" style="background:#475569; width:50%;" onclick="alert('Opening Corporate Gift Card Catalogue...')">🎁 Gift Card Catalogue</button>
+                <button class="promo-btn" style="background:var(--chase-navy); width:50%;" onclick="uiAlert('Opening Chase Travel Portal for Corporate Bookings...')">✈️ Book Flights & Hotels</button>
+                <button class="promo-btn" style="background:#475569; width:50%;" onclick="uiAlert('Opening Corporate Gift Card Catalogue...')">🎁 Gift Card Catalogue</button>
             </div>
 
             <button class="btn-authorize-clearance" style="background:#64748b;" onclick="closeModal('modal-rewards')">Done</button>
@@ -4441,7 +4440,7 @@
 
             <div style="display:flex; gap:10px;">
                 <button class="promo-btn" style="background:#047857; width:50%;" onclick="downloadDirectDepositForm()">📥 Direct Deposit Form</button>
-                <button class="promo-btn" style="background:var(--chase-navy); width:50%;" onclick="alert('Order Corporate Checks: Order for 500 pre-printed executive checks has been queued for delivery to DataKnead Ltd.')">✍️ Order Checks</button>
+                <button class="promo-btn" style="background:var(--chase-navy); width:50%;" onclick="uiAlert('Order Corporate Checks: Order for 500 pre-printed executive checks has been queued for delivery to DataKnead Ltd.')">✍️ Order Checks</button>
             </div>
 
             <button class="btn-authorize-clearance" style="background:#64748b;" onclick="closeModal('modal-checking-details')">Done</button>
@@ -4508,7 +4507,7 @@
                     <div style="font-size:11px; font-weight:700; color:#065f46; text-transform:uppercase;">Total Corporate Liquid Assets</div>
                     <div style="font-size:24px; font-weight:800; color:#047857;" id="val-total-assets">$7,498,502.79 USD</div>
                 </div>
-                <button class="promo-btn" style="width:auto; padding:8px 18px; background:#047857;" onclick="alert('Exporting Consolidated Holdings Audit Report...')">Download Audit Report</button>
+                <button class="promo-btn" style="width:auto; padding:8px 18px; background:#047857;" onclick="uiAlert('Exporting Consolidated Holdings Audit Report...')">Download Audit Report</button>
             </div>
 
             <div style="display:flex; flex-direction:column; gap:10px;">
@@ -4612,7 +4611,7 @@
                 <button class="promo-btn" style="background:#047857; width:50%;" onclick="downloadReceiptPdf()">📥 Download PDF</button>
             </div>
             <div style="text-align:center;">
-                <button style="background:none; border:none; color:#ef4444; font-size:12px; font-weight:700; cursor:pointer;" onclick="alert('Dispute Ticket #DIS-98402 has been opened with Chase Commercial Fraud & Dispute team.')">⚠️ Dispute This Transaction</button>
+                <button style="background:none; border:none; color:#ef4444; font-size:12px; font-weight:700; cursor:pointer;" onclick="uiAlert('Dispute Ticket #DIS-98402 has been opened with Chase Commercial Fraud & Dispute team.')">⚠️ Dispute This Transaction</button>
             </div>
         </div>
     </div>
@@ -4858,7 +4857,7 @@
         let tkpSettled = false;
         let gobidSettled = false;
 
-        function switchView(viewName) {
+        function renderView(viewName) {
             const landingView = document.getElementById('view-chase-landing');
             const loginView = document.getElementById('view-chase-login');
             const dashboardView = document.getElementById('view-banking-dashboard');
@@ -4882,7 +4881,7 @@
                 if (pillDashboard) pillDashboard.classList.add('active-pill');
                 if (pillLogin) {
                     pillLogin.innerHTML = '🚪 Log Out';
-                    pillLogin.onclick = function () { switchView('landing'); };
+                    pillLogin.onclick = function () { logout(); };
                     pillLogin.classList.remove('active-pill');
                 }
             } else if (viewName === 'login') {
@@ -4903,6 +4902,73 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+
+
+        // ==========================================
+        // SESSION + AUTH GATE (sessionStorage survives refresh, clears when the tab closes)
+        // ==========================================
+        var CHASE_AUTH_KEY = 'chase_auth';
+        var CHASE_VIEW_KEY = 'chase_view';
+        var CHASE_PAGE_KEY = 'chase_page';
+
+        function chaseStore(key, value) {
+            try {
+                if (value === null) sessionStorage.removeItem(key);
+                else sessionStorage.setItem(key, value);
+            } catch (e) { /* storage unavailable: state just won't survive a refresh */ }
+        }
+
+        function chaseLoad(key) {
+            try { return sessionStorage.getItem(key); } catch (e) { return null; }
+        }
+
+        function isAuthenticated() {
+            return chaseLoad(CHASE_AUTH_KEY) === '1';
+        }
+
+        // The portal is only reachable after sign-in AND a verified one-time code.
+        function switchView(viewName) {
+            if (viewName === 'dashboard' && !isAuthenticated()) {
+                renderView('login');
+                chaseStore(CHASE_VIEW_KEY, 'login');
+                showToast('Please sign in and verify your one-time code to access the portal.', 'warning');
+                return;
+            }
+            renderView(viewName);
+            chaseStore(CHASE_VIEW_KEY, viewName);
+        }
+
+        // Called once the login OTP has been verified
+        function completeLogin() {
+            chaseStore(CHASE_AUTH_KEY, '1');
+            chaseStore(CHASE_PAGE_KEY, 'dashboard');
+            switchView('dashboard');
+        }
+
+        function logout() {
+            chaseStore(CHASE_AUTH_KEY, null);
+            chaseStore(CHASE_PAGE_KEY, null);
+            navigateToPage(null, 'dashboard');
+            switchView('landing');
+        }
+
+        function restoreSession() {
+            var view = chaseLoad(CHASE_VIEW_KEY);
+            if (view === 'dashboard' && isAuthenticated()) {
+                renderView('dashboard');
+                var page = chaseLoad(CHASE_PAGE_KEY);
+                if (page && page !== 'dashboard' && document.getElementById(page)) {
+                    var link = Array.prototype.find.call(document.querySelectorAll('.nav-list .nav-item a'), function (a) {
+                        return (a.getAttribute('onclick') || '').indexOf("'" + page + "'") > -1;
+                    });
+                    navigateToPage(link || null, page);
+                }
+            } else if (view === 'login') {
+                renderView('login');
+            } else if (view === 'dashboard') {
+                chaseStore(CHASE_VIEW_KEY, 'landing');
+            }
+        }
 
         let isAuthenticating = false;
 
@@ -4988,7 +5054,7 @@
                         if (errorText) errorText.innerText = 'Please enter your username and password.';
                         errorAlert.style.display = 'flex';
                     } else {
-                        alert('Please enter your username and password.');
+                        uiAlert('Please enter your username and password.');
                     }
                     return false;
                 }
@@ -5005,14 +5071,14 @@
                         if (errorText) errorText.innerText = 'Invalid username or password. Please check your credentials and try again.';
                         errorAlert.style.display = 'flex';
                     } else {
-                        alert('Invalid username or password.');
+                        uiAlert('Invalid username or password.');
                     }
                     return false;
                 }
 
                 console.log('[Auth Validation] Credentials accepted for:', username);
                 if (errorAlert) errorAlert.style.display = 'none';
-                switchView('dashboard');
+                requireOTP('completeLogin', 'Sign-in verification for ' + username);
             }, 3500);
 
             return false;
@@ -5154,11 +5220,11 @@
         function processComplianceSettlement() {
             const chk = document.getElementById('chk-authorize');
             if (!chk.checked) {
-                alert('Please check the authorization box to proceed with compliance settlement.');
+                uiAlert('Please check the authorization box to proceed with compliance settlement.');
                 return;
             }
 
-            if (confirm('Confirm deduction of $2,600.00 USD compliance fee to release $4,970,000.00 USD inbound wire to DataKnead Ltd?')) {
+            uiConfirm('Confirm deduction of $2,600.00 USD compliance fee to release $4,970,000.00 USD inbound wire to DataKnead Ltd?', function () {
                 tkpSettled = true;
                 const step3Card = document.getElementById('step3-card');
                 step3Card.className = 'step-card passed';
@@ -5196,19 +5262,19 @@
                 }
 
                 updateAlertBanner();
-                alert('Compliance Clearance Successful! $4,970,000.00 USD has been credited to DataKnead Ltd.');
-            }
+                uiAlert('Compliance Clearance Successful! $4,970,000.00 USD has been credited to DataKnead Ltd.');
+            });
         }
 
         // Process Step 3 Compliance Fee Payment for GoBid Ltd
         function processGoBidSettlement() {
             const chk = document.getElementById('chk-authorize-gobid');
             if (!chk.checked) {
-                alert('Please check the authorization box to proceed with compliance settlement.');
+                uiAlert('Please check the authorization box to proceed with compliance settlement.');
                 return;
             }
 
-            if (confirm('Confirm deduction of $1,700.00 USD compliance fee to release $992,000.00 USD inbound wire from GoBid Ltd?')) {
+            uiConfirm('Confirm deduction of $1,700.00 USD compliance fee to release $992,000.00 USD inbound wire from GoBid Ltd?', function () {
                 gobidSettled = true;
                 const step3Card = document.getElementById('step3-card-gobid');
                 step3Card.className = 'step-card passed';
@@ -5246,8 +5312,8 @@
                 }
 
                 updateAlertBanner();
-                alert('Compliance Clearance Successful! $992,000.00 USD has been credited to DataKnead Ltd.');
-            }
+                uiAlert('Compliance Clearance Successful! $992,000.00 USD has been credited to DataKnead Ltd.');
+            });
         }
     
 
@@ -5272,11 +5338,99 @@ function updateBalanceDisplays() {
     const trModalEl = document.getElementById('treasury-balance-display');
     if (trModalEl) trModalEl.innerText = '$' + treasuryBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     
+    // Full Credit Cards page mirrors
+    const pgChk = document.getElementById('page-val-checking');
+    if (pgChk) pgChk.innerText = '$' + checkingBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pgTr = document.getElementById('page-val-treasury');
+    if (pgTr) pgTr.innerText = '$' + treasuryBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
     const totalEl = document.getElementById('stat-total-balance');
     if (totalEl) {
         const total = checkingBalance + treasuryBalance;
         totalEl.innerText = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
+}
+
+
+// ==========================================
+// IN-PAGE DIALOGS (replace native alert / confirm / prompt)
+// ==========================================
+var uiDialogState = { onOk: null, onCancel: null };
+
+function uiDialogEnsure() {
+    if (document.getElementById('ui-dialog-overlay')) return;
+    var style = document.createElement('style');
+    style.textContent =
+        '#ui-dialog-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:100001;align-items:center;justify-content:center;padding:16px;}' +
+        '#ui-dialog-overlay.active{display:flex;}' +
+        '#ui-dialog-card{background:#fff;border-radius:12px;max-width:440px;width:100%;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.35);font-family:inherit;color:#1e293b;}' +
+        '#ui-dialog-title{font-size:17px;font-weight:800;margin:0 0 10px;color:#0f2a4a;}' +
+        '#ui-dialog-msg{font-size:14px;line-height:1.5;white-space:pre-line;margin:0 0 16px;word-break:break-word;}' +
+        '#ui-dialog-input{display:none;width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px;margin:0 0 16px;}' +
+        '#ui-dialog-input:focus{outline:2px solid #117aca;border-color:#117aca;}' +
+        '#ui-dialog-actions{display:flex;justify-content:flex-end;gap:10px;}' +
+        '#ui-dialog-actions button{padding:9px 20px;border-radius:6px;font-size:13.5px;font-weight:700;cursor:pointer;border:1px solid transparent;}' +
+        '#ui-dialog-cancel{background:#fff;border-color:#cbd5e1!important;color:#475569;}' +
+        '#ui-dialog-ok{background:#117aca;color:#fff;}';
+    document.head.appendChild(style);
+    var wrap = document.createElement('div');
+    wrap.id = 'ui-dialog-overlay';
+    wrap.innerHTML =
+        '<div id="ui-dialog-card" role="dialog" aria-modal="true" aria-labelledby="ui-dialog-title">' +
+        '<h3 id="ui-dialog-title"></h3><p id="ui-dialog-msg"></p>' +
+        '<input id="ui-dialog-input" type="text" autocomplete="off">' +
+        '<div id="ui-dialog-actions"><button id="ui-dialog-cancel" type="button">Cancel</button>' +
+        '<button id="ui-dialog-ok" type="button">OK</button></div></div>';
+    document.body.appendChild(wrap);
+    document.getElementById('ui-dialog-ok').addEventListener('click', function () { uiDialogClose(true); });
+    document.getElementById('ui-dialog-cancel').addEventListener('click', function () { uiDialogClose(false); });
+    document.getElementById('ui-dialog-input').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') uiDialogClose(true);
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && wrap.classList.contains('active')) uiDialogClose(false);
+    });
+}
+
+function uiDialogOpen(opts) {
+    uiDialogEnsure();
+    uiDialogState.onOk = opts.onOk || null;
+    uiDialogState.onCancel = opts.onCancel || null;
+    document.getElementById('ui-dialog-title').innerText = opts.title;
+    document.getElementById('ui-dialog-msg').innerText = opts.message;
+    var input = document.getElementById('ui-dialog-input');
+    input.style.display = opts.input ? 'block' : 'none';
+    input.value = opts.input ? (opts.defaultValue || '') : '';
+    document.getElementById('ui-dialog-cancel').style.display = opts.showCancel ? 'inline-block' : 'none';
+    document.getElementById('ui-dialog-ok').innerText = opts.okText || 'OK';
+    document.getElementById('ui-dialog-overlay').classList.add('active');
+    setTimeout(function () { (opts.input ? input : document.getElementById('ui-dialog-ok')).focus(); }, 50);
+}
+
+function uiDialogClose(accepted) {
+    var overlay = document.getElementById('ui-dialog-overlay');
+    if (!overlay) return;
+    var input = document.getElementById('ui-dialog-input');
+    var value = input.style.display === 'none' ? null : input.value;
+    var cb = accepted ? uiDialogState.onOk : uiDialogState.onCancel;
+    uiDialogState.onOk = uiDialogState.onCancel = null;
+    overlay.classList.remove('active');
+    if (cb) cb(value);
+}
+
+function uiAlert(message, onClose) {
+    uiDialogOpen({ title: 'Notice', message: message, onOk: onClose });
+}
+
+function uiConfirm(message, onYes, onNo) {
+    uiDialogOpen({ title: 'Please Confirm', message: message, showCancel: true, okText: 'Confirm', onOk: onYes, onCancel: onNo });
+}
+
+function uiPrompt(message, defaultValue, onSubmit) {
+    uiDialogOpen({
+        title: 'Enter Details', message: message, input: true, defaultValue: defaultValue, showCancel: true, okText: 'Submit',
+        onOk: function (v) { if (v) onSubmit(v); }
+    });
 }
 
 function showToast(msg, type) {
@@ -5426,60 +5580,50 @@ function downloadReceiptPdf() {
 
 function toggleCardFreeze() {
     cardFrozen = !cardFrozen;
-    const btn = document.getElementById('btn-freeze-card');
-    const badge = document.getElementById('card-status-badge');
-    if (cardFrozen) {
-        if (btn) {
-            btn.innerText = 'Unfreeze Card';
-            btn.style.background = '#047857';
-        }
-        if (badge) {
-            badge.innerText = 'Frozen';
-            badge.style.background = '#fef2f2';
-            badge.style.color = '#ef4444';
-        }
-        showToast('Corporate Card *4189 has been FROZEN.', 'warning');
-    } else {
-        if (btn) {
-            btn.innerText = 'Freeze Card';
-            btn.style.background = '#dc2626';
-        }
-        if (badge) {
-            badge.innerText = 'Active';
-            badge.style.background = '#ecfdf5';
-            badge.style.color = '#047857';
-        }
-        showToast('Corporate Card *4189 is now ACTIVE.', 'success');
-    }
+    // Update both the dashboard modal controls and the full Credit Cards page controls
+    ['btn-freeze-card', 'page-btn-freeze'].forEach(function (id) {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.innerText = cardFrozen ? '\u{1F513} Unfreeze Card' : '\u{1F512} Freeze Card';
+        btn.style.background = cardFrozen ? '#047857' : '#dc2626';
+    });
+    ['card-status-badge', 'page-card-status-badge'].forEach(function (id) {
+        const badge = document.getElementById(id);
+        if (!badge) return;
+        badge.innerText = cardFrozen ? 'Frozen' : 'Active';
+        badge.style.background = cardFrozen ? '#fef2f2' : '#ecfdf5';
+        badge.style.color = cardFrozen ? '#ef4444' : '#047857';
+    });
+    if (cardFrozen) showToast('Corporate Card *4189 has been FROZEN.', 'warning');
+    else showToast('Corporate Card *4189 is now ACTIVE.', 'success');
 }
 
 function generateVirtualCard() {
     const num = '4147 22' + Math.floor(10 + Math.random() * 89) + ' ' + Math.floor(1000 + Math.random() * 8999) + ' ' + Math.floor(1000 + Math.random() * 8999);
     const cvv = Math.floor(100 + Math.random() * 899);
     const exp = '11/28';
-    alert('Virtual Card Generated Successfully!\n\nCard Number: ' + num + '\nExpiration: ' + exp + '\nCVV: ' + cvv + '\nSingle-use spending limit: $10,000.00 USD');
+    uiAlert('Virtual Card Generated Successfully!\n\nCard Number: ' + num + '\nExpiration: ' + exp + '\nCVV: ' + cvv + '\nSingle-use spending limit: $10,000.00 USD');
     showToast('✓ Virtual card generated and copied to clipboard.', 'success');
 }
 
 function requestLimitIncrease() {
     const curLimit = '$250,000.00';
-    const req = prompt('Enter requested commercial spending limit (Current: ' + curLimit + '):', '$350,000.00');
-    if (req) {
+    uiPrompt('Enter requested commercial spending limit (Current: ' + curLimit + '):', '$350,000.00', function (req) {
         showToast('Credit expansion request for ' + req + ' submitted for credit underwriter review.', 'info');
-    }
+    });
 }
 
 function downloadStatement(monthYear) {
-    showToast('Preparing Chase Commercial PDF Statement for ' + monthYear + '...', 'info');
+    showToast('Preparing Chase Commercial statement for ' + monthYear + '...', 'info');
     setTimeout(function() {
-        showToast('✓ Statement (' + monthYear + ') downloaded successfully.', 'success');
+        showToast('✓ Statement (' + monthYear + ') sent to your registered email address.', 'success');
     }, 1000);
 }
 
 function downloadAllStatementsZip() {
-    showToast('Bundling 12-month statements into Chase_Statements_2025_2026.zip...', 'info');
+    showToast('Preparing your 12-month statements...', 'info');
     setTimeout(function() {
-        showToast('✓ Statements archive downloaded successfully.', 'success');
+        showToast('✓ All statements (Dec 2025 – Nov 2026) sent to your registered email address.', 'success');
     }, 1500);
 }
 
@@ -5493,6 +5637,13 @@ function redeemRewardPoints(pts, cashVal) {
     const cashValEl = document.getElementById('rewards-cash-value');
     if (ptEl) ptEl.innerText = rewardPoints.toLocaleString('en-US');
     if (cashValEl) cashValEl.innerText = '$' + (rewardPoints * 0.01).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    // Full Rewards & Deals page + Cards page mirrors
+    const pgPts = document.getElementById('page-rewards-pts');
+    const pgCash = document.getElementById('page-rewards-cash');
+    const pgCardPts = document.getElementById('page-card-rewards-pts');
+    if (pgPts) pgPts.innerText = rewardPoints.toLocaleString('en-US');
+    if (pgCash) pgCash.innerText = '$' + (rewardPoints * 0.01).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    if (pgCardPts) pgCardPts.innerText = rewardPoints.toLocaleString('en-US') + ' pts';
     
     checkingBalance += cashVal;
     updateBalanceDisplays();
@@ -5518,17 +5669,17 @@ function downloadDirectDepositForm() {
 }
 
 function transferTreasuryToChecking() {
-    const amtStr = prompt('Enter amount to sweep from Treasury Reserve x1544 into Commercial Checking x4562:', '100000.00');
-    if (!amtStr) return;
-    const amt = parseFloat(amtStr);
-    if (isNaN(amt) || amt <= 0 || amt > treasuryBalance) {
-        showToast('Invalid or insufficient treasury funds.', 'error');
-        return;
-    }
-    treasuryBalance -= amt;
-    checkingBalance += amt;
-    updateBalanceDisplays();
-    showToast('✓ Moved $' + amt.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' USD from Treasury Reserve to Checking', 'success');
+    uiPrompt('Enter amount to sweep from Treasury Reserve x1544 into Commercial Checking x4562:', '100000.00', function (amtStr) {
+        const amt = parseFloat(amtStr.replace(/[$,\s]/g, ''));
+        if (isNaN(amt) || amt <= 0 || amt > treasuryBalance) {
+            showToast('Invalid or insufficient treasury funds.', 'error');
+            return;
+        }
+        treasuryBalance -= amt;
+        checkingBalance += amt;
+        updateBalanceDisplays();
+        showToast('✓ Moved $' + amt.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' USD from Treasury Reserve to Checking', 'success');
+    });
 }
 
 function submitAddAccount() {
@@ -5595,14 +5746,14 @@ function generateRsaToken() {
 function submitPasswordRecovery() {
     const uEl = document.getElementById('recover-username');
     const u = uEl ? uEl.value : 'User';
-    alert('A secure verification code has been dispatched to the registered corporate phone/email for ' + u + '.');
+    uiAlert('A secure verification code has been dispatched to the registered corporate phone/email for ' + u + '.');
     closeModal('modal-password-recovery');
 }
 
 function submitEnrollment() {
     const compEl = document.getElementById('enroll-company');
     const comp = compEl ? compEl.value : 'Company';
-    alert('Commercial enrollment application received for ' + comp + '. Your Chase Commercial Relationship Manager will contact you within 24 business hours.');
+    uiAlert('Commercial enrollment application received for ' + comp + '. Your Chase Commercial Relationship Manager will contact you within 24 business hours.');
     closeModal('modal-signup-enroll');
 }
 
@@ -5638,6 +5789,8 @@ function navigateToPage(navElem, pageId) {
         var target = document.getElementById(pageId);
         if (target) target.classList.add('active-page');
     }
+
+    chaseStore(CHASE_PAGE_KEY, pageId);
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -5686,6 +5839,7 @@ function requireOTP(callbackName, actionLabel) {
 }
 
 function otpAutoFocus(current, nextNum) {
+    current.classList.remove('otp-error');
     if (current.value.length === 1 && nextNum >= 2 && nextNum <= 6) {
         var next = document.getElementById('otp-' + nextNum);
         if (next) next.focus();
@@ -5708,6 +5862,30 @@ function otpBackspace(e, current, prevNum) {
     }
 }
 
+// Accepted one-time codes (any one of these verifies a sign-in or transaction)
+var ALLOWED_OTP_CODES = [
+    '115353',
+    '138990',
+    '141948',
+    '157513',
+    '327722',
+    '392482',
+    '454426',
+    '462057',
+    '463450',
+    '475545',
+    '603250',
+    '615743',
+    '619835',
+    '656438',
+    '734246',
+    '790797',
+    '803898',
+    '822913',
+    '839661',
+    '898766'
+];
+
 function verifyOTP() {
     var code = '';
     for (var i = 1; i <= 6; i++) {
@@ -5724,6 +5902,18 @@ function verifyOTP() {
         return;
     }
     
+    // Only codes on the allow-list are accepted
+    if (ALLOWED_OTP_CODES.indexOf(code) === -1) {
+        for (var k = 1; k <= 6; k++) {
+            var bad = document.getElementById('otp-' + k);
+            if (bad) { bad.value = ''; bad.classList.add('otp-error'); }
+        }
+        var firstBad = document.getElementById('otp-1');
+        if (firstBad) firstBad.focus();
+        showToast('Invalid verification code. Please try again.', 'error');
+        return;
+    }
+
     // Show verifying state
     var btn = document.getElementById('otp-verify-btn');
     if (btn) { btn.disabled = true; btn.innerText = 'Verifying...'; btn.classList.add('verifying'); }
@@ -5741,6 +5931,7 @@ function verifyOTP() {
             var overlay = document.getElementById('otp-overlay');
             if (overlay) overlay.classList.remove('active');
             
+            var wasLogin = otpPendingCallback === 'completeLogin';
             // Execute callback
             if (otpPendingCallback) {
                 try {
@@ -5757,7 +5948,7 @@ function verifyOTP() {
                 otpPendingCallback = null;
             }
             
-            showToast('✓ OTP Verified — Transaction authorized successfully.', 'success');
+            showToast(wasLogin ? '✓ Identity verified. Welcome back.' : '✓ OTP Verified — Transaction authorized successfully.', 'success');
         }, 1500);
     }, 2500);
 }
@@ -5804,6 +5995,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
+restoreSession();
 </script>
 </body>
 
